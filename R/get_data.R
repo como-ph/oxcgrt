@@ -18,6 +18,7 @@
 ################################################################################
 
 get_data_time <- function(json) {
+  requireNamespace("curl", quietly = TRUE)
   x <- jsonlite::fromJSON(txt = json, flatten = TRUE)
   y <- unlist(x[["data"]], recursive = FALSE)
   z <- lapply(X = y, FUN = unlist)
