@@ -4,7 +4,7 @@
 \name{oxcgrt}
 \alias{oxcgrt}
 \alias{oxcgrt-package}
-\title{An R API to the Oxford COVID-19 Government Response Tracker}
+\title{An R Interface to the Oxford COVID-19 Government Response Tracker API}
 \description{
 The Oxford COVID-19 Government Response Tracker (OxCGRT) tracks and
 compares worldwide government responses to the COVID-19 pandemic rigorously
