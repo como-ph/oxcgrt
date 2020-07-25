@@ -9,6 +9,8 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![R build
 status](https://github.com/como-ph/oxcgrt/workflows/R-CMD-check/badge.svg)](https://github.com/como-ph/oxcgrt/actions)
+[![Codecov test
+coverage](https://codecov.io/gh/como-ph/oxcgrt/branch/master/graph/badge.svg)](https://codecov.io/gh/como-ph/oxcgrt?branch=master)
 <!-- badges: end -->
 
 The [Oxford COVID-19 Government Response Tracker
@@ -36,4 +38,13 @@ And the development version from [GitHub](https://github.com/) with:
 ``` r
 if(!require(remotes)) install.packages("remotes")
 remotes::install_github("como-ph/oxcgrt")
+#> 
+#>      checking for file ‘/private/var/folders/rx/nr32tl5n6f3d_86tn0tc7kc00000gp/T/Rtmp8OqZTR/remotes15b24a0ae19d/como-ph-oxcgrt-d4615de/DESCRIPTION’ ...  ✓  checking for file ‘/private/var/folders/rx/nr32tl5n6f3d_86tn0tc7kc00000gp/T/Rtmp8OqZTR/remotes15b24a0ae19d/como-ph-oxcgrt-d4615de/DESCRIPTION’
+#>   ─  preparing ‘oxcgrt’:
+#>      checking DESCRIPTION meta-information ...  ✓  checking DESCRIPTION meta-information
+#>   ─  checking for LF line-endings in source and make files and shell scripts
+#>   ─  checking for empty or unneeded directories
+#>   ─  building ‘oxcgrt_0.1.0.tar.gz’
+#>      
+#> 
 ```

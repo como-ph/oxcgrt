@@ -18,11 +18,11 @@ Imports:
     jsonlite,
     tibble
 Suggests: 
-    curl
+    curl,
+    covr
 Encoding: UTF-8
 Language: en-gb
 LazyData: true
 URL: https://github.com/como-ph/oxcgrt
 BugReports: https://github.com/como-ph/oxcgrt/issues
 RoxygenNote: 7.1.1
-
