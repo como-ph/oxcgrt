@@ -19,7 +19,8 @@ Imports:
     tibble
 Suggests: 
     curl,
-    covr
+    covr,
+    testthat
 Encoding: UTF-8
 Language: en-gb
 LazyData: true
