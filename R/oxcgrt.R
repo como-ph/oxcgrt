@@ -13,6 +13,9 @@
 #' @docType package
 #' @keywords internal
 #' @name oxcgrt
+#' @importFrom tibble tibble
+#' @importFrom dplyr bind_rows
+#' @importFrom jsonlite fromJSON
 #'
 #
 ################################################################################
