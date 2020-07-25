@@ -17,6 +17,8 @@ Imports:
     dplyr,
     jsonlite,
     tibble
+Suggests: 
+    curl
 Encoding: UTF-8
 Language: en-gb
 LazyData: true
