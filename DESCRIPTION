@@ -13,13 +13,14 @@ Description: The Oxford COVID-19 Government Response Tracker (OxCGRT) tracks and
     efficiently for their purposes. This package facilitates access to the
     OxCGRT data via its API for R users.
 License: GPL-3
+Imports: 
+    dplyr,
+    jsonlite,
+    tibble
 Encoding: UTF-8
 Language: en-gb
 LazyData: true
 URL: https://github.com/como-ph/oxcgrt
 BugReports: https://github.com/como-ph/oxcgrt/issues
 RoxygenNote: 7.1.1
-Imports: 
-    dplyr,
-    jsonlite,
-    tibble
+
