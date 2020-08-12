@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# oxcgrt: An R API to the Oxford COVID-19 Government Response Tracker
+# oxcgrt: An Interface to the Oxford COVID-19 Government Response Tracker API
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
@@ -38,7 +38,9 @@ install.packages("oxcgrt")
 
 And the development version from [GitHub](https://github.com/) with:
 
-```{r, echo = TRUE}
+```{r, echo = TRUE, eval = TRUE}
 if(!require(remotes)) install.packages("remotes")
 remotes::install_github("como-ph/oxcgrt")
 ```
+
+## Usage

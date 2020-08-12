@@ -1,7 +1,7 @@
 ################################################################################
 #
 #'
-#' An R API to the Oxford COVID-19 Government Response Tracker
+#' An Interface to the Oxford COVID-19 Government Response Tracker API
 #'
 #' The Oxford COVID-19 Government Response Tracker (OxCGRT) tracks and
 #' compares worldwide government responses to the COVID-19 pandemic rigorously

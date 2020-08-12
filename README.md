@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# oxcgrt: An R API to the Oxford COVID-19 Government Response Tracker
+# oxcgrt: An Interface to the Oxford COVID-19 Government Response Tracker API
 
 <!-- badges: start -->
 
@@ -41,3 +41,5 @@ And the development version from [GitHub](https://github.com/) with:
 if(!require(remotes)) install.packages("remotes")
 remotes::install_github("como-ph/oxcgrt")
 ```
+
+## Usage
