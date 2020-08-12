@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# oxcgrt: An R Interface to the Oxford COVID-19 Government Response Tracker API
+# oxcgrt: An Interface to the Oxford COVID-19 Government Response Tracker API
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)

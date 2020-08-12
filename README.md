@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# oxcgrt: An R Interface to the Oxford COVID-19 Government Response Tracker API
+# oxcgrt: An Interface to the Oxford COVID-19 Government Response Tracker API
 
 <!-- badges: start -->
 
