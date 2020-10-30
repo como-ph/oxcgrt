@@ -14,17 +14,22 @@ calculate_subindices(
 }
 \arguments{
 \item{df}{A data.frame containing per indicator values required for
-calculating sub-index scores. This data.frame will be something like the
-policy actions data.frame produced by a call to \code{\link[=get_data_actions]{get_data_actions()}}.}
+calculating sub-index scores. This data.frame will be structured similarly
+as the policy actions data.frame produced by a call to
+\code{\link[=get_data_actions]{get_data_actions()}}.}
 
-\item{indicator_code}{A character value specifying the name of the column
-in \code{df} containing the indicator codes.}
+\item{indicator_code}{A character value specifying the name of the variable
+in \code{df} containing the policy type codes. By default, this is set to
+\code{policy_type_code} which is the variable name used by the \strong{OxCGRT API}.}
 
 \item{value}{A character value specifying the name of the column in \code{df}
-containing the values assigned to each indicator}
+containing the values in ordinal scale assigned to each policy type. By
+default, this is set to \code{policyvalue_actual} which is the variable name
+used by the \strong{OxCGRT API}.}
 
 \item{flag_value}{A character value specifying the name of the column in \code{df}
-containing the flag values for each indicator}
+containing the flag values for each policy type. By default, this is set to
+\code{flagged} which is the variable name used by the \strong{OxCGRT API}.}
 
 \item{add}{Logical. Should sub-indices for each indicator be added to \code{df}?
 Default is TRUE.}
@@ -33,8 +38,8 @@ Default is TRUE.}
 If \code{add} is TRUE (default), returns a tibble composed of the input
 data.frame \code{x} with an added column named score for the calculated
 sub-indices. If \code{add} is FALSE, returns a tibble of 2 columns with the
-first column for the indicator codes and the second column named score for
-the calculated sub-indices.
+first column for the policy codes named \code{policy_type_codes} and the second
+column named \code{score} for the calculated sub-indices.
 }
 \description{
 Calculate sub-index scores for all indicators

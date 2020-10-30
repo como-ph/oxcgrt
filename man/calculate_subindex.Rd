@@ -8,13 +8,13 @@ calculate_subindex(indicator_code, value, flag_value)
 }
 \arguments{
 \item{indicator_code}{Two-character code for indicators of policy measures
-tracked by Oxford COVID-19 Government Response Tracker.}
+tracked by \strong{Oxford COVID-19 Government Response Tracker}.}
 
 \item{value}{An integer for recorded policy value on the ordinal scale for
-given indicator.}
+given policy type.}
 
 \item{flag_value}{Either logical or binary value (0, 1) for recorded flag
-value. If NA, corresponds to indicator with no flag.}
+value. If NA, corresponds to policy type with no flag.}
 }
 \value{
 A numeric value between 0 to 100.
