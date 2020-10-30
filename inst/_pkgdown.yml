@@ -13,7 +13,7 @@ template:
 home:
   links:
   - text: Read about the Oxford COVID-19 Government Response Tracker
-    href: https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker
+    href: https://www.bsg.ox.ac.uk/covidtracker
 
   - text: More about CoMo Philippines
     href: https://como-ph.github.io/
