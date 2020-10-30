@@ -31,7 +31,7 @@ get_data_time <- function(json) {
 
   ## Convert column classes to appropriate classes
   df <- df %>%
-    dplyr::mutate(date_value = lubridate::ymd(date_value),
+    dplyr::mutate(date_value = as.Date(date_value, format = "%Y-%m-%d"),
                   confirmed = as.integer(confirmed),
                   deaths = as.integer(deaths),
                   stringency_actual = as.numeric(stringency_actual),
