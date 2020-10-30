@@ -85,15 +85,23 @@
 <a href="#oxcgrt-an-interface-to-the-oxford-covid-19-government-response-tracker-api" class="anchor"></a>oxcgrt: An Interface to the Oxford COVID-19 Government Response Tracker API</h1></div>
 <!-- badges: start -->
 
-<p>The <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">Oxford COVID-19 Government Response Tracker (OxCGRT)</a> tracks and compares worldwide government responses to the COVID-19 pandemic rigorously and consistently. <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> makes available systematic information in a consistent way, aiding those who require information have access to it efficiently for their purposes. This package facilitates access to the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> data via its API for R users.</p>
+<p>The <a href="https://www.bsg.ox.ac.uk/covidtracker">Oxford COVID-19 Government Response Tracker (OxCGRT)</a> tracks and compares worldwide government responses to the COVID-19 pandemic rigorously and consistently. <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a> makes available systematic information in a consistent way, aiding those who require information have access to it efficiently for their purposes. This package facilitates access to the <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a> data via its API for R users.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the released version of oxcgrt from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
+<!---
+You can install the released version of oxcgrt from [CRAN](https://CRAN.R-project.org) with:
+
+
+```r
+install.packages("oxcgrt")
+```
+
+And the development version from [GitHub](https://github.com/) with:
+--->
+<p><code>oxcgrt</code> is not yet available on <a href="https://cran.r-project.org">CRAN</a>.</p>
+<p>The development version of <code>oxcgrt</code> can be installed via <a href="https://github.com/como-ph/oxcgrt">GitHub</a>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"oxcgrt"</span><span class="op">)</span></pre></div>
-<p>And the development version from <a href="https://github.com/">GitHub</a> with:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
 <span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://remotes.r-lib.org">remotes</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span>
 <span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"como-ph/oxcgrt"</span><span class="op">)</span></pre></div>
 </div>
