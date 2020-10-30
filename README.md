@@ -16,26 +16,32 @@ coverage](https://codecov.io/gh/como-ph/oxcgrt/branch/master/graph/badge.svg)](h
 <!-- badges: end -->
 
 The [Oxford COVID-19 Government Response Tracker
-(OxCGRT)](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
-tracks and compares worldwide government responses to the COVID-19
-pandemic rigorously and consistently.
-[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
-makes available systematic information in a consistent way, aiding those
-who require information have access to it efficiently for their
-purposes. This package facilitates access to the
-[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
-data via its API for R users.
+(OxCGRT)](https://www.bsg.ox.ac.uk/covidtracker) tracks and compares
+worldwide government responses to the COVID-19 pandemic rigorously and
+consistently. [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) makes
+available systematic information in a consistent way, aiding those who
+require information have access to it efficiently for their purposes.
+This package facilitates access to the
+[OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) data via its API for R
+users.
 
 ## Installation
 
-You can install the released version of oxcgrt from
-[CRAN](https://CRAN.R-project.org) with:
+<!---
+You can install the released version of oxcgrt from [CRAN](https://CRAN.R-project.org) with:
 
-``` r
+
+```r
 install.packages("oxcgrt")
 ```
 
 And the development version from [GitHub](https://github.com/) with:
+--->
+
+`oxcgrt` is not yet available on [CRAN](https://cran.r-project.org).
+
+The development version of `oxcgrt` can be installed via
+[GitHub](https://github.com/como-ph/oxcgrt):
 
 ``` r
 if(!require(remotes)) install.packages("remotes")
