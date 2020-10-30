@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate sub-index score for a single indicator — calculate_subindex • oxcgrt</title>
+<title>Codebook for the Oxford COVID-19 Government Response Tracker — codebook • oxcgrt</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Calculate sub-index score for a single indicator — calculate_subindex" />
-<meta property="og:description" content="Calculate sub-index score for a single indicator" />
+<meta property="og:title" content="Codebook for the Oxford COVID-19 Government Response Tracker — codebook" />
+<meta property="og:description" content="Codebook for the Oxford COVID-19 Government Response Tracker" />
 
 
 
@@ -121,47 +121,34 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate sub-index score for a single indicator</h1>
-    <small class="dont-index">Source: <a href='https://github.com/como-ph/oxcgrt/blob/master/R/calculate_index.R'><code>R/calculate_index.R</code></a></small>
-    <div class="hidden name"><code>calculate_subindex.Rd</code></div>
+    <h1>Codebook for the Oxford COVID-19 Government Response Tracker</h1>
+    <small class="dont-index">Source: <a href='https://github.com/como-ph/oxcgrt/blob/master/R/data.R'><code>R/data.R</code></a></small>
+    <div class="hidden name"><code>codebook.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Calculate sub-index score for a single indicator</p>
+    <p>Codebook for the Oxford COVID-19 Government Response Tracker</p>
     </div>
 
-    <pre class="usage"><span class='fu'>calculate_subindex</span>(<span class='kw'>indicator_code</span>, <span class='kw'>value</span>, <span class='kw'>flag_value</span>)</pre>
+    <pre class="usage"><span class='kw'>codebook</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>indicator_code</th>
-      <td><p>Two-character code for indicators of policy measures
-tracked by <strong>Oxford COVID-19 Government Response Tracker</strong>.</p></td>
-    </tr>
-    <tr>
-      <th>value</th>
-      <td><p>An integer for recorded policy value on the ordinal scale for
-given policy type.</p></td>
-    </tr>
-    <tr>
-      <th>flag_value</th>
-      <td><p>Either logical or binary value (0, 1) for recorded flag
-value. If NA, corresponds to policy type with no flag.</p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A numeric value between 0 to 100.</p>
-    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+    <p>A tibble with 28 rows and 6 columns:</p><table class='table'>
+<tr><td><strong>Variable</strong></td><td><strong>Description</strong></td></tr>
+<tr><td><code>ID</code></td><td>Policy indicator identifier</td></tr>
+<tr><td><code>Name</code></td><td>Name of policy indicator</td></tr>
+<tr><td><code>Description</code></td><td>Description of policy indicator</td></tr>
+<tr><td><code>Measurement</code></td><td>Measurement of policy indicator</td></tr>
+<tr><td><code>Coding</code></td><td>Coding of measurement</td></tr>
+<tr><td><code>Policy Group</code></td><td>Name of group policy indicator</td></tr>
+</table>
 
-    <p>Ernest Guevarra based on calculation methods by Hale, Thomas,
-Noam Angrist, Emily Cameron-Blake, Laura Hallas, Beatriz Kira,
-Saptarshi Majumdar, Anna Petherick, Toby Phillips, Helen Tatlow,
-Samuel Webster (2020). Oxford COVID-19 Government Response Tracker,
-Blavatnik School of Government.</p>
+
+    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
+
+    <p>https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/codebook.md</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
