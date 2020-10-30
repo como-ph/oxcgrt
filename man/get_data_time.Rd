@@ -2,18 +2,18 @@
 % Please edit documentation in R/get_data.R
 \name{get_data_time}
 \alias{get_data_time}
-\title{Get data time series stringency index data from JSON}
+\title{Get time series stringency index data from JSON}
 \usage{
 get_data_time(json)
 }
 \arguments{
-\item{json}{A JSON string, URL or file created using \link{get_json_time}}
+\item{json}{A JSON string, URL or file created using \code{\link[=get_json_time]{get_json_time()}}}
 }
 \value{
 A tibble of time series stringency index data
 }
 \description{
-Get data time series stringency index data from JSON
+Get time series stringency index data from JSON
 }
 \examples{
 x <- get_json_time(from = "2020-07-18", to = "2020-07-25")

@@ -10,7 +10,7 @@ get_json_actions(ccode, on = as.character(Sys.Date()))
 \item{ccode}{ISO 3166-1 alpha-3 country code}
 
 \item{on}{Date on which policy actions data is required. This defaults
-to current date. Format <YYYY-MM-DD>.}
+to current date. Format \code{YYYY-MM-DD}.}
 }
 \value{
 A character object for specified JSON endpoint
