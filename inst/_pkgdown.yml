@@ -1,0 +1,34 @@
+title: oxcgrt
+
+url: https://como-ph.github.io/oxcgrt
+
+template:
+  params:
+    bootswatch: flatly
+    ganalytics:
+
+#navbar:
+#  type: inverse
+
+home:
+  links:
+  - text: Read about the Oxford COVID-19 Government Response Tracker
+    href: https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker
+
+  - text: More about CoMo Philippines
+    href: https://como-ph.github.io/
+
+reference:
+  - title: Description
+    contents:
+    - oxcgrt
+
+  - title: Retrieve
+    contents:
+    - starts_with("get_json")
+    - starts_with("get_data")
+
+  - title: Calculate
+    contents:
+    - starts_with("calculate")
+
