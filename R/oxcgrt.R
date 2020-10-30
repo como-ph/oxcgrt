@@ -17,7 +17,15 @@
 #' @importFrom dplyr bind_rows mutate
 #' @importFrom jsonlite fromJSON
 #' @importFrom magrittr %>%
+# @importFrom lubridate ymd
 #'
 #
 ################################################################################
 "_PACKAGE"
+
+## quiets concerns of R CMD check
+if(getRversion() >= "2.15.1") {
+  utils::globalVariables(c("policyvalue", "notes", "date_value", "confirmed",
+                           "deaths", "stringency_actual", "stringency",
+                           "stringency_legacy", "stringency_legacy_disp"))
+}
