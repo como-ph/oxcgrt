@@ -6,12 +6,12 @@
 \alias{oxcgrt-package}
 \title{An Interface to the Oxford COVID-19 Government Response Tracker API}
 \description{
-The Oxford COVID-19 Government Response Tracker (OxCGRT) tracks and
+The \strong{Oxford COVID-19 Government Response Tracker (OxCGRT)} tracks and
 compares worldwide government responses to the COVID-19 pandemic rigorously
-and consistently. OxCGRT makes available systematic information in a
+and consistently. \strong{OxCGRT} makes available systematic information in a
 consistent way, aiding those who require information have access to it
 efficiently for their purposes. This package facilitates access to the
-OxCGRT data via its API for R users.
+\strong{OxCGRT} data via its API for R users.
 }
 \seealso{
 Useful links:

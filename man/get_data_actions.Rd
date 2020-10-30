@@ -7,18 +7,20 @@
 get_data_actions(json)
 }
 \arguments{
-\item{json}{A JSON string, URL or file created using \link{get_json_actions}}
+\item{json}{A JSON string, URL or file created using \code{\link[=get_json_actions]{get_json_actions()}}}
 }
 \value{
 A named list of two tibbles. The first tibble is named
-  \code{policyActions}. The second tibble is named \code{stringencyData}
+\code{policyActions}. The second tibble is named \code{stringencyData}
 }
 \description{
 Get policy actions and stringency data from JSON
 }
 \examples{
+## Get relevant JSON
 x <- get_json_actions(ccode = "AFG", on = "2020-07-16")
 
+## Get data on policy actions
 get_data_actions(x)
 
 }
