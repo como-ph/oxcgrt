@@ -39,6 +39,11 @@ calculate_subindex <- function(indicator_code,
   ## Calculate sub-index
   subindex <- 100 * ((value - (0.5 * (flag - xflag))) / max_value)
 
+  ## Check for missing values
+  if(is.na(value) | is.null(value) | is.na(flag_value) | is.null(flag_value)) {
+    subindex <- 0
+  }
+
   ## Check if indicator has a flag
   if(indicator_code %in% c("C8", "E2", "H2", "H3")) {
     subindex <- 100 * (value / max_value)
