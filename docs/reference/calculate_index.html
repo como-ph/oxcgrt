@@ -130,7 +130,7 @@
     <p>Calculate an OxCGRT index</p>
     </div>
 
-    <pre class="usage"><span class='fu'>calculate_index</span>(<span class='kw'>df</span>, <span class='kw'>codes</span>)</pre>
+    <pre class="usage"><span class='fu'>calculate_index</span>(<span class='kw'>df</span>, <span class='kw'>codes</span>, <span class='kw'>tolerance</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -142,6 +142,11 @@
     <tr>
       <th>codes</th>
       <td><p>A vector of policy type codes to use for the index calculation.</p></td>
+    </tr>
+    <tr>
+      <th>tolerance</th>
+      <td><p>An integer specifying the number of missing values above
+which index will not be calculated and reported.</p></td>
     </tr>
     </table>
 
@@ -157,10 +162,12 @@
                                               on = <span class='st'>"2020-09-01"</span>))
 <span class='kw'>y</span> <span class='op'>&lt;-</span> <span class='fu'><a href='calculate_subindices.html'>calculate_subindices</a></span>(df = <span class='kw'>x</span><span class='op'>$</span><span class='kw'>policyActions</span>)
 
-<span class='fu'>calculate_index</span>(df = <span class='kw'>y</span>, codes = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='st'>"C"</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>8</span>, sep = <span class='st'>""</span>),
-                                  <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='st'>"E"</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span>, sep = <span class='st'>""</span>),
-                                  <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='st'>"H"</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, sep = <span class='st'>""</span>), <span class='st'>"H6"</span>))
-
+<span class='fu'>calculate_index</span>(df = <span class='kw'>y</span>,
+                codes = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='st'>"C"</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>8</span>, sep = <span class='st'>""</span>),
+                          <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='st'>"E"</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span>, sep = <span class='st'>""</span>),
+                          <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='st'>"H"</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, sep = <span class='st'>""</span>), <span class='st'>"H6"</span>),
+                tolerance = <span class='fl'>1</span>)
+</div><div class='output co'>#&gt; [1] 33.33333</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
