@@ -78,9 +78,11 @@ calculate_subindex <- function(indicator_code,
 #'
 #' @return If `add` is TRUE (default), returns a tibble composed of the input
 #'   data.frame `x` with an added column named score for the calculated
-#'   sub-indices. If `add` is FALSE, returns a tibble of 2 columns with the
-#'   first column for the policy codes named `policy_type_codes` and the second
-#'   column named `score` for the calculated sub-indices.
+#'   sub-indices. If `add` is FALSE, returns a tibble of 4 columns with the
+#'   first column for the policy codes named `policy_type_codes`, the second
+#'   column for the policy values named `policy_value`, the third column for
+#'   the flag values named `flag_value` and the fourth column named `score` for
+#'   the calculated sub-indices.
 #'
 #' @author Ernest Guevarra
 #'
@@ -116,9 +118,13 @@ calculate_subindices <- function(df,
     if(indicator_code != "policy_type_code") {
       names(df)[names(df) == indicator_code] <- "policy_type_code"
     }
+    names(df)[names(df) == value] <- "policy_value"
+    names(df)[names(df) == flag_value] <- "flag_value"
   } else {
-    scoreDF <- data.frame(df[[indicator_code]], score)
-    names(scoreDF) <- c("policy_type_code", "score")
+    scoreDF <- data.frame(df[[indicator_code]], df[[value]],
+                          df[[flag_value]], score)
+    names(scoreDF) <- c("policy_type_code", "policy_value",
+                        "flag_value", "score")
   }
 
   ## Convert to tibble
@@ -136,6 +142,8 @@ calculate_subindices <- function(df,
 #'
 #' @param df A data.frame produced by a call to [calculate_subindices()].
 #' @param codes A vector of policy type codes to use for the index calculation.
+#' @param tolerance An integer specifying the number of missing values above
+#'   which index will not be calculated and reported.
 #'
 #' @return A numeric value for mean subindex scores of specified policy types
 #'
@@ -146,21 +154,27 @@ calculate_subindices <- function(df,
 #'                                               on = "2020-09-01"))
 #' y <- calculate_subindices(df = x$policyActions)
 #'
-#' calculate_index(df = y, codes = c(paste("C", 1:8, sep = ""),
-#'                                   paste("E", 1:2, sep = ""),
-#'                                   paste("H", 1:3, sep = ""), "H6"))
+#' calculate_index(df = y,
+#'                 codes = c(paste("C", 1:8, sep = ""),
+#'                           paste("E", 1:2, sep = ""),
+#'                           paste("H", 1:3, sep = ""), "H6"),
+#'                 tolerance = 1)
 #'
 #' @export
 #'
 #
 ################################################################################
 
-calculate_index <- function(df, codes) {
+calculate_index <- function(df, codes, tolerance) {
   ## Get scores for corresponding indicators
   x <- df$score[df[["policy_type_code"]] %in% codes]
 
   ## Get mean of scores
-  z <- mean(x, na.rm = TRUE)
+  z <- mean(x,
+            na.rm = sum(is.na(df[["policy_value"]])) > tolerance)
+
+  ## Return mean
+  return(z)
 }
 
 
@@ -194,7 +208,7 @@ calculate_gov_response <- function(df) {
              paste("H", 1:3, sep = ""), "H6")
 
   ## Calculate index
-  z <- calculate_index(df = df, codes = codes)
+  z <- calculate_index(df = df, codes = codes, tolerance = 1)
 
   ## Return mean
   return(z)
@@ -230,7 +244,7 @@ calculate_containment_health <- function(df) {
   codes <- c(paste("C", 1:8, sep = ""), paste("H", 1:3, sep = ""), "H6")
 
   ## Calculate index
-  z <- calculate_index(df = df, codes = codes)
+  z <- calculate_index(df = df, codes = codes, tolerance = 1)
 
   ## Return mean
   return(z)
@@ -265,7 +279,7 @@ calculate_stringency <- function(df) {
   codes <- c(paste("C", 1:8, sep = ""), "H1")
 
   ## Calculate index
-  z <- calculate_index(df = df, codes = codes)
+  z <- calculate_index(df = df, codes = codes, tolerance = 1)
 
   ## Return mean
   return(z)
@@ -300,7 +314,7 @@ calculate_economic_support <- function(df) {
   codes <- paste("E", 1:2, sep = "")
 
   ## Calculate index
-  z <- calculate_index(df = df, codes = codes)
+  z <- calculate_index(df = df, codes = codes, tolerance = 2)
 
   ## Return mean
   return(z)
