@@ -37,9 +37,11 @@ Default is TRUE.}
 \value{
 If \code{add} is TRUE (default), returns a tibble composed of the input
 data.frame \code{x} with an added column named score for the calculated
-sub-indices. If \code{add} is FALSE, returns a tibble of 2 columns with the
-first column for the policy codes named \code{policy_type_codes} and the second
-column named \code{score} for the calculated sub-indices.
+sub-indices. If \code{add} is FALSE, returns a tibble of 4 columns with the
+first column for the policy codes named \code{policy_type_codes}, the second
+column for the policy values named \code{policy_value}, the third column for
+the flag values named \code{flag_value} and the fourth column named \code{score} for
+the calculated sub-indices.
 }
 \description{
 Calculate sub-index scores for all indicators

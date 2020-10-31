@@ -4,12 +4,15 @@
 \alias{calculate_index}
 \title{Calculate an OxCGRT index}
 \usage{
-calculate_index(df, codes)
+calculate_index(df, codes, tolerance)
 }
 \arguments{
 \item{df}{A data.frame produced by a call to \code{\link[=calculate_subindices]{calculate_subindices()}}.}
 
 \item{codes}{A vector of policy type codes to use for the index calculation.}
+
+\item{tolerance}{An integer specifying the number of missing values above
+which index will not be calculated and reported.}
 }
 \value{
 A numeric value for mean subindex scores of specified policy types
@@ -22,9 +25,11 @@ x <- get_data_actions(json = get_json_actions(ccode = "AFG",
                                               on = "2020-09-01"))
 y <- calculate_subindices(df = x$policyActions)
 
-calculate_index(df = y, codes = c(paste("C", 1:8, sep = ""),
-                                  paste("E", 1:2, sep = ""),
-                                  paste("H", 1:3, sep = ""), "H6"))
+calculate_index(df = y,
+                codes = c(paste("C", 1:8, sep = ""),
+                          paste("E", 1:2, sep = ""),
+                          paste("H", 1:3, sep = ""), "H6"),
+                tolerance = 1)
 
 }
 \author{
