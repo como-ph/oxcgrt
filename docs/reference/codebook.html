@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get JSON for policy actions data for a specific country for a specific date — get_json_actions • oxcgrt</title>
+<title>Codebook for the Oxford COVID-19 Government Response Tracker — codebook • oxcgrt</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Get JSON for policy actions data for a specific country for a specific date — get_json_actions" />
-<meta property="og:description" content="Get JSON for policy actions data for a specific country for a specific date" />
+<meta property="og:title" content="Codebook for the Oxford COVID-19 Government Response Tracker — codebook" />
+<meta property="og:description" content="Codebook for the Oxford COVID-19 Government Response Tracker" />
 
 
 
@@ -121,39 +121,35 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get JSON for policy actions data for a specific country for a specific date</h1>
-    <small class="dont-index">Source: <a href='https://github.com/como-ph/oxcgrt/blob/master/R/get_json.R'><code>R/get_json.R</code></a></small>
-    <div class="hidden name"><code>get_json_actions.Rd</code></div>
+    <h1>Codebook for the Oxford COVID-19 Government Response Tracker</h1>
+    <small class="dont-index">Source: <a href='https://github.com/como-ph/oxcgrt/blob/master/R/data.R'><code>R/data.R</code></a></small>
+    <div class="hidden name"><code>codebook.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get JSON for policy actions data for a specific country for a specific date</p>
+    <p>Codebook for the Oxford COVID-19 Government Response Tracker</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_json_actions</span>(<span class='kw'>ccode</span>, on = <span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>()))</pre>
+    <pre class="usage"><span class='kw'>codebook</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>ccode</th>
-      <td><p>ISO 3166-1 alpha-3 country code</p></td>
-    </tr>
-    <tr>
-      <th>on</th>
-      <td><p>Date on which policy actions data is required. This defaults
-to current date. Format <code>YYYY-MM-DD</code>.</p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A character object for specified JSON endpoint</p>
+    <p>A tibble with 28 rows and 6 columns:</p><table class='table'>
+<tr><td><strong>Variable</strong></td><td><strong>Description</strong></td></tr>
+<tr><td><code>ID</code></td><td>Policy indicator identifier</td></tr>
+<tr><td><code>Name</code></td><td>Name of policy indicator</td></tr>
+<tr><td><code>Description</code></td><td>Description of policy indicator</td></tr>
+<tr><td><code>Measurement</code></td><td>Measurement of policy indicator</td></tr>
+<tr><td><code>Coding</code></td><td>Coding of measurement</td></tr>
+<tr><td><code>Policy Group</code></td><td>Name of group policy indicator</td></tr>
+</table>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>get_json_actions</span>(ccode = <span class='st'>"AFG"</span>, on = <span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>() <span class='op'>-</span> <span class='fl'>7</span>))
-</div><div class='output co'>#&gt; [1] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-24"</div><div class='input'>
-</div></pre>
+
+    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
+
+    <p>https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/codebook.md</p>
+
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
