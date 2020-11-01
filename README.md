@@ -23,7 +23,8 @@ available systematic information in a consistent way, aiding those who
 require information have access to it efficiently for their purposes.
 This package facilitates access to the
 [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) data via its API for R
-users.
+users. This package also includes functions to calculate the various
+[OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) indices.
 
 ## Installation
 
@@ -49,3 +50,9 @@ remotes::install_github("como-ph/oxcgrt")
 ```
 
 ## Usage
+
+The `oxcgrt` package includes two types of functions. First are
+functions that retrieve data via
+[OxCGRT](https://www.bsg.ox.ac.uk/covidtracker)’s API, and second are
+function that calculate
+[OxCGRT](https://www.bsg.ox.ac.uk/covidtracker)’s various indices.
