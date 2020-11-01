@@ -2,7 +2,7 @@
 % Please edit documentation in R/calculate_index.R
 \name{calculate_subindex}
 \alias{calculate_subindex}
-\title{Calculate sub-index score for a single indicator}
+\title{Calculate OxCGRT sub-index score for a single indicator}
 \usage{
 calculate_subindex(indicator_code, value, flag_value)
 }
@@ -20,12 +20,18 @@ value. If NA, corresponds to policy type with no flag.}
 A numeric value between 0 to 100.
 }
 \description{
-Calculate sub-index score for a single indicator
+Calculate OxCGRT sub-index score for a single indicator
+}
+\examples{
+calculate_subindex(indicator_code = indicatorData$indicator[1],
+                   value = indicatorData$value[1],
+                   flag_value = indicatorData$flag_value[1])
+
 }
 \author{
-Ernest Guevarra based on calculation methods by Hale, Thomas,
-Noam Angrist, Emily Cameron-Blake, Laura Hallas, Beatriz Kira,
-Saptarshi Majumdar, Anna Petherick, Toby Phillips, Helen Tatlow,
-Samuel Webster (2020). Oxford COVID-19 Government Response Tracker,
-Blavatnik School of Government.
+\strong{Ernest Guevarra} based on calculation methods by \emph{Hale, Thomas,}
+\emph{Noam Angrist, Emily Cameron-Blake, Laura Hallas, Beatriz Kira,}
+\emph{Saptarshi Majumdar, Anna Petherick, Toby Phillips, Helen Tatlow,}
+\emph{Samuel Webster (2020). Oxford COVID-19 Government Response Tracker,}
+\emph{Blavatnik School of Government.}
 }

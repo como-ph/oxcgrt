@@ -2,7 +2,7 @@
 % Please edit documentation in R/calculate_index.R
 \name{calculate_economic_support}
 \alias{calculate_economic_support}
-\title{Calculate economic support index}
+\title{Calculate OxCGRT economic support index}
 \usage{
 calculate_economic_support(df)
 }
@@ -13,7 +13,7 @@ calculate_economic_support(df)
 A numeric value for mean index scores for \strong{economic support index}.
 }
 \description{
-Calculate economic support index
+Calculate OxCGRT economic support index
 }
 \examples{
 x <- get_data_actions(json = get_json_actions(ccode = "AFG",

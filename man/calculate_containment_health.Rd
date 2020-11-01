@@ -2,7 +2,7 @@
 % Please edit documentation in R/calculate_index.R
 \name{calculate_containment_health}
 \alias{calculate_containment_health}
-\title{Calculate containment and health index}
+\title{Calculate OxCGRT containment and health index}
 \usage{
 calculate_containment_health(df)
 }
@@ -14,7 +14,7 @@ A numeric value for mean index scores for
 \strong{containment and health index}.
 }
 \description{
-Calculate containment and health index
+Calculate OxCGRT containment and health index
 }
 \examples{
 x <- get_data_actions(json = get_json_actions(ccode = "AFG",

@@ -2,7 +2,7 @@
 % Please edit documentation in R/calculate_index.R
 \name{calculate_stringency}
 \alias{calculate_stringency}
-\title{Calculate stringency index}
+\title{Calculate OxCGRT stringency index}
 \usage{
 calculate_stringency(df)
 }
@@ -13,7 +13,7 @@ calculate_stringency(df)
 A numeric value for mean index scores for \strong{stringency index}.
 }
 \description{
-Calculate stringency index
+Calculate OxCGRT stringency index
 }
 \examples{
 x <- get_data_actions(json = get_json_actions(ccode = "AFG",

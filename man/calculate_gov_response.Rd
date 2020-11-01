@@ -2,7 +2,7 @@
 % Please edit documentation in R/calculate_index.R
 \name{calculate_gov_response}
 \alias{calculate_gov_response}
-\title{Calculate government response index}
+\title{Calculate OxCGRT government response index}
 \usage{
 calculate_gov_response(df)
 }
@@ -14,7 +14,7 @@ A numeric value for mean index scores for
 \strong{government response index}.
 }
 \description{
-Calculate government response index
+Calculate OxCGRT government response index
 }
 \examples{
 x <- get_data_actions(json = get_json_actions(ccode = "AFG",

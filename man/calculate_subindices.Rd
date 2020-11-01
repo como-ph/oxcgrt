@@ -2,7 +2,7 @@
 % Please edit documentation in R/calculate_index.R
 \name{calculate_subindices}
 \alias{calculate_subindices}
-\title{Calculate sub-index scores for all indicators}
+\title{Calculate OxCGRT sub-index scores for all indicators}
 \usage{
 calculate_subindices(
   df,
@@ -44,7 +44,7 @@ the flag values named \code{flag_value} and the fourth column named \code{score}
 the calculated sub-indices.
 }
 \description{
-Calculate sub-index scores for all indicators
+Calculate OxCGRT sub-index scores for all indicators
 }
 \examples{
 x <- get_data_actions(json = get_json_actions(ccode = "AFG",
