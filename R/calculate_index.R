@@ -1,7 +1,7 @@
 ################################################################################
 #
 #'
-#' Calculate sub-index score for a single indicator
+#' Calculate OxCGRT sub-index score for a single indicator
 #'
 #' @param indicator_code Two-character code for indicators of policy measures
 #'   tracked by **Oxford COVID-19 Government Response Tracker**.
@@ -12,11 +12,16 @@
 #'
 #' @return A numeric value between 0 to 100.
 #'
-#' @author Ernest Guevarra based on calculation methods by Hale, Thomas,
-#'   Noam Angrist, Emily Cameron-Blake, Laura Hallas, Beatriz Kira,
-#'   Saptarshi Majumdar, Anna Petherick, Toby Phillips, Helen Tatlow,
-#'   Samuel Webster (2020). Oxford COVID-19 Government Response Tracker,
-#'   Blavatnik School of Government.
+#' @author **Ernest Guevarra** based on calculation methods by *Hale, Thomas,*
+#'   *Noam Angrist, Emily Cameron-Blake, Laura Hallas, Beatriz Kira,*
+#'   *Saptarshi Majumdar, Anna Petherick, Toby Phillips, Helen Tatlow,*
+#'   *Samuel Webster (2020). Oxford COVID-19 Government Response Tracker,*
+#'   *Blavatnik School of Government.*
+#'
+#' @examples
+#' calculate_subindex(indicator_code = indicatorData$indicator[1],
+#'                    value = indicatorData$value[1],
+#'                    flag_value = indicatorData$flag_value[1])
 #'
 #' @export
 #'
@@ -57,7 +62,7 @@ calculate_subindex <- function(indicator_code,
 ################################################################################
 #
 #'
-#' Calculate sub-index scores for all indicators
+#' Calculate OxCGRT sub-index scores for all indicators
 #'
 #' @param df A data.frame containing per indicator values required for
 #'   calculating sub-index scores. This data.frame will be structured similarly
@@ -181,7 +186,7 @@ calculate_index <- function(df, codes, tolerance) {
 ################################################################################
 #
 #'
-#' Calculate government response index
+#' Calculate OxCGRT government response index
 #'
 #' @param df A data.frame produced by a call to [calculate_subindices()].
 #'
@@ -218,7 +223,7 @@ calculate_gov_response <- function(df) {
 ################################################################################
 #
 #'
-#' Calculate containment and health index
+#' Calculate OxCGRT containment and health index
 #'
 #' @param df A data.frame produced by a call to [calculate_subindices()].
 #'
@@ -254,7 +259,7 @@ calculate_containment_health <- function(df) {
 ################################################################################
 #
 #'
-#' Calculate stringency index
+#' Calculate OxCGRT stringency index
 #'
 #' @param df A data.frame produced by a call to [calculate_subindices()].
 #'
@@ -289,7 +294,7 @@ calculate_stringency <- function(df) {
 ################################################################################
 #
 #'
-#' Calculate economic support index
+#' Calculate OxCGRT economic support index
 #'
 #' @param df A data.frame produced by a call to [calculate_subindices()].
 #'
