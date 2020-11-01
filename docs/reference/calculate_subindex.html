@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate sub-index score for a single indicator — calculate_subindex • oxcgrt</title>
+<title>Calculate OxCGRT sub-index score for a single indicator — calculate_subindex • oxcgrt</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Calculate sub-index score for a single indicator — calculate_subindex" />
-<meta property="og:description" content="Calculate sub-index score for a single indicator" />
+<meta property="og:title" content="Calculate OxCGRT sub-index score for a single indicator — calculate_subindex" />
+<meta property="og:description" content="Calculate OxCGRT sub-index score for a single indicator" />
 
 
 
@@ -121,13 +121,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate sub-index score for a single indicator</h1>
+    <h1>Calculate OxCGRT sub-index score for a single indicator</h1>
     <small class="dont-index">Source: <a href='https://github.com/como-ph/oxcgrt/blob/master/R/calculate_index.R'><code>R/calculate_index.R</code></a></small>
     <div class="hidden name"><code>calculate_subindex.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Calculate sub-index score for a single indicator</p>
+    <p>Calculate OxCGRT sub-index score for a single indicator</p>
     </div>
 
     <pre class="usage"><span class='fu'>calculate_subindex</span>(<span class='kw'>indicator_code</span>, <span class='kw'>value</span>, <span class='kw'>flag_value</span>)</pre>
@@ -157,12 +157,18 @@ value. If NA, corresponds to policy type with no flag.</p></td>
     <p>A numeric value between 0 to 100.</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
-    <p>Ernest Guevarra based on calculation methods by Hale, Thomas,
-Noam Angrist, Emily Cameron-Blake, Laura Hallas, Beatriz Kira,
-Saptarshi Majumdar, Anna Petherick, Toby Phillips, Helen Tatlow,
-Samuel Webster (2020). Oxford COVID-19 Government Response Tracker,
-Blavatnik School of Government.</p>
+    <p><strong>Ernest Guevarra</strong> based on calculation methods by <em>Hale, Thomas,</em>
+<em>Noam Angrist, Emily Cameron-Blake, Laura Hallas, Beatriz Kira,</em>
+<em>Saptarshi Majumdar, Anna Petherick, Toby Phillips, Helen Tatlow,</em>
+<em>Samuel Webster (2020). Oxford COVID-19 Government Response Tracker,</em>
+<em>Blavatnik School of Government.</em></p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>calculate_subindex</span>(indicator_code = <span class='kw'>indicatorData</span><span class='op'>$</span><span class='kw'>indicator</span>[<span class='fl'>1</span>],
+                   value = <span class='kw'>indicatorData</span><span class='op'>$</span><span class='kw'>value</span>[<span class='fl'>1</span>],
+                   flag_value = <span class='kw'>indicatorData</span><span class='op'>$</span><span class='kw'>flag_value</span>[<span class='fl'>1</span>])
+</div><div class='output co'>#&gt; [1] 66.66667</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
