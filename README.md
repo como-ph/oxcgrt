@@ -54,5 +54,7 @@ remotes::install_github("como-ph/oxcgrt")
 The `oxcgrt` package includes two types of functions. First are
 functions that retrieve data via
 [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker)’s API, and second are
-function that calculate
+functions that calculate
 [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker)’s various indices.
+
+### Retrieve data
