@@ -92,8 +92,9 @@ calculate_subindex <- function(indicator_code,
 #' @author Ernest Guevarra
 #'
 #' @examples
-#' x <- get_data_actions(json = get_json_actions(ccode = "AFG",
-#'                                               on = "2020-09-01"))
+#' x <- get_data(json = get_json_actions(ccode = "AFG",
+#'                                       from = NULL,
+#'                                       to = "2020-09-01"))
 #' calculate_subindices(df = x$policyActions)
 #'
 #' @export
@@ -155,8 +156,9 @@ calculate_subindices <- function(df,
 #' @author Ernest Guevarra
 #'
 #' @examples
-#' x <- get_data_actions(json = get_json_actions(ccode = "AFG",
-#'                                               on = "2020-09-01"))
+#' x <- get_data(json = get_json_actions(ccode = "AFG",
+#'                                       from = NULL,
+#'                                       to = "2020-09-01"))
 #' y <- calculate_subindices(df = x$policyActions)
 #'
 #' calculate_index(df = y,
@@ -196,8 +198,9 @@ calculate_index <- function(df, codes, tolerance) {
 #' @author Ernest Guevarra
 #'
 #' @examples
-#' x <- get_data_actions(json = get_json_actions(ccode = "AFG",
-#'                                               on = "2020-09-01"))
+#' x <- get_data(json = get_json_actions(ccode = "AFG",
+#'                                       from = NULL,
+#'                                       to = "2020-09-01"))
 #' y <- calculate_subindices(df = x$policyActions)
 #'
 #' calculate_gov_response(df = y)
@@ -233,8 +236,9 @@ calculate_gov_response <- function(df) {
 #' @author Ernest Guevarra
 #'
 #' @examples
-#' x <- get_data_actions(json = get_json_actions(ccode = "AFG",
-#'                                               on = "2020-09-01"))
+#' x <- get_data(json = get_json_actions(ccode = "AFG",
+#'                                       from = NULL,
+#'                                       to = "2020-09-01"))
 #' y <- calculate_subindices(df = x$policyActions)
 #'
 #' calculate_containment_health(df = y)
@@ -268,8 +272,9 @@ calculate_containment_health <- function(df) {
 #' @author Ernest Guevarra
 #'
 #' @examples
-#' x <- get_data_actions(json = get_json_actions(ccode = "AFG",
-#'                                               on = "2020-09-01"))
+#' x <- get_data(json = get_json_actions(ccode = "AFG",
+#'                                       from = NULL,
+#'                                       to = "2020-09-01"))
 #' y <- calculate_subindices(df = x$policyActions)
 #'
 #' calculate_stringency(df = y)
@@ -303,8 +308,9 @@ calculate_stringency <- function(df) {
 #' @author Ernest Guevarra
 #'
 #' @examples
-#' x <- get_data_actions(json = get_json_actions(ccode = "AFG",
-#'                                               on = "2020-09-01"))
+#' x <- get_data(json = get_json_actions(ccode = "AFG",
+#'                                       from = NULL,
+#'                                       to = "2020-09-01"))
 #' y <- calculate_subindices(df = x$policyActions)
 #'
 #' calculate_economic_support(df = y)
@@ -339,8 +345,9 @@ calculate_economic_support <- function(df) {
 #'
 #' @examples
 #' ##
-#' x <- get_data_actions(json = get_json_actions(ccode = "AFG",
-#'                                               on = "2020-09-01"))
+#' x <- get_data(json = get_json_actions(ccode = "AFG",
+#'                                       from = NULL,
+#'                                       to = "2020-09-01"))
 #'
 #' y <- calculate_subindices(df = x$policyActions)
 #'
