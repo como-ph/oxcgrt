@@ -98,20 +98,20 @@ get_json_time(from = "2020-06-01") %>% get_data_time()
 
 This produces the following output:
 
-    #> # A tibble: 27,837 x 8
+    #> # A tibble: 28,016 x 8
     #>    date_value country_code confirmed deaths stringency_actu… stringency
     #>    <date>     <chr>            <int>  <int>            <dbl>      <dbl>
-    #>  1 2020-06-01 SGP              34884     23             81.5       81.5
-    #>  2 2020-06-01 SLB                 NA     NA             33.3       33.3
-    #>  3 2020-06-01 SLE                861     46             73.2       73.2
-    #>  4 2020-06-01 SLV               2517     46            100        100  
-    #>  5 2020-06-01 SMR                671     42             57.4       57.4
-    #>  6 2020-06-01 SOM               1976     78             48.2       48.2
-    #>  7 2020-06-01 SRB              11412    243             43.5       43.5
-    #>  8 2020-06-01 SSD                994     10             85.2       85.2
-    #>  9 2020-06-01 SUR                 23      1             77.8       77.8
-    #> 10 2020-06-01 SVK               1522     28             69.4       69.4
-    #> # … with 27,827 more rows, and 2 more variables: stringency_legacy <dbl>,
+    #>  1 2020-06-01 ABW                101      3             38.9       38.9
+    #>  2 2020-06-01 AFG              15205    257             84.3       84.3
+    #>  3 2020-06-01 AGO                 86      4             77.8       77.8
+    #>  4 2020-06-01 ALB               1137     33             67.6       67.6
+    #>  5 2020-06-01 AND                764     51             50         50  
+    #>  6 2020-06-01 ARE              34557    264             72.2       72.2
+    #>  7 2020-06-01 ARG              16838    539             90.7       90.7
+    #>  8 2020-06-01 AUS               7195    102             62.0       62.0
+    #>  9 2020-06-01 AUT              16642    668             53.7       53.7
+    #> 10 2020-06-01 AZE               5494     63             77.8       77.8
+    #> # … with 28,006 more rows, and 2 more variables: stringency_legacy <dbl>,
     #> #   stringency_legacy_disp <dbl>
 
 Important to note that in `get_json_time`, only the starting date (using
@@ -130,7 +130,7 @@ get_json_time() %>% get_data_time()
 
 which produces the following output:
 
-    #> # A tibble: 55,772 x 8
+    #> # A tibble: 55,951 x 8
     #>    date_value country_code stringency_actu… stringency stringency_lega…
     #>    <date>     <chr>                   <dbl>      <dbl>            <dbl>
     #>  1 2020-01-02 ABW                         0          0                0
@@ -143,7 +143,7 @@ which produces the following output:
     #>  8 2020-01-02 AUS                         0          0                0
     #>  9 2020-01-02 AUT                         0          0                0
     #> 10 2020-01-02 AZE                         0          0                0
-    #> # … with 55,762 more rows, and 3 more variables: stringency_legacy_disp <dbl>,
+    #> # … with 55,941 more rows, and 3 more variables: stringency_legacy_disp <dbl>,
     #> #   confirmed <int>, deaths <int>
 
 #### Policy actions and stringency index for specific country on a specific day
@@ -283,3 +283,179 @@ Important to note here that the output is a tibble of just the policy
 actions and two additional columns have been added to the dataset -
 `date_value` and `country_code` - to identify the data as coming from a
 specific date and for a specific country.
+
+### Calculate OxCGRT indices
+
+The *calculate* functions are based on the
+[OxCGRT](https://www.bsg.ox.ac.uk/covidtracker)’s methodology described
+[here](https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/index_methodology.md).
+There are two sets of calculate functions included in `oxcgrt`. The
+first calculates the [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker)
+**sub-indices** described in the table below:
+
+| ID | Name                                      | Description                                                                                                                                                                                                                    | Measurement           | Coding                                                                                                                                                                                                                                                                                                                                                                                                                           | Policy Group                     |
+| :- | :---------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------- |
+| C1 | C1\_School closing                        | Record closings of schools and universities                                                                                                                                                                                    | Ordinal scale         | 0 - no measures; 1 - recommend closing; 2 - require closing (only some levels or categories, eg just high school, or just public schools); 3 - require closing all levels; Blank - no data                                                                                                                                                                                                                                       | Containment and closure policies |
+| C2 | C2\_Workplace closing                     | Record closings of workplaces                                                                                                                                                                                                  | Ordinal scale         | 0 - no measures; 1 - recommend closing (or recommend work from home); 2 - require closing (or work from home) for some sectors or categories of workers; 3 - require closing (or work from home) for all-but-essential workplaces (eg grocery stores, doctors); Blank - no data                                                                                                                                                  | Containment and closure policies |
+| C3 | C3\_Cancel public events                  | Record cancelling public events                                                                                                                                                                                                | Ordinal scale         | 0 - no measures; 1 - recommend cancelling; 2 - require cancelling; Blank - no data                                                                                                                                                                                                                                                                                                                                               | Containment and closure policies |
+| C4 | C4\_Restrictions on gatherings            | Record limits on private gatherings                                                                                                                                                                                            | Ordinal scale         | 0 - no restrictions; 1 - restrictions on very large gatherings (the limit is above; 1000 people); 2 - restrictions on gatherings between; 101-1000 people; 3 - restrictions on gatherings between; 11-100 people; 4 - restrictions on gatherings of; 10 people or less; Blank - no data                                                                                                                                          | Containment and closure policies |
+| C5 | C5\_Close public transport                | Record closing of public transport                                                                                                                                                                                             | Ordinal scale         | 0 - no measures; 1 - recommend closing (or significantly reduce volume/route/means of transport available); 2 - require closing (or prohibit most citizens from using it); Blank - no data                                                                                                                                                                                                                                       | Containment and closure policies |
+| C6 | C6\_Stay at home requirements             | Record orders to “shelter-in-place” and otherwise confine to the home                                                                                                                                                          | Ordinal scale         | 0 - no measures; 1 - recommend not leaving house; 2 - require not leaving house with exceptions for daily exercise, grocery shopping, and ‘essential’ trips; 3 - require not leaving house with minimal exceptions (eg allowed to leave once a week, or only one person can leave at a time, etc); Blank - no data                                                                                                               | Containment and closure policies |
+| C7 | C7\_Restrictions on internal movement     | Record restrictions on internal movement between cities/regions                                                                                                                                                                | Ordinal scale         | 0 - no measures; 1 - recommend not to travel between regions/cities; 2 - internal movement restrictions in place; Blank - no data                                                                                                                                                                                                                                                                                                | Containment and closure policies |
+| C8 | C8\_International travel controls         | Record restrictions on international travel Note: this records policy for foreign travellers, not citizens                                                                                                                     | Ordinal scale         | 0 - no restrictions; 1 - screening arrivals; 2 - quarantine arrivals from some or all regions; 3 - ban arrivals from some regions; 4 - ban on all regions or total border closure; Blank - no data                                                                                                                                                                                                                               | Containment and closure policies |
+| E1 | E1\_Income support (for households)       | Record if the government is providing direct cash payments to people who lose their jobs or cannot work. Note: only includes payments to firms if explicitly linked to payroll/salaries                                        | Ordinal scale         | 0 - no income support; 1 - government is replacing less than 50% of lost salary (or if a flat sum, it is less than 50% median salary); 2 - government is replacing 50% or more of lost salary (or if a flat sum, it is greater than 50% median salary); Blank - no data                                                                                                                                                          | Economic policies                |
+| E2 | E2\_Debt/contract relief (for households) | Record if the government is freezing financial obligations for households (eg stopping loan repayments, preventing services like water from stopping, or banning evictions)                                                    | Ordinal scale         | 0 - no debt/contract relief; 1 - narrow relief, specific to one kind of contract; 2 - broad debt/contract relief                                                                                                                                                                                                                                                                                                                 | Economic policies                |
+| E3 | E3\_Fiscal measures                       | Announced economic stimulus spending Note: only record amount additional to previously announced spending                                                                                                                      | USD                   | Record monetary value in USD of fiscal stimuli, includes any spending or tax cuts NOT included in E4, H4 or H5 0 - no new spending that day; Blank - no data                                                                                                                                                                                                                                                                     | Economic policies                |
+| E4 | E4\_International support                 | Announced offers of Covid-19 related aid spending to other countries Note: only record amount additional to previously announced spending                                                                                      | USD                   | Record monetary value in USD 0 - no new spending that day; Blank - no data                                                                                                                                                                                                                                                                                                                                                       | Economic policies                |
+| H1 | H1\_Public information campaigns          | Record presence of public info campaigns                                                                                                                                                                                       | Ordinal scale         | 0 - no Covid-19 public information campaign; 1 - public officials urging caution about Covid-19; 2- coordinated public information campaign (eg across traditional and social media); Blank - no data                                                                                                                                                                                                                            | Health system policies           |
+| H2 | H2\_Testing policy                        | Record government policy on who has access to testing Note: this records policies about testing for current infection (PCR tests) not testing for immunity (antibody test)                                                     | Ordinal scale         | 0 - no testing policy; 1 - only those who both (a) have symptoms AND (b) meet specific criteria (eg key workers, admitted to hospital, came into contact with a known case, returned from overseas); 2 - testing of anyone showing Covid-19 symptoms; 3 - open public testing (eg “drive through” testing available to asymptomatic people); Blank - no data                                                                     | Health system policies           |
+| H3 | H3\_Contact tracing                       | Record government policy on contact tracing after a positive diagnosis Note: we are looking for policies that would identify all people potentially exposed to Covid-19; voluntary bluetooth apps are unlikely to achieve this | Ordinal scale         | 0 - no contact tracing; 1 - limited contact tracing; not done for all cases; 2 - comprehensive contact tracing; done for all identified cases                                                                                                                                                                                                                                                                                    | Health system policies           |
+| H4 | H4\_Emergency investment in healthcare    | Announced short term spending on healthcare system, eg hospitals, masks, etc Note: only record amount additional to previously announced spending                                                                              | USD                   | Record monetary value in USD 0 - no new spending that day; Blank - no data                                                                                                                                                                                                                                                                                                                                                       | Health system policies           |
+| H5 | H5\_Investment in vaccines                | Announced public spending on Covid-19 vaccine development Note: only record amount additional to previously announced spending                                                                                                 | USD                   | Record monetary value in USD 0 - no new spending that day; Blank - no data                                                                                                                                                                                                                                                                                                                                                       | Health system policies           |
+| H6 | H6\_Facial Coverings                      | Record policies on the use of facial coverings outside the home                                                                                                                                                                | Ordinal scale         | 0 - No policy; 1 - Recommended; 2 - Required in some specified shared/public spaces outside the home with other people present, or some situations when social distancing not possible; 3 - Required in all shared/public spaces outside the home with other people present or all situations when social distancing not possible; 4 - Required outside the home at all times regardless of location or presence of other people | Health system policies           |
+| M1 | M1\_Wildcard                              | Record policy announcements that do not fit anywhere else                                                                                                                                                                      | Free text notes field | Note unusual or interesting interventions that are worth flagging                                                                                                                                                                                                                                                                                                                                                                | Miscellaneous policies           |
+
+The second calculates the four
+[OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) **indices** which are
+composed of various combinations of the indicators described in the
+table above. These combinations are described in the table below:
+
+| ID | Name                                  | Government response index | Containment and health index | Stringency index | Economic support index |
+| :- | :------------------------------------ | :------------------------ | :--------------------------- | :--------------- | :--------------------- |
+| C1 | School closing                        | x                         | x                            | x                |                        |
+| C2 | Workplace closing                     | x                         | x                            | x                |                        |
+| C3 | Cancel public events                  | x                         | x                            | x                |                        |
+| C4 | Restrictions on gatherings            | x                         | x                            | x                |                        |
+| C5 | Close public transport                | x                         | x                            | x                |                        |
+| C6 | Stay at home requirements             | x                         | x                            | x                |                        |
+| C7 | Restrictions on internal movement     | x                         | x                            | x                |                        |
+| C8 | International travel controls         | x                         | x                            | x                |                        |
+| E1 | Income support (for households)       | x                         |                              |                  | x                      |
+| E2 | Debt/contract relief (for households) | x                         |                              |                  | x                      |
+| E3 | Fiscal measures                       | NA                        | NA                           | NA               | NA                     |
+| E4 | International support                 | NA                        | NA                           | NA               | NA                     |
+| H1 | Public information campaigns          | x                         | x                            | x                |                        |
+| H2 | Testing policy                        | x                         | x                            |                  |                        |
+| H3 | Contact tracing                       | x                         | x                            |                  |                        |
+| H4 | Emergency investment in healthcare    | NA                        | NA                           | NA               | NA                     |
+| H5 | Investment in vaccines                | NA                        | NA                           | NA               | NA                     |
+| H6 | Facial Coverings                      | x                         | x                            |                  |                        |
+| M1 | Wildcard                              | NA                        | NA                           | NA               | NA                     |
+
+#### Calculating OxCGRT sub-indices
+
+The [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) subindices can be
+calculated using the `calculate_subindex` and `calculate_subindices`
+functions. To calculate a specific sub-index, the following code is
+used:
+
+``` r
+## Given the C1 data in indicatorData, calculate C1 sub-index
+calculate_subindex(indicator_code = indicatorData[1, "indicator"], 
+                   value = indicatorData[1, "value"], 
+                   flag_value = indicatorData[1, "flag_value"])
+```
+
+This gives a C1 index value of:
+
+    #>      value
+    #> 1 66.66667
+
+To calculate all [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker)
+subindices, the following code is used:
+
+``` r
+## Given the indicatorData dataset, calculate all sub-indices
+indicatorData %>%
+  calculate_subindices(indicator_code = "indicator", 
+                       value = "value", 
+                       flag_value = "flag_value",
+                       add = TRUE)
+```
+
+This results in the following output:
+
+    #> # A tibble: 14 x 7
+    #>    indicator value flag_value max_value  flag score score.1
+    #>    <chr>     <int>      <int>     <int> <int> <dbl>   <dbl>
+    #>  1 C1            2          1         3     1  66.7    66.7
+    #>  2 C2           NA         NA         3     1   0       0  
+    #>  3 C3            2          0         2     1  75      75  
+    #>  4 C4            2          0         4     1  37.5    37.5
+    #>  5 C5            0         NA         2     1   0       0  
+    #>  6 C6            1          0         3     1  16.7    16.7
+    #>  7 C7            1          1         2     1  50      50  
+    #>  8 C8            3         NA         4     0  75      75  
+    #>  9 E1            2          0         2     1  75      75  
+    #> 10 E2            2         NA         2     0 100     100  
+    #> 11 H1            2          0         2     1  75      75  
+    #> 12 H2            3         NA         3     0 100     100  
+    #> 13 H3            2         NA         2     0 100     100  
+    #> 14 H6            2          0         4     1  37.5    37.5
+
+It can be noted that the results of the calculations are added to the
+input data.frame under the column name `score.1`. Comparing this with
+the value in the column named `score` that is included in the
+`indicatorData` dataset, the results are the same.
+
+#### Calculating OxCGRT indices
+
+The [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) indices can be
+calculated using the `calculate_index` and `calculate_indices`
+functions. To calculate a specific sub-index, the following code can be
+used:
+
+``` r
+indicatorData %>%
+  calculate_subindices(indicator_code = "indicator",
+                       value = "value",
+                       flag_value = "flag_value",
+                       add = FALSE) %>%
+  calculate_index(codes = c(paste("C", 1:8, sep = ""),
+                            paste("E", 1:2, sep = ""),
+                            paste("H", 1:3, sep = ""),
+                            "H6"), 
+                  tolerance = 1)
+```
+
+This code calculates the `government response index` which is:
+
+    #> [1] 57.7381
+
+The same result can be reached by using the specialised function
+`calculate_gov_response` as follows:
+
+``` r
+indicatorData %>% 
+  calculate_subindices(indicator_code = "indicator",
+                       value = "value",
+                       flag_value = "flag_value",
+                       add = FALSE) %>%
+  calculate_gov_response()
+```
+
+which results in the same value as the previous code:
+
+    #> [1] 57.7381
+
+To calculate all four [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker)
+indices, the following code can be implemented:
+
+``` r
+indicatorData %>% 
+  calculate_subindices(indicator_code = "indicator",
+                       value = "value",
+                       flag_value = "flag_value",
+                       add = FALSE) %>%
+  calculate_indices()
+```
+
+which outputs the following results:
+
+    #> # A tibble: 4 x 2
+    #>   index                        values
+    #>   <chr>                         <dbl>
+    #> 1 Government Response Index      57.7
+    #> 2 Containment and Health Index   52.8
+    #> 3 Stringency Index               44.0
+    #> 4 Economic Support Index         87.5

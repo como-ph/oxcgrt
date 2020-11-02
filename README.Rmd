@@ -155,3 +155,159 @@ get_json_actions(ccode = c("AFG", "Philippines"), from = "2020-10-25", to = "202
 
 Important to note here that the output is a tibble of just the policy actions and two additional columns have been added to the dataset - `date_value` and `country_code` - to identify the data as coming from a specific date and for a specific country.
 
+### Calculate OxCGRT indices
+
+The *calculate* functions are based on the [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker)'s methodology described [here](https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/index_methodology.md). There are two sets of calculate functions included in `oxcgrt`. The first calculates the [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) **sub-indices** described in the table below:
+
+```{r usage6, echo = FALSE, eval = TRUE}
+knitr::kable(x = codebook[c(1, 3, 5, 7, 9, 11, 13, 15:16, 18:21, 23:28), ])
+```
+
+The second calculates the four [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) **indices** which are composed of various combinations of the indicators described in the table above. These combinations are described in the table below:
+
+```{r usage7, echo = FALSE, eval = TRUE}
+library(rvest)
+library(xml2)
+
+x <- xml2::read_html("https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/index_methodology.md") %>%
+  rvest::xml_nodes(css = ".markdown-body table") %>%
+  rvest::html_table()
+
+x <- data.frame(t(x[[1]]))
+
+x <- data.frame(`Index name` = row.names(x), x)
+
+tab <- x[3:nrow(x), ]
+names(tab) <- x[1, ]
+row.names(tab) <- 1:nrow(tab)
+
+tab <- tab %>%
+  dplyr::mutate(`Government response index` = ifelse(`Government response index` == "'x'", "x", `Government response index`),
+                `Containment and health index` = ifelse(`Containment and health index` == "'x'", "x", `Containment and health index`))
+
+tab <- codebook[c(1, 3, 5, 7, 9, 11, 13, 15:16, 18:21, 23:28), c("ID", "Name")] %>%
+  dplyr::mutate(Name = stringr::str_remove_all(string = Name, pattern = "[A-Z]{1}[0-9]{1}\\_")) %>%
+  merge(tab, by.x = "ID", by.y = "Index name")
+
+knitr::kable(x = tab[ , 1:6])
+```
+
+#### Calculating OxCGRT sub-indices
+
+The [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) subindices can be calculated using the `calculate_subindex` and `calculate_subindices` functions. To calculate a specific sub-index, the following code is used:
+
+```{r usage8, echo = TRUE, eval = FALSE}
+## Given the C1 data in indicatorData, calculate C1 sub-index
+calculate_subindex(indicator_code = indicatorData[1, "indicator"], 
+                   value = indicatorData[1, "value"], 
+                   flag_value = indicatorData[1, "flag_value"])
+```
+
+This gives a C1 index value of:
+
+```{r usage8a, echo = FALSE, eval = TRUE}
+## Given the C1 data in indicatorData, calculate C1 sub-index
+calculate_subindex(indicator_code = indicatorData[1, "indicator"], 
+                   value = indicatorData[1, "value"], 
+                   flag_value = indicatorData[1, "flag_value"])
+```
+
+To calculate all [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) subindices, the following code is used:
+
+```{r usage9, echo = TRUE, eval = FALSE}
+## Given the indicatorData dataset, calculate all sub-indices
+indicatorData %>%
+  calculate_subindices(indicator_code = "indicator", 
+                       value = "value", 
+                       flag_value = "flag_value",
+                       add = TRUE)
+```
+
+This results in the following output:
+
+```{r usage9a, echo = FALSE, eval = TRUE}
+## Given the indicatorData dataset, calculate all sub-indices
+indicatorData %>%
+  calculate_subindices(indicator_code = "indicator", 
+                       value = "value", 
+                       flag_value = "flag_value",
+                       add = TRUE)
+```
+
+It can be noted that the results of the calculations are added to the input data.frame under the column name `score.1`. Comparing this with the value in the column named `score` that is included in the `indicatorData` dataset, the results are the same.
+
+#### Calculating OxCGRT indices
+
+The [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) indices can be calculated using the `calculate_index` and `calculate_indices` functions. To calculate a specific sub-index, the following code can be used:
+
+```{r usage10, echo = TRUE, eval = FALSE}
+indicatorData %>%
+  calculate_subindices(indicator_code = "indicator",
+                       value = "value",
+                       flag_value = "flag_value",
+                       add = FALSE) %>%
+  calculate_index(codes = c(paste("C", 1:8, sep = ""),
+                            paste("E", 1:2, sep = ""),
+                            paste("H", 1:3, sep = ""),
+                            "H6"), 
+                  tolerance = 1)
+```
+
+This code calculates the `government response index` which is:
+
+```{r usage10a, echo = FALSE, eval = TRUE}
+indicatorData %>%
+  calculate_subindices(indicator_code = "indicator",
+                       value = "value",
+                       flag_value = "flag_value",
+                       add = FALSE) %>%
+  calculate_index(codes = c(paste("C", 1:8, sep = ""),
+                            paste("E", 1:2, sep = ""),
+                            paste("H", 1:3, sep = ""),
+                            "H6"), 
+                  tolerance = 1)
+```
+
+The same result can be reached by using the specialised function `calculate_gov_response` as follows:
+
+```{r usage11, echo = TRUE, eval = FALSE}
+indicatorData %>% 
+  calculate_subindices(indicator_code = "indicator",
+                       value = "value",
+                       flag_value = "flag_value",
+                       add = FALSE) %>%
+  calculate_gov_response()
+```
+
+which results in the same value as the previous code:
+
+```{r usage11a, echo = FALSE, eval = TRUE}
+indicatorData %>% 
+  calculate_subindices(indicator_code = "indicator",
+                       value = "value",
+                       flag_value = "flag_value",
+                       add = FALSE) %>%
+  calculate_gov_response()
+```
+
+To calculate all four [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) indices, the following code can be implemented:
+
+```{r usage12, echo = TRUE, eval = FALSE}
+indicatorData %>% 
+  calculate_subindices(indicator_code = "indicator",
+                       value = "value",
+                       flag_value = "flag_value",
+                       add = FALSE) %>%
+  calculate_indices()
+```
+
+which outputs the following results:
+
+```{r usage12a, echo = FALSE, eval = TRUE}
+indicatorData %>% 
+  calculate_subindices(indicator_code = "indicator",
+                       value = "value",
+                       flag_value = "flag_value",
+                       add = FALSE) %>%
+  calculate_indices()
+```
