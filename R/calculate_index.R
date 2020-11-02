@@ -23,6 +23,7 @@
 #'                    value = indicatorData$value[1],
 #'                    flag_value = indicatorData$flag_value[1])
 #'
+#' @rdname calculate_subindex
 #' @export
 #'
 #
@@ -97,6 +98,7 @@ calculate_subindex <- function(indicator_code,
 #'                                       to = "2020-09-01"))
 #' calculate_subindices(df = x$policyActions)
 #'
+#' @rdname calculate_subindex
 #' @export
 #'
 #
@@ -144,29 +146,50 @@ calculate_subindices <- function(df,
 ################################################################################
 #
 #'
-#' Calculate an OxCGRT index
+#' Calculate an OxCGRT index or indices
 #'
 #' @param df A data.frame produced by a call to [calculate_subindices()].
 #' @param codes A vector of policy type codes to use for the index calculation.
 #' @param tolerance An integer specifying the number of missing values above
 #'   which index will not be calculated and reported.
 #'
-#' @return A numeric value for mean subindex scores of specified policy types
+#' @return A numeric value for mean subindex scores of specified policy types.
+#'   For [calculate_indices()], a tibble calculated OxCGRT indices
 #'
 #' @author Ernest Guevarra
 #'
 #' @examples
+#' ## Get policy actions data for Afghanistan on 1 September 2020
 #' x <- get_data(json = get_json_actions(ccode = "AFG",
 #'                                       from = NULL,
 #'                                       to = "2020-09-01"))
+#'
+#' ## Calculate OxCGRT subindices
 #' y <- calculate_subindices(df = x$policyActions)
 #'
+#' ## Calculate OxCGRT index
 #' calculate_index(df = y,
 #'                 codes = c(paste("C", 1:8, sep = ""),
 #'                           paste("E", 1:2, sep = ""),
 #'                           paste("H", 1:3, sep = ""), "H6"),
 #'                 tolerance = 1)
 #'
+#' ## Calculate OxCGRT government response index
+#' calculate_gov_response(df = y)
+#'
+#' ## Calculate OxCGRT containment and health index
+#' calculate_containment_health(df = y)
+#'
+#' ## Calculate OxCGRT stringency index
+#' calculate_stringency(df = y)
+#'
+#' ## Calculate OxCGRT economic support index
+#' calculate_economic_support(df = y)
+#'
+#' ## Calculate all OxCGRT indices
+#' calculate_indices(df = y)
+#'
+#' @rdname calculate_index
 #' @export
 #'
 #
@@ -187,26 +210,8 @@ calculate_index <- function(df, codes, tolerance) {
 
 ################################################################################
 #
-#'
-#' Calculate OxCGRT government response index
-#'
-#' @param df A data.frame produced by a call to [calculate_subindices()].
-#'
-#' @return A numeric value for mean index scores for
-#'   **government response index**.
-#'
-#' @author Ernest Guevarra
-#'
-#' @examples
-#' x <- get_data(json = get_json_actions(ccode = "AFG",
-#'                                       from = NULL,
-#'                                       to = "2020-09-01"))
-#' y <- calculate_subindices(df = x$policyActions)
-#'
-#' calculate_gov_response(df = y)
-#'
+#' @rdname calculate_index
 #' @export
-#'
 #
 ################################################################################
 
@@ -225,26 +230,8 @@ calculate_gov_response <- function(df) {
 
 ################################################################################
 #
-#'
-#' Calculate OxCGRT containment and health index
-#'
-#' @param df A data.frame produced by a call to [calculate_subindices()].
-#'
-#' @return A numeric value for mean index scores for
-#'   **containment and health index**.
-#'
-#' @author Ernest Guevarra
-#'
-#' @examples
-#' x <- get_data(json = get_json_actions(ccode = "AFG",
-#'                                       from = NULL,
-#'                                       to = "2020-09-01"))
-#' y <- calculate_subindices(df = x$policyActions)
-#'
-#' calculate_containment_health(df = y)
-#'
+#' @rdname calculate_index
 #' @export
-#'
 #
 ################################################################################
 
@@ -262,25 +249,8 @@ calculate_containment_health <- function(df) {
 
 ################################################################################
 #
-#'
-#' Calculate OxCGRT stringency index
-#'
-#' @param df A data.frame produced by a call to [calculate_subindices()].
-#'
-#' @return A numeric value for mean index scores for **stringency index**.
-#'
-#' @author Ernest Guevarra
-#'
-#' @examples
-#' x <- get_data(json = get_json_actions(ccode = "AFG",
-#'                                       from = NULL,
-#'                                       to = "2020-09-01"))
-#' y <- calculate_subindices(df = x$policyActions)
-#'
-#' calculate_stringency(df = y)
-#'
+#' @rdname calculate_index
 #' @export
-#'
 #
 ################################################################################
 
@@ -298,25 +268,8 @@ calculate_stringency <- function(df) {
 
 ################################################################################
 #
-#'
-#' Calculate OxCGRT economic support index
-#'
-#' @param df A data.frame produced by a call to [calculate_subindices()].
-#'
-#' @return A numeric value for mean index scores for **economic support index**.
-#'
-#' @author Ernest Guevarra
-#'
-#' @examples
-#' x <- get_data(json = get_json_actions(ccode = "AFG",
-#'                                       from = NULL,
-#'                                       to = "2020-09-01"))
-#' y <- calculate_subindices(df = x$policyActions)
-#'
-#' calculate_economic_support(df = y)
-#'
+#' @rdname calculate_index
 #' @export
-#'
 #
 ################################################################################
 
@@ -334,27 +287,8 @@ calculate_economic_support <- function(df) {
 
 ################################################################################
 #
-#'
-#' Calculate OxCGRT index or indices
-#'
-#' @param df A data.frame produced by a call to [calculate_subindices()].
-#'
-#' @return A tibble calculated OxCGRT indices
-#'
-#' @author Ernest Guevarra
-#'
-#' @examples
-#' ##
-#' x <- get_data(json = get_json_actions(ccode = "AFG",
-#'                                       from = NULL,
-#'                                       to = "2020-09-01"))
-#'
-#' y <- calculate_subindices(df = x$policyActions)
-#'
-#' calculate_indices(df = y)
-#'
+#' @rdname calculate_index
 #' @export
-#'
 #
 ################################################################################
 

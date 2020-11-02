@@ -1,8 +1,11 @@
 ################################################################################
 #
 #'
-#' Get JSON for stringency index data over time
+#' Get JSON for OxCGRT data
 #'
+#' @param ccode **ISO 3166-1 alpha-2** country code, **alpha-3** country code,
+#'   or full **country name** string or vector of strings (mix of alpha-2 code
+#'   or alpha-3 code or country names is valid).
 #' @param from Start date for stringency index data to be collected. This can go
 #'   as far back as **2020-01-02** (Default). Format `YYYY-MM-DD`. Accepts
 #'   either character string or `date` class.
@@ -10,13 +13,26 @@
 #'   to current date. Format `YYYY-MM-DD`. Accepts either character string or
 #'   `date` class.
 #'
-#' @return A character object for specified JSON endpoint
+#' @return A character object for specified JSON time series endpoint, or a
+#'   character string or a character vector for specified JSON policy actions
+#'   endpoint or endpoints.
 #'
 #' @author Ernest Guevarra
 #'
 #' @examples
+#' ## Get JSON for Afghanistan at 7 days previous to current date
+#' get_json_actions(ccode = "AFG",
+#'                  from = NULL,
+#'                  to = as.character(Sys.Date() - 7))
+#'
+#' ## Get JSON for Afghanistan and Philippines from 1 October to 31 October 2020
+#' get_json_actions(ccode = c("Afghanistan", "PH"),
+#'                  from = "2020-10-01", to = "2020-10-31")
+#'
+#' ## Get JSON time series endpoint for all data available from OxCGRT
 #' get_json_time()
 #'
+#' @rdname get_json
 #' @export
 #'
 #
@@ -48,32 +64,7 @@ get_json_time <- function(from = "2020-01-02",
 ################################################################################
 #
 #'
-#' Get JSON for policy actions and stringency index data
-#'
-#' @param ccode **ISO 3166-1 alpha-2** country code, **alpha-3** country code,
-#'   or full **country name** string or vector of strings (mix of alpha-2 code
-#'   or alpha-3 code or country names is valid).
-#' @param from Start date for policy actions and stringency index data to be
-#'   collected. This can go as far back as **2020-01-02** (Default). Format
-#'   `YYYY-MM-DD`. Accepts either character string or `date` class. Set to NULL
-#'   if only single day data is needed.
-#' @param to End data for policy actions and stringency index data to be
-#'   collected. This defaults to current date. Format `YYYY-MM-DD`. Accepts
-#'   either character string or `date` class. If `from` is NULL, JSON for date
-#'   specified in `to` will be retrieved
-#'
-#' @return A character string or vector for specified JSON endpoint/s
-#'
-#' @examples
-#' ## Get JSON for Afghanistan at 7 days previous to current date
-#' get_json_actions(ccode = "AFG",
-#'                  from = NULL,
-#'                  to = as.character(Sys.Date() - 7))
-#'
-#' ## Get JSON for Afghanistan and Philippines from 1 October to 31 October 2020
-#' get_json_actions(ccode = c("Afghanistan", "PH"),
-#'                  from = "2020-10-01", to = "2020-10-31")
-#'
+#' @rdname get_json
 #' @export
 #'
 #

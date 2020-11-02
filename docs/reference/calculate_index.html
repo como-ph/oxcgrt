@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate an OxCGRT index — calculate_index • oxcgrt</title>
+<title>Calculate an OxCGRT index or indices — calculate_index • oxcgrt</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Calculate an OxCGRT index — calculate_index" />
-<meta property="og:description" content="Calculate an OxCGRT index" />
+<meta property="og:title" content="Calculate an OxCGRT index or indices — calculate_index" />
+<meta property="og:description" content="Calculate an OxCGRT index or indices" />
 
 
 
@@ -121,23 +121,33 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate an OxCGRT index</h1>
+    <h1>Calculate an OxCGRT index or indices</h1>
     <small class="dont-index">Source: <a href='https://github.com/como-ph/oxcgrt/blob/master/R/calculate_index.R'><code>R/calculate_index.R</code></a></small>
     <div class="hidden name"><code>calculate_index.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Calculate an OxCGRT index</p>
+    <p>Calculate an OxCGRT index or indices</p>
     </div>
 
-    <pre class="usage"><span class='fu'>calculate_index</span>(<span class='kw'>df</span>, <span class='kw'>codes</span>, <span class='kw'>tolerance</span>)</pre>
+    <pre class="usage"><span class='fu'>calculate_index</span>(<span class='kw'>df</span>, <span class='kw'>codes</span>, <span class='kw'>tolerance</span>)
+
+<span class='fu'>calculate_gov_response</span>(<span class='kw'>df</span>)
+
+<span class='fu'>calculate_containment_health</span>(<span class='kw'>df</span>)
+
+<span class='fu'>calculate_stringency</span>(<span class='kw'>df</span>)
+
+<span class='fu'>calculate_economic_support</span>(<span class='kw'>df</span>)
+
+<span class='fu'>calculate_indices</span>(<span class='kw'>df</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>df</th>
-      <td><p>A data.frame produced by a call to <code><a href='calculate_subindices.html'>calculate_subindices()</a></code>.</p></td>
+      <td><p>A data.frame produced by a call to <code><a href='calculate_subindex.html'>calculate_subindices()</a></code>.</p></td>
     </tr>
     <tr>
       <th>codes</th>
@@ -152,24 +162,50 @@ which index will not be calculated and reported.</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A numeric value for mean subindex scores of specified policy types</p>
+    <p>A numeric value for mean subindex scores of specified policy types.
+For <code>calculate_indices()</code>, a tibble calculated OxCGRT indices</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Ernest Guevarra</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_data.html'>get_data</a></span>(json = <span class='fu'><a href='get_json_actions.html'>get_json_actions</a></span>(ccode = <span class='st'>"AFG"</span>,
+    <pre class="examples"><div class='input'><span class='co'>## Get policy actions data for Afghanistan on 1 September 2020</span>
+<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_data.html'>get_data</a></span>(json = <span class='fu'><a href='get_json_time.html'>get_json_actions</a></span>(ccode = <span class='st'>"AFG"</span>,
                                       from = <span class='kw'>NULL</span>,
                                       to = <span class='st'>"2020-09-01"</span>))
-<span class='kw'>y</span> <span class='op'>&lt;-</span> <span class='fu'><a href='calculate_subindices.html'>calculate_subindices</a></span>(df = <span class='kw'>x</span><span class='op'>$</span><span class='kw'>policyActions</span>)
 
+<span class='co'>## Calculate OxCGRT subindices</span>
+<span class='kw'>y</span> <span class='op'>&lt;-</span> <span class='fu'><a href='calculate_subindex.html'>calculate_subindices</a></span>(df = <span class='kw'>x</span><span class='op'>$</span><span class='kw'>policyActions</span>)
+
+<span class='co'>## Calculate OxCGRT index</span>
 <span class='fu'>calculate_index</span>(df = <span class='kw'>y</span>,
                 codes = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='st'>"C"</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>8</span>, sep = <span class='st'>""</span>),
                           <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='st'>"E"</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span>, sep = <span class='st'>""</span>),
                           <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='st'>"H"</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, sep = <span class='st'>""</span>), <span class='st'>"H6"</span>),
                 tolerance = <span class='fl'>1</span>)
 </div><div class='output co'>#&gt; [1] 33.33333</div><div class='input'>
-</div></pre>
+<span class='co'>## Calculate OxCGRT government response index</span>
+<span class='fu'>calculate_gov_response</span>(df = <span class='kw'>y</span>)
+</div><div class='output co'>#&gt; [1] 33.33333</div><div class='input'>
+<span class='co'>## Calculate OxCGRT containment and health index</span>
+<span class='fu'>calculate_containment_health</span>(df = <span class='kw'>y</span>)
+</div><div class='output co'>#&gt; [1] 38.88889</div><div class='input'>
+<span class='co'>## Calculate OxCGRT stringency index</span>
+<span class='fu'>calculate_stringency</span>(df = <span class='kw'>y</span>)
+</div><div class='output co'>#&gt; [1] 21.2963</div><div class='input'>
+<span class='co'>## Calculate OxCGRT economic support index</span>
+<span class='fu'>calculate_economic_support</span>(df = <span class='kw'>y</span>)
+</div><div class='output co'>#&gt; [1] 0</div><div class='input'>
+<span class='co'>## Calculate all OxCGRT indices</span>
+<span class='fu'>calculate_indices</span>(df = <span class='kw'>y</span>)
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 4 x 2</span><span>
+#&gt;   index                        values
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Government Response Index      33.3
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> Containment and Health Index   38.9
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> Stringency Index               21.3
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> Economic Support Index          0  </div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

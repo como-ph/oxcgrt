@@ -27,7 +27,9 @@ Suggests:
     curl,
     covr,
     testthat,
-    spelling
+    spelling,
+    rvest,
+    xml2
 Encoding: UTF-8
 Language: en-GB
 LazyData: true
