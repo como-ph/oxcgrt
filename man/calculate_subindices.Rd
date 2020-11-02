@@ -47,8 +47,9 @@ the calculated sub-indices.
 Calculate OxCGRT sub-index scores for all indicators
 }
 \examples{
-x <- get_data_actions(json = get_json_actions(ccode = "AFG",
-                                              on = "2020-09-01"))
+x <- get_data(json = get_json_actions(ccode = "AFG",
+                                      from = NULL,
+                                      to = "2020-09-01"))
 calculate_subindices(df = x$policyActions)
 
 }

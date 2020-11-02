@@ -8,8 +8,8 @@ test_that("output is a tibble", {
 })
 
 
-x <- get_json_actions(ccode = "AFG", on = "2020-07-16") %>%
-  get_data_actions()
+x <- get_json_actions(ccode = "AFG", from = NULL, to = "2020-07-16") %>%
+  get_data()
 
 test_that("output is a list", {
   expect_is(x, "list")

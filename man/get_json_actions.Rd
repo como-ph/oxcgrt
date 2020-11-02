@@ -2,23 +2,39 @@
 % Please edit documentation in R/get_json.R
 \name{get_json_actions}
 \alias{get_json_actions}
-\title{Get JSON for policy actions data for a specific country for a specific date}
+\title{Get JSON for policy actions and stringency index data}
 \usage{
-get_json_actions(ccode, on = as.character(Sys.Date()))
+get_json_actions(ccode, from = "2020-01-02", to = Sys.Date())
 }
 \arguments{
-\item{ccode}{ISO 3166-1 alpha-3 country code}
+\item{ccode}{\strong{ISO 3166-1 alpha-2} country code, \strong{alpha-3} country code,
+or full \strong{country name} string or vector of strings (mix of alpha-2 code
+or alpha-3 code or country names is valid).}
 
-\item{on}{Date on which policy actions data is required. This defaults
-to current date. Format \code{YYYY-MM-DD}.}
+\item{from}{Start date for policy actions and stringency index data to be
+collected. This can go as far back as \strong{2020-01-02} (Default). Format
+\code{YYYY-MM-DD}. Accepts either character string or \code{date} class. Set to NULL
+if only single day data is needed.}
+
+\item{to}{End data for policy actions and stringency index data to be
+collected. This defaults to current date. Format \code{YYYY-MM-DD}. Accepts
+either character string or \code{date} class. If \code{from} is NULL, JSON for date
+specified in \code{to} will be retrieved}
 }
 \value{
-A character object for specified JSON endpoint
+A character string or vector for specified JSON endpoint/s
 }
 \description{
-Get JSON for policy actions data for a specific country for a specific date
+Get JSON for policy actions and stringency index data
 }
 \examples{
-get_json_actions(ccode = "AFG", on = as.character(Sys.Date() - 7))
+## Get JSON for Afghanistan at 7 days previous to current date
+get_json_actions(ccode = "AFG",
+                 from = NULL,
+                 to = as.character(Sys.Date() - 7))
+
+## Get JSON for Afghanistan and Philippines from 1 October to 31 October 2020
+get_json_actions(ccode = c("Afghanistan", "PH"),
+                 from = "2020-10-01", to = "2020-10-31")
 
 }

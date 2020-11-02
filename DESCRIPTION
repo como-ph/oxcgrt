@@ -19,7 +19,10 @@ Imports:
     dplyr,
     jsonlite,
     tibble,
-    magrittr
+    magrittr,
+    tidyr,
+    countrycode,
+    stringr
 Suggests: 
     curl,
     covr,

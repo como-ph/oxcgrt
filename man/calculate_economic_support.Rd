@@ -16,8 +16,9 @@ A numeric value for mean index scores for \strong{economic support index}.
 Calculate OxCGRT economic support index
 }
 \examples{
-x <- get_data_actions(json = get_json_actions(ccode = "AFG",
-                                              on = "2020-09-01"))
+x <- get_data(json = get_json_actions(ccode = "AFG",
+                                      from = NULL,
+                                      to = "2020-09-01"))
 y <- calculate_subindices(df = x$policyActions)
 
 calculate_economic_support(df = y)

@@ -17,7 +17,9 @@
 #' @importFrom dplyr bind_rows mutate
 #' @importFrom jsonlite fromJSON
 #' @importFrom magrittr %>%
-# @importFrom lubridate ymd
+#' @importFrom tidyr crossing
+#' @importFrom countrycode countrycode countryname
+#' @importFrom stringr str_extract
 #'
 #
 ################################################################################

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate OxCGRT sub-index scores for all indicators — calculate_subindices • oxcgrt</title>
+<title>Get policy actions and stringency data from JSON — get_data • oxcgrt</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Calculate OxCGRT sub-index scores for all indicators — calculate_subindices" />
-<meta property="og:description" content="Calculate OxCGRT sub-index scores for all indicators" />
+<meta property="og:title" content="Get policy actions and stringency data from JSON — get_data" />
+<meta property="og:description" content="Get policy actions and stringency data from JSON" />
 
 
 
@@ -121,101 +121,69 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate OxCGRT sub-index scores for all indicators</h1>
-    <small class="dont-index">Source: <a href='https://github.com/como-ph/oxcgrt/blob/master/R/calculate_index.R'><code>R/calculate_index.R</code></a></small>
-    <div class="hidden name"><code>calculate_subindices.Rd</code></div>
+    <h1>Get policy actions and stringency data from JSON</h1>
+    <small class="dont-index">Source: <a href='https://github.com/como-ph/oxcgrt/blob/master/R/get_data.R'><code>R/get_data.R</code></a></small>
+    <div class="hidden name"><code>get_data.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Calculate OxCGRT sub-index scores for all indicators</p>
+    <p>Get policy actions and stringency data from JSON</p>
     </div>
 
-    <pre class="usage"><span class='fu'>calculate_subindices</span>(
-  <span class='kw'>df</span>,
-  indicator_code = <span class='st'>"policy_type_code"</span>,
-  value = <span class='st'>"policyvalue_actual"</span>,
-  flag_value = <span class='st'>"flagged"</span>,
-  add = <span class='fl'>TRUE</span>
-)</pre>
+    <pre class="usage"><span class='fu'>get_data</span>(<span class='kw'>json</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>df</th>
-      <td><p>A data.frame containing per indicator values required for
-calculating sub-index scores. This data.frame will be structured similarly
-as the policy actions data.frame produced by a call to
-<code><a href='get_data_action.html'>get_data_actions()</a></code>.</p></td>
-    </tr>
-    <tr>
-      <th>indicator_code</th>
-      <td><p>A character value specifying the name of the variable
-in <code>df</code> containing the policy type codes. By default, this is set to
-<code>policy_type_code</code> which is the variable name used by the <strong>OxCGRT API</strong>.</p></td>
-    </tr>
-    <tr>
-      <th>value</th>
-      <td><p>A character value specifying the name of the column in <code>df</code>
-containing the values in ordinal scale assigned to each policy type. By
-default, this is set to <code>policyvalue_actual</code> which is the variable name
-used by the <strong>OxCGRT API</strong>.</p></td>
-    </tr>
-    <tr>
-      <th>flag_value</th>
-      <td><p>A character value specifying the name of the column in <code>df</code>
-containing the flag values for each policy type. By default, this is set to
-<code>flagged</code> which is the variable name used by the <strong>OxCGRT API</strong>.</p></td>
-    </tr>
-    <tr>
-      <th>add</th>
-      <td><p>Logical. Should sub-indices for each indicator be added to <code>df</code>?
-Default is TRUE.</p></td>
+      <th>json</th>
+      <td><p>A JSON string, URL or file created using <code><a href='get_json_actions.html'>get_json_actions()</a></code> or
+a vector of JSON strings or URLs.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>If <code>add</code> is TRUE (default), returns a tibble composed of the input
-data.frame <code>x</code> with an added column named score for the calculated
-sub-indices. If <code>add</code> is FALSE, returns a tibble of 4 columns with the
-first column for the policy codes named <code>policy_type_codes</code>, the second
-column for the policy values named <code>policy_value</code>, the third column for
-the flag values named <code>flag_value</code> and the fourth column named <code>score</code> for
-the calculated sub-indices.</p>
-    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
-
-    <p>Ernest Guevarra</p>
+    <p>A named list of two tibbles. The first tibble is named
+<code>policyActions</code>. The second tibble is named <code>stringencyData</code></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_data.html'>get_data</a></span>(json = <span class='fu'><a href='get_json_actions.html'>get_json_actions</a></span>(ccode = <span class='st'>"AFG"</span>,
-                                      from = <span class='kw'>NULL</span>,
-                                      to = <span class='st'>"2020-09-01"</span>))
-<span class='fu'>calculate_subindices</span>(df = <span class='kw'>x</span><span class='op'>$</span><span class='kw'>policyActions</span>)
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 18 x 10</span><span>
+    <pre class="examples"><div class='input'><span class='co'>## Get relevant JSON</span>
+<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_json_actions.html'>get_json_actions</a></span>(ccode = <span class='st'>"AFG"</span>, from = <span class='kw'>NULL</span>, to = <span class='st'>"2020-07-16"</span>)
+
+<span class='co'>## Get data on policy actions and stringency index</span>
+<span class='fu'>get_data</span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; $policyActions
+#&gt; <span style='color: #949494;'># A tibble: 18 x 9</span><span>
 #&gt;    policy_type_code policy_type_dis… policyvalue policyvalue_act… flagged
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                  </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span><span>  
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> C1               School closing             2                2 TRUE   
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> C2               Workplace closi…           0                0 </span><span style='color: #BB0000;'>NA</span><span>     
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> C3               Cancel public e…           0                0 </span><span style='color: #BB0000;'>NA</span><span>     
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> C4               Restrictions on…           0                0 </span><span style='color: #BB0000;'>NA</span><span>     
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> C5               Close public tr…           0                0 </span><span style='color: #BB0000;'>NA</span><span>     
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> C6               Stay at home re…           0                0 </span><span style='color: #BB0000;'>NA</span><span>     
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> C7               Restrictions on…           0                0 </span><span style='color: #BB0000;'>NA</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> C1               School closing             3                3 TRUE   
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> C2               Workplace closi…           3                3 FALSE  
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> C3               Cancel public e…           2                2 TRUE   
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> C4               Restrictions on…           4                4 TRUE   
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> C5               Close public tr…           2                2 FALSE  
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> C6               Stay at home re…           2                2 FALSE  
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> C7               Restrictions on…           2                2 FALSE  
 #&gt; </span><span style='color: #BCBCBC;'> 8</span><span> C8               International t…           1                1 </span><span style='color: #BB0000;'>NA</span><span>     
 #&gt; </span><span style='color: #BCBCBC;'> 9</span><span> E1               Income support             0                0 </span><span style='color: #BB0000;'>NA</span><span>     
 #&gt; </span><span style='color: #BCBCBC;'>10</span><span> E2               Debt/contract r…           0                0 </span><span style='color: #BB0000;'>NA</span><span>     
 #&gt; </span><span style='color: #BCBCBC;'>11</span><span> E3               Fiscal measures            0                0 </span><span style='color: #BB0000;'>NA</span><span>     
 #&gt; </span><span style='color: #BCBCBC;'>12</span><span> E4               International s…           0                0 </span><span style='color: #BB0000;'>NA</span><span>     
 #&gt; </span><span style='color: #BCBCBC;'>13</span><span> H1               Public informat…           2                2 TRUE   
-#&gt; </span><span style='color: #BCBCBC;'>14</span><span> H2               Testing policy             3                3 </span><span style='color: #BB0000;'>NA</span><span>     
-#&gt; </span><span style='color: #BCBCBC;'>15</span><span> H3               Contact tracing            2                2 </span><span style='color: #BB0000;'>NA</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'>14</span><span> H2               Testing policy             1                1 </span><span style='color: #BB0000;'>NA</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'>15</span><span> H3               Contact tracing            1                1 </span><span style='color: #BB0000;'>NA</span><span>     
 #&gt; </span><span style='color: #BCBCBC;'>16</span><span> H4               Emergency inves…           0                0 </span><span style='color: #BB0000;'>NA</span><span>     
 #&gt; </span><span style='color: #BCBCBC;'>17</span><span> H5               Investment in v…           0                0 </span><span style='color: #BB0000;'>NA</span><span>     
 #&gt; </span><span style='color: #BCBCBC;'>18</span><span> H6               Facial Coverings           3                3 TRUE   
-#&gt; </span><span style='color: #949494;'># … with 5 more variables: is_general </span><span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span><span style='color: #949494;'>, notes </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,</span><span>
-#&gt; </span><span style='color: #949494;'>#   flag_value_display_field </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, policy_value_display_field </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,</span><span>
-#&gt; </span><span style='color: #949494;'>#   score </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span></div><div class='input'>
+#&gt; </span><span style='color: #949494;'># … with 4 more variables: is_general </span><span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span><span style='color: #949494;'>, notes </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   flag_value_display_field </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, policy_value_display_field </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>
+#&gt; 
+#&gt; $stringencyData
+#&gt; </span><span style='color: #949494;'># A tibble: 1 x 6</span><span>
+#&gt;   date_value country_code confirmed deaths stringency_actual stringency
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>             </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> 2020-07-16 AFG              </span><span style='text-decoration: underline;'>34</span><span>994   </span><span style='text-decoration: underline;'>1</span><span>094              78.7       78.7
+#&gt; </div><div class='input'>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

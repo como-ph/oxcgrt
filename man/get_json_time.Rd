@@ -4,14 +4,16 @@
 \alias{get_json_time}
 \title{Get JSON for stringency index data over time}
 \usage{
-get_json_time(from = "2020-01-02", to = as.character(Sys.Date()))
+get_json_time(from = "2020-01-02", to = Sys.Date())
 }
 \arguments{
 \item{from}{Start date for stringency index data to be collected. This can go
-as far back as 2020-01-02 (Default). Format \code{YYYY-MM-DD}.}
+as far back as \strong{2020-01-02} (Default). Format \code{YYYY-MM-DD}. Accepts
+either character string or \code{date} class.}
 
 \item{to}{End data for stringency index data to be collected. This defaults
-to current date. Format \code{YYYY-MM-DD}.}
+to current date. Format \code{YYYY-MM-DD}. Accepts either character string or
+\code{date} class.}
 }
 \value{
 A character object for specified JSON endpoint

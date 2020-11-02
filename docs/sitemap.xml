@@ -31,7 +31,10 @@
     <loc>https://como-ph.github.io/oxcgrt/reference/codebook.html</loc>
   </url>
   <url>
-    <loc>https://como-ph.github.io/oxcgrt/reference/get_data_actions.html</loc>
+    <loc>https://como-ph.github.io/oxcgrt/reference/get_data.html</loc>
+  </url>
+  <url>
+    <loc>https://como-ph.github.io/oxcgrt/reference/get_data_action.html</loc>
   </url>
   <url>
     <loc>https://como-ph.github.io/oxcgrt/reference/get_data_time.html</loc>
