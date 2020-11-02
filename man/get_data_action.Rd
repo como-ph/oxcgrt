@@ -3,7 +3,7 @@
 \name{get_data_action}
 \alias{get_data_action}
 \alias{get_data_actions}
-\title{Get policy actions from JSON}
+\title{Get policy actions data from JSON}
 \usage{
 get_data_action(json)
 
@@ -18,7 +18,7 @@ A tibble of policy actions with their respective policy values for
 specified country/countries and specified date/dates.
 }
 \description{
-Get policy actions from JSON
+Get policy actions data from JSON
 }
 \examples{
 ## Get relevant JSON for Afghanistan on 16 July 2020
@@ -30,8 +30,8 @@ get_data_action(x)
 ## Get relevant JSON for Afghanistan and Philippines for whole month of
 ## October
 x <- get_json_actions(ccode = c("AFG", "PH"),
-                      from = "2020-10-01",
-                      to = "2020-10-16")
+                      from = "2020-10-25",
+                      to = "2020-10-31")
 
 ## Get data on policy actions
 get_data_actions(x)

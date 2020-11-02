@@ -2,30 +2,66 @@
 % Please edit documentation in R/calculate_index.R
 \name{calculate_subindex}
 \alias{calculate_subindex}
+\alias{calculate_subindices}
 \title{Calculate OxCGRT sub-index score for a single indicator}
 \usage{
 calculate_subindex(indicator_code, value, flag_value)
+
+calculate_subindices(
+  df,
+  indicator_code = "policy_type_code",
+  value = "policyvalue_actual",
+  flag_value = "flagged",
+  add = TRUE
+)
 }
 \arguments{
-\item{indicator_code}{Two-character code for indicators of policy measures
-tracked by \strong{Oxford COVID-19 Government Response Tracker}.}
+\item{indicator_code}{A character value specifying the name of the variable
+in \code{df} containing the policy type codes. By default, this is set to
+\code{policy_type_code} which is the variable name used by the \strong{OxCGRT API}.}
 
-\item{value}{An integer for recorded policy value on the ordinal scale for
-given policy type.}
+\item{value}{A character value specifying the name of the column in \code{df}
+containing the values in ordinal scale assigned to each policy type. By
+default, this is set to \code{policyvalue_actual} which is the variable name
+used by the \strong{OxCGRT API}.}
 
-\item{flag_value}{Either logical or binary value (0, 1) for recorded flag
-value. If NA, corresponds to policy type with no flag.}
+\item{flag_value}{A character value specifying the name of the column in \code{df}
+containing the flag values for each policy type. By default, this is set to
+\code{flagged} which is the variable name used by the \strong{OxCGRT API}.}
+
+\item{df}{A data.frame containing per indicator values required for
+calculating sub-index scores. This data.frame will be structured similarly
+as the policy actions data.frame produced by a call to
+\code{\link[=get_data_actions]{get_data_actions()}}.}
+
+\item{add}{Logical. Should sub-indices for each indicator be added to \code{df}?
+Default is TRUE.}
 }
 \value{
 A numeric value between 0 to 100.
+
+If \code{add} is TRUE (default), returns a tibble composed of the input
+data.frame \code{x} with an added column named score for the calculated
+sub-indices. If \code{add} is FALSE, returns a tibble of 4 columns with the
+first column for the policy codes named \code{policy_type_codes}, the second
+column for the policy values named \code{policy_value}, the third column for
+the flag values named \code{flag_value} and the fourth column named \code{score} for
+the calculated sub-indices.
 }
 \description{
 Calculate OxCGRT sub-index score for a single indicator
+
+Calculate OxCGRT sub-index scores for all indicators
 }
 \examples{
 calculate_subindex(indicator_code = indicatorData$indicator[1],
                    value = indicatorData$value[1],
                    flag_value = indicatorData$flag_value[1])
+
+x <- get_data(json = get_json_actions(ccode = "AFG",
+                                      from = NULL,
+                                      to = "2020-09-01"))
+calculate_subindices(df = x$policyActions)
 
 }
 \author{
@@ -34,4 +70,6 @@ calculate_subindex(indicator_code = indicatorData$indicator[1],
 \emph{Saptarshi Majumdar, Anna Petherick, Toby Phillips, Helen Tatlow,}
 \emph{Samuel Webster (2020). Oxford COVID-19 Government Response Tracker,}
 \emph{Blavatnik School of Government.}
+
+Ernest Guevarra
 }

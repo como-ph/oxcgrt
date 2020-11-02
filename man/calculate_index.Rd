@@ -2,9 +2,24 @@
 % Please edit documentation in R/calculate_index.R
 \name{calculate_index}
 \alias{calculate_index}
-\title{Calculate an OxCGRT index}
+\alias{calculate_gov_response}
+\alias{calculate_containment_health}
+\alias{calculate_stringency}
+\alias{calculate_economic_support}
+\alias{calculate_indices}
+\title{Calculate an OxCGRT index or indices}
 \usage{
 calculate_index(df, codes, tolerance)
+
+calculate_gov_response(df)
+
+calculate_containment_health(df)
+
+calculate_stringency(df)
+
+calculate_economic_support(df)
+
+calculate_indices(df)
 }
 \arguments{
 \item{df}{A data.frame produced by a call to \code{\link[=calculate_subindices]{calculate_subindices()}}.}
@@ -15,22 +30,42 @@ calculate_index(df, codes, tolerance)
 which index will not be calculated and reported.}
 }
 \value{
-A numeric value for mean subindex scores of specified policy types
+A numeric value for mean subindex scores of specified policy types.
+For \code{\link[=calculate_indices]{calculate_indices()}}, a tibble calculated OxCGRT indices
 }
 \description{
-Calculate an OxCGRT index
+Calculate an OxCGRT index or indices
 }
 \examples{
+## Get policy actions data for Afghanistan on 1 September 2020
 x <- get_data(json = get_json_actions(ccode = "AFG",
                                       from = NULL,
                                       to = "2020-09-01"))
+
+## Calculate OxCGRT subindices
 y <- calculate_subindices(df = x$policyActions)
 
+## Calculate OxCGRT index
 calculate_index(df = y,
                 codes = c(paste("C", 1:8, sep = ""),
                           paste("E", 1:2, sep = ""),
                           paste("H", 1:3, sep = ""), "H6"),
                 tolerance = 1)
+
+## Calculate OxCGRT government response index
+calculate_gov_response(df = y)
+
+## Calculate OxCGRT containment and health index
+calculate_containment_health(df = y)
+
+## Calculate OxCGRT stringency index
+calculate_stringency(df = y)
+
+## Calculate OxCGRT economic support index
+calculate_economic_support(df = y)
+
+## Calculate all OxCGRT indices
+calculate_indices(df = y)
 
 }
 \author{

@@ -7,18 +7,26 @@
 get_data(json)
 }
 \arguments{
-\item{json}{A JSON string, URL or file created using \code{\link[=get_json_actions]{get_json_actions()}} or
-a vector of JSON strings or URLs.}
+\item{json}{A JSON string, URL or file created using \code{\link[=get_json_time]{get_json_time()}} or
+\code{\link[=get_json_actions]{get_json_actions()}}.}
 }
 \value{
-A named list of two tibbles. The first tibble is named
-\code{policyActions}. The second tibble is named \code{stringencyData}
+A tibble of time series stringency index data if \code{json} is a time
+\strong{series endpoint} or a named list of two tibbles (the first tibble is
+named \code{policyActions} and the second tibble is named \code{stringencyData}) if
+\code{json} is a \strong{policy actions endpoint}.
 }
 \description{
 Get policy actions and stringency data from JSON
 }
 \examples{
-## Get relevant JSON
+## Get time series JSON endpoint
+x <- get_json_time(from = "2020-10-25", to = "2020-10-31")
+
+## Get time series stringency index data
+get_data(x)
+
+## Get policy actions JSON endpoint
 x <- get_json_actions(ccode = "AFG", from = NULL, to = "2020-07-16")
 
 ## Get data on policy actions and stringency index
