@@ -26,11 +26,19 @@ reference:
   - title: Retrieve
     contents:
     - starts_with("get_json")
-    - starts_with("get_data")
+    - get_data
+    - get_data_time
+    - starts_with("get_data_action")
 
   - title: Calculate
     contents:
-    - starts_with("calculate")
+    - starts_with("calculate_sub")
+    - calculate_index
+    - calculate_indices
+    - calculate_gov_response
+    - calculate_containment_health
+    - calculate_stringency
+    - calculate_economic_support
 
   - title: Datasets
     contents:
