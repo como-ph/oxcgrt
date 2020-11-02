@@ -4,28 +4,10 @@
     <loc>https://como-ph.github.io/oxcgrt/index.html</loc>
   </url>
   <url>
-    <loc>https://como-ph.github.io/oxcgrt/reference/calculate_containment_health.html</loc>
-  </url>
-  <url>
-    <loc>https://como-ph.github.io/oxcgrt/reference/calculate_economic_support.html</loc>
-  </url>
-  <url>
-    <loc>https://como-ph.github.io/oxcgrt/reference/calculate_gov_response.html</loc>
-  </url>
-  <url>
     <loc>https://como-ph.github.io/oxcgrt/reference/calculate_index.html</loc>
   </url>
   <url>
-    <loc>https://como-ph.github.io/oxcgrt/reference/calculate_indices.html</loc>
-  </url>
-  <url>
-    <loc>https://como-ph.github.io/oxcgrt/reference/calculate_stringency.html</loc>
-  </url>
-  <url>
     <loc>https://como-ph.github.io/oxcgrt/reference/calculate_subindex.html</loc>
-  </url>
-  <url>
-    <loc>https://como-ph.github.io/oxcgrt/reference/calculate_subindices.html</loc>
   </url>
   <url>
     <loc>https://como-ph.github.io/oxcgrt/reference/codebook.html</loc>
@@ -40,10 +22,7 @@
     <loc>https://como-ph.github.io/oxcgrt/reference/get_data_time.html</loc>
   </url>
   <url>
-    <loc>https://como-ph.github.io/oxcgrt/reference/get_json_actions.html</loc>
-  </url>
-  <url>
-    <loc>https://como-ph.github.io/oxcgrt/reference/get_json_time.html</loc>
+    <loc>https://como-ph.github.io/oxcgrt/reference/get_json.html</loc>
   </url>
   <url>
     <loc>https://como-ph.github.io/oxcgrt/reference/indicatorData.html</loc>

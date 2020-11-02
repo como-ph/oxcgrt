@@ -40,7 +40,8 @@
 
 
 <meta property="og:title" content="Calculate OxCGRT sub-index score for a single indicator — calculate_subindex" />
-<meta property="og:description" content="Calculate OxCGRT sub-index score for a single indicator" />
+<meta property="og:description" content="Calculate OxCGRT sub-index score for a single indicator
+Calculate OxCGRT sub-index scores for all indicators" />
 
 
 
@@ -128,33 +129,65 @@
 
     <div class="ref-description">
     <p>Calculate OxCGRT sub-index score for a single indicator</p>
+<p>Calculate OxCGRT sub-index scores for all indicators</p>
     </div>
 
-    <pre class="usage"><span class='fu'>calculate_subindex</span>(<span class='kw'>indicator_code</span>, <span class='kw'>value</span>, <span class='kw'>flag_value</span>)</pre>
+    <pre class="usage"><span class='fu'>calculate_subindex</span>(<span class='kw'>indicator_code</span>, <span class='kw'>value</span>, <span class='kw'>flag_value</span>)
+
+<span class='fu'>calculate_subindices</span>(
+  <span class='kw'>df</span>,
+  indicator_code = <span class='st'>"policy_type_code"</span>,
+  value = <span class='st'>"policyvalue_actual"</span>,
+  flag_value = <span class='st'>"flagged"</span>,
+  add = <span class='fl'>TRUE</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>indicator_code</th>
-      <td><p>Two-character code for indicators of policy measures
-tracked by <strong>Oxford COVID-19 Government Response Tracker</strong>.</p></td>
+      <td><p>A character value specifying the name of the variable
+in <code>df</code> containing the policy type codes. By default, this is set to
+<code>policy_type_code</code> which is the variable name used by the <strong>OxCGRT API</strong>.</p></td>
     </tr>
     <tr>
       <th>value</th>
-      <td><p>An integer for recorded policy value on the ordinal scale for
-given policy type.</p></td>
+      <td><p>A character value specifying the name of the column in <code>df</code>
+containing the values in ordinal scale assigned to each policy type. By
+default, this is set to <code>policyvalue_actual</code> which is the variable name
+used by the <strong>OxCGRT API</strong>.</p></td>
     </tr>
     <tr>
       <th>flag_value</th>
-      <td><p>Either logical or binary value (0, 1) for recorded flag
-value. If NA, corresponds to policy type with no flag.</p></td>
+      <td><p>A character value specifying the name of the column in <code>df</code>
+containing the flag values for each policy type. By default, this is set to
+<code>flagged</code> which is the variable name used by the <strong>OxCGRT API</strong>.</p></td>
+    </tr>
+    <tr>
+      <th>df</th>
+      <td><p>A data.frame containing per indicator values required for
+calculating sub-index scores. This data.frame will be structured similarly
+as the policy actions data.frame produced by a call to
+<code><a href='get_data_action.html'>get_data_actions()</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>add</th>
+      <td><p>Logical. Should sub-indices for each indicator be added to <code>df</code>?
+Default is TRUE.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A numeric value between 0 to 100.</p>
+<p>If <code>add</code> is TRUE (default), returns a tibble composed of the input
+data.frame <code>x</code> with an added column named score for the calculated
+sub-indices. If <code>add</code> is FALSE, returns a tibble of 4 columns with the
+first column for the policy codes named <code>policy_type_codes</code>, the second
+column for the policy values named <code>policy_value</code>, the third column for
+the flag values named <code>flag_value</code> and the fourth column named <code>score</code> for
+the calculated sub-indices.</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p><strong>Ernest Guevarra</strong> based on calculation methods by <em>Hale, Thomas,</em>
@@ -162,13 +195,42 @@ value. If NA, corresponds to policy type with no flag.</p></td>
 <em>Saptarshi Majumdar, Anna Petherick, Toby Phillips, Helen Tatlow,</em>
 <em>Samuel Webster (2020). Oxford COVID-19 Government Response Tracker,</em>
 <em>Blavatnik School of Government.</em></p>
+<p>Ernest Guevarra</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>calculate_subindex</span>(indicator_code = <span class='kw'>indicatorData</span><span class='op'>$</span><span class='kw'>indicator</span>[<span class='fl'>1</span>],
                    value = <span class='kw'>indicatorData</span><span class='op'>$</span><span class='kw'>value</span>[<span class='fl'>1</span>],
                    flag_value = <span class='kw'>indicatorData</span><span class='op'>$</span><span class='kw'>flag_value</span>[<span class='fl'>1</span>])
 </div><div class='output co'>#&gt; [1] 66.66667</div><div class='input'>
-</div></pre>
+<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_data.html'>get_data</a></span>(json = <span class='fu'><a href='get_json_time.html'>get_json_actions</a></span>(ccode = <span class='st'>"AFG"</span>,
+                                      from = <span class='kw'>NULL</span>,
+                                      to = <span class='st'>"2020-09-01"</span>))
+<span class='fu'>calculate_subindices</span>(df = <span class='kw'>x</span><span class='op'>$</span><span class='kw'>policyActions</span>)
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 18 x 10</span><span>
+#&gt;    policy_type_code policy_type_dis… policyvalue policyvalue_act… flagged
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                  </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span><span>  
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> C1               School closing             2                2 TRUE   
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> C2               Workplace closi…           0                0 </span><span style='color: #BB0000;'>NA</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> C3               Cancel public e…           0                0 </span><span style='color: #BB0000;'>NA</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> C4               Restrictions on…           0                0 </span><span style='color: #BB0000;'>NA</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> C5               Close public tr…           0                0 </span><span style='color: #BB0000;'>NA</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> C6               Stay at home re…           0                0 </span><span style='color: #BB0000;'>NA</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> C7               Restrictions on…           0                0 </span><span style='color: #BB0000;'>NA</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> C8               International t…           1                1 </span><span style='color: #BB0000;'>NA</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> E1               Income support             0                0 </span><span style='color: #BB0000;'>NA</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> E2               Debt/contract r…           0                0 </span><span style='color: #BB0000;'>NA</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'>11</span><span> E3               Fiscal measures            0                0 </span><span style='color: #BB0000;'>NA</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'>12</span><span> E4               International s…           0                0 </span><span style='color: #BB0000;'>NA</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'>13</span><span> H1               Public informat…           2                2 TRUE   
+#&gt; </span><span style='color: #BCBCBC;'>14</span><span> H2               Testing policy             3                3 </span><span style='color: #BB0000;'>NA</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'>15</span><span> H3               Contact tracing            2                2 </span><span style='color: #BB0000;'>NA</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'>16</span><span> H4               Emergency inves…           0                0 </span><span style='color: #BB0000;'>NA</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'>17</span><span> H5               Investment in v…           0                0 </span><span style='color: #BB0000;'>NA</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'>18</span><span> H6               Facial Coverings           3                3 TRUE   
+#&gt; </span><span style='color: #949494;'># … with 5 more variables: is_general </span><span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span><span style='color: #949494;'>, notes </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   flag_value_display_field </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, policy_value_display_field </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   score </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span></div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
