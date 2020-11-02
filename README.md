@@ -5,6 +5,9 @@
 
 <!-- badges: start -->
 
+[![Project Status: Active – The project has reached a stable, usable
+state and is being actively
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![R build
@@ -98,7 +101,7 @@ get_json_time(from = "2020-06-01") %>% get_data_time()
 
 This produces the following output:
 
-    #> # A tibble: 28,016 x 8
+    #> # A tibble: 28,020 x 8
     #>    date_value country_code confirmed deaths stringency_actu… stringency
     #>    <date>     <chr>            <int>  <int>            <dbl>      <dbl>
     #>  1 2020-06-01 ABW                101      3             38.9       38.9
@@ -111,7 +114,7 @@ This produces the following output:
     #>  8 2020-06-01 AUS               7195    102             62.0       62.0
     #>  9 2020-06-01 AUT              16642    668             53.7       53.7
     #> 10 2020-06-01 AZE               5494     63             77.8       77.8
-    #> # … with 28,006 more rows, and 2 more variables: stringency_legacy <dbl>,
+    #> # … with 28,010 more rows, and 2 more variables: stringency_legacy <dbl>,
     #> #   stringency_legacy_disp <dbl>
 
 Important to note that in `get_json_time`, only the starting date (using
@@ -130,7 +133,7 @@ get_json_time() %>% get_data_time()
 
 which produces the following output:
 
-    #> # A tibble: 55,951 x 8
+    #> # A tibble: 55,955 x 8
     #>    date_value country_code stringency_actu… stringency stringency_lega…
     #>    <date>     <chr>                   <dbl>      <dbl>            <dbl>
     #>  1 2020-01-02 ABW                         0          0                0
@@ -143,7 +146,7 @@ which produces the following output:
     #>  8 2020-01-02 AUS                         0          0                0
     #>  9 2020-01-02 AUT                         0          0                0
     #> 10 2020-01-02 AZE                         0          0                0
-    #> # … with 55,941 more rows, and 3 more variables: stringency_legacy_disp <dbl>,
+    #> # … with 55,945 more rows, and 3 more variables: stringency_legacy_disp <dbl>,
     #> #   confirmed <int>, deaths <int>
 
 #### Policy actions and stringency index for specific country on a specific day

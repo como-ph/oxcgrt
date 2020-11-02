@@ -19,6 +19,7 @@ knitr::opts_chunk$set(
 # oxcgrt: An Interface to the Oxford COVID-19 Government Response Tracker API
 
 <!-- badges: start -->
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![R build status](https://github.com/como-ph/oxcgrt/workflows/R-CMD-check/badge.svg)](https://github.com/como-ph/oxcgrt/actions)
 ![test-coverage](https://github.com/como-ph/oxcgrt/workflows/test-coverage/badge.svg)
