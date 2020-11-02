@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get JSON for policy actions data for a specific country for a specific date — get_json_actions • oxcgrt</title>
+<title>Get JSON for policy actions and stringency index data — get_json_actions • oxcgrt</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Get JSON for policy actions data for a specific country for a specific date — get_json_actions" />
-<meta property="og:description" content="Get JSON for policy actions data for a specific country for a specific date" />
+<meta property="og:title" content="Get JSON for policy actions and stringency index data — get_json_actions" />
+<meta property="og:description" content="Get JSON for policy actions and stringency index data" />
 
 
 
@@ -121,38 +121,117 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get JSON for policy actions data for a specific country for a specific date</h1>
+    <h1>Get JSON for policy actions and stringency index data</h1>
     <small class="dont-index">Source: <a href='https://github.com/como-ph/oxcgrt/blob/master/R/get_json.R'><code>R/get_json.R</code></a></small>
     <div class="hidden name"><code>get_json_actions.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get JSON for policy actions data for a specific country for a specific date</p>
+    <p>Get JSON for policy actions and stringency index data</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_json_actions</span>(<span class='kw'>ccode</span>, on = <span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>()))</pre>
+    <pre class="usage"><span class='fu'>get_json_actions</span>(<span class='kw'>ccode</span>, from = <span class='st'>"2020-01-02"</span>, to = <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>())</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>ccode</th>
-      <td><p>ISO 3166-1 alpha-3 country code</p></td>
+      <td><p><strong>ISO 3166-1 alpha-2</strong> country code, <strong>alpha-3</strong> country code,
+or full <strong>country name</strong> string or vector of strings (mix of alpha-2 code
+or alpha-3 code or country names is valid).</p></td>
     </tr>
     <tr>
-      <th>on</th>
-      <td><p>Date on which policy actions data is required. This defaults
-to current date. Format <code>YYYY-MM-DD</code>.</p></td>
+      <th>from</th>
+      <td><p>Start date for policy actions and stringency index data to be
+collected. This can go as far back as <strong>2020-01-02</strong> (Default). Format
+<code>YYYY-MM-DD</code>. Accepts either character string or <code>date</code> class. Set to NULL
+if only single day data is needed.</p></td>
+    </tr>
+    <tr>
+      <th>to</th>
+      <td><p>End data for policy actions and stringency index data to be
+collected. This defaults to current date. Format <code>YYYY-MM-DD</code>. Accepts
+either character string or <code>date</code> class. If <code>from</code> is NULL, JSON for date
+specified in <code>to</code> will be retrieved</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A character object for specified JSON endpoint</p>
+    <p>A character string or vector for specified JSON endpoint/s</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>get_json_actions</span>(ccode = <span class='st'>"AFG"</span>, on = <span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>() <span class='op'>-</span> <span class='fl'>7</span>))
-</div><div class='output co'>#&gt; [1] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-24"</div><div class='input'>
+    <pre class="examples"><div class='input'><span class='co'>## Get JSON for Afghanistan at 7 days previous to current date</span>
+<span class='fu'>get_json_actions</span>(ccode = <span class='st'>"AFG"</span>,
+                 from = <span class='kw'>NULL</span>,
+                 to = <span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>() <span class='op'>-</span> <span class='fl'>7</span>))
+</div><div class='output co'>#&gt; [1] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-26"</div><div class='input'>
+<span class='co'>## Get JSON for Afghanistan and Philippines from 1 October to 31 October 2020</span>
+<span class='fu'>get_json_actions</span>(ccode = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Afghanistan"</span>, <span class='st'>"PH"</span>),
+                 from = <span class='st'>"2020-10-01"</span>, to = <span class='st'>"2020-10-31"</span>)
+</div><div class='output co'>#&gt;  [1] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-01"
+#&gt;  [2] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-02"
+#&gt;  [3] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-03"
+#&gt;  [4] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-04"
+#&gt;  [5] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-05"
+#&gt;  [6] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-06"
+#&gt;  [7] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-07"
+#&gt;  [8] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-08"
+#&gt;  [9] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-09"
+#&gt; [10] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-10"
+#&gt; [11] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-11"
+#&gt; [12] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-12"
+#&gt; [13] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-13"
+#&gt; [14] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-14"
+#&gt; [15] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-15"
+#&gt; [16] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-16"
+#&gt; [17] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-17"
+#&gt; [18] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-18"
+#&gt; [19] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-19"
+#&gt; [20] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-20"
+#&gt; [21] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-21"
+#&gt; [22] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-22"
+#&gt; [23] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-23"
+#&gt; [24] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-24"
+#&gt; [25] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-25"
+#&gt; [26] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-26"
+#&gt; [27] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-27"
+#&gt; [28] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-28"
+#&gt; [29] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-29"
+#&gt; [30] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-30"
+#&gt; [31] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-31"
+#&gt; [32] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/PHL/2020-10-01"
+#&gt; [33] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/PHL/2020-10-02"
+#&gt; [34] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/PHL/2020-10-03"
+#&gt; [35] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/PHL/2020-10-04"
+#&gt; [36] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/PHL/2020-10-05"
+#&gt; [37] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/PHL/2020-10-06"
+#&gt; [38] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/PHL/2020-10-07"
+#&gt; [39] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/PHL/2020-10-08"
+#&gt; [40] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/PHL/2020-10-09"
+#&gt; [41] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/PHL/2020-10-10"
+#&gt; [42] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/PHL/2020-10-11"
+#&gt; [43] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/PHL/2020-10-12"
+#&gt; [44] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/PHL/2020-10-13"
+#&gt; [45] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/PHL/2020-10-14"
+#&gt; [46] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/PHL/2020-10-15"
+#&gt; [47] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/PHL/2020-10-16"
+#&gt; [48] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/PHL/2020-10-17"
+#&gt; [49] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/PHL/2020-10-18"
+#&gt; [50] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/PHL/2020-10-19"
+#&gt; [51] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/PHL/2020-10-20"
+#&gt; [52] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/PHL/2020-10-21"
+#&gt; [53] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/PHL/2020-10-22"
+#&gt; [54] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/PHL/2020-10-23"
+#&gt; [55] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/PHL/2020-10-24"
+#&gt; [56] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/PHL/2020-10-25"
+#&gt; [57] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/PHL/2020-10-26"
+#&gt; [58] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/PHL/2020-10-27"
+#&gt; [59] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/PHL/2020-10-28"
+#&gt; [60] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/PHL/2020-10-29"
+#&gt; [61] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/PHL/2020-10-30"
+#&gt; [62] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/PHL/2020-10-31"</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
