@@ -72,7 +72,11 @@ The first API endpoint provides JSON for all countries included in the
 [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) over a specified period
 of time:
 
+<br/>
+
 `https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/date-range/{start-date}/{end-date}`
+
+<br/>
 
 where `start-date` and `end-date` are the starting date and ending date
 (both in `YYYY-MM-DD` format) respectively from which to retrieve data.
@@ -94,7 +98,7 @@ get_json_time(from = "2020-06-01") %>% get_data_time()
 
 This produces the following output:
 
-    #> # A tibble: 27,810 x 8
+    #> # A tibble: 27,837 x 8
     #>    date_value country_code confirmed deaths stringency_actu… stringency
     #>    <date>     <chr>            <int>  <int>            <dbl>      <dbl>
     #>  1 2020-06-01 SGP              34884     23             81.5       81.5
@@ -107,7 +111,7 @@ This produces the following output:
     #>  8 2020-06-01 SSD                994     10             85.2       85.2
     #>  9 2020-06-01 SUR                 23      1             77.8       77.8
     #> 10 2020-06-01 SVK               1522     28             69.4       69.4
-    #> # … with 27,800 more rows, and 2 more variables: stringency_legacy <dbl>,
+    #> # … with 27,827 more rows, and 2 more variables: stringency_legacy <dbl>,
     #> #   stringency_legacy_disp <dbl>
 
 Important to note that in `get_json_time`, only the starting date (using
@@ -126,7 +130,7 @@ get_json_time() %>% get_data_time()
 
 which produces the following output:
 
-    #> # A tibble: 55,745 x 8
+    #> # A tibble: 55,772 x 8
     #>    date_value country_code stringency_actu… stringency stringency_lega…
     #>    <date>     <chr>                   <dbl>      <dbl>            <dbl>
     #>  1 2020-01-02 ABW                         0          0                0
@@ -139,7 +143,7 @@ which produces the following output:
     #>  8 2020-01-02 AUS                         0          0                0
     #>  9 2020-01-02 AUT                         0          0                0
     #> 10 2020-01-02 AZE                         0          0                0
-    #> # … with 55,735 more rows, and 3 more variables: stringency_legacy_disp <dbl>,
+    #> # … with 55,762 more rows, and 3 more variables: stringency_legacy_disp <dbl>,
     #> #   confirmed <int>, deaths <int>
 
 #### Policy actions and stringency index for specific country on a specific day
@@ -147,7 +151,11 @@ which produces the following output:
 The second API endpoint provides JSON for a specific country included in
 the [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) for a specified day:
 
+<br/>
+
 `https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/{country-code}/{date}`
+
+<br/>
 
 where `country-code` is the ISO 3166-1 alpha-3 country code for the
 required country to get data for and `date` is the date (in `YYYY-MM-DD`
@@ -201,3 +209,77 @@ which produces the following output:
 Important to note that the output is a named `list` object containing a
 `tibble` of **policy actions** data and a `tibble` of **stringency
 index** data for the specified country and the specified date.
+
+#### Policy actions for specific country or countries on a specific day or days
+
+It is also possible to retrieve just policy actions data for a specific
+country or for multiple countries on a specific day or multiple days. To
+retrieve policy actions data for Afghanistan for 1 June 2020, the
+following code can be used:
+
+``` r
+get_json_actions(ccode = "AFG", from = NULL, to = "2020-06-01") %>% get_data_action()
+```
+
+This results in:
+
+    #> # A tibble: 18 x 11
+    #>    policy_type_code policy_type_dis… policyvalue policyvalue_act… flagged
+    #>    <chr>            <chr>                  <int>            <int> <lgl>  
+    #>  1 C1               School closing             3                3 TRUE   
+    #>  2 C2               Workplace closi…           3                3 FALSE  
+    #>  3 C3               Cancel public e…           2                2 TRUE   
+    #>  4 C4               Restrictions on…           4                4 TRUE   
+    #>  5 C5               Close public tr…           2                2 FALSE  
+    #>  6 C6               Stay at home re…           2                2 FALSE  
+    #>  7 C7               Restrictions on…           2                2 FALSE  
+    #>  8 C8               International t…           3                3 NA     
+    #>  9 E1               Income support             0                0 NA     
+    #> 10 E2               Debt/contract r…           0                0 NA     
+    #> 11 E3               Fiscal measures            0                0 NA     
+    #> 12 E4               International s…           0                0 NA     
+    #> 13 H1               Public informat…           2                2 TRUE   
+    #> 14 H2               Testing policy             1                1 NA     
+    #> 15 H3               Contact tracing            1                1 NA     
+    #> 16 H4               Emergency inves…           0                0 NA     
+    #> 17 H5               Investment in v…           0                0 NA     
+    #> 18 H6               Facial Coverings           1                1 TRUE   
+    #> # … with 6 more variables: is_general <lgl>, notes <chr>,
+    #> #   flag_value_display_field <chr>, policy_value_display_field <chr>,
+    #> #   date_value <date>, country_code <chr>
+
+Important to note here that the output is a tibble of just the policy
+actions and two additional columns have been added to the dataset -
+`date_value` and `country_code` - to identify the data as coming from a
+specific date and for a specific country.
+
+To retrieve policy actions data for multiple countries on multiple days,
+the `get_data_actions` functions can be used as shown below:
+
+``` r
+get_json_actions(ccode = c("AFG", "Philippines"), from = "2020-10-25", to = "2020-10-31") %>% get_data_actions()
+```
+
+This results in:
+
+    #> # A tibble: 167 x 11
+    #>    policy_type_code policy_type_dis… policyvalue policyvalue_act… flagged
+    #>    <chr>            <chr>                  <int>            <int> <lgl>  
+    #>  1 C1               School closing             1                1 TRUE   
+    #>  2 C2               Workplace closi…           2                2 TRUE   
+    #>  3 C3               Cancel public e…           0                0 NA     
+    #>  4 C4               Restrictions on…           0                0 NA     
+    #>  5 C5               Close public tr…           0                0 NA     
+    #>  6 C6               Stay at home re…           0                0 NA     
+    #>  7 C7               Restrictions on…           0                0 NA     
+    #>  8 C8               International t…           0                0 NA     
+    #>  9 E1               Income support             0                0 NA     
+    #> 10 E2               Debt/contract r…           1                1 NA     
+    #> # … with 157 more rows, and 6 more variables: is_general <lgl>, notes <chr>,
+    #> #   flag_value_display_field <chr>, policy_value_display_field <chr>,
+    #> #   date_value <date>, country_code <chr>
+
+Important to note here that the output is a tibble of just the policy
+actions and two additional columns have been added to the dataset -
+`date_value` and `country_code` - to identify the data as coming from a
+specific date and for a specific country.
