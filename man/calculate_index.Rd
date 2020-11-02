@@ -21,8 +21,9 @@ A numeric value for mean subindex scores of specified policy types
 Calculate an OxCGRT index
 }
 \examples{
-x <- get_data_actions(json = get_json_actions(ccode = "AFG",
-                                              on = "2020-09-01"))
+x <- get_data(json = get_json_actions(ccode = "AFG",
+                                      from = NULL,
+                                      to = "2020-09-01"))
 y <- calculate_subindices(df = x$policyActions)
 
 calculate_index(df = y,
