@@ -130,27 +130,27 @@ And the development version from [GitHub](https://github.com/) with:
 <span class="fu"><a href="reference/get_json_time.html">get_json_time</a></span>(from = <span class="st">"2020-06-01"</span>) <span class="op">%&gt;%</span> <span class="fu"><a href="reference/get_data_time.html">get_data_time</a></span>()
 </pre></div>
 <p>This produces the following output:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#&gt; # A tibble: 27,837 x 8</span></span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#&gt; # A tibble: 28,016 x 8</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="co">#&gt;    date_value country_code confirmed deaths stringency_actu… stringency</span></span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="co">#&gt;    &lt;date&gt;     &lt;chr&gt;            &lt;int&gt;  &lt;int&gt;            &lt;dbl&gt;      &lt;dbl&gt;</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="co">#&gt;  1 2020-06-01 SGP              34884     23             81.5       81.5</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="co">#&gt;  2 2020-06-01 SLB                 NA     NA             33.3       33.3</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="co">#&gt;  3 2020-06-01 SLE                861     46             73.2       73.2</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a><span class="co">#&gt;  4 2020-06-01 SLV               2517     46            100        100  </span></span>
-<span id="cb3-8"><a href="#cb3-8"></a><span class="co">#&gt;  5 2020-06-01 SMR                671     42             57.4       57.4</span></span>
-<span id="cb3-9"><a href="#cb3-9"></a><span class="co">#&gt;  6 2020-06-01 SOM               1976     78             48.2       48.2</span></span>
-<span id="cb3-10"><a href="#cb3-10"></a><span class="co">#&gt;  7 2020-06-01 SRB              11412    243             43.5       43.5</span></span>
-<span id="cb3-11"><a href="#cb3-11"></a><span class="co">#&gt;  8 2020-06-01 SSD                994     10             85.2       85.2</span></span>
-<span id="cb3-12"><a href="#cb3-12"></a><span class="co">#&gt;  9 2020-06-01 SUR                 23      1             77.8       77.8</span></span>
-<span id="cb3-13"><a href="#cb3-13"></a><span class="co">#&gt; 10 2020-06-01 SVK               1522     28             69.4       69.4</span></span>
-<span id="cb3-14"><a href="#cb3-14"></a><span class="co">#&gt; # … with 27,827 more rows, and 2 more variables: stringency_legacy &lt;dbl&gt;,</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="co">#&gt;  1 2020-06-01 ABW                101      3             38.9       38.9</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="co">#&gt;  2 2020-06-01 AFG              15205    257             84.3       84.3</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="co">#&gt;  3 2020-06-01 AGO                 86      4             77.8       77.8</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="co">#&gt;  4 2020-06-01 ALB               1137     33             67.6       67.6</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="co">#&gt;  5 2020-06-01 AND                764     51             50         50  </span></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="co">#&gt;  6 2020-06-01 ARE              34557    264             72.2       72.2</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="co">#&gt;  7 2020-06-01 ARG              16838    539             90.7       90.7</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="co">#&gt;  8 2020-06-01 AUS               7195    102             62.0       62.0</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="co">#&gt;  9 2020-06-01 AUT              16642    668             53.7       53.7</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="co">#&gt; 10 2020-06-01 AZE               5494     63             77.8       77.8</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="co">#&gt; # … with 28,006 more rows, and 2 more variables: stringency_legacy &lt;dbl&gt;,</span></span>
 <span id="cb3-15"><a href="#cb3-15"></a><span class="co">#&gt; #   stringency_legacy_disp &lt;dbl&gt;</span></span></code></pre></div>
 <p>Important to note that in <code>get_json_time</code>, only the starting date (using the <code>from</code> argument) is specified to the desired 1 June 2020 in <code>YYYY-MM-DD</code> format. This is because by default the <code>to</code> argument (for the ending date) is set to the current date using a call to the <code><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date()</a></code> function. By default, the <code>from</code> argument is set to 2 January 2020 (2020-01-02) which is the earliest available data point for the stringency index. Therefore, to retrieve data on stringency index for all countries for all available time points up to current, the following commands can be issued:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit">
 <span class="fu"><a href="reference/get_json_time.html">get_json_time</a></span>() <span class="op">%&gt;%</span> <span class="fu"><a href="reference/get_data_time.html">get_data_time</a></span>()
 </pre></div>
 <p>which produces the following output:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">#&gt; # A tibble: 55,772 x 8</span></span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">#&gt; # A tibble: 55,951 x 8</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="co">#&gt;    date_value country_code stringency_actu… stringency stringency_lega…</span></span>
 <span id="cb5-3"><a href="#cb5-3"></a><span class="co">#&gt;    &lt;date&gt;     &lt;chr&gt;                   &lt;dbl&gt;      &lt;dbl&gt;            &lt;dbl&gt;</span></span>
 <span id="cb5-4"><a href="#cb5-4"></a><span class="co">#&gt;  1 2020-01-02 ABW                         0          0                0</span></span>
@@ -163,7 +163,7 @@ And the development version from [GitHub](https://github.com/) with:
 <span id="cb5-11"><a href="#cb5-11"></a><span class="co">#&gt;  8 2020-01-02 AUS                         0          0                0</span></span>
 <span id="cb5-12"><a href="#cb5-12"></a><span class="co">#&gt;  9 2020-01-02 AUT                         0          0                0</span></span>
 <span id="cb5-13"><a href="#cb5-13"></a><span class="co">#&gt; 10 2020-01-02 AZE                         0          0                0</span></span>
-<span id="cb5-14"><a href="#cb5-14"></a><span class="co">#&gt; # … with 55,762 more rows, and 3 more variables: stringency_legacy_disp &lt;dbl&gt;,</span></span>
+<span id="cb5-14"><a href="#cb5-14"></a><span class="co">#&gt; # … with 55,941 more rows, and 3 more variables: stringency_legacy_disp &lt;dbl&gt;,</span></span>
 <span id="cb5-15"><a href="#cb5-15"></a><span class="co">#&gt; #   confirmed &lt;int&gt;, deaths &lt;int&gt;</span></span></code></pre></div>
 </div>
 <div id="policy-actions-and-stringency-index-for-specific-country-on-a-specific-day" class="section level4">
@@ -266,6 +266,445 @@ And the development version from [GitHub](https://github.com/) with:
 <span id="cb11-15"><a href="#cb11-15"></a><span class="co">#&gt; #   flag_value_display_field &lt;chr&gt;, policy_value_display_field &lt;chr&gt;,</span></span>
 <span id="cb11-16"><a href="#cb11-16"></a><span class="co">#&gt; #   date_value &lt;date&gt;, country_code &lt;chr&gt;</span></span></code></pre></div>
 <p>Important to note here that the output is a tibble of just the policy actions and two additional columns have been added to the dataset - <code>date_value</code> and <code>country_code</code> - to identify the data as coming from a specific date and for a specific country.</p>
+</div>
+</div>
+<div id="calculate-oxcgrt-indices" class="section level3">
+<h3 class="hasAnchor">
+<a href="#calculate-oxcgrt-indices" class="anchor"></a>Calculate OxCGRT indices</h3>
+<p>The <em>calculate</em> functions are based on the <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a>’s methodology described <a href="https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/index_methodology.md">here</a>. There are two sets of calculate functions included in <code>oxcgrt</code>. The first calculates the <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a> <strong>sub-indices</strong> described in the table below:</p>
+<table class="table">
+<colgroup>
+<col width="0%">
+<col width="5%">
+<col width="30%">
+<col width="2%">
+<col width="56%">
+<col width="4%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">ID</th>
+<th align="left">Name</th>
+<th align="left">Description</th>
+<th align="left">Measurement</th>
+<th align="left">Coding</th>
+<th align="left">Policy Group</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">C1</td>
+<td align="left">C1_School closing</td>
+<td align="left">Record closings of schools and universities</td>
+<td align="left">Ordinal scale</td>
+<td align="left">0 - no measures; 1 - recommend closing; 2 - require closing (only some levels or categories, eg just high school, or just public schools); 3 - require closing all levels; Blank - no data</td>
+<td align="left">Containment and closure policies</td>
+</tr>
+<tr class="even">
+<td align="left">C2</td>
+<td align="left">C2_Workplace closing</td>
+<td align="left">Record closings of workplaces</td>
+<td align="left">Ordinal scale</td>
+<td align="left">0 - no measures; 1 - recommend closing (or recommend work from home); 2 - require closing (or work from home) for some sectors or categories of workers; 3 - require closing (or work from home) for all-but-essential workplaces (eg grocery stores, doctors); Blank - no data</td>
+<td align="left">Containment and closure policies</td>
+</tr>
+<tr class="odd">
+<td align="left">C3</td>
+<td align="left">C3_Cancel public events</td>
+<td align="left">Record cancelling public events</td>
+<td align="left">Ordinal scale</td>
+<td align="left">0 - no measures; 1 - recommend cancelling; 2 - require cancelling; Blank - no data</td>
+<td align="left">Containment and closure policies</td>
+</tr>
+<tr class="even">
+<td align="left">C4</td>
+<td align="left">C4_Restrictions on gatherings</td>
+<td align="left">Record limits on private gatherings</td>
+<td align="left">Ordinal scale</td>
+<td align="left">0 - no restrictions; 1 - restrictions on very large gatherings (the limit is above; 1000 people); 2 - restrictions on gatherings between; 101-1000 people; 3 - restrictions on gatherings between; 11-100 people; 4 - restrictions on gatherings of; 10 people or less; Blank - no data</td>
+<td align="left">Containment and closure policies</td>
+</tr>
+<tr class="odd">
+<td align="left">C5</td>
+<td align="left">C5_Close public transport</td>
+<td align="left">Record closing of public transport</td>
+<td align="left">Ordinal scale</td>
+<td align="left">0 - no measures; 1 - recommend closing (or significantly reduce volume/route/means of transport available); 2 - require closing (or prohibit most citizens from using it); Blank - no data</td>
+<td align="left">Containment and closure policies</td>
+</tr>
+<tr class="even">
+<td align="left">C6</td>
+<td align="left">C6_Stay at home requirements</td>
+<td align="left">Record orders to “shelter-in-place” and otherwise confine to the home</td>
+<td align="left">Ordinal scale</td>
+<td align="left">0 - no measures; 1 - recommend not leaving house; 2 - require not leaving house with exceptions for daily exercise, grocery shopping, and ‘essential’ trips; 3 - require not leaving house with minimal exceptions (eg allowed to leave once a week, or only one person can leave at a time, etc); Blank - no data</td>
+<td align="left">Containment and closure policies</td>
+</tr>
+<tr class="odd">
+<td align="left">C7</td>
+<td align="left">C7_Restrictions on internal movement</td>
+<td align="left">Record restrictions on internal movement between cities/regions</td>
+<td align="left">Ordinal scale</td>
+<td align="left">0 - no measures; 1 - recommend not to travel between regions/cities; 2 - internal movement restrictions in place; Blank - no data</td>
+<td align="left">Containment and closure policies</td>
+</tr>
+<tr class="even">
+<td align="left">C8</td>
+<td align="left">C8_International travel controls</td>
+<td align="left">Record restrictions on international travel Note: this records policy for foreign travellers, not citizens</td>
+<td align="left">Ordinal scale</td>
+<td align="left">0 - no restrictions; 1 - screening arrivals; 2 - quarantine arrivals from some or all regions; 3 - ban arrivals from some regions; 4 - ban on all regions or total border closure; Blank - no data</td>
+<td align="left">Containment and closure policies</td>
+</tr>
+<tr class="odd">
+<td align="left">E1</td>
+<td align="left">E1_Income support (for households)</td>
+<td align="left">Record if the government is providing direct cash payments to people who lose their jobs or cannot work. Note: only includes payments to firms if explicitly linked to payroll/salaries</td>
+<td align="left">Ordinal scale</td>
+<td align="left">0 - no income support; 1 - government is replacing less than 50% of lost salary (or if a flat sum, it is less than 50% median salary); 2 - government is replacing 50% or more of lost salary (or if a flat sum, it is greater than 50% median salary); Blank - no data</td>
+<td align="left">Economic policies</td>
+</tr>
+<tr class="even">
+<td align="left">E2</td>
+<td align="left">E2_Debt/contract relief (for households)</td>
+<td align="left">Record if the government is freezing financial obligations for households (eg stopping loan repayments, preventing services like water from stopping, or banning evictions)</td>
+<td align="left">Ordinal scale</td>
+<td align="left">0 - no debt/contract relief; 1 - narrow relief, specific to one kind of contract; 2 - broad debt/contract relief</td>
+<td align="left">Economic policies</td>
+</tr>
+<tr class="odd">
+<td align="left">E3</td>
+<td align="left">E3_Fiscal measures</td>
+<td align="left">Announced economic stimulus spending Note: only record amount additional to previously announced spending</td>
+<td align="left">USD</td>
+<td align="left">Record monetary value in USD of fiscal stimuli, includes any spending or tax cuts NOT included in E4, H4 or H5 0 - no new spending that day; Blank - no data</td>
+<td align="left">Economic policies</td>
+</tr>
+<tr class="even">
+<td align="left">E4</td>
+<td align="left">E4_International support</td>
+<td align="left">Announced offers of Covid-19 related aid spending to other countries Note: only record amount additional to previously announced spending</td>
+<td align="left">USD</td>
+<td align="left">Record monetary value in USD 0 - no new spending that day; Blank - no data</td>
+<td align="left">Economic policies</td>
+</tr>
+<tr class="odd">
+<td align="left">H1</td>
+<td align="left">H1_Public information campaigns</td>
+<td align="left">Record presence of public info campaigns</td>
+<td align="left">Ordinal scale</td>
+<td align="left">0 - no Covid-19 public information campaign; 1 - public officials urging caution about Covid-19; 2- coordinated public information campaign (eg across traditional and social media); Blank - no data</td>
+<td align="left">Health system policies</td>
+</tr>
+<tr class="even">
+<td align="left">H2</td>
+<td align="left">H2_Testing policy</td>
+<td align="left">Record government policy on who has access to testing Note: this records policies about testing for current infection (PCR tests) not testing for immunity (antibody test)</td>
+<td align="left">Ordinal scale</td>
+<td align="left">0 - no testing policy; 1 - only those who both (a) have symptoms AND (b) meet specific criteria (eg key workers, admitted to hospital, came into contact with a known case, returned from overseas); 2 - testing of anyone showing Covid-19 symptoms; 3 - open public testing (eg “drive through” testing available to asymptomatic people); Blank - no data</td>
+<td align="left">Health system policies</td>
+</tr>
+<tr class="odd">
+<td align="left">H3</td>
+<td align="left">H3_Contact tracing</td>
+<td align="left">Record government policy on contact tracing after a positive diagnosis Note: we are looking for policies that would identify all people potentially exposed to Covid-19; voluntary bluetooth apps are unlikely to achieve this</td>
+<td align="left">Ordinal scale</td>
+<td align="left">0 - no contact tracing; 1 - limited contact tracing; not done for all cases; 2 - comprehensive contact tracing; done for all identified cases</td>
+<td align="left">Health system policies</td>
+</tr>
+<tr class="even">
+<td align="left">H4</td>
+<td align="left">H4_Emergency investment in healthcare</td>
+<td align="left">Announced short term spending on healthcare system, eg hospitals, masks, etc Note: only record amount additional to previously announced spending</td>
+<td align="left">USD</td>
+<td align="left">Record monetary value in USD 0 - no new spending that day; Blank - no data</td>
+<td align="left">Health system policies</td>
+</tr>
+<tr class="odd">
+<td align="left">H5</td>
+<td align="left">H5_Investment in vaccines</td>
+<td align="left">Announced public spending on Covid-19 vaccine development Note: only record amount additional to previously announced spending</td>
+<td align="left">USD</td>
+<td align="left">Record monetary value in USD 0 - no new spending that day; Blank - no data</td>
+<td align="left">Health system policies</td>
+</tr>
+<tr class="even">
+<td align="left">H6</td>
+<td align="left">H6_Facial Coverings</td>
+<td align="left">Record policies on the use of facial coverings outside the home</td>
+<td align="left">Ordinal scale</td>
+<td align="left">0 - No policy; 1 - Recommended; 2 - Required in some specified shared/public spaces outside the home with other people present, or some situations when social distancing not possible; 3 - Required in all shared/public spaces outside the home with other people present or all situations when social distancing not possible; 4 - Required outside the home at all times regardless of location or presence of other people</td>
+<td align="left">Health system policies</td>
+</tr>
+<tr class="odd">
+<td align="left">M1</td>
+<td align="left">M1_Wildcard</td>
+<td align="left">Record policy announcements that do not fit anywhere else</td>
+<td align="left">Free text notes field</td>
+<td align="left">Note unusual or interesting interventions that are worth flagging</td>
+<td align="left">Miscellaneous policies</td>
+</tr>
+</tbody>
+</table>
+<p>The second calculates the four <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a> <strong>indices</strong> which are composed of various combinations of the indicators described in the table above. These combinations are described in the table below:</p>
+<table class="table">
+<colgroup>
+<col width="1%">
+<col width="28%">
+<col width="19%">
+<col width="21%">
+<col width="12%">
+<col width="16%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">ID</th>
+<th align="left">Name</th>
+<th align="left">Government response index</th>
+<th align="left">Containment and health index</th>
+<th align="left">Stringency index</th>
+<th align="left">Economic support index</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">C1</td>
+<td align="left">School closing</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">C2</td>
+<td align="left">Workplace closing</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">C3</td>
+<td align="left">Cancel public events</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">C4</td>
+<td align="left">Restrictions on gatherings</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">C5</td>
+<td align="left">Close public transport</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">C6</td>
+<td align="left">Stay at home requirements</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">C7</td>
+<td align="left">Restrictions on internal movement</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">C8</td>
+<td align="left">International travel controls</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">E1</td>
+<td align="left">Income support (for households)</td>
+<td align="left">x</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">x</td>
+</tr>
+<tr class="even">
+<td align="left">E2</td>
+<td align="left">Debt/contract relief (for households)</td>
+<td align="left">x</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">x</td>
+</tr>
+<tr class="odd">
+<td align="left">E3</td>
+<td align="left">Fiscal measures</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">E4</td>
+<td align="left">International support</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">H1</td>
+<td align="left">Public information campaigns</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">H2</td>
+<td align="left">Testing policy</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">H3</td>
+<td align="left">Contact tracing</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">H4</td>
+<td align="left">Emergency investment in healthcare</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">H5</td>
+<td align="left">Investment in vaccines</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">H6</td>
+<td align="left">Facial Coverings</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">M1</td>
+<td align="left">Wildcard</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+</tbody>
+</table>
+<div id="calculating-oxcgrt-sub-indices" class="section level4">
+<h4 class="hasAnchor">
+<a href="#calculating-oxcgrt-sub-indices" class="anchor"></a>Calculating OxCGRT sub-indices</h4>
+<p>The <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a> subindices can be calculated using the <code>calculate_subindex</code> and <code>calculate_subindices</code> functions. To calculate a specific sub-index, the following code is used:</p>
+<div class="sourceCode" id="cb12"><pre class="downlit">
+<span class="co">## Given the C1 data in indicatorData, calculate C1 sub-index</span>
+<span class="fu"><a href="reference/calculate_subindex.html">calculate_subindex</a></span>(indicator_code = <span class="kw">indicatorData</span>[<span class="fl">1</span>, <span class="st">"indicator"</span>], 
+                   value = <span class="kw">indicatorData</span>[<span class="fl">1</span>, <span class="st">"value"</span>], 
+                   flag_value = <span class="kw">indicatorData</span>[<span class="fl">1</span>, <span class="st">"flag_value"</span>])
+</pre></div>
+<p>This gives a C1 index value of:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co">#&gt;      value</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="co">#&gt; 1 66.66667</span></span></code></pre></div>
+<p>To calculate all <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a> subindices, the following code is used:</p>
+<div class="sourceCode" id="cb14"><pre class="downlit">
+<span class="co">## Given the indicatorData dataset, calculate all sub-indices</span>
+<span class="kw">indicatorData</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/calculate_subindex.html">calculate_subindices</a></span>(indicator_code = <span class="st">"indicator"</span>, 
+                       value = <span class="st">"value"</span>, 
+                       flag_value = <span class="st">"flag_value"</span>,
+                       add = <span class="fl">TRUE</span>)
+</pre></div>
+<p>This results in the following output:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co">#&gt; # A tibble: 14 x 7</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="co">#&gt;    indicator value flag_value max_value  flag score score.1</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="co">#&gt;    &lt;chr&gt;     &lt;int&gt;      &lt;int&gt;     &lt;int&gt; &lt;int&gt; &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+<span id="cb15-4"><a href="#cb15-4"></a><span class="co">#&gt;  1 C1            2          1         3     1  66.7    66.7</span></span>
+<span id="cb15-5"><a href="#cb15-5"></a><span class="co">#&gt;  2 C2           NA         NA         3     1   0       0  </span></span>
+<span id="cb15-6"><a href="#cb15-6"></a><span class="co">#&gt;  3 C3            2          0         2     1  75      75  </span></span>
+<span id="cb15-7"><a href="#cb15-7"></a><span class="co">#&gt;  4 C4            2          0         4     1  37.5    37.5</span></span>
+<span id="cb15-8"><a href="#cb15-8"></a><span class="co">#&gt;  5 C5            0         NA         2     1   0       0  </span></span>
+<span id="cb15-9"><a href="#cb15-9"></a><span class="co">#&gt;  6 C6            1          0         3     1  16.7    16.7</span></span>
+<span id="cb15-10"><a href="#cb15-10"></a><span class="co">#&gt;  7 C7            1          1         2     1  50      50  </span></span>
+<span id="cb15-11"><a href="#cb15-11"></a><span class="co">#&gt;  8 C8            3         NA         4     0  75      75  </span></span>
+<span id="cb15-12"><a href="#cb15-12"></a><span class="co">#&gt;  9 E1            2          0         2     1  75      75  </span></span>
+<span id="cb15-13"><a href="#cb15-13"></a><span class="co">#&gt; 10 E2            2         NA         2     0 100     100  </span></span>
+<span id="cb15-14"><a href="#cb15-14"></a><span class="co">#&gt; 11 H1            2          0         2     1  75      75  </span></span>
+<span id="cb15-15"><a href="#cb15-15"></a><span class="co">#&gt; 12 H2            3         NA         3     0 100     100  </span></span>
+<span id="cb15-16"><a href="#cb15-16"></a><span class="co">#&gt; 13 H3            2         NA         2     0 100     100  </span></span>
+<span id="cb15-17"><a href="#cb15-17"></a><span class="co">#&gt; 14 H6            2          0         4     1  37.5    37.5</span></span></code></pre></div>
+<p>It can be noted that the results of the calculations are added to the input data.frame under the column name <code>score.1</code>. Comparing this with the value in the column named <code>score</code> that is included in the <code>indicatorData</code> dataset, the results are the same.</p>
+</div>
+<div id="calculating-oxcgrt-indices" class="section level4">
+<h4 class="hasAnchor">
+<a href="#calculating-oxcgrt-indices" class="anchor"></a>Calculating OxCGRT indices</h4>
+<p>The <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a> indices can be calculated using the <code>calculate_index</code> and <code>calculate_indices</code> functions. To calculate a specific sub-index, the following code can be used:</p>
+<div class="sourceCode" id="cb16"><pre class="downlit">
+<span class="kw">indicatorData</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/calculate_subindex.html">calculate_subindices</a></span>(indicator_code = <span class="st">"indicator"</span>,
+                       value = <span class="st">"value"</span>,
+                       flag_value = <span class="st">"flag_value"</span>,
+                       add = <span class="fl">FALSE</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/calculate_index.html">calculate_index</a></span>(codes = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="st">"C"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">8</span>, sep = <span class="st">""</span>),
+                            <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="st">"E"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, sep = <span class="st">""</span>),
+                            <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="st">"H"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, sep = <span class="st">""</span>),
+                            <span class="st">"H6"</span>), 
+                  tolerance = <span class="fl">1</span>)
+</pre></div>
+<p>This code calculates the <code>government response index</code> which is:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co">#&gt; [1] 57.7381</span></span></code></pre></div>
+<p>The same result can be reached by using the specialised function <code>calculate_gov_response</code> as follows:</p>
+<div class="sourceCode" id="cb18"><pre class="downlit">
+<span class="kw">indicatorData</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="reference/calculate_subindex.html">calculate_subindices</a></span>(indicator_code = <span class="st">"indicator"</span>,
+                       value = <span class="st">"value"</span>,
+                       flag_value = <span class="st">"flag_value"</span>,
+                       add = <span class="fl">FALSE</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/calculate_index.html">calculate_gov_response</a></span>()
+</pre></div>
+<p>which results in the same value as the previous code:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co">#&gt; [1] 57.7381</span></span></code></pre></div>
+<p>To calculate all four <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a> indices, the following code can be implemented:</p>
+<div class="sourceCode" id="cb20"><pre class="downlit">
+<span class="kw">indicatorData</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="reference/calculate_subindex.html">calculate_subindices</a></span>(indicator_code = <span class="st">"indicator"</span>,
+                       value = <span class="st">"value"</span>,
+                       flag_value = <span class="st">"flag_value"</span>,
+                       add = <span class="fl">FALSE</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/calculate_index.html">calculate_indices</a></span>()
+</pre></div>
+<p>which outputs the following results:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co">#&gt; # A tibble: 4 x 2</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="co">#&gt;   index                        values</span></span>
+<span id="cb21-3"><a href="#cb21-3"></a><span class="co">#&gt;   &lt;chr&gt;                         &lt;dbl&gt;</span></span>
+<span id="cb21-4"><a href="#cb21-4"></a><span class="co">#&gt; 1 Government Response Index      57.7</span></span>
+<span id="cb21-5"><a href="#cb21-5"></a><span class="co">#&gt; 2 Containment and Health Index   52.8</span></span>
+<span id="cb21-6"><a href="#cb21-6"></a><span class="co">#&gt; 3 Stringency Index               44.0</span></span>
+<span id="cb21-7"><a href="#cb21-7"></a><span class="co">#&gt; 4 Economic Support Index         87.5</span></span></code></pre></div>
 </div>
 </div>
 </div>

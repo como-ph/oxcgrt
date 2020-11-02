@@ -155,7 +155,7 @@ named <code>policyActions</code> and the second tibble is named <code>stringency
 
 <span class='co'>## Get time series stringency index data</span>
 <span class='fu'>get_data</span>(<span class='kw'>x</span>)
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1,179 x 8</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1,183 x 8</span><span>
 #&gt;    date_value country_code confirmed deaths stringency_actu… stringency
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 2020-10-25 AFG              </span><span style='text-decoration: underline;'>40</span><span>768   </span><span style='text-decoration: underline;'>1</span><span>511             16.7       16.7
@@ -168,7 +168,7 @@ named <code>policyActions</code> and the second tibble is named <code>stringency
 #&gt; </span><span style='color: #BCBCBC;'> 8</span><span> 2020-10-25 AUT              </span><span style='text-decoration: underline;'>79</span><span>770    978             60.2       60.2
 #&gt; </span><span style='color: #BCBCBC;'> 9</span><span> 2020-10-25 AZE              </span><span style='text-decoration: underline;'>49</span><span>013    664             64.4       64.4
 #&gt; </span><span style='color: #BCBCBC;'>10</span><span> 2020-10-25 BDI                555      1             11.1       11.1
-#&gt; </span><span style='color: #949494;'># … with 1,169 more rows, and 2 more variables: stringency_legacy </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'># … with 1,173 more rows, and 2 more variables: stringency_legacy </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   stringency_legacy_disp </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span></div><div class='input'>
 <span class='co'>## Get policy actions JSON endpoint</span>
 <span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_json_time.html'>get_json_actions</a></span>(ccode = <span class='st'>"AFG"</span>, from = <span class='kw'>NULL</span>, to = <span class='st'>"2020-07-16"</span>)
