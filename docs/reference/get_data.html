@@ -8,6 +8,13 @@
 
 <title>Get policy actions and stringency data from JSON — get_data • oxcgrt</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -41,6 +48,7 @@
 
 <meta property="og:title" content="Get policy actions and stringency data from JSON — get_data" />
 <meta property="og:description" content="Get policy actions and stringency data from JSON" />
+<meta property="og:image" content="https://como-ph.github.io/oxcgrt/logo.png" />
 
 
 
@@ -155,7 +163,7 @@ named <code>policyActions</code> and the second tibble is named <code>stringency
 
 <span class='co'>## Get time series stringency index data</span>
 <span class='fu'>get_data</span>(<span class='kw'>x</span>)
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1,174 x 8</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1,129 x 8</span><span>
 #&gt;    date_value country_code confirmed deaths stringency_actu… stringency
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 2020-10-25 ABW               </span><span style='text-decoration: underline;'>4</span><span>410     36             37.0       37.0
@@ -168,7 +176,7 @@ named <code>policyActions</code> and the second tibble is named <code>stringency
 #&gt; </span><span style='color: #BCBCBC;'> 8</span><span> 2020-10-25 AUS              </span><span style='text-decoration: underline;'>27</span><span>499    905             65.3       65.3
 #&gt; </span><span style='color: #BCBCBC;'> 9</span><span> 2020-10-25 AUT              </span><span style='text-decoration: underline;'>79</span><span>770    978             60.2       60.2
 #&gt; </span><span style='color: #BCBCBC;'>10</span><span> 2020-10-25 AZE              </span><span style='text-decoration: underline;'>49</span><span>013    664             64.4       64.4
-#&gt; </span><span style='color: #949494;'># … with 1,164 more rows, and 2 more variables: stringency_legacy </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'># … with 1,119 more rows, and 2 more variables: stringency_legacy </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   stringency_legacy_disp </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span></div><div class='input'>
 <span class='co'>## Get policy actions JSON endpoint</span>
 <span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_json_time.html'>get_json_actions</a></span>(ccode = <span class='st'>"AFG"</span>, from = <span class='kw'>NULL</span>, to = <span class='st'>"2020-07-16"</span>)

@@ -8,6 +8,13 @@
 
 <title>Get JSON for OxCGRT data — get_json_time • oxcgrt</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -41,6 +48,7 @@
 
 <meta property="og:title" content="Get JSON for OxCGRT data — get_json_time" />
 <meta property="og:description" content="Get JSON for OxCGRT data" />
+<meta property="og:image" content="https://como-ph.github.io/oxcgrt/logo.png" />
 
 
 
@@ -171,7 +179,7 @@ endpoint or endpoints.</p>
 <span class='fu'>get_json_actions</span>(ccode = <span class='st'>"AFG"</span>,
                  from = <span class='kw'>NULL</span>,
                  to = <span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>() <span class='op'>-</span> <span class='fl'>7</span>))
-</div><div class='output co'>#&gt; [1] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-27"</div><div class='input'>
+</div><div class='output co'>#&gt; [1] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-28"</div><div class='input'>
 <span class='co'>## Get JSON for Afghanistan and Philippines from 1 October to 31 October 2020</span>
 <span class='fu'>get_json_actions</span>(ccode = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Afghanistan"</span>, <span class='st'>"PH"</span>),
                  from = <span class='st'>"2020-10-01"</span>, to = <span class='st'>"2020-10-31"</span>)
@@ -239,7 +247,7 @@ endpoint or endpoints.</p>
 #&gt; [62] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/PHL/2020-10-31"</div><div class='input'>
 <span class='co'>## Get JSON time series endpoint for all data available from OxCGRT</span>
 <span class='fu'>get_json_time</span>()
-</div><div class='output co'>#&gt; [1] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/date-range/2020-01-02/2020-11-03"</div><div class='input'>
+</div><div class='output co'>#&gt; [1] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/date-range/2020-01-02/2020-11-04"</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
