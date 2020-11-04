@@ -89,7 +89,7 @@
   <div class="contents col-md-9">
 <div id="oxcgrt-an-interface-to-the-oxford-covid-19-government-response-tracker-api-" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#oxcgrt-an-interface-to-the-oxford-covid-19-government-response-tracker-api-" class="anchor"></a>oxcgrt: An Interface to the Oxford COVID-19 Government Response Tracker API <img src="reference/figures/oxcgrt.png" width="200" align="right">
+<a href="#oxcgrt-an-interface-to-the-oxford-covid-19-government-response-tracker-api-" class="anchor"></a>oxcgrt: An Interface to the Oxford COVID-19 Government Response Tracker API <img src="reference/figures/logo.png" width="200" align="right">
 </h1></div>
 <!-- badges: start -->
 
@@ -141,16 +141,16 @@ And the development version from [GitHub](https://github.com/) with:
 <div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#&gt; # A tibble: 28,208 x 8</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="co">#&gt;    date_value country_code confirmed deaths stringency_actu… stringency</span></span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="co">#&gt;    &lt;date&gt;     &lt;chr&gt;            &lt;int&gt;  &lt;int&gt;            &lt;dbl&gt;      &lt;dbl&gt;</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="co">#&gt;  1 2020-06-01 SEN               3645     42             72.2       72.2</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="co">#&gt;  2 2020-06-01 SGP              34884     23             81.5       81.5</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="co">#&gt;  3 2020-06-01 SLB                 NA     NA             33.3       33.3</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a><span class="co">#&gt;  4 2020-06-01 SLE                861     46             73.2       73.2</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a><span class="co">#&gt;  5 2020-06-01 SLV               2517     46            100        100  </span></span>
-<span id="cb3-9"><a href="#cb3-9"></a><span class="co">#&gt;  6 2020-06-01 SMR                671     42             57.4       57.4</span></span>
-<span id="cb3-10"><a href="#cb3-10"></a><span class="co">#&gt;  7 2020-06-01 SOM               1976     78             48.2       48.2</span></span>
-<span id="cb3-11"><a href="#cb3-11"></a><span class="co">#&gt;  8 2020-06-01 SRB              11412    243             43.5       43.5</span></span>
-<span id="cb3-12"><a href="#cb3-12"></a><span class="co">#&gt;  9 2020-06-01 SSD                994     10             85.2       85.2</span></span>
-<span id="cb3-13"><a href="#cb3-13"></a><span class="co">#&gt; 10 2020-06-01 SUR                 23      1             77.8       77.8</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="co">#&gt;  1 2020-06-01 ABW                101      3             38.9       38.9</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="co">#&gt;  2 2020-06-01 AFG              15205    257             84.3       84.3</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="co">#&gt;  3 2020-06-01 AGO                 86      4             77.8       77.8</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="co">#&gt;  4 2020-06-01 ALB               1137     33             67.6       67.6</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="co">#&gt;  5 2020-06-01 AND                764     51             50         50  </span></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="co">#&gt;  6 2020-06-01 ARE              34557    264             72.2       72.2</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="co">#&gt;  7 2020-06-01 ARG              16838    539             90.7       90.7</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="co">#&gt;  8 2020-06-01 AUS               7195    102             62.0       62.0</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="co">#&gt;  9 2020-06-01 AUT              16642    668             53.7       53.7</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="co">#&gt; 10 2020-06-01 AZE               5494     63             77.8       77.8</span></span>
 <span id="cb3-14"><a href="#cb3-14"></a><span class="co">#&gt; # … with 28,198 more rows, and 2 more variables: stringency_legacy &lt;dbl&gt;,</span></span>
 <span id="cb3-15"><a href="#cb3-15"></a><span class="co">#&gt; #   stringency_legacy_disp &lt;dbl&gt;</span></span></code></pre></div>
 <p>Important to note that in <code>get_json_time</code>, only the starting date (using the <code>from</code> argument) is specified to the desired 1 June 2020 in <code>YYYY-MM-DD</code> format. This is because by default the <code>to</code> argument (for the ending date) is set to the current date using a call to the <code><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date()</a></code> function. By default, the <code>from</code> argument is set to 2 January 2020 (2020-01-02) which is the earliest available data point for the stringency index. Therefore, to retrieve data on stringency index for all countries for all available time points up to current, the following commands can be issued:</p>
@@ -161,16 +161,16 @@ And the development version from [GitHub](https://github.com/) with:
 <div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">#&gt; # A tibble: 56,143 x 8</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="co">#&gt;    date_value country_code stringency_actu… stringency stringency_lega…</span></span>
 <span id="cb5-3"><a href="#cb5-3"></a><span class="co">#&gt;    &lt;date&gt;     &lt;chr&gt;                   &lt;dbl&gt;      &lt;dbl&gt;            &lt;dbl&gt;</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="co">#&gt;  1 2020-01-02 YEM                      0          0                 0  </span></span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="co">#&gt;  2 2020-01-02 ZAF                      0          0                 0  </span></span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="co">#&gt;  3 2020-01-02 ZMB                      0          0                 0  </span></span>
-<span id="cb5-7"><a href="#cb5-7"></a><span class="co">#&gt;  4 2020-01-02 ZWE                      0          0                 0  </span></span>
-<span id="cb5-8"><a href="#cb5-8"></a><span class="co">#&gt;  5 2020-01-02 TWN                      8.33       8.33             13.1</span></span>
-<span id="cb5-9"><a href="#cb5-9"></a><span class="co">#&gt;  6 2020-01-02 RKS                      0          0                 0  </span></span>
-<span id="cb5-10"><a href="#cb5-10"></a><span class="co">#&gt;  7 2020-01-02 AIA                      0          0                 0  </span></span>
-<span id="cb5-11"><a href="#cb5-11"></a><span class="co">#&gt;  8 2020-01-02 FLK                      0          0                 0  </span></span>
-<span id="cb5-12"><a href="#cb5-12"></a><span class="co">#&gt;  9 2020-01-02 MSR                      0          0                 0  </span></span>
-<span id="cb5-13"><a href="#cb5-13"></a><span class="co">#&gt; 10 2020-01-02 PCN                      0          0                 0  </span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co">#&gt;  1 2020-01-02 ABW                         0          0                0</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="co">#&gt;  2 2020-01-02 AFG                         0          0                0</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="co">#&gt;  3 2020-01-02 AGO                         0          0                0</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="co">#&gt;  4 2020-01-02 ALB                         0          0                0</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="co">#&gt;  5 2020-01-02 AND                         0          0                0</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="co">#&gt;  6 2020-01-02 ARE                         0          0                0</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="co">#&gt;  7 2020-01-02 ARG                         0          0                0</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a><span class="co">#&gt;  8 2020-01-02 AUS                         0          0                0</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="co">#&gt;  9 2020-01-02 AUT                         0          0                0</span></span>
+<span id="cb5-13"><a href="#cb5-13"></a><span class="co">#&gt; 10 2020-01-02 AZE                         0          0                0</span></span>
 <span id="cb5-14"><a href="#cb5-14"></a><span class="co">#&gt; # … with 56,133 more rows, and 3 more variables: stringency_legacy_disp &lt;dbl&gt;,</span></span>
 <span id="cb5-15"><a href="#cb5-15"></a><span class="co">#&gt; #   confirmed &lt;int&gt;, deaths &lt;int&gt;</span></span></code></pre></div>
 </div>
