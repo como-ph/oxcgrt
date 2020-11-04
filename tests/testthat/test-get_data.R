@@ -36,6 +36,12 @@ test_that("output is a tibble", {
   expect_is(x, "tbl")
 })
 
+x <- json_action %>% get_data_actions()
+
+test_that("output is a tibble", {
+  expect_is(x, "tbl")
+})
+
 x <- get_json_actions(ccode = "AFG", from = NULL, to = "2020-07-16") %>%
   get_data()
 
