@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# oxcgrt: An Interface to the Oxford COVID-19 Government Response Tracker API
+# oxcgrt: An Interface to the Oxford COVID-19 Government Response Tracker API <img src="man/figures/oxcgrt.png" width="200" align="right" />
 
 <!-- badges: start -->
 
@@ -101,20 +101,20 @@ get_json_time(from = "2020-06-01") %>% get_data_time()
 
 This produces the following output:
 
-    #> # A tibble: 28,020 x 8
+    #> # A tibble: 28,208 x 8
     #>    date_value country_code confirmed deaths stringency_actu… stringency
     #>    <date>     <chr>            <int>  <int>            <dbl>      <dbl>
-    #>  1 2020-06-01 ABW                101      3             38.9       38.9
-    #>  2 2020-06-01 AFG              15205    257             84.3       84.3
-    #>  3 2020-06-01 AGO                 86      4             77.8       77.8
-    #>  4 2020-06-01 ALB               1137     33             67.6       67.6
-    #>  5 2020-06-01 AND                764     51             50         50  
-    #>  6 2020-06-01 ARE              34557    264             72.2       72.2
-    #>  7 2020-06-01 ARG              16838    539             90.7       90.7
-    #>  8 2020-06-01 AUS               7195    102             62.0       62.0
-    #>  9 2020-06-01 AUT              16642    668             53.7       53.7
-    #> 10 2020-06-01 AZE               5494     63             77.8       77.8
-    #> # … with 28,010 more rows, and 2 more variables: stringency_legacy <dbl>,
+    #>  1 2020-06-01 SEN               3645     42             72.2       72.2
+    #>  2 2020-06-01 SGP              34884     23             81.5       81.5
+    #>  3 2020-06-01 SLB                 NA     NA             33.3       33.3
+    #>  4 2020-06-01 SLE                861     46             73.2       73.2
+    #>  5 2020-06-01 SLV               2517     46            100        100  
+    #>  6 2020-06-01 SMR                671     42             57.4       57.4
+    #>  7 2020-06-01 SOM               1976     78             48.2       48.2
+    #>  8 2020-06-01 SRB              11412    243             43.5       43.5
+    #>  9 2020-06-01 SSD                994     10             85.2       85.2
+    #> 10 2020-06-01 SUR                 23      1             77.8       77.8
+    #> # … with 28,198 more rows, and 2 more variables: stringency_legacy <dbl>,
     #> #   stringency_legacy_disp <dbl>
 
 Important to note that in `get_json_time`, only the starting date (using
@@ -133,20 +133,20 @@ get_json_time() %>% get_data_time()
 
 which produces the following output:
 
-    #> # A tibble: 55,955 x 8
+    #> # A tibble: 56,143 x 8
     #>    date_value country_code stringency_actu… stringency stringency_lega…
     #>    <date>     <chr>                   <dbl>      <dbl>            <dbl>
-    #>  1 2020-01-02 ABW                         0          0                0
-    #>  2 2020-01-02 AFG                         0          0                0
-    #>  3 2020-01-02 AGO                         0          0                0
-    #>  4 2020-01-02 ALB                         0          0                0
-    #>  5 2020-01-02 AND                         0          0                0
-    #>  6 2020-01-02 ARE                         0          0                0
-    #>  7 2020-01-02 ARG                         0          0                0
-    #>  8 2020-01-02 AUS                         0          0                0
-    #>  9 2020-01-02 AUT                         0          0                0
-    #> 10 2020-01-02 AZE                         0          0                0
-    #> # … with 55,945 more rows, and 3 more variables: stringency_legacy_disp <dbl>,
+    #>  1 2020-01-02 YEM                      0          0                 0  
+    #>  2 2020-01-02 ZAF                      0          0                 0  
+    #>  3 2020-01-02 ZMB                      0          0                 0  
+    #>  4 2020-01-02 ZWE                      0          0                 0  
+    #>  5 2020-01-02 TWN                      8.33       8.33             13.1
+    #>  6 2020-01-02 RKS                      0          0                 0  
+    #>  7 2020-01-02 AIA                      0          0                 0  
+    #>  8 2020-01-02 FLK                      0          0                 0  
+    #>  9 2020-01-02 MSR                      0          0                 0  
+    #> 10 2020-01-02 PCN                      0          0                 0  
+    #> # … with 56,133 more rows, and 3 more variables: stringency_legacy_disp <dbl>,
     #> #   confirmed <int>, deaths <int>
 
 #### Policy actions and stringency index for specific country on a specific day
