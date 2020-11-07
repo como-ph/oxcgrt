@@ -163,30 +163,30 @@ specified country/countries and specified date/dates.</p>
 
 <span class='co'>## Get data on policy actions</span>
 <span class='fu'>get_data_action</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 18 x 11</span><span>
-#&gt;    policy_type_code policy_type_dis… policyvalue policyvalue_act… flagged
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                  </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span><span>  
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> C1               School closing             3                3 TRUE   
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> C2               Workplace closi…           3                3 FALSE  
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> C3               Cancel public e…           2                2 TRUE   
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> C4               Restrictions on…           4                4 TRUE   
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> C5               Close public tr…           2                2 FALSE  
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> C6               Stay at home re…           2                2 FALSE  
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> C7               Restrictions on…           2                2 FALSE  
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> C8               International t…           1                1 </span><span style='color: #BB0000;'>NA</span><span>     
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> E1               Income support             0                0 </span><span style='color: #BB0000;'>NA</span><span>     
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> E2               Debt/contract r…           0                0 </span><span style='color: #BB0000;'>NA</span><span>     
-#&gt; </span><span style='color: #BCBCBC;'>11</span><span> E3               Fiscal measures            0                0 </span><span style='color: #BB0000;'>NA</span><span>     
-#&gt; </span><span style='color: #BCBCBC;'>12</span><span> E4               International s…           0                0 </span><span style='color: #BB0000;'>NA</span><span>     
-#&gt; </span><span style='color: #BCBCBC;'>13</span><span> H1               Public informat…           2                2 TRUE   
-#&gt; </span><span style='color: #BCBCBC;'>14</span><span> H2               Testing policy             1                1 </span><span style='color: #BB0000;'>NA</span><span>     
-#&gt; </span><span style='color: #BCBCBC;'>15</span><span> H3               Contact tracing            1                1 </span><span style='color: #BB0000;'>NA</span><span>     
-#&gt; </span><span style='color: #BCBCBC;'>16</span><span> H4               Emergency inves…           0                0 </span><span style='color: #BB0000;'>NA</span><span>     
-#&gt; </span><span style='color: #BCBCBC;'>17</span><span> H5               Investment in v…           0                0 </span><span style='color: #BB0000;'>NA</span><span>     
-#&gt; </span><span style='color: #BCBCBC;'>18</span><span> H6               Facial Coverings           3                3 TRUE   
-#&gt; </span><span style='color: #949494;'># … with 6 more variables: is_general </span><span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span><span style='color: #949494;'>, notes </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,</span><span>
-#&gt; </span><span style='color: #949494;'>#   flag_value_display_field </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, policy_value_display_field </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,</span><span>
-#&gt; </span><span style='color: #949494;'>#   date_value </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span style='color: #949494;'>, country_code </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 18 x 12</span><span>
+#&gt;    date_value country_code country_name policy_type_code policy_type_dis…
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 2020-07-16 AFG          Afghanistan  C1               School closing  
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> 2020-07-16 AFG          Afghanistan  C2               Workplace closi…
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> 2020-07-16 AFG          Afghanistan  C3               Cancel public e…
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> 2020-07-16 AFG          Afghanistan  C4               Restrictions on…
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> 2020-07-16 AFG          Afghanistan  C5               Close public tr…
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> 2020-07-16 AFG          Afghanistan  C6               Stay at home re…
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> 2020-07-16 AFG          Afghanistan  C7               Restrictions on…
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> 2020-07-16 AFG          Afghanistan  C8               International t…
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> 2020-07-16 AFG          Afghanistan  E1               Income support  
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> 2020-07-16 AFG          Afghanistan  E2               Debt/contract r…
+#&gt; </span><span style='color: #BCBCBC;'>11</span><span> 2020-07-16 AFG          Afghanistan  E3               Fiscal measures 
+#&gt; </span><span style='color: #BCBCBC;'>12</span><span> 2020-07-16 AFG          Afghanistan  E4               International s…
+#&gt; </span><span style='color: #BCBCBC;'>13</span><span> 2020-07-16 AFG          Afghanistan  H1               Public informat…
+#&gt; </span><span style='color: #BCBCBC;'>14</span><span> 2020-07-16 AFG          Afghanistan  H2               Testing policy  
+#&gt; </span><span style='color: #BCBCBC;'>15</span><span> 2020-07-16 AFG          Afghanistan  H3               Contact tracing 
+#&gt; </span><span style='color: #BCBCBC;'>16</span><span> 2020-07-16 AFG          Afghanistan  H4               Emergency inves…
+#&gt; </span><span style='color: #BCBCBC;'>17</span><span> 2020-07-16 AFG          Afghanistan  H5               Investment in v…
+#&gt; </span><span style='color: #BCBCBC;'>18</span><span> 2020-07-16 AFG          Afghanistan  H6               Facial Coverings
+#&gt; </span><span style='color: #949494;'># … with 7 more variables: policyvalue </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, policyvalue_actual </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   flagged </span><span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span><span style='color: #949494;'>, is_general </span><span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span><span style='color: #949494;'>, notes </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   flag_value_display_field </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, policy_value_display_field </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'>
 <span class='co'>## Get relevant JSON for Afghanistan and Philippines for whole month of</span>
 <span class='co'>## October</span>
 <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_json_time.html'>get_json_actions</a></span><span class='op'>(</span>ccode <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"AFG"</span>, <span class='st'>"PH"</span><span class='op'>)</span>,
@@ -195,22 +195,44 @@ specified country/countries and specified date/dates.</p>
 
 <span class='co'>## Get data on policy actions</span>
 <span class='fu'>get_data_actions</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 167 x 11</span><span>
-#&gt;    policy_type_code policy_type_dis… policyvalue policyvalue_act… flagged
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                  </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span><span>  
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> C1               School closing             1                1 TRUE   
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> C2               Workplace closi…           2                2 TRUE   
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> C3               Cancel public e…           0                0 </span><span style='color: #BB0000;'>NA</span><span>     
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> C4               Restrictions on…           0                0 </span><span style='color: #BB0000;'>NA</span><span>     
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> C5               Close public tr…           0                0 </span><span style='color: #BB0000;'>NA</span><span>     
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> C6               Stay at home re…           0                0 </span><span style='color: #BB0000;'>NA</span><span>     
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> C7               Restrictions on…           0                0 </span><span style='color: #BB0000;'>NA</span><span>     
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> C8               International t…           0                0 </span><span style='color: #BB0000;'>NA</span><span>     
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> E1               Income support             0                0 </span><span style='color: #BB0000;'>NA</span><span>     
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> E2               Debt/contract r…           1                1 </span><span style='color: #BB0000;'>NA</span><span>     
-#&gt; </span><span style='color: #949494;'># … with 157 more rows, and 6 more variables: is_general </span><span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span><span style='color: #949494;'>, notes </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,</span><span>
+</div><div class='output co'>#&gt; <span class='message'>New names:</span>
+#&gt; <span class='message'>* date_value -&gt; date_value...1</span>
+#&gt; <span class='message'>* country_code -&gt; country_code...2</span>
+#&gt; <span class='message'>* date_value -&gt; date_value...11</span>
+#&gt; <span class='message'>* country_code -&gt; country_code...12</span></div><div class='output co'>#&gt; <span class='message'>New names:</span>
+#&gt; <span class='message'>* date_value -&gt; date_value...1</span>
+#&gt; <span class='message'>* country_code -&gt; country_code...2</span>
+#&gt; <span class='message'>* date_value -&gt; date_value...11</span>
+#&gt; <span class='message'>* country_code -&gt; country_code...12</span></div><div class='output co'>#&gt; <span class='message'>New names:</span>
+#&gt; <span class='message'>* date_value -&gt; date_value...1</span>
+#&gt; <span class='message'>* country_code -&gt; country_code...2</span>
+#&gt; <span class='message'>* date_value -&gt; date_value...11</span>
+#&gt; <span class='message'>* country_code -&gt; country_code...12</span></div><div class='output co'>#&gt; <span class='message'>New names:</span>
+#&gt; <span class='message'>* date_value -&gt; date_value...1</span>
+#&gt; <span class='message'>* country_code -&gt; country_code...2</span>
+#&gt; <span class='message'>* date_value -&gt; date_value...11</span>
+#&gt; <span class='message'>* country_code -&gt; country_code...12</span></div><div class='output co'>#&gt; <span class='message'>New names:</span>
+#&gt; <span class='message'>* date_value -&gt; date_value...1</span>
+#&gt; <span class='message'>* country_code -&gt; country_code...2</span>
+#&gt; <span class='message'>* date_value -&gt; date_value...11</span>
+#&gt; <span class='message'>* country_code -&gt; country_code...12</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 167 x 16</span><span>
+#&gt;    date_value country_code country_name policy_type_code policy_type_dis…
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 2020-10-25 AFG          Afghanistan  C1               School closing  
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> 2020-10-25 AFG          Afghanistan  C2               Workplace closi…
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> 2020-10-25 AFG          Afghanistan  C3               Cancel public e…
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> 2020-10-25 AFG          Afghanistan  C4               Restrictions on…
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> 2020-10-25 AFG          Afghanistan  C5               Close public tr…
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> 2020-10-25 AFG          Afghanistan  C6               Stay at home re…
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> 2020-10-25 AFG          Afghanistan  C7               Restrictions on…
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> 2020-10-25 AFG          Afghanistan  C8               International t…
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> 2020-10-25 AFG          Afghanistan  E1               Income support  
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> 2020-10-25 AFG          Afghanistan  E2               Debt/contract r…
+#&gt; </span><span style='color: #949494;'># … with 157 more rows, and 11 more variables: policyvalue </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   policyvalue_actual </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, flagged </span><span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span><span style='color: #949494;'>, is_general </span><span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span><span style='color: #949494;'>, notes </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   flag_value_display_field </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, policy_value_display_field </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,</span><span>
-#&gt; </span><span style='color: #949494;'>#   date_value </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span style='color: #949494;'>, country_code </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'>
+#&gt; </span><span style='color: #949494;'>#   date_value...1 </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span style='color: #949494;'>, country_code...2 </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, date_value...11 </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   country_code...12 </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
