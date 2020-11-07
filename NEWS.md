@@ -12,3 +12,7 @@ from JSON
 sub-indices
 
 * Functions to calculate [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) indices
+
+* [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) codebook included as a dataset
+
+

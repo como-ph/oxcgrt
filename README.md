@@ -23,17 +23,17 @@ The [Oxford COVID-19 Government Response Tracker
 worldwide government responses to the COVID-19 pandemic rigorously and
 consistently. [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) makes
 available systematic information in a consistent way, aiding those who
-require information have access to it efficiently for their purposes.
-This package facilitates access to the
+require information have access to it efficiently. This package
+facilitates access to the
 [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) data for
 [R](https://cran.r-project.org) users via version 2 of its
 [API](https://covidtracker.bsg.ox.ac.uk/about-api). This package also
 includes functions to calculate the various
 [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) indices in
-[R](https://cran.r-project.org). This package is targeted at
+[R](https://cran.r-project.org). This package for
 [R](https://cran.r-project.org) users who use or plan to use the
 [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) data for their research
-and other purposes.
+or for other purposes.
 
 ## Installation
 
@@ -112,7 +112,7 @@ get_json_time(from = "2020-06-01") %>% get_data_time()
 
 This produces the following output:
 
-    #> # A tibble: 28,709 x 8
+    #> # A tibble: 28,713 x 8
     #>    date_value country_code confirmed deaths stringency_actu… stringency
     #>    <date>     <chr>            <int>  <int>            <dbl>      <dbl>
     #>  1 2020-06-01 ABW                101      3             38.9       38.9
@@ -125,7 +125,7 @@ This produces the following output:
     #>  8 2020-06-01 AUS               7195    102             62.0       62.0
     #>  9 2020-06-01 AUT              16642    668             53.7       53.7
     #> 10 2020-06-01 AZE               5494     63             77.8       77.8
-    #> # … with 28,699 more rows, and 2 more variables: stringency_legacy <dbl>,
+    #> # … with 28,703 more rows, and 2 more variables: stringency_legacy <dbl>,
     #> #   stringency_legacy_disp <dbl>
 
 Important to note that in `get_json_time`, only the starting date (using
@@ -144,7 +144,7 @@ get_json_time() %>% get_data_time()
 
 which produces the following output:
 
-    #> # A tibble: 56,644 x 8
+    #> # A tibble: 56,648 x 8
     #>    date_value country_code stringency_actu… stringency stringency_lega…
     #>    <date>     <chr>                   <dbl>      <dbl>            <dbl>
     #>  1 2020-01-02 ABW                         0          0                0
@@ -157,7 +157,7 @@ which produces the following output:
     #>  8 2020-01-02 AUS                         0          0                0
     #>  9 2020-01-02 AUT                         0          0                0
     #> 10 2020-01-02 AZE                         0          0                0
-    #> # … with 56,634 more rows, and 3 more variables: stringency_legacy_disp <dbl>,
+    #> # … with 56,638 more rows, and 3 more variables: stringency_legacy_disp <dbl>,
     #> #   confirmed <int>, deaths <int>
 
 #### Policy actions and stringency index for specific country on a specific day
