@@ -29,5 +29,6 @@
 if(getRversion() >= "2.15.1") {
   utils::globalVariables(c("policyvalue", "notes", "date_value", "confirmed",
                            "deaths", "stringency_actual", "stringency",
-                           "stringency_legacy", "stringency_legacy_disp"))
+                           "stringency_legacy", "stringency_legacy_disp",
+                           "country_code"))
 }
