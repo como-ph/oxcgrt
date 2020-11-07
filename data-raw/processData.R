@@ -12,9 +12,10 @@ codebook <- xml2::read_html("https://github.com/OxCGRT/covid-policy-tracker/blob
   dplyr::bind_rows() %>%
   dplyr::mutate(`Policy Group` = c(rep("Containment and closure policies", 15),
                                    rep("Economic policies", 5),
-                                   rep("Health system policies", 7),
+                                   rep("Health system policies", 8),
                                    "Miscellaneous policies"),
                 ID = stringr::str_split(string = Name, pattern = "_", simplify = TRUE)[ , 1],
+                Coding = stringr::str_replace_all(string = Coding, pattern = " 0", replacement = "; 0" ),
                 Coding = stringr::str_replace_all(string = Coding, pattern = " 1", replacement = "; 1" ),
                 Coding = stringr::str_replace_all(string = Coding, pattern = " 2", replacement = "; 2" ),
                 Coding = stringr::str_replace_all(string = Coding, pattern = " 3", replacement = "; 3" ),

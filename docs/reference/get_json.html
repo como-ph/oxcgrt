@@ -138,9 +138,9 @@
     <p>Get JSON for OxCGRT data</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_json_time</span>(from = <span class='st'>"2020-01-02"</span>, to = <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>())
+    <pre class="usage"><span class='fu'>get_json_time</span><span class='op'>(</span>from <span class='op'>=</span> <span class='st'>"2020-01-02"</span>, to <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='fu'>get_json_actions</span>(<span class='kw'>ccode</span>, from = <span class='st'>"2020-01-02"</span>, to = <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>())</pre>
+<span class='fu'>get_json_actions</span><span class='op'>(</span><span class='va'>ccode</span>, from <span class='op'>=</span> <span class='st'>"2020-01-02"</span>, to <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -176,13 +176,13 @@ endpoint or endpoints.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Get JSON for Afghanistan at 7 days previous to current date</span>
-<span class='fu'>get_json_actions</span>(ccode = <span class='st'>"AFG"</span>,
-                 from = <span class='kw'>NULL</span>,
-                 to = <span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>() <span class='op'>-</span> <span class='fl'>7</span>))
-</div><div class='output co'>#&gt; [1] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-28"</div><div class='input'>
+<span class='fu'>get_json_actions</span><span class='op'>(</span>ccode <span class='op'>=</span> <span class='st'>"AFG"</span>,
+                 from <span class='op'>=</span> <span class='cn'>NULL</span>,
+                 to <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>-</span> <span class='fl'>7</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-31"</div><div class='input'>
 <span class='co'>## Get JSON for Afghanistan and Philippines from 1 October to 31 October 2020</span>
-<span class='fu'>get_json_actions</span>(ccode = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Afghanistan"</span>, <span class='st'>"PH"</span>),
-                 from = <span class='st'>"2020-10-01"</span>, to = <span class='st'>"2020-10-31"</span>)
+<span class='fu'>get_json_actions</span><span class='op'>(</span>ccode <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Afghanistan"</span>, <span class='st'>"PH"</span><span class='op'>)</span>,
+                 from <span class='op'>=</span> <span class='st'>"2020-10-01"</span>, to <span class='op'>=</span> <span class='st'>"2020-10-31"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;  [1] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-01"
 #&gt;  [2] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-02"
 #&gt;  [3] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/AFG/2020-10-03"
@@ -246,8 +246,8 @@ endpoint or endpoints.</p>
 #&gt; [61] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/PHL/2020-10-30"
 #&gt; [62] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/PHL/2020-10-31"</div><div class='input'>
 <span class='co'>## Get JSON time series endpoint for all data available from OxCGRT</span>
-<span class='fu'>get_json_time</span>()
-</div><div class='output co'>#&gt; [1] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/date-range/2020-01-02/2020-11-04"</div><div class='input'>
+<span class='fu'>get_json_time</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/date-range/2020-01-02/2020-11-07"</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -93,7 +93,7 @@
 </h1></div>
 <!-- badges: start -->
 
-<p>The <a href="https://www.bsg.ox.ac.uk/covidtracker">Oxford COVID-19 Government Response Tracker (OxCGRT)</a> tracks and compares worldwide government responses to the COVID-19 pandemic rigorously and consistently. <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a> makes available systematic information in a consistent way, aiding those who require information have access to it efficiently for their purposes. This package facilitates access to the <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a> data via its API for R users. This package also includes functions to calculate the various <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a> indices.</p>
+<p>The <a href="https://www.bsg.ox.ac.uk/covidtracker">Oxford COVID-19 Government Response Tracker (OxCGRT)</a> tracks and compares worldwide government responses to the COVID-19 pandemic rigorously and consistently. <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a> makes available systematic information in a consistent way, aiding those who require information have access to it efficiently for their purposes. This package facilitates access to the <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a> data for <a href="https://cran.r-project.org">R</a> users via version 2 of its <a href="https://covidtracker.bsg.ox.ac.uk/about-api">API</a>. This package also includes functions to calculate the various <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a> indices in <a href="https://cran.r-project.org">R</a>. This package is targeted at <a href="https://cran.r-project.org">R</a> users who use or plan to use the <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a> data for their research and other purposes.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -110,35 +110,33 @@ And the development version from [GitHub](https://github.com/) with:
 <p><code>oxcgrt</code> is not yet available on <a href="https://cran.r-project.org">CRAN</a>.</p>
 <p>The development version of <code>oxcgrt</code> can be installed via <a href="https://github.com/como-ph/oxcgrt">GitHub</a>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="co">if</span>(<span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/library.html">require</a></span>(<span class="kw"><a href="https://remotes.r-lib.org">remotes</a></span>)) <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"remotes"</span>)
-<span class="kw">remotes</span>::<span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"como-ph/oxcgrt"</span>)
-</pre></div>
+<span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://remotes.r-lib.org">remotes</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"como-ph/oxcgrt"</span><span class="op">)</span></pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
-<p>The <code>oxcgrt</code> package includes two types of functions. First are functions that retrieve data via <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a>’s API, and second are functions that calculate <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a>’s various indices.</p>
+<p>The <code>oxcgrt</code> package includes two types of functions. First are functions that retrieve data via <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a>’s <a href="https://covidtracker.bsg.ox.ac.uk/about-api">API</a>, and second are functions that calculate <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a>’s various <a href="https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/index_methodology.md">indices</a>.</p>
 <div id="retrieve-data" class="section level3">
 <h3 class="hasAnchor">
 <a href="#retrieve-data" class="anchor"></a>Retrieve data</h3>
-<p>The <em>retrieve data</em> functions are based on the <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a>’s JSON API described <a href="https://covidtracker.bsg.ox.ac.uk/about-api">here</a>. Two API endpoints are provided: 1) endpoint for JSON providing data for stringency index by country over time; and, 2) endpoint for JSON providing data on policy actions and stringency index for a specific country on a specific day.</p>
+<p>The <em>retrieve data</em> functions are based on the <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a>’s JSON <a href="https://covidtracker.bsg.ox.ac.uk/about-api">API</a> described <a href="https://covidtracker.bsg.ox.ac.uk/about-api">here</a>. Two <a href="https://covidtracker.bsg.ox.ac.uk/about-api">API</a> endpoints are provided: 1) endpoint for JSON providing data for stringency index by country over time; and, 2) endpoint for JSON providing data on policy actions and stringency index for a specific country on a specific day.</p>
 <div id="stringency-index-by-country-over-time" class="section level4">
 <h4 class="hasAnchor">
 <a href="#stringency-index-by-country-over-time" class="anchor"></a>Stringency index by country over time</h4>
-<p>The first API endpoint provides JSON for all countries included in the <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a> over a specified period of time:</p>
+<p>The first <a href="https://covidtracker.bsg.ox.ac.uk/about-api">API</a> endpoint provides JSON for all countries included in the <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a> over a specified period of time:</p>
 <p><br></p>
 <p><code>https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/date-range/{start-date}/{end-date}</code></p>
 <p><br></p>
 <p>where <code>start-date</code> and <code>end-date</code> are the starting date and ending date (both in <code>YYYY-MM-DD</code> format) respectively from which to retrieve data.</p>
 <p>The <code>oxcgrt</code> package provides a function named <code>get_json_time</code> to interface with the API and retrieve the specified JSON and a function named <code>get_data_time</code> to extract the data from the specified JSON into an <a href="https://cran.r-project.org">R</a> <code>tibble</code> object. These two functions have been designed such that they can be piped from one to the other. Hence to retrieve stringency index data for all countries from 1 June 2020 to current date, the following code can be used:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/como-ph/oxcgrt">oxcgrt</a></span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw">magrittr</span>)
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://como-ph.github.io/oxcgrt">oxcgrt</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">magrittr</span><span class="op">)</span>
 
-<span class="fu"><a href="reference/get_json_time.html">get_json_time</a></span>(from = <span class="st">"2020-06-01"</span>) <span class="op">%&gt;%</span> <span class="fu"><a href="reference/get_data_time.html">get_data_time</a></span>()
-</pre></div>
+<span class="fu"><a href="reference/get_json_time.html">get_json_time</a></span><span class="op">(</span>from <span class="op">=</span> <span class="st">"2020-06-01"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/get_data_time.html">get_data_time</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <p>This produces the following output:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#&gt; # A tibble: 28,208 x 8</span></span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#&gt; # A tibble: 28,709 x 8</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="co">#&gt;    date_value country_code confirmed deaths stringency_actu… stringency</span></span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="co">#&gt;    &lt;date&gt;     &lt;chr&gt;            &lt;int&gt;  &lt;int&gt;            &lt;dbl&gt;      &lt;dbl&gt;</span></span>
 <span id="cb3-4"><a href="#cb3-4"></a><span class="co">#&gt;  1 2020-06-01 ABW                101      3             38.9       38.9</span></span>
@@ -151,14 +149,13 @@ And the development version from [GitHub](https://github.com/) with:
 <span id="cb3-11"><a href="#cb3-11"></a><span class="co">#&gt;  8 2020-06-01 AUS               7195    102             62.0       62.0</span></span>
 <span id="cb3-12"><a href="#cb3-12"></a><span class="co">#&gt;  9 2020-06-01 AUT              16642    668             53.7       53.7</span></span>
 <span id="cb3-13"><a href="#cb3-13"></a><span class="co">#&gt; 10 2020-06-01 AZE               5494     63             77.8       77.8</span></span>
-<span id="cb3-14"><a href="#cb3-14"></a><span class="co">#&gt; # … with 28,198 more rows, and 2 more variables: stringency_legacy &lt;dbl&gt;,</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="co">#&gt; # … with 28,699 more rows, and 2 more variables: stringency_legacy &lt;dbl&gt;,</span></span>
 <span id="cb3-15"><a href="#cb3-15"></a><span class="co">#&gt; #   stringency_legacy_disp &lt;dbl&gt;</span></span></code></pre></div>
 <p>Important to note that in <code>get_json_time</code>, only the starting date (using the <code>from</code> argument) is specified to the desired 1 June 2020 in <code>YYYY-MM-DD</code> format. This is because by default the <code>to</code> argument (for the ending date) is set to the current date using a call to the <code><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date()</a></code> function. By default, the <code>from</code> argument is set to 2 January 2020 (2020-01-02) which is the earliest available data point for the stringency index. Therefore, to retrieve data on stringency index for all countries for all available time points up to current, the following commands can be issued:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="fu"><a href="reference/get_json_time.html">get_json_time</a></span>() <span class="op">%&gt;%</span> <span class="fu"><a href="reference/get_data_time.html">get_data_time</a></span>()
-</pre></div>
+<span class="fu"><a href="reference/get_json_time.html">get_json_time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/get_data_time.html">get_data_time</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <p>which produces the following output:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">#&gt; # A tibble: 56,143 x 8</span></span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">#&gt; # A tibble: 56,644 x 8</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="co">#&gt;    date_value country_code stringency_actu… stringency stringency_lega…</span></span>
 <span id="cb5-3"><a href="#cb5-3"></a><span class="co">#&gt;    &lt;date&gt;     &lt;chr&gt;                   &lt;dbl&gt;      &lt;dbl&gt;            &lt;dbl&gt;</span></span>
 <span id="cb5-4"><a href="#cb5-4"></a><span class="co">#&gt;  1 2020-01-02 ABW                         0          0                0</span></span>
@@ -171,21 +168,23 @@ And the development version from [GitHub](https://github.com/) with:
 <span id="cb5-11"><a href="#cb5-11"></a><span class="co">#&gt;  8 2020-01-02 AUS                         0          0                0</span></span>
 <span id="cb5-12"><a href="#cb5-12"></a><span class="co">#&gt;  9 2020-01-02 AUT                         0          0                0</span></span>
 <span id="cb5-13"><a href="#cb5-13"></a><span class="co">#&gt; 10 2020-01-02 AZE                         0          0                0</span></span>
-<span id="cb5-14"><a href="#cb5-14"></a><span class="co">#&gt; # … with 56,133 more rows, and 3 more variables: stringency_legacy_disp &lt;dbl&gt;,</span></span>
+<span id="cb5-14"><a href="#cb5-14"></a><span class="co">#&gt; # … with 56,634 more rows, and 3 more variables: stringency_legacy_disp &lt;dbl&gt;,</span></span>
 <span id="cb5-15"><a href="#cb5-15"></a><span class="co">#&gt; #   confirmed &lt;int&gt;, deaths &lt;int&gt;</span></span></code></pre></div>
 </div>
 <div id="policy-actions-and-stringency-index-for-specific-country-on-a-specific-day" class="section level4">
 <h4 class="hasAnchor">
 <a href="#policy-actions-and-stringency-index-for-specific-country-on-a-specific-day" class="anchor"></a>Policy actions and stringency index for specific country on a specific day</h4>
-<p>The second API endpoint provides JSON for a specific country included in the <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a> for a specified day:</p>
+<p>The second <a href="https://covidtracker.bsg.ox.ac.uk/about-api">API</a> endpoint provides JSON for a specific country included in the <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a> for a specified day:</p>
 <p><br></p>
 <p><code>https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/{country-code}/{date}</code></p>
 <p><br></p>
 <p>where <code>country-code</code> is the ISO 3166-1 alpha-3 country code for the required country to get data for and <code>date</code> is the date (in <code>YYYY-MM-DD</code> format) on which to retrieve data.</p>
-<p>The <code>oxcgrt</code> package provides a function named <code>get_json_actions</code> to interface with the API and retrieve the specified JSON and a function named <code>get_data</code> to extract the data from the specified JSON into a named <code>list</code> <a href="https://cran.r-project.org">R</a> object. These two functions have been designed such that they can be piped from one to the other. Hence to retrieve policy actions and stringency index data for Afghanistan for 1 June 2020, the following code can be used:</p>
+<p>The <code>oxcgrt</code> package provides a function named <code>get_json_actions</code> to interface with the <a href="https://covidtracker.bsg.ox.ac.uk/about-api">API</a> and retrieve the specified JSON and a function named <code>get_data</code> to extract the data from the specified JSON into a named <code>list</code> <a href="https://cran.r-project.org">R</a> object. These two functions have been designed such that they can be piped from one to the other. Hence to retrieve policy actions and stringency index data for Afghanistan for 1 June 2020, the following code can be used:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="fu"><a href="reference/get_json_time.html">get_json_actions</a></span>(ccode = <span class="st">"AFG"</span>, from = <span class="kw">NULL</span>, to = <span class="st">"2020-06-01"</span>) <span class="op">%&gt;%</span> <span class="fu"><a href="reference/get_data.html">get_data</a></span>()
-</pre></div>
+<span class="fu"><a href="reference/get_json_time.html">get_json_actions</a></span><span class="op">(</span>ccode <span class="op">=</span> <span class="st">"AFG"</span>, 
+                 from <span class="op">=</span> <span class="cn">NULL</span>, 
+                 to <span class="op">=</span> <span class="st">"2020-06-01"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="reference/get_data.html">get_data</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <p>which produces the following output:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co">#&gt; $policyActions</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="co">#&gt; # A tibble: 18 x 9</span></span>
@@ -224,8 +223,10 @@ And the development version from [GitHub](https://github.com/) with:
 <a href="#policy-actions-for-specific-country-or-countries-on-a-specific-day-or-days" class="anchor"></a>Policy actions for specific country or countries on a specific day or days</h4>
 <p>It is also possible to retrieve just policy actions data for a specific country or for multiple countries on a specific day or multiple days. To retrieve policy actions data for Afghanistan for 1 June 2020, the following code can be used:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit">
-<span class="fu"><a href="reference/get_json_time.html">get_json_actions</a></span>(ccode = <span class="st">"AFG"</span>, from = <span class="kw">NULL</span>, to = <span class="st">"2020-06-01"</span>) <span class="op">%&gt;%</span> <span class="fu"><a href="reference/get_data_action.html">get_data_action</a></span>()
-</pre></div>
+<span class="fu"><a href="reference/get_json_time.html">get_json_actions</a></span><span class="op">(</span>ccode <span class="op">=</span> <span class="st">"AFG"</span>, 
+                 from <span class="op">=</span> <span class="cn">NULL</span>, 
+                 to <span class="op">=</span> <span class="st">"2020-06-01"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="reference/get_data_action.html">get_data_action</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <p>This results in:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co">#&gt; # A tibble: 18 x 11</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a><span class="co">#&gt;    policy_type_code policy_type_dis… policyvalue policyvalue_act… flagged</span></span>
@@ -254,8 +255,10 @@ And the development version from [GitHub](https://github.com/) with:
 <p>Important to note here that the output is a tibble of just the policy actions and two additional columns have been added to the dataset - <code>date_value</code> and <code>country_code</code> - to identify the data as coming from a specific date and for a specific country.</p>
 <p>To retrieve policy actions data for multiple countries on multiple days, the <code>get_data_actions</code> functions can be used as shown below:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit">
-<span class="fu"><a href="reference/get_json_time.html">get_json_actions</a></span>(ccode = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"AFG"</span>, <span class="st">"Philippines"</span>), from = <span class="st">"2020-10-25"</span>, to = <span class="st">"2020-10-31"</span>) <span class="op">%&gt;%</span> <span class="fu"><a href="reference/get_data_action.html">get_data_actions</a></span>()
-</pre></div>
+<span class="fu"><a href="reference/get_json_time.html">get_json_actions</a></span><span class="op">(</span>ccode <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"AFG"</span>, <span class="st">"Philippines"</span><span class="op">)</span>, 
+                 from <span class="op">=</span> <span class="st">"2020-10-25"</span>, 
+                 to <span class="op">=</span> <span class="st">"2020-10-31"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="reference/get_data_action.html">get_data_actions</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <p>This results in:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co">#&gt; # A tibble: 167 x 11</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a><span class="co">#&gt;    policy_type_code policy_type_dis… policyvalue policyvalue_act… flagged</span></span>
@@ -300,15 +303,15 @@ And the development version from [GitHub](https://github.com/) with:
 <tbody>
 <tr class="odd">
 <td align="left">C1</td>
-<td align="left">C1_School closing</td>
+<td align="left">School closing</td>
 <td align="left">Record closings of schools and universities</td>
 <td align="left">Ordinal scale</td>
-<td align="left">0 - no measures; 1 - recommend closing; 2 - require closing (only some levels or categories, eg just high school, or just public schools); 3 - require closing all levels; Blank - no data</td>
+<td align="left">0 - no measures; 1 - recommend closing or all schools open with alterations resulting in significant differences compared to non-Covid-19 operations; 2 - require closing (only some levels or categories, eg just high school, or just public schools); 3 - require closing all levels; Blank - no data</td>
 <td align="left">Containment and closure policies</td>
 </tr>
 <tr class="even">
 <td align="left">C2</td>
-<td align="left">C2_Workplace closing</td>
+<td align="left">Workplace closing</td>
 <td align="left">Record closings of workplaces</td>
 <td align="left">Ordinal scale</td>
 <td align="left">0 - no measures; 1 - recommend closing (or recommend work from home); 2 - require closing (or work from home) for some sectors or categories of workers; 3 - require closing (or work from home) for all-but-essential workplaces (eg grocery stores, doctors); Blank - no data</td>
@@ -316,7 +319,7 @@ And the development version from [GitHub](https://github.com/) with:
 </tr>
 <tr class="odd">
 <td align="left">C3</td>
-<td align="left">C3_Cancel public events</td>
+<td align="left">Cancel public events</td>
 <td align="left">Record cancelling public events</td>
 <td align="left">Ordinal scale</td>
 <td align="left">0 - no measures; 1 - recommend cancelling; 2 - require cancelling; Blank - no data</td>
@@ -324,7 +327,7 @@ And the development version from [GitHub](https://github.com/) with:
 </tr>
 <tr class="even">
 <td align="left">C4</td>
-<td align="left">C4_Restrictions on gatherings</td>
+<td align="left">Restrictions on gatherings</td>
 <td align="left">Record limits on private gatherings</td>
 <td align="left">Ordinal scale</td>
 <td align="left">0 - no restrictions; 1 - restrictions on very large gatherings (the limit is above; 1000 people); 2 - restrictions on gatherings between; 101-1000 people; 3 - restrictions on gatherings between; 11-100 people; 4 - restrictions on gatherings of; 10 people or less; Blank - no data</td>
@@ -332,7 +335,7 @@ And the development version from [GitHub](https://github.com/) with:
 </tr>
 <tr class="odd">
 <td align="left">C5</td>
-<td align="left">C5_Close public transport</td>
+<td align="left">Close public transport</td>
 <td align="left">Record closing of public transport</td>
 <td align="left">Ordinal scale</td>
 <td align="left">0 - no measures; 1 - recommend closing (or significantly reduce volume/route/means of transport available); 2 - require closing (or prohibit most citizens from using it); Blank - no data</td>
@@ -340,7 +343,7 @@ And the development version from [GitHub](https://github.com/) with:
 </tr>
 <tr class="even">
 <td align="left">C6</td>
-<td align="left">C6_Stay at home requirements</td>
+<td align="left">Stay at home requirements</td>
 <td align="left">Record orders to “shelter-in-place” and otherwise confine to the home</td>
 <td align="left">Ordinal scale</td>
 <td align="left">0 - no measures; 1 - recommend not leaving house; 2 - require not leaving house with exceptions for daily exercise, grocery shopping, and ‘essential’ trips; 3 - require not leaving house with minimal exceptions (eg allowed to leave once a week, or only one person can leave at a time, etc); Blank - no data</td>
@@ -348,7 +351,7 @@ And the development version from [GitHub](https://github.com/) with:
 </tr>
 <tr class="odd">
 <td align="left">C7</td>
-<td align="left">C7_Restrictions on internal movement</td>
+<td align="left">Restrictions on internal movement</td>
 <td align="left">Record restrictions on internal movement between cities/regions</td>
 <td align="left">Ordinal scale</td>
 <td align="left">0 - no measures; 1 - recommend not to travel between regions/cities; 2 - internal movement restrictions in place; Blank - no data</td>
@@ -356,7 +359,7 @@ And the development version from [GitHub](https://github.com/) with:
 </tr>
 <tr class="even">
 <td align="left">C8</td>
-<td align="left">C8_International travel controls</td>
+<td align="left">International travel controls</td>
 <td align="left">Record restrictions on international travel Note: this records policy for foreign travellers, not citizens</td>
 <td align="left">Ordinal scale</td>
 <td align="left">0 - no restrictions; 1 - screening arrivals; 2 - quarantine arrivals from some or all regions; 3 - ban arrivals from some regions; 4 - ban on all regions or total border closure; Blank - no data</td>
@@ -364,7 +367,7 @@ And the development version from [GitHub](https://github.com/) with:
 </tr>
 <tr class="odd">
 <td align="left">E1</td>
-<td align="left">E1_Income support (for households)</td>
+<td align="left">Income support (for households)</td>
 <td align="left">Record if the government is providing direct cash payments to people who lose their jobs or cannot work. Note: only includes payments to firms if explicitly linked to payroll/salaries</td>
 <td align="left">Ordinal scale</td>
 <td align="left">0 - no income support; 1 - government is replacing less than 50% of lost salary (or if a flat sum, it is less than 50% median salary); 2 - government is replacing 50% or more of lost salary (or if a flat sum, it is greater than 50% median salary); Blank - no data</td>
@@ -372,7 +375,7 @@ And the development version from [GitHub](https://github.com/) with:
 </tr>
 <tr class="even">
 <td align="left">E2</td>
-<td align="left">E2_Debt/contract relief (for households)</td>
+<td align="left">Debt/contract relief (for households)</td>
 <td align="left">Record if the government is freezing financial obligations for households (eg stopping loan repayments, preventing services like water from stopping, or banning evictions)</td>
 <td align="left">Ordinal scale</td>
 <td align="left">0 - no debt/contract relief; 1 - narrow relief, specific to one kind of contract; 2 - broad debt/contract relief</td>
@@ -380,23 +383,23 @@ And the development version from [GitHub](https://github.com/) with:
 </tr>
 <tr class="odd">
 <td align="left">E3</td>
-<td align="left">E3_Fiscal measures</td>
+<td align="left">Fiscal measures</td>
 <td align="left">Announced economic stimulus spending Note: only record amount additional to previously announced spending</td>
 <td align="left">USD</td>
-<td align="left">Record monetary value in USD of fiscal stimuli, includes any spending or tax cuts NOT included in E4, H4 or H5 0 - no new spending that day; Blank - no data</td>
+<td align="left">Record monetary value in USD of fiscal stimuli, includes any spending or tax cuts NOT included in E4, H4 or H5; 0 - no new spending that day; Blank - no data</td>
 <td align="left">Economic policies</td>
 </tr>
 <tr class="even">
 <td align="left">E4</td>
-<td align="left">E4_International support</td>
+<td align="left">International support</td>
 <td align="left">Announced offers of Covid-19 related aid spending to other countries Note: only record amount additional to previously announced spending</td>
 <td align="left">USD</td>
-<td align="left">Record monetary value in USD 0 - no new spending that day; Blank - no data</td>
+<td align="left">Record monetary value in USD; 0 - no new spending that day; Blank - no data</td>
 <td align="left">Economic policies</td>
 </tr>
 <tr class="odd">
 <td align="left">H1</td>
-<td align="left">H1_Public information campaigns</td>
+<td align="left">Public information campaigns</td>
 <td align="left">Record presence of public info campaigns</td>
 <td align="left">Ordinal scale</td>
 <td align="left">0 - no Covid-19 public information campaign; 1 - public officials urging caution about Covid-19; 2- coordinated public information campaign (eg across traditional and social media); Blank - no data</td>
@@ -404,7 +407,7 @@ And the development version from [GitHub](https://github.com/) with:
 </tr>
 <tr class="even">
 <td align="left">H2</td>
-<td align="left">H2_Testing policy</td>
+<td align="left">Testing policy</td>
 <td align="left">Record government policy on who has access to testing Note: this records policies about testing for current infection (PCR tests) not testing for immunity (antibody test)</td>
 <td align="left">Ordinal scale</td>
 <td align="left">0 - no testing policy; 1 - only those who both (a) have symptoms AND (b) meet specific criteria (eg key workers, admitted to hospital, came into contact with a known case, returned from overseas); 2 - testing of anyone showing Covid-19 symptoms; 3 - open public testing (eg “drive through” testing available to asymptomatic people); Blank - no data</td>
@@ -412,7 +415,7 @@ And the development version from [GitHub](https://github.com/) with:
 </tr>
 <tr class="odd">
 <td align="left">H3</td>
-<td align="left">H3_Contact tracing</td>
+<td align="left">Contact tracing</td>
 <td align="left">Record government policy on contact tracing after a positive diagnosis Note: we are looking for policies that would identify all people potentially exposed to Covid-19; voluntary bluetooth apps are unlikely to achieve this</td>
 <td align="left">Ordinal scale</td>
 <td align="left">0 - no contact tracing; 1 - limited contact tracing; not done for all cases; 2 - comprehensive contact tracing; done for all identified cases</td>
@@ -420,23 +423,23 @@ And the development version from [GitHub](https://github.com/) with:
 </tr>
 <tr class="even">
 <td align="left">H4</td>
-<td align="left">H4_Emergency investment in healthcare</td>
+<td align="left">Emergency investment in healthcare</td>
 <td align="left">Announced short term spending on healthcare system, eg hospitals, masks, etc Note: only record amount additional to previously announced spending</td>
 <td align="left">USD</td>
-<td align="left">Record monetary value in USD 0 - no new spending that day; Blank - no data</td>
+<td align="left">Record monetary value in USD; 0 - no new spending that day; Blank - no data</td>
 <td align="left">Health system policies</td>
 </tr>
 <tr class="odd">
 <td align="left">H5</td>
-<td align="left">H5_Investment in vaccines</td>
+<td align="left">Investment in vaccines</td>
 <td align="left">Announced public spending on Covid-19 vaccine development Note: only record amount additional to previously announced spending</td>
 <td align="left">USD</td>
-<td align="left">Record monetary value in USD 0 - no new spending that day; Blank - no data</td>
+<td align="left">Record monetary value in USD; 0 - no new spending that day; Blank - no data</td>
 <td align="left">Health system policies</td>
 </tr>
 <tr class="even">
 <td align="left">H6</td>
-<td align="left">H6_Facial Coverings</td>
+<td align="left">Facial Coverings</td>
 <td align="left">Record policies on the use of facial coverings outside the home</td>
 <td align="left">Ordinal scale</td>
 <td align="left">0 - No policy; 1 - Recommended; 2 - Required in some specified shared/public spaces outside the home with other people present, or some situations when social distancing not possible; 3 - Required in all shared/public spaces outside the home with other people present or all situations when social distancing not possible; 4 - Required outside the home at all times regardless of location or presence of other people</td>
@@ -444,7 +447,7 @@ And the development version from [GitHub](https://github.com/) with:
 </tr>
 <tr class="odd">
 <td align="left">M1</td>
-<td align="left">M1_Wildcard</td>
+<td align="left">Wildcard</td>
 <td align="left">Record policy announcements that do not fit anywhere else</td>
 <td align="left">Free text notes field</td>
 <td align="left">Note unusual or interesting interventions that are worth flagging</td>
@@ -631,22 +634,20 @@ And the development version from [GitHub](https://github.com/) with:
 <p>The <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a> subindices can be calculated using the <code>calculate_subindex</code> and <code>calculate_subindices</code> functions. To calculate a specific sub-index, the following code is used:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit">
 <span class="co">## Given the C1 data in indicatorData, calculate C1 sub-index</span>
-<span class="fu"><a href="reference/calculate_subindex.html">calculate_subindex</a></span>(indicator_code = <span class="kw">indicatorData</span>[<span class="fl">1</span>, <span class="st">"indicator"</span>], 
-                   value = <span class="kw">indicatorData</span>[<span class="fl">1</span>, <span class="st">"value"</span>], 
-                   flag_value = <span class="kw">indicatorData</span>[<span class="fl">1</span>, <span class="st">"flag_value"</span>])
-</pre></div>
+<span class="fu"><a href="reference/calculate_subindex.html">calculate_subindex</a></span><span class="op">(</span>indicator_code <span class="op">=</span> <span class="va">indicatorData</span><span class="op">[</span><span class="fl">1</span>, <span class="st">"indicator"</span><span class="op">]</span>, 
+                   value <span class="op">=</span> <span class="va">indicatorData</span><span class="op">[</span><span class="fl">1</span>, <span class="st">"value"</span><span class="op">]</span>, 
+                   flag_value <span class="op">=</span> <span class="va">indicatorData</span><span class="op">[</span><span class="fl">1</span>, <span class="st">"flag_value"</span><span class="op">]</span><span class="op">)</span></pre></div>
 <p>This gives a C1 index value of:</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co">#&gt;      value</span></span>
 <span id="cb13-2"><a href="#cb13-2"></a><span class="co">#&gt; 1 66.66667</span></span></code></pre></div>
 <p>To calculate all <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a> subindices, the following code is used:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit">
 <span class="co">## Given the indicatorData dataset, calculate all sub-indices</span>
-<span class="kw">indicatorData</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="reference/calculate_subindex.html">calculate_subindices</a></span>(indicator_code = <span class="st">"indicator"</span>, 
-                       value = <span class="st">"value"</span>, 
-                       flag_value = <span class="st">"flag_value"</span>,
-                       add = <span class="fl">TRUE</span>)
-</pre></div>
+<span class="va">indicatorData</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/calculate_subindex.html">calculate_subindices</a></span><span class="op">(</span>indicator_code <span class="op">=</span> <span class="st">"indicator"</span>, 
+                       value <span class="op">=</span> <span class="st">"value"</span>, 
+                       flag_value <span class="op">=</span> <span class="st">"flag_value"</span>,
+                       add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></pre></div>
 <p>This results in the following output:</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co">#&gt; # A tibble: 14 x 7</span></span>
 <span id="cb15-2"><a href="#cb15-2"></a><span class="co">#&gt;    indicator value flag_value max_value  flag score score.1</span></span>
@@ -672,39 +673,36 @@ And the development version from [GitHub](https://github.com/) with:
 <a href="#calculating-oxcgrt-indices" class="anchor"></a>Calculating OxCGRT indices</h4>
 <p>The <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a> indices can be calculated using the <code>calculate_index</code> and <code>calculate_indices</code> functions. To calculate a specific sub-index, the following code can be used:</p>
 <div class="sourceCode" id="cb16"><pre class="downlit">
-<span class="kw">indicatorData</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="reference/calculate_subindex.html">calculate_subindices</a></span>(indicator_code = <span class="st">"indicator"</span>,
-                       value = <span class="st">"value"</span>,
-                       flag_value = <span class="st">"flag_value"</span>,
-                       add = <span class="fl">FALSE</span>) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="reference/calculate_index.html">calculate_index</a></span>(codes = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="st">"C"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">8</span>, sep = <span class="st">""</span>),
-                            <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="st">"E"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, sep = <span class="st">""</span>),
-                            <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="st">"H"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, sep = <span class="st">""</span>),
-                            <span class="st">"H6"</span>), 
-                  tolerance = <span class="fl">1</span>)
-</pre></div>
+<span class="va">indicatorData</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/calculate_subindex.html">calculate_subindices</a></span><span class="op">(</span>indicator_code <span class="op">=</span> <span class="st">"indicator"</span>,
+                       value <span class="op">=</span> <span class="st">"value"</span>,
+                       flag_value <span class="op">=</span> <span class="st">"flag_value"</span>,
+                       add <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/calculate_index.html">calculate_index</a></span><span class="op">(</span>codes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"C"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">8</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span>,
+                            <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"E"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span>,
+                            <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"H"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span>,
+                            <span class="st">"H6"</span><span class="op">)</span>, 
+                  tolerance <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></pre></div>
 <p>This code calculates the <code>government response index</code> which is:</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co">#&gt; [1] 57.7381</span></span></code></pre></div>
 <p>The same result can be reached by using the specialised function <code>calculate_gov_response</code> as follows:</p>
 <div class="sourceCode" id="cb18"><pre class="downlit">
-<span class="kw">indicatorData</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="reference/calculate_subindex.html">calculate_subindices</a></span>(indicator_code = <span class="st">"indicator"</span>,
-                       value = <span class="st">"value"</span>,
-                       flag_value = <span class="st">"flag_value"</span>,
-                       add = <span class="fl">FALSE</span>) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="reference/calculate_index.html">calculate_gov_response</a></span>()
-</pre></div>
+<span class="va">indicatorData</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="reference/calculate_subindex.html">calculate_subindices</a></span><span class="op">(</span>indicator_code <span class="op">=</span> <span class="st">"indicator"</span>,
+                       value <span class="op">=</span> <span class="st">"value"</span>,
+                       flag_value <span class="op">=</span> <span class="st">"flag_value"</span>,
+                       add <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/calculate_index.html">calculate_gov_response</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <p>which results in the same value as the previous code:</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co">#&gt; [1] 57.7381</span></span></code></pre></div>
 <p>To calculate all four <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a> indices, the following code can be implemented:</p>
 <div class="sourceCode" id="cb20"><pre class="downlit">
-<span class="kw">indicatorData</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="reference/calculate_subindex.html">calculate_subindices</a></span>(indicator_code = <span class="st">"indicator"</span>,
-                       value = <span class="st">"value"</span>,
-                       flag_value = <span class="st">"flag_value"</span>,
-                       add = <span class="fl">FALSE</span>) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="reference/calculate_index.html">calculate_indices</a></span>()
-</pre></div>
+<span class="va">indicatorData</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="reference/calculate_subindex.html">calculate_subindices</a></span><span class="op">(</span>indicator_code <span class="op">=</span> <span class="st">"indicator"</span>,
+                       value <span class="op">=</span> <span class="st">"value"</span>,
+                       flag_value <span class="op">=</span> <span class="st">"flag_value"</span>,
+                       add <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/calculate_index.html">calculate_indices</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <p>which outputs the following results:</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co">#&gt; # A tibble: 4 x 2</span></span>
 <span id="cb21-2"><a href="#cb21-2"></a><span class="co">#&gt;   index                        values</span></span>
@@ -715,6 +713,98 @@ And the development version from [GitHub](https://github.com/) with:
 <span id="cb21-7"><a href="#cb21-7"></a><span class="co">#&gt; 4 Economic Support Index         87.5</span></span></code></pre></div>
 </div>
 </div>
+<div id="datasets" class="section level3">
+<h3 class="hasAnchor">
+<a href="#datasets" class="anchor"></a>Datasets</h3>
+<p>The <code>oxcgrt</code> package comes with helpful datasets guides to facilitate in usage and interpretation of the <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a> data.</p>
+<div id="codebook" class="section level4">
+<h4 class="hasAnchor">
+<a href="#codebook" class="anchor"></a>Codebook</h4>
+<p>The <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a> provides an authoritative codebook found <a href="https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/codebook.md">here</a>. The <code>oxcgrt</code> package has extracted the tables from this documentation into a single codebook that can serve as a handy and convenient reference for an <a href="https://cran.r-project.org">R</a> user when working with <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a> data in <a href="https://cran.r-project.org">R</a>. The <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a> codebook can be accessed as follows:</p>
+<div class="sourceCode" id="cb22"><pre class="downlit">
+<span class="va">codebook</span></pre></div>
+<p>which outputs the codebook as a singular table in <code>tbl</code> format as shown below:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="co">#&gt; # A tibble: 29 x 6</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="co">#&gt;    ID    Name     Description      Measurement   Coding         `Policy Group`  </span></span>
+<span id="cb23-3"><a href="#cb23-3"></a><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;         &lt;chr&gt;          &lt;chr&gt;           </span></span>
+<span id="cb23-4"><a href="#cb23-4"></a><span class="co">#&gt;  1 C1    C1_Scho… "Record closing… Ordinal scale 0 - no measur… Containment and…</span></span>
+<span id="cb23-5"><a href="#cb23-5"></a><span class="co">#&gt;  2 C1    C1_Flag  ""               Binary flag … 0 - targeted;… Containment and…</span></span>
+<span id="cb23-6"><a href="#cb23-6"></a><span class="co">#&gt;  3 C2    C2_Work… "Record closing… Ordinal scale 0 - no measur… Containment and…</span></span>
+<span id="cb23-7"><a href="#cb23-7"></a><span class="co">#&gt;  4 C2    C2_Flag  ""               Binary flag … 0 - targeted;… Containment and…</span></span>
+<span id="cb23-8"><a href="#cb23-8"></a><span class="co">#&gt;  5 C3    C3_Canc… "Record cancell… Ordinal scale 0 - no measur… Containment and…</span></span>
+<span id="cb23-9"><a href="#cb23-9"></a><span class="co">#&gt;  6 C3    C3_Flag  ""               Binary flag … 0 - targeted;… Containment and…</span></span>
+<span id="cb23-10"><a href="#cb23-10"></a><span class="co">#&gt;  7 C4    C4_Rest… "Record limits … Ordinal scale 0 - no restri… Containment and…</span></span>
+<span id="cb23-11"><a href="#cb23-11"></a><span class="co">#&gt;  8 C4    C4_Flag  ""               Binary flag … 0 - targeted;… Containment and…</span></span>
+<span id="cb23-12"><a href="#cb23-12"></a><span class="co">#&gt;  9 C5    C5_Clos… "Record closing… Ordinal scale 0 - no measur… Containment and…</span></span>
+<span id="cb23-13"><a href="#cb23-13"></a><span class="co">#&gt; 10 C5    C5_Flag  ""               Binary flag … 0 - targeted;… Containment and…</span></span>
+<span id="cb23-14"><a href="#cb23-14"></a><span class="co">#&gt; # … with 19 more rows</span></span></code></pre></div>
+<p>The current <code>oxcgrt</code> package version includes the <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a> <strong>codebook version 2.5</strong> released on 4 November 2020.</p>
+</div>
+<div id="example-oxcgrt-indicators-dataset" class="section level4">
+<h4 class="hasAnchor">
+<a href="#example-oxcgrt-indicators-dataset" class="anchor"></a>Example OxCGRT indicators dataset</h4>
+<p>In the <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a> methodology <a href="https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/index_methodology.md">document</a>, an example indicator dataset is used to demonstrate the calculation of per indicator sub-indices and the four main indices that <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a> provides. This example dataset has been made available in table format in the <code>oxcgrt</code> package and can be accessed as follows:</p>
+<div class="sourceCode" id="cb24"><pre class="downlit">
+<span class="va">indicatorData</span></pre></div>
+<p>which outputs the example data as a singular table in <code>tbl</code> format as shown below:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co">#&gt; # A tibble: 14 x 6</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="co">#&gt;    indicator value flag_value max_value  flag score</span></span>
+<span id="cb25-3"><a href="#cb25-3"></a><span class="co">#&gt;    &lt;chr&gt;     &lt;int&gt;      &lt;int&gt;     &lt;int&gt; &lt;int&gt; &lt;dbl&gt;</span></span>
+<span id="cb25-4"><a href="#cb25-4"></a><span class="co">#&gt;  1 C1            2          1         3     1  66.7</span></span>
+<span id="cb25-5"><a href="#cb25-5"></a><span class="co">#&gt;  2 C2           NA         NA         3     1   0  </span></span>
+<span id="cb25-6"><a href="#cb25-6"></a><span class="co">#&gt;  3 C3            2          0         2     1  75  </span></span>
+<span id="cb25-7"><a href="#cb25-7"></a><span class="co">#&gt;  4 C4            2          0         4     1  37.5</span></span>
+<span id="cb25-8"><a href="#cb25-8"></a><span class="co">#&gt;  5 C5            0         NA         2     1   0  </span></span>
+<span id="cb25-9"><a href="#cb25-9"></a><span class="co">#&gt;  6 C6            1          0         3     1  16.7</span></span>
+<span id="cb25-10"><a href="#cb25-10"></a><span class="co">#&gt;  7 C7            1          1         2     1  50  </span></span>
+<span id="cb25-11"><a href="#cb25-11"></a><span class="co">#&gt;  8 C8            3         NA         4     0  75  </span></span>
+<span id="cb25-12"><a href="#cb25-12"></a><span class="co">#&gt;  9 E1            2          0         2     1  75  </span></span>
+<span id="cb25-13"><a href="#cb25-13"></a><span class="co">#&gt; 10 E2            2         NA         2     0 100  </span></span>
+<span id="cb25-14"><a href="#cb25-14"></a><span class="co">#&gt; 11 H1            2          0         2     1  75  </span></span>
+<span id="cb25-15"><a href="#cb25-15"></a><span class="co">#&gt; 12 H2            3         NA         3     0 100  </span></span>
+<span id="cb25-16"><a href="#cb25-16"></a><span class="co">#&gt; 13 H3            2         NA         2     0 100  </span></span>
+<span id="cb25-17"><a href="#cb25-17"></a><span class="co">#&gt; 14 H6            2          0         4     1  37.5</span></span></code></pre></div>
+<p>This dataset is used by the <code>oxcgrt</code> package to test the <code>calculate_</code> functions and for demonstrating how these functions work. This dataset can be useful for those trying to learn the <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a>’s calculation methods and <a href="https://cran.r-project.org">R</a> users who are learning how to use the <code>oxcgrt</code> package <code>calculate_</code> functions.</p>
+</div>
+</div>
+</div>
+<div id="limitations" class="section level2">
+<h2 class="hasAnchor">
+<a href="#limitations" class="anchor"></a>Limitations</h2>
+<p>The current version of <code>oxcgrt</code> package is <em>experimental</em> in that its stability and future development would depend on the <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a>‘s current and future development. The <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a> is in continuous evolution given that the COVID-19 pandemic is still on-going and various governments’ responses to it are changed and/or updated. The <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a> has also been developing other indices that capture other aspects of governments’ responses not yet covered by current indices.</p>
+<p>The <code>oxcgrt</code> package author and maintainer commit to ensuring that current functions are maintained and/or updated in a manner that ensures backwards compatibility should changes to the data structure and/or to the indices calculation are implemented by the <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a> team. This would include maintaining the arguments used by the current functions, maintaining the functionality of the current functions, and maintaining the type of outputs of the current functions. Should changes implemented by the <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a> team to the data structure and/or to the indices calculation require the breaking of the syntax, functionality and/or outputs of the current functions, a formal and proper deprecation process will be implemented that include proper and detailed documentation of the changes and the potential impact on current users.</p>
+</div>
+<div id="disclaimer" class="section level2">
+<h2 class="hasAnchor">
+<a href="#disclaimer" class="anchor"></a>Disclaimer</h2>
+<p>The <code>oxcgrt</code> package is an independent development and is separate from and not recognised and approved by the <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a> team. The author and maintainer of the package is not affiliated with <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a> but is committed to ensure fidelity to the methods and usage specified by <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a> and accuracy of outputs described and required by <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a>.</p>
+<p>Any mistakes, problems and issues with the functionality and outputs of the <code>oxcgrt</code> including mistakes in interpretation of the calculation of the sub-indices and indices noted (if any) are that of the author and maintainer and not of the <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a>. Hence any problems and issues to the usage, functionality and outputs of the <code>oxcgrt</code> package should be addressed directly to the author and maintainer <a href="https://github.com/como-ph/oxcgrt/issues">here</a>.</p>
+</div>
+<div id="citation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#citation" class="anchor"></a>Citation</h2>
+<p>When using the <code>oxcgrt</code> package, please cite both the source of the <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a> data and <code>oxcgrt</code> package itself.</p>
+<p>For the source of the <a href="https://www.bsg.ox.ac.uk/covidtracker">OxCGRT</a> data, the following citation is recommended:</p>
+<p><em>Hale, Thomas, Noam Angrist, Emily Cameron-Blake, Laura Hallas, Beatriz Kira, Saptarshi Majumdar, Anna Petherick, Toby Phillips, Helen Tatlow, Samuel Webster (2020). Oxford COVID-19 Government Response Tracker, Blavatnik School of Government.</em></p>
+<p>For the <code>oxcgrt</code> package, the suggested citation can be obtained using a call to the <code>citation</code> function as follows:</p>
+<div class="sourceCode" id="cb26"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/utils/citation.html">citation</a></span><span class="op">(</span><span class="st">"oxcgrt"</span><span class="op">)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; To cite oxcgrt in publications use:</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;   Ernest Guevarra (2020). oxcgrt: An Interface to the Oxford COVID-19</span>
+<span class="co">#&gt;   Government Response Tracker API. R package version 0.1.0. URL</span>
+<span class="co">#&gt;   https://como-ph.github.io/oxcgrt</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; A BibTeX entry for LaTeX users is</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;   @Manual{,</span>
+<span class="co">#&gt;     title = {oxcgrt: An Interface to the Oxford COVID-19 Government Response Tracker API},</span>
+<span class="co">#&gt;     author = {Ernest Guevarra},</span>
+<span class="co">#&gt;     year = {2020},</span>
+<span class="co">#&gt;     note = {R package version 0.1.0},</span>
+<span class="co">#&gt;     url = {https://como-ph.github.io/oxcgrt},</span>
+<span class="co">#&gt;   }</span></pre></div>
 </div>
 </div>
   </div>
@@ -738,6 +828,12 @@ And the development version from [GitHub](https://github.com/) with:
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
 <li><small><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></small></li>
+</ul>
+</div>
+<div class="citation">
+<h2>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html">Citing oxcgrt</a></li>
 </ul>
 </div>
 <div class="developers">
