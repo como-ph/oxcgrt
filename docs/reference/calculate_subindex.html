@@ -140,15 +140,15 @@ Calculate OxCGRT sub-index scores for all indicators" />
 <p>Calculate OxCGRT sub-index scores for all indicators</p>
     </div>
 
-    <pre class="usage"><span class='fu'>calculate_subindex</span>(<span class='kw'>indicator_code</span>, <span class='kw'>value</span>, <span class='kw'>flag_value</span>)
+    <pre class="usage"><span class='fu'>calculate_subindex</span><span class='op'>(</span><span class='va'>indicator_code</span>, <span class='va'>value</span>, <span class='va'>flag_value</span><span class='op'>)</span>
 
-<span class='fu'>calculate_subindices</span>(
-  <span class='kw'>df</span>,
-  indicator_code = <span class='st'>"policy_type_code"</span>,
-  value = <span class='st'>"policyvalue_actual"</span>,
-  flag_value = <span class='st'>"flagged"</span>,
-  add = <span class='fl'>TRUE</span>
-)</pre>
+<span class='fu'>calculate_subindices</span><span class='op'>(</span>
+  <span class='va'>df</span>,
+  indicator_code <span class='op'>=</span> <span class='st'>"policy_type_code"</span>,
+  value <span class='op'>=</span> <span class='st'>"policyvalue_actual"</span>,
+  flag_value <span class='op'>=</span> <span class='st'>"flagged"</span>,
+  add <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -206,14 +206,14 @@ the calculated sub-indices.</p>
 <p>Ernest Guevarra</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>calculate_subindex</span>(indicator_code = <span class='kw'>indicatorData</span><span class='op'>$</span><span class='kw'>indicator</span>[<span class='fl'>1</span>],
-                   value = <span class='kw'>indicatorData</span><span class='op'>$</span><span class='kw'>value</span>[<span class='fl'>1</span>],
-                   flag_value = <span class='kw'>indicatorData</span><span class='op'>$</span><span class='kw'>flag_value</span>[<span class='fl'>1</span>])
+    <pre class="examples"><div class='input'><span class='fu'>calculate_subindex</span><span class='op'>(</span>indicator_code <span class='op'>=</span> <span class='va'>indicatorData</span><span class='op'>$</span><span class='va'>indicator</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>,
+                   value <span class='op'>=</span> <span class='va'>indicatorData</span><span class='op'>$</span><span class='va'>value</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>,
+                   flag_value <span class='op'>=</span> <span class='va'>indicatorData</span><span class='op'>$</span><span class='va'>flag_value</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 66.66667</div><div class='input'>
-<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_data.html'>get_data</a></span>(json = <span class='fu'><a href='get_json_time.html'>get_json_actions</a></span>(ccode = <span class='st'>"AFG"</span>,
-                                      from = <span class='kw'>NULL</span>,
-                                      to = <span class='st'>"2020-09-01"</span>))
-<span class='fu'>calculate_subindices</span>(df = <span class='kw'>x</span><span class='op'>$</span><span class='kw'>policyActions</span>)
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_data.html'>get_data</a></span><span class='op'>(</span>json <span class='op'>=</span> <span class='fu'><a href='get_json_time.html'>get_json_actions</a></span><span class='op'>(</span>ccode <span class='op'>=</span> <span class='st'>"AFG"</span>,
+                                      from <span class='op'>=</span> <span class='cn'>NULL</span>,
+                                      to <span class='op'>=</span> <span class='st'>"2020-09-01"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>calculate_subindices</span><span class='op'>(</span>df <span class='op'>=</span> <span class='va'>x</span><span class='op'>$</span><span class='va'>policyActions</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 18 x 10</span><span>
 #&gt;    policy_type_code policy_type_dis… policyvalue policyvalue_act… flagged
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                  </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span><span>  
