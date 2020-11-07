@@ -110,7 +110,14 @@ get_data_time <- function(json) {
                   stringency_actual = as.numeric(stringency_actual),
                   stringency = as.numeric(stringency),
                   stringency_legacy = as.numeric(stringency_legacy),
-                  stringency_legacy_disp = as.numeric(stringency_legacy_disp))
+                  stringency_legacy_disp = as.numeric(stringency_legacy_disp),
+                  country_name = countrycode::countrycode(sourcevar = country_code,
+                                                          origin = "iso3c",
+                                                          destination = "country.name",
+                                                          custom_match = c("RKS" = "Kosovo")))
+
+  ## Rearrange columns
+  df <- df[ , c("date_value", "country_code", "country_name", names(df)[3:8])]
 
   ## Return data
   return(df)
@@ -173,7 +180,14 @@ get_data_action <- function(json) {
                                                     pattern = "[0-9]{4}\\-[0-9]{2}\\-[0-9]{2}"),
                   date_value = as.Date(date_value, format = "%Y-%m-%d"),
                   country_code = stringr::str_extract(json,
-                                                      pattern = "[A-Z]{3}"))
+                                                      pattern = "[A-Z]{3}"),
+                  country_name = countrycode::countrycode(sourcevar = country_code,
+                                                          origin = "iso3c",
+                                                          destination = "country.name",
+                                                          custom_match = c("RKS" = "Kosovo")))
+
+  ## Rearrange columns
+  x <- x[ , c("date_value", "country_code", "country_name", names(x)[1:9])]
 
   ## Return data
   return(x)
