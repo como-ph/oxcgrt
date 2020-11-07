@@ -27,7 +27,7 @@ knitr::opts_chunk$set(
 [![CodeFactor](https://www.codefactor.io/repository/github/como-ph/oxcgrt/badge)](https://www.codefactor.io/repository/github/como-ph/oxcgrt)
 <!-- badges: end -->
 
-The [Oxford COVID-19 Government Response Tracker (OxCGRT)](https://www.bsg.ox.ac.uk/covidtracker) tracks and compares worldwide government responses to the COVID-19 pandemic rigorously and consistently. [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) makes available systematic information in a consistent way, aiding those who require information have access to it efficiently for their purposes. This package facilitates access to the [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) data via its API for R users. This package also includes functions to calculate the various [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) indices.
+The [Oxford COVID-19 Government Response Tracker (OxCGRT)](https://www.bsg.ox.ac.uk/covidtracker) tracks and compares worldwide government responses to the COVID-19 pandemic rigorously and consistently. [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) makes available systematic information in a consistent way, aiding those who require information have access to it efficiently for their purposes. This package facilitates access to the [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) data for [R](https://cran.r-project.org) users via version 2 of its [API](https://covidtracker.bsg.ox.ac.uk/about-api). This package also includes functions to calculate the various [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) indices in [R](https://cran.r-project.org). This package is targeted at [R](https://cran.r-project.org) users who use or plan to use the [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) data for their research and other purposes.
 
 ## Installation
 
@@ -52,15 +52,15 @@ remotes::install_github("como-ph/oxcgrt")
 
 ## Usage
 
-The `oxcgrt` package includes two types of functions. First are functions that retrieve data via [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker)'s API, and second are functions that calculate [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker)'s various indices.
+The `oxcgrt` package includes two types of functions. First are functions that retrieve data via [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker)'s [API](https://covidtracker.bsg.ox.ac.uk/about-api), and second are functions that calculate [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker)'s various [indices](https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/index_methodology.md).
 
 ### Retrieve data
 
-The *retrieve data* functions are based on the [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker)'s JSON API described [here](https://covidtracker.bsg.ox.ac.uk/about-api). Two API endpoints are provided: 1) endpoint for JSON providing data for stringency index by country over time; and, 2) endpoint for JSON providing data on policy actions and stringency index for a specific country on a specific day.
+The *retrieve data* functions are based on the [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker)'s JSON [API](https://covidtracker.bsg.ox.ac.uk/about-api) described [here](https://covidtracker.bsg.ox.ac.uk/about-api). Two [API](https://covidtracker.bsg.ox.ac.uk/about-api) endpoints are provided: 1) endpoint for JSON providing data for stringency index by country over time; and, 2) endpoint for JSON providing data on policy actions and stringency index for a specific country on a specific day.
 
 #### Stringency index by country over time
 
-The first API endpoint provides JSON for all countries included in the [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) over a specified period of time:
+The first [API](https://covidtracker.bsg.ox.ac.uk/about-api) endpoint provides JSON for all countries included in the [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) over a specified period of time:
 
 <br/>
 
@@ -102,7 +102,7 @@ get_json_time() %>% get_data_time()
 
 #### Policy actions and stringency index for specific country on a specific day
 
-The second API endpoint provides JSON for a specific country included in the [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) for a specified day:
+The second [API](https://covidtracker.bsg.ox.ac.uk/about-api) endpoint provides JSON for a specific country included in the [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) for a specified day:
 
 <br/>
 
@@ -112,16 +112,22 @@ The second API endpoint provides JSON for a specific country included in the [Ox
 
 where `country-code` is the ISO 3166-1 alpha-3 country code for the required country to get data for and `date` is the date (in `YYYY-MM-DD` format) on which to retrieve data.
 
-The `oxcgrt` package provides a function named `get_json_actions` to interface with the API and retrieve the specified JSON and a function named `get_data` to extract the data from the specified JSON into a named `list` [R](https://cran.r-project.org) object. These two functions have been designed such that they can be piped from one to the other. Hence to retrieve policy actions and stringency index data for Afghanistan for 1 June 2020, the following code can be used:
+The `oxcgrt` package provides a function named `get_json_actions` to interface with the [API](https://covidtracker.bsg.ox.ac.uk/about-api) and retrieve the specified JSON and a function named `get_data` to extract the data from the specified JSON into a named `list` [R](https://cran.r-project.org) object. These two functions have been designed such that they can be piped from one to the other. Hence to retrieve policy actions and stringency index data for Afghanistan for 1 June 2020, the following code can be used:
 
 ```{r usage3, echo = TRUE, eval = FALSE}
-get_json_actions(ccode = "AFG", from = NULL, to = "2020-06-01") %>% get_data()
+get_json_actions(ccode = "AFG", 
+                 from = NULL, 
+                 to = "2020-06-01") %>% 
+  get_data()
 ```
 
 which produces the following output:
 
 ```{r usage3a, echo = FALSE, eval = TRUE}
-get_json_actions(ccode = "AFG", from = NULL, to = "2020-06-01") %>% get_data()
+get_json_actions(ccode = "AFG", 
+                 from = NULL, 
+                 to = "2020-06-01") %>% 
+  get_data()
 ```
 
 Important to note that the output is a named `list` object containing a `tibble` of **policy actions** data and a `tibble` of **stringency index** data for the specified country and the specified date.
@@ -131,13 +137,19 @@ Important to note that the output is a named `list` object containing a `tibble`
 It is also possible to retrieve just policy actions data for a specific country or for multiple countries on a specific day or multiple days. To retrieve policy actions data for Afghanistan for 1 June 2020, the following code can be used:
 
 ```{r usage4, echo = TRUE, eval = FALSE}
-get_json_actions(ccode = "AFG", from = NULL, to = "2020-06-01") %>% get_data_action()
+get_json_actions(ccode = "AFG", 
+                 from = NULL, 
+                 to = "2020-06-01") %>% 
+  get_data_action()
 ```
 
 This results in:
 
 ```{r usage4a, echo = FALSE, eval = TRUE}
-get_json_actions(ccode = "AFG", from = NULL, to = "2020-06-01") %>% get_data_action()
+get_json_actions(ccode = "AFG", 
+                 from = NULL, 
+                 to = "2020-06-01") %>% 
+  get_data_action()
 ```
 
 Important to note here that the output is a tibble of just the policy actions and two additional columns have been added to the dataset - `date_value` and `country_code` - to identify the data as coming from a specific date and for a specific country.
@@ -145,13 +157,19 @@ Important to note here that the output is a tibble of just the policy actions an
 To retrieve policy actions data for multiple countries on multiple days, the `get_data_actions` functions can be used as shown below:
 
 ```{r usage5, echo = TRUE, eval = FALSE}
-get_json_actions(ccode = c("AFG", "Philippines"), from = "2020-10-25", to = "2020-10-31") %>% get_data_actions()
+get_json_actions(ccode = c("AFG", "Philippines"), 
+                 from = "2020-10-25", 
+                 to = "2020-10-31") %>% 
+  get_data_actions()
 ```
 
 This results in:
 
 ```{r usage5a, echo = FALSE, eval = TRUE}
-get_json_actions(ccode = c("AFG", "Philippines"), from = "2020-10-25", to = "2020-10-31") %>% get_data_actions()
+get_json_actions(ccode = c("AFG", "Philippines"), 
+                 from = "2020-10-25", 
+                 to = "2020-10-31") %>% 
+  get_data_actions()
 ```
 
 Important to note here that the output is a tibble of just the policy actions and two additional columns have been added to the dataset - `date_value` and `country_code` - to identify the data as coming from a specific date and for a specific country.
@@ -161,7 +179,10 @@ Important to note here that the output is a tibble of just the policy actions an
 The *calculate* functions are based on the [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker)'s methodology described [here](https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/index_methodology.md). There are two sets of calculate functions included in `oxcgrt`. The first calculates the [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) **sub-indices** described in the table below:
 
 ```{r usage6, echo = FALSE, eval = TRUE}
-knitr::kable(x = codebook[c(1, 3, 5, 7, 9, 11, 13, 15:16, 18:21, 23:28), ])
+tab <- codebook[!stringr::str_detect(string = codebook$Name, pattern = "_Flag"), ] %>%
+  dplyr::mutate(Name = stringr::str_remove_all(string = Name, pattern = "[A-Z]{1}[0-9]{1}\\_"))
+
+knitr::kable(x = tab)
 ```
 
 The second calculates the four [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) **indices** which are composed of various combinations of the indicators described in the table above. These combinations are described in the table below:
@@ -186,7 +207,7 @@ tab <- tab %>%
   dplyr::mutate(`Government response index` = ifelse(`Government response index` == "'x'", "x", `Government response index`),
                 `Containment and health index` = ifelse(`Containment and health index` == "'x'", "x", `Containment and health index`))
 
-tab <- codebook[c(1, 3, 5, 7, 9, 11, 13, 15:16, 18:21, 23:28), c("ID", "Name")] %>%
+tab <- codebook[!stringr::str_detect(string = codebook$Name, pattern = "_Flag"), c("ID", "Name")] %>%
   dplyr::mutate(Name = stringr::str_remove_all(string = Name, pattern = "[A-Z]{1}[0-9]{1}\\_")) %>%
   merge(tab, by.x = "ID", by.y = "Index name")
 
@@ -312,3 +333,68 @@ indicatorData %>%
                        add = FALSE) %>%
   calculate_indices()
 ```
+
+
+### Datasets
+
+The `oxcgrt` package comes with helpful datasets guides to facilitate in usage and interpretation of the [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) data.
+
+#### Codebook
+
+The [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) provides an authoritative codebook found [here](https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/codebook.md). The `oxcgrt` package has extracted the tables from this documentation into a single codebook that can serve as a handy and convenient reference for an [R](https://cran.r-project.org) user when working with [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) data in [R](https://cran.r-project.org). The [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) codebook can be accessed as follows:
+
+```{r usage13, echo = TRUE, eval = FALSE}
+codebook
+```
+
+which outputs the codebook as a singular table in `tbl` format as shown below:
+
+```{r usage13a, echo = FALSE, eval = TRUE}
+codebook
+```
+
+The current `oxcgrt` package version includes the [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) **codebook version 2.5** released on 4 November 2020.
+
+#### Example OxCGRT indicators dataset
+
+In the [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) methodology [document](https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/index_methodology.md), an example indicator dataset is used to demonstrate the calculation of per indicator sub-indices and the four main indices that [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) provides. This example dataset has been made available in table format in the `oxcgrt` package and can be accessed as follows:
+
+```{r usage14, echo = TRUE, eval = FALSE}
+indicatorData
+```
+
+which outputs the example data as a singular table in `tbl` format as shown below:
+
+```{r usage14a, echo = FALSE, eval = TRUE}
+indicatorData
+```
+
+This dataset is used by the `oxcgrt` package to test the `calculate_` functions and for demonstrating how these functions work. This dataset can be useful for those trying to learn the [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker)'s calculation methods and [R](https://cran.r-project.org) users who are learning how to use the `oxcgrt` package `calculate_` functions.
+
+## Limitations
+
+The current version of `oxcgrt` package is *experimental* in that its stability and future development would depend on the [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker)'s current and future development. The [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) is in continuous evolution given that the COVID-19 pandemic is still on-going and various governments' responses to it are changed and/or updated. The [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) has also been developing other indices that capture other aspects of governments' responses not yet covered by current indices.
+
+The `oxcgrt` package author and maintainer commit to ensuring that current functions are maintained and/or updated in a manner that ensures backwards compatibility should changes to the data structure and/or to the indices calculation are implemented by the [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) team. This would include maintaining the arguments used by the current functions, maintaining the functionality of the current functions, and maintaining the type of outputs of the current functions. Should changes implemented by the [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) team to the data structure and/or to the indices calculation require the breaking of the syntax, functionality and/or outputs of the current functions, a formal and proper deprecation process will be implemented that include proper and detailed documentation of the changes and the potential impact on current users.
+
+## Disclaimer
+
+The `oxcgrt` package is an independent development and is separate from and not recognised and approved by the [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) team. The author and maintainer of the package is not affiliated with [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) but is committed to ensure fidelity to the methods and usage specified by [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) and accuracy of outputs described and required by [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker).
+
+Any mistakes, problems and issues with the functionality and outputs of the `oxcgrt` including mistakes in interpretation of the calculation of the sub-indices and indices noted (if any) are that of the author and maintainer and not of the [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker). Hence any problems and issues to the usage, functionality and outputs of the `oxcgrt` package should be addressed directly to the author and maintainer [here](https://github.com/como-ph/oxcgrt/issues).
+
+## Citation
+
+When using the `oxcgrt` package, please cite both the source of the [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) data and `oxcgrt` package itself.
+
+For the source of the [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) data, the following citation is recommended:
+
+*Hale, Thomas, Noam Angrist, Emily Cameron-Blake, Laura Hallas, Beatriz Kira, Saptarshi Majumdar, Anna Petherick, Toby Phillips, Helen Tatlow, Samuel Webster (2020). Oxford COVID-19 Government Response Tracker, Blavatnik School of Government.*
+
+For the `oxcgrt` package, the suggested citation can be obtained using a call to the `citation` function as follows:
+
+```{r cite, echo = TRUE, eval = TRUE}
+citation("oxcgrt")
+```
+
+
