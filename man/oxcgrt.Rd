@@ -16,7 +16,7 @@ efficiently for their purposes. This package facilitates access to the
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://como-ph.github.io/oxcgrt}
+  \item \url{https://como-ph.github.io/oxcgrt/}
   \item \url{https://github.com/como-ph/oxcgrt}
   \item Report bugs at \url{https://github.com/como-ph/oxcgrt/issues}
 }

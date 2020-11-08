@@ -34,7 +34,7 @@ Suggests:
 Encoding: UTF-8
 Language: en-GB
 LazyData: true
-URL: https://como-ph.github.io/oxcgrt, https://github.com/como-ph/oxcgrt
+URL: https://como-ph.github.io/oxcgrt/, https://github.com/como-ph/oxcgrt
 BugReports: https://github.com/como-ph/oxcgrt/issues
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1

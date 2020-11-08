@@ -2,8 +2,8 @@ pandoc: 2.7.3
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles: {}
-last_built: 2020-11-07T23:48Z
+last_built: 2020-11-08T01:26Z
 urls:
-  reference: https://como-ph.github.io/oxcgrt/reference
-  article: https://como-ph.github.io/oxcgrt/articles
+  reference: https://como-ph.github.io/oxcgrt//reference
+  article: https://como-ph.github.io/oxcgrt//articles
 
