@@ -7,3 +7,4 @@
 ^docs$
 ^data-raw$
 ^pkgdown$
+^cran-comments\.md$
