@@ -5,10 +5,10 @@ citEntry(entry = "Manual",
   author       = as.person("Ernest Guevarra"),
   year         = "2020",
   note         = "R package version 0.1.0",
-  url          = "https://como-ph.github.io/oxcgrt",
+  url          = "https://como-ph.github.io/oxcgrt/",
   textVersion  =
   paste("Ernest Guevarra (2020).",
         "oxcgrt: An Interface to the Oxford COVID-19 Government Response Tracker API.",
         "R package version 0.1.0.",
-        "URL https://como-ph.github.io/oxcgrt")
+        "URL https://como-ph.github.io/oxcgrt/")
 )
