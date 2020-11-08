@@ -190,49 +190,27 @@ specified country/countries and specified date/dates.</p>
 <span class='co'>## Get relevant JSON for Afghanistan and Philippines for whole month of</span>
 <span class='co'>## October</span>
 <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_json_time.html'>get_json_actions</a></span><span class='op'>(</span>ccode <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"AFG"</span>, <span class='st'>"PH"</span><span class='op'>)</span>,
-                      from <span class='op'>=</span> <span class='st'>"2020-10-25"</span>,
+                      from <span class='op'>=</span> <span class='st'>"2020-10-29"</span>,
                       to <span class='op'>=</span> <span class='st'>"2020-10-31"</span><span class='op'>)</span>
 
 <span class='co'>## Get data on policy actions</span>
 <span class='fu'>get_data_actions</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>New names:</span>
-#&gt; <span class='message'>* date_value -&gt; date_value...1</span>
-#&gt; <span class='message'>* country_code -&gt; country_code...2</span>
-#&gt; <span class='message'>* date_value -&gt; date_value...11</span>
-#&gt; <span class='message'>* country_code -&gt; country_code...12</span></div><div class='output co'>#&gt; <span class='message'>New names:</span>
-#&gt; <span class='message'>* date_value -&gt; date_value...1</span>
-#&gt; <span class='message'>* country_code -&gt; country_code...2</span>
-#&gt; <span class='message'>* date_value -&gt; date_value...11</span>
-#&gt; <span class='message'>* country_code -&gt; country_code...12</span></div><div class='output co'>#&gt; <span class='message'>New names:</span>
-#&gt; <span class='message'>* date_value -&gt; date_value...1</span>
-#&gt; <span class='message'>* country_code -&gt; country_code...2</span>
-#&gt; <span class='message'>* date_value -&gt; date_value...11</span>
-#&gt; <span class='message'>* country_code -&gt; country_code...12</span></div><div class='output co'>#&gt; <span class='message'>New names:</span>
-#&gt; <span class='message'>* date_value -&gt; date_value...1</span>
-#&gt; <span class='message'>* country_code -&gt; country_code...2</span>
-#&gt; <span class='message'>* date_value -&gt; date_value...11</span>
-#&gt; <span class='message'>* country_code -&gt; country_code...12</span></div><div class='output co'>#&gt; <span class='message'>New names:</span>
-#&gt; <span class='message'>* date_value -&gt; date_value...1</span>
-#&gt; <span class='message'>* country_code -&gt; country_code...2</span>
-#&gt; <span class='message'>* date_value -&gt; date_value...11</span>
-#&gt; <span class='message'>* country_code -&gt; country_code...12</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 167 x 16</span><span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 57 x 12</span><span>
 #&gt;    date_value country_code country_name policy_type_code policy_type_dis…
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 2020-10-25 AFG          Afghanistan  C1               School closing  
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> 2020-10-25 AFG          Afghanistan  C2               Workplace closi…
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> 2020-10-25 AFG          Afghanistan  C3               Cancel public e…
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> 2020-10-25 AFG          Afghanistan  C4               Restrictions on…
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> 2020-10-25 AFG          Afghanistan  C5               Close public tr…
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> 2020-10-25 AFG          Afghanistan  C6               Stay at home re…
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> 2020-10-25 AFG          Afghanistan  C7               Restrictions on…
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> 2020-10-25 AFG          Afghanistan  C8               International t…
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> 2020-10-25 AFG          Afghanistan  E1               Income support  
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> 2020-10-25 AFG          Afghanistan  E2               Debt/contract r…
-#&gt; </span><span style='color: #949494;'># … with 157 more rows, and 11 more variables: policyvalue </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>,</span><span>
-#&gt; </span><span style='color: #949494;'>#   policyvalue_actual </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, flagged </span><span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span><span style='color: #949494;'>, is_general </span><span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span><span style='color: #949494;'>, notes </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,</span><span>
-#&gt; </span><span style='color: #949494;'>#   flag_value_display_field </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, policy_value_display_field </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,</span><span>
-#&gt; </span><span style='color: #949494;'>#   date_value...1 </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span style='color: #949494;'>, country_code...2 </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, date_value...11 </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span style='color: #949494;'>,</span><span>
-#&gt; </span><span style='color: #949494;'>#   country_code...12 </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 2020-10-29 AFG          Afghanistan  NONE             No data.  Data …
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> 2020-10-30 AFG          Afghanistan  NONE             No data.  Data …
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> 2020-10-31 AFG          Afghanistan  NONE             No data.  Data …
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> 2020-10-29 PHL          Philippines  C1               School closing  
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> 2020-10-29 PHL          Philippines  C2               Workplace closi…
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> 2020-10-29 PHL          Philippines  C3               Cancel public e…
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> 2020-10-29 PHL          Philippines  C4               Restrictions on…
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> 2020-10-29 PHL          Philippines  C5               Close public tr…
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> 2020-10-29 PHL          Philippines  C6               Stay at home re…
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> 2020-10-29 PHL          Philippines  C7               Restrictions on…
+#&gt; </span><span style='color: #949494;'># … with 47 more rows, and 7 more variables: flag_value_display_field </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   policy_value_display_field </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, policyvalue </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, flagged </span><span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   notes </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, policyvalue_actual </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, is_general </span><span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span><span></div><div class='input'>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
