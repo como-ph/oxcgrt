@@ -110,7 +110,7 @@ get_json_time(from = "2020-06-01") %>% get_data_time()
 
 This produces the following output:
 
-    #> # A tibble: 28,611 x 9
+    #> # A tibble: 28,652 x 9
     #>    date_value country_code country_name confirmed deaths stringency_actu…
     #>    <date>     <chr>        <chr>            <int>  <int>            <dbl>
     #>  1 2020-06-01 ABW          Aruba              101      3             38.9
@@ -123,7 +123,7 @@ This produces the following output:
     #>  8 2020-06-01 AUS          Australia         7195    102             62.0
     #>  9 2020-06-01 AUT          Austria          16642    668             53.7
     #> 10 2020-06-01 AZE          Azerbaijan        5494     63             77.8
-    #> # … with 28,601 more rows, and 3 more variables: stringency <dbl>,
+    #> # … with 28,642 more rows, and 3 more variables: stringency <dbl>,
     #> #   stringency_legacy <dbl>, stringency_legacy_disp <dbl>
 
 Important to note that in `get_json_time`, only the starting date (using
@@ -142,21 +142,21 @@ get_json_time() %>% get_data_time()
 
 which produces the following output:
 
-    #> # A tibble: 56,546 x 9
-    #>    date_value country_code country_name stringency_actu… stringency
-    #>    <date>     <chr>        <chr>                   <dbl>      <dbl>
-    #>  1 2020-01-02 ABW          Aruba                       0          0
-    #>  2 2020-01-02 AFG          Afghanistan                 0          0
-    #>  3 2020-01-02 AGO          Angola                      0          0
-    #>  4 2020-01-02 ALB          Albania                     0          0
-    #>  5 2020-01-02 AND          Andorra                     0          0
-    #>  6 2020-01-02 ARE          United Arab…                0          0
-    #>  7 2020-01-02 ARG          Argentina                   0          0
-    #>  8 2020-01-02 AUS          Australia                   0          0
-    #>  9 2020-01-02 AUT          Austria                     0          0
-    #> 10 2020-01-02 AZE          Azerbaijan                  0          0
-    #> # … with 56,536 more rows, and 4 more variables: stringency_legacy <dbl>,
-    #> #   stringency_legacy_disp <dbl>, confirmed <int>, deaths <int>
+    #> # A tibble: 56,587 x 9
+    #>    date_value country_code country_name confirmed deaths stringency_actu…
+    #>    <date>     <chr>        <chr>            <int>  <int>            <dbl>
+    #>  1 2020-01-02 PHL          Philippines          0      0                0
+    #>  2 2020-01-02 PNG          Papua New G…        NA     NA                0
+    #>  3 2020-01-02 POL          Poland              NA     NA                0
+    #>  4 2020-01-02 PRI          Puerto Rico         NA     NA                0
+    #>  5 2020-01-02 PRT          Portugal            NA     NA                0
+    #>  6 2020-01-02 PRY          Paraguay            NA     NA                0
+    #>  7 2020-01-02 PSE          Palestinian…        NA     NA                0
+    #>  8 2020-01-02 QAT          Qatar                0      0                0
+    #>  9 2020-01-02 ROU          Romania              0      0                0
+    #> 10 2020-01-02 RUS          Russia               0      0                0
+    #> # … with 56,577 more rows, and 3 more variables: stringency <dbl>,
+    #> #   stringency_legacy <dbl>, stringency_legacy_disp <dbl>
 
 #### Policy actions and stringency index for specific country on a specific day
 
@@ -269,9 +269,9 @@ This results in:
     #> #   flag_value_display_field <chr>, policy_value_display_field <chr>
 
 Important to note here that the output is a tibble of just the policy
-actions and two additional columns have been added to the dataset -
-`date_value` and `country_code` - to identify the data as coming from a
-specific date and for a specific country.
+actions and three additional columns have been added to the dataset -
+`date_value`, `country_code`, and `country_name` - to identify the data
+as coming from a specific date and for a specific country.
 
 To retrieve policy actions data for multiple countries on multiple days,
 the `get_data_actions` functions can be used as shown below:
@@ -285,7 +285,7 @@ get_json_actions(ccode = c("AFG", "Philippines"),
 
 This results in:
 
-    #> # A tibble: 167 x 16
+    #> # A tibble: 167 x 12
     #>    date_value country_code country_name policy_type_code policy_type_dis…
     #>    <date>     <chr>        <chr>        <chr>            <chr>           
     #>  1 2020-10-25 AFG          Afghanistan  C1               School closing  
@@ -298,16 +298,14 @@ This results in:
     #>  8 2020-10-25 AFG          Afghanistan  C8               International t…
     #>  9 2020-10-25 AFG          Afghanistan  E1               Income support  
     #> 10 2020-10-25 AFG          Afghanistan  E2               Debt/contract r…
-    #> # … with 157 more rows, and 11 more variables: policyvalue <int>,
+    #> # … with 157 more rows, and 7 more variables: policyvalue <int>,
     #> #   policyvalue_actual <int>, flagged <lgl>, is_general <lgl>, notes <chr>,
-    #> #   flag_value_display_field <chr>, policy_value_display_field <chr>,
-    #> #   date_value...1 <date>, country_code...2 <chr>, date_value...11 <date>,
-    #> #   country_code...12 <chr>
+    #> #   flag_value_display_field <chr>, policy_value_display_field <chr>
 
 Important to note here that the output is a tibble of just the policy
-actions and two additional columns have been added to the dataset -
-`date_value` and `country_code` - to identify the data as coming from a
-specific date and for a specific country.
+actions and three additional columns have been added to the dataset -
+`date_value`, `country_code`, and `country_name` - to identify the data
+as coming from a specific date and for a specific country.
 
 ### Calculate OxCGRT indices
 
@@ -591,8 +589,8 @@ stability and future development would depend on the
 current and future development. The
 [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
 is in continuous evolution given that the COVID-19 pandemic is still
-on-going and various governments’ responses to it are changed and/or
-updated. The
+on-going and various governments’ responses to it are continuously
+changed and/or updated. The
 [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
 has also been developing other indices that capture other aspects of
 governments’ responses not yet covered by current indices.
@@ -660,7 +658,7 @@ citation("oxcgrt")
 #> 
 #>   Ernest Guevarra (2020). oxcgrt: An Interface to the Oxford COVID-19
 #>   Government Response Tracker API. R package version 0.1.0. URL
-#>   https://como-ph.github.io/oxcgrt
+#>   https://como-ph.github.io/oxcgrt/
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
@@ -669,6 +667,6 @@ citation("oxcgrt")
 #>     author = {Ernest Guevarra},
 #>     year = {2020},
 #>     note = {R package version 0.1.0},
-#>     url = {https://como-ph.github.io/oxcgrt},
+#>     url = {https://como-ph.github.io/oxcgrt/},
 #>   }
 ```
