@@ -14,7 +14,7 @@
 #' @keywords internal
 #' @name oxcgrt
 #' @importFrom tibble tibble
-#' @importFrom dplyr bind_rows mutate
+#' @importFrom dplyr bind_rows mutate relocate
 #' @importFrom jsonlite fromJSON
 #' @importFrom magrittr %>%
 #' @importFrom tidyr crossing
@@ -30,5 +30,5 @@ if(getRversion() >= "2.15.1") {
   utils::globalVariables(c("policyvalue", "notes", "date_value", "confirmed",
                            "deaths", "stringency_actual", "stringency",
                            "stringency_legacy", "stringency_legacy_disp",
-                           "country_code"))
+                           "country_code", "country_name", "policy_type_code"))
 }

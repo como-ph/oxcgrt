@@ -16,7 +16,7 @@ A tibble of time series stringency index data
 Get time series stringency index data from JSON
 }
 \examples{
-x <- get_json_time(from = "2020-07-18", to = "2020-07-25")
+x <- get_json_time(from = "2020-07-18", to = "2020-07-20")
 
 get_data_time(x)
 

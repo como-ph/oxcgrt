@@ -152,7 +152,7 @@ get_json_actions(ccode = "AFG",
   get_data_action()
 ```
 
-Important to note here that the output is a tibble of just the policy actions and two additional columns have been added to the dataset - `date_value` and `country_code` - to identify the data as coming from a specific date and for a specific country.
+Important to note here that the output is a tibble of just the policy actions and three additional columns have been added to the dataset - `date_value`, `country_code`, and `country_name` - to identify the data as coming from a specific date and for a specific country.
 
 To retrieve policy actions data for multiple countries on multiple days, the `get_data_actions` functions can be used as shown below:
 
@@ -172,7 +172,7 @@ get_json_actions(ccode = c("AFG", "Philippines"),
   get_data_actions()
 ```
 
-Important to note here that the output is a tibble of just the policy actions and two additional columns have been added to the dataset - `date_value` and `country_code` - to identify the data as coming from a specific date and for a specific country.
+Important to note here that the output is a tibble of just the policy actions and three additional columns have been added to the dataset - `date_value`, `country_code`, and `country_name` - to identify the data as coming from a specific date and for a specific country.
 
 ### Calculate OxCGRT indices
 
@@ -373,7 +373,7 @@ This dataset is used by the `oxcgrt` package to test the `calculate_` functions 
 
 ## Limitations
 
-The current version of `oxcgrt` package is *experimental* in that its stability and future development would depend on the [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)'s current and future development. The [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker) is in continuous evolution given that the COVID-19 pandemic is still on-going and various governments' responses to it are changed and/or updated. The [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker) has also been developing other indices that capture other aspects of governments' responses not yet covered by current indices.
+The current version of `oxcgrt` package is *experimental* in that its stability and future development would depend on the [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)'s current and future development. The [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker) is in continuous evolution given that the COVID-19 pandemic is still on-going and various governments' responses to it are continuously changed and/or updated. The [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker) has also been developing other indices that capture other aspects of governments' responses not yet covered by current indices.
 
 The `oxcgrt` package author and maintainer commit to ensuring that current functions are maintained and/or updated in a manner that ensures backwards compatibility should changes to the data structure and/or to the indices calculation are implemented by the [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker) team. This would include maintaining the arguments used by the current functions, maintaining the functionality of the current functions, and maintaining the type of outputs of the current functions. Should changes implemented by the [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker) team to the data structure and/or to the indices calculation require the breaking of the syntax, functionality and/or outputs of the current functions, a formal and proper deprecation process will be implemented that include proper and detailed documentation of the changes and the potential impact on current users.
 
