@@ -13,7 +13,7 @@
 #'
 #' @examples
 #' ## Get time series JSON endpoint
-#' x <- get_json_time(from = "2020-10-25", to = "2020-10-31")
+#' x <- get_json_time(from = "2020-10-29", to = "2020-10-31")
 #'
 #' ## Get time series stringency index data
 #' get_data(x)
@@ -81,7 +81,7 @@ get_data <- function(json) {
 #' @return A tibble of time series stringency index data
 #'
 #' @examples
-#' x <- get_json_time(from = "2020-07-18", to = "2020-07-25")
+#' x <- get_json_time(from = "2020-07-18", to = "2020-07-20")
 #'
 #' get_data_time(x)
 #'
@@ -114,10 +114,8 @@ get_data_time <- function(json) {
                   country_name = countrycode::countrycode(sourcevar = country_code,
                                                           origin = "iso3c",
                                                           destination = "country.name",
-                                                          custom_match = c("RKS" = "Kosovo")))
-
-  ## Rearrange columns
-  df <- df[ , c("date_value", "country_code", "country_name", names(df)[3:8])]
+                                                          custom_match = c("RKS" = "Kosovo"))) %>%
+    dplyr::relocate(country_name, .after = country_code)
 
   ## Return data
   return(df)
@@ -145,7 +143,7 @@ get_data_time <- function(json) {
 #' ## Get relevant JSON for Afghanistan and Philippines for whole month of
 #' ## October
 #' x <- get_json_actions(ccode = c("AFG", "PH"),
-#'                       from = "2020-10-25",
+#'                       from = "2020-10-29",
 #'                       to = "2020-10-31")
 #'
 #' ## Get data on policy actions
@@ -171,23 +169,25 @@ get_data_action <- function(json) {
   ## Extract data from JSON
   x <- jsonlite::fromJSON(txt = json, flatten = TRUE)[["policyActions"]]
 
-  ## Convert data.frames in list to tibble
-  x <- tibble::tibble(x) %>%
-    dplyr::mutate(policyvalue = ifelse(policyvalue == "NA", NA, policyvalue),
-                  policyvalue = as.integer(policyvalue),
-                  notes = as.character(notes),
-                  date_value = stringr::str_extract(json,
-                                                    pattern = "[0-9]{4}\\-[0-9]{2}\\-[0-9]{2}"),
-                  date_value = as.Date(date_value, format = "%Y-%m-%d"),
-                  country_code = stringr::str_extract(json,
-                                                      pattern = "[A-Z]{3}"),
-                  country_name = countrycode::countrycode(sourcevar = country_code,
-                                                          origin = "iso3c",
-                                                          destination = "country.name",
-                                                          custom_match = c("RKS" = "Kosovo")))
-
-  ## Rearrange columns
-  x <- x[ , c("date_value", "country_code", "country_name", names(x)[1:9])]
+  ## Tidy up policyActions data.frame and convert to tibble
+  x <- x %>%
+    dplyr::mutate(
+      policyvalue = ifelse(policyvalue == "NA", NA, policyvalue),
+      policyvalue = as.integer(policyvalue),
+      notes = as.character(notes),
+      date_value = stringr::str_extract(json,
+                                        pattern = "[0-9]{4}\\-[0-9]{2}\\-[0-9]{2}"),
+      date_value = as.Date(date_value, format = "%Y-%m-%d"),
+      country_code = stringr::str_extract(json,
+                                          pattern = "[A-Z]{3}"),
+      country_name = countrycode::countrycode(sourcevar = country_code,
+                                              origin = "iso3c",
+                                              destination = "country.name",
+                                              custom_match = c("RKS" = "Kosovo"))) %>%
+    dplyr::relocate(country_name, .before = policy_type_code) %>%
+    dplyr::relocate(country_code, .before = country_name) %>%
+    dplyr::relocate(date_value, .before = country_code) %>%
+    tibble::tibble()
 
   ## Return data
   return(x)
