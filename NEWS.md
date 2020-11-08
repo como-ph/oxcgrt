@@ -2,17 +2,17 @@
 
 ## Features
 
-* Functions to retrieve JSON from [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker)
+* Functions to retrieve JSON from [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
 API
 
-* Functions to extract [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) data 
+* Functions to extract [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker) data 
 from JSON
 
-* Functions to calculate [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker)
+* Functions to calculate [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
 sub-indices
 
-* Functions to calculate [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) indices
+* Functions to calculate [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker) indices
 
-* [OxCGRT](https://www.bsg.ox.ac.uk/covidtracker) codebook included as a dataset
+* [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker) codebook included as a dataset
 
 
