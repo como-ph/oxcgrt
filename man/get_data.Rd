@@ -21,7 +21,7 @@ Get policy actions and stringency data from JSON
 }
 \examples{
 ## Get time series JSON endpoint
-x <- get_json_time(from = "2020-10-25", to = "2020-10-31")
+x <- get_json_time(from = "2020-10-29", to = "2020-10-31")
 
 ## Get time series stringency index data
 get_data(x)

@@ -30,7 +30,7 @@ get_data_action(x)
 ## Get relevant JSON for Afghanistan and Philippines for whole month of
 ## October
 x <- get_json_actions(ccode = c("AFG", "PH"),
-                      from = "2020-10-25",
+                      from = "2020-10-29",
                       to = "2020-10-31")
 
 ## Get data on policy actions
