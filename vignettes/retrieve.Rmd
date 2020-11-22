@@ -1,0 +1,132 @@
+---
+title: "Retrieve data via OxCGRT API"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Retrieve data via OxCGRT API}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, echo = FALSE}
+library(oxcgrt)
+library(magrittr)
+```
+
+The *retrieve data* functions are based on the [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)'s JSON API described [here](https://covidtrackerapi.bsg.ox.ac.uk). Two API endpoints are provided: 1) endpoint for JSON providing data for stringency index by country over time; and, 2) endpoint for JSON providing data on policy actions and stringency index for a specific country on a specific day.
+
+## Stringency index by country over time
+
+The first API endpoint provides JSON for all countries included in the [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker) over a specified period of time:
+
+<br/>
+
+`https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/date-range/{start-date}/{end-date}`
+
+<br/>
+
+where `start-date` and `end-date` are the starting date and ending date (both in `YYYY-MM-DD` format) respectively from which to retrieve data.
+
+The `oxcgrt` package provides a function named `get_json_time` to interface with the API and retrieve the specified JSON and a function named `get_data_time` to extract the data from the specified JSON into an [R](https://cran.r-project.org) `tibble` object. These two functions have been designed such that they can be piped from one to the other. Hence to retrieve stringency index data for all countries from 1 June 2020 to current date, the following code can be used:
+
+```{r usage1, echo = TRUE, eval = FALSE}
+get_json_time(from = "2020-06-01") %>% get_data_time()
+```
+
+This produces the following output:
+
+```{r usage1a, echo = FALSE, eval = TRUE}
+get_json_time(from = "2020-06-01") %>% get_data_time()
+```
+
+Important to note that in `get_json_time`, only the starting date (using the `from` argument) is specified to the desired 1 June 2020 in `YYYY-MM-DD` format. This is because by default the `to` argument (for the ending date) is set to the current date using a call to the `Sys.Date()` function. By default, the `from` argument is set to 2 January 2020 (2020-01-02) which is the earliest available data point for the stringency index. Therefore, to retrieve data on stringency index for all countries for all available time points up to current, the following commands can be issued:
+
+```{r usage2, echo = TRUE, eval = FALSE}
+get_json_time() %>% get_data_time()
+```
+
+which produces the following output:
+
+```{r usage2a, echo = FALSE, eval = TRUE}
+get_json_time() %>% get_data_time()
+```
+
+#### Policy actions and stringency index for specific country on a specific day
+
+The second API endpoint provides JSON for a specific country included in the [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker) for a specified day:
+
+<br/>
+
+`https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/{country-code}/{date}`
+
+<br/>
+
+where `country-code` is the ISO 3166-1 alpha-3 country code for the required country to get data for and `date` is the date (in `YYYY-MM-DD` format) on which to retrieve data.
+
+The `oxcgrt` package provides a function named `get_json_actions` to interface with the API and retrieve the specified JSON and a function named `get_data` to extract the data from the specified JSON into a named `list` [R](https://cran.r-project.org) object. These two functions have been designed such that they can be piped from one to the other. Hence to retrieve policy actions and stringency index data for Afghanistan for 1 June 2020, the following code can be used:
+
+```{r usage3, echo = TRUE, eval = FALSE}
+get_json_actions(ccode = "AFG", 
+                 from = NULL, 
+                 to = "2020-06-01") %>% 
+  get_data()
+```
+
+which produces the following output:
+
+```{r usage3a, echo = FALSE, eval = TRUE}
+get_json_actions(ccode = "AFG", 
+                 from = NULL, 
+                 to = "2020-06-01") %>% 
+  get_data()
+```
+
+Important to note that the output is a named `list` object containing a `tibble` of **policy actions** data and a `tibble` of **stringency index** data for the specified country and the specified date.
+
+#### Policy actions for specific country or countries on a specific day or days
+
+It is also possible to retrieve just policy actions data for a specific country or for multiple countries on a specific day or multiple days. To retrieve policy actions data for Afghanistan for 1 June 2020, the following code can be used:
+
+```{r usage4, echo = TRUE, eval = FALSE}
+get_json_actions(ccode = "AFG", 
+                 from = NULL, 
+                 to = "2020-06-01") %>% 
+  get_data_action()
+```
+
+This results in:
+
+```{r usage4a, echo = FALSE, eval = TRUE}
+get_json_actions(ccode = "AFG", 
+                 from = NULL, 
+                 to = "2020-06-01") %>% 
+  get_data_action()
+```
+
+Important to note here that the output is a tibble of just the policy actions and three additional columns have been added to the dataset - `date_value`, `country_code`, and `country_name` - to identify the data as coming from a specific date and for a specific country.
+
+To retrieve policy actions data for multiple countries on multiple days, the `get_data_actions` functions can be used as shown below:
+
+```{r usage5, echo = TRUE, eval = FALSE}
+get_json_actions(ccode = c("AFG", "Philippines"), 
+                 from = "2020-10-25", 
+                 to = "2020-10-31") %>% 
+  get_data_actions()
+```
+
+This results in:
+
+```{r usage5a, echo = FALSE, eval = TRUE}
+get_json_actions(ccode = c("AFG", "Philippines"), 
+                 from = "2020-10-25", 
+                 to = "2020-10-31") %>% 
+  get_data_actions()
+```
+
+Important to note here that the output is a tibble of just the policy actions and three additional columns have been added to the dataset - `date_value`, `country_code`, and `country_name` - to identify the data as coming from a specific date and for a specific country.
