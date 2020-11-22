@@ -105,6 +105,21 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/calculate.html">Calculate OxCGRT sub-indices and indices</a>
+    </li>
+    <li>
+      <a href="../articles/retrieve.html">Retrieve data via OxCGRT API</a>
+    </li>
+  </ul>
+</li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -163,20 +178,20 @@ named <code>policyActions</code> and the second tibble is named <code>stringency
 
 <span class='co'>## Get time series stringency index data</span>
 <span class='fu'>get_data</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 307 x 8</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 523 x 8</span><span>
 #&gt;    date_value country_code confirmed deaths stringency_actu… stringency
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 2020-10-29 ABW               </span><span style='text-decoration: underline;'>4</span><span>437     36             37.0       37.0
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> 2020-10-29 AGO               </span><span style='text-decoration: underline;'>9</span><span>871    271             65.7       65.7
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> 2020-10-29 AND               </span><span style='text-decoration: underline;'>4</span><span>517     72             59.3       59.3
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> 2020-10-29 ARE             </span><span style='text-decoration: underline;'>129</span><span>024    485             52.8       52.8
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> 2020-10-29 ARG            1</span><span style='text-decoration: underline;'>130</span><span>520  </span><span style='text-decoration: underline;'>30</span><span>071             81.9       81.9
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> 2020-10-29 ALB              </span><span style='text-decoration: underline;'>20</span><span>040    493             42.6       42.6
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> 2020-10-29 AUS              </span><span style='text-decoration: underline;'>27</span><span>554    907             45.8       45.8
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> 2020-10-29 AUT              </span><span style='text-decoration: underline;'>91</span><span>895   </span><span style='text-decoration: underline;'>1</span><span>040             64.8       64.8
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> 2020-10-29 AZE              </span><span style='text-decoration: underline;'>52</span><span>137    699             64.4       64.4
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> 2020-10-29 BDI                559      1             11.1       11.1
-#&gt; </span><span style='color: #949494;'># … with 297 more rows, and 2 more variables: stringency_legacy </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 2020-10-29 ABW               </span><span style='text-decoration: underline;'>4</span><span>437     36            37.0       37.0 
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> 2020-10-29 AFG              </span><span style='text-decoration: underline;'>41</span><span>145   </span><span style='text-decoration: underline;'>1</span><span>529             5.56       5.56
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> 2020-10-29 AGO               </span><span style='text-decoration: underline;'>9</span><span>871    271            65.7       65.7 
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> 2020-10-29 ALB              </span><span style='text-decoration: underline;'>20</span><span>040    493            54.6       54.6 
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> 2020-10-29 AND               </span><span style='text-decoration: underline;'>4</span><span>517     72            59.3       59.3 
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> 2020-10-29 ARE             </span><span style='text-decoration: underline;'>129</span><span>024    485            50.9       50.9 
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> 2020-10-29 ARG            1</span><span style='text-decoration: underline;'>130</span><span>520  </span><span style='text-decoration: underline;'>30</span><span>071            81.9       81.9 
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> 2020-10-29 AUS              </span><span style='text-decoration: underline;'>27</span><span>554    907            45.8       45.8 
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> 2020-10-29 AUT              </span><span style='text-decoration: underline;'>91</span><span>895   </span><span style='text-decoration: underline;'>1</span><span>040            64.8       64.8 
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> 2020-10-29 AZE              </span><span style='text-decoration: underline;'>52</span><span>137    699            64.4       64.4 
+#&gt; </span><span style='color: #949494;'># … with 513 more rows, and 2 more variables: stringency_legacy </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   stringency_legacy_disp </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span></div><div class='input'>
 <span class='co'>## Get policy actions JSON endpoint</span>
 <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_json_time.html'>get_json_actions</a></span><span class='op'>(</span>ccode <span class='op'>=</span> <span class='st'>"AFG"</span>, from <span class='op'>=</span> <span class='cn'>NULL</span>, to <span class='op'>=</span> <span class='st'>"2020-07-16"</span><span class='op'>)</span>
