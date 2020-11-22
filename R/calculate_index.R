@@ -7,7 +7,7 @@
 #'   tracked by **Oxford COVID-19 Government Response Tracker**.
 #' @param value An integer for recorded policy value on the ordinal scale for
 #'   given policy type.
-#' @param flag_value Either logical or binary value (0, 1) for recorded flag
+#' @param flag_value Either logical or binary value of 0 or 1 for recorded flag
 #'   value. If NA, corresponds to policy type with no flag.
 #'
 #' @return A numeric value between 0 to 100.
