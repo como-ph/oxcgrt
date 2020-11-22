@@ -37,6 +37,8 @@ The `oxcgrt` package has two main sets of functions that:
 
 2. Calculate various [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker) [indicators, sub-indices and indices](https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/index_methodology.md) (`calculate_*` functions).
 
+There are other [R](https://cran.r-project.org) packages that provide access to data from the [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker). The [`COVID19` package](https:/cran.r-project.org/package=covid19) and the [`oxcovid19` package](https://como-ph.github.io/oxcovid19) are just two examples of these. However, all these packages provide access to the [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker) data as *data dumps* and only for the time-series of the stringency index per country. To our knowledge, the `oxcgrt` package is the only [R](https://cran.r-project.org) package currently that provides an interface to the available API for querying and retrieving data. Also, the `oxcgrt` package provides functions to calculate the [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker) sub-indices and indices based on their methodology. None of the other [R](https://cran.r-project.org) packages that we have seen and reviewed have this functionality.
+
 ## Installation
 
 <!---

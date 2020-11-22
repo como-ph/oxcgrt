@@ -52,6 +52,23 @@ The `oxcgrt` package has two main sets of functions that:
     indices](https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/index_methodology.md)
     (`calculate_*` functions).
 
+There are other [R](https://cran.r-project.org) packages that provide
+access to data from the
+[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker).
+The [`COVID19` package](https:/cran.r-project.org/package=covid19) and
+the [`oxcovid19` package](https://como-ph.github.io/oxcovid19) are just
+two examples of these. However, all these packages provide access to the
+[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
+data as *data dumps* and only for the time-series of the stringency
+index per country. To our knowledge, the `oxcgrt` package is the only
+[R](https://cran.r-project.org) package currently that provides an
+interface to the available API for querying and retrieving data. Also,
+the `oxcgrt` package provides functions to calculate the
+[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
+sub-indices and indices based on their methodology. None of the other
+[R](https://cran.r-project.org) packages that we have seen and reviewed
+have this functionality.
+
 ## Installation
 
 <!---
@@ -107,7 +124,7 @@ get_data_time(query)
 
 This results in the following:
 
-    #> # A tibble: 30,677 x 9
+    #> # A tibble: 30,683 x 9
     #>    date_value country_code country_name confirmed deaths stringency_actu…
     #>    <date>     <chr>        <chr>            <int>  <int>            <dbl>
     #>  1 2020-06-01 ABW          Aruba              101      3             50  
@@ -120,7 +137,7 @@ This results in the following:
     #>  8 2020-06-01 AUS          Australia         7195    102             62.0
     #>  9 2020-06-01 AUT          Austria          16642    668             53.7
     #> 10 2020-06-01 AZE          Azerbaijan        5494     63             77.8
-    #> # … with 30,667 more rows, and 3 more variables: stringency <dbl>,
+    #> # … with 30,673 more rows, and 3 more variables: stringency <dbl>,
     #> #   stringency_legacy <dbl>, stringency_legacy_disp <dbl>
 
 The `oxcgrt` functions are designed to work with pipe operators via the
@@ -138,7 +155,7 @@ get_json_time(from = "2020-06-01") %>%    ## Step 1: Creat API URL query
 This results in the same output as the earlier workflow albeit sorted
 alphabetically by country code:
 
-    #> # A tibble: 30,677 x 9
+    #> # A tibble: 30,683 x 9
     #>    date_value country_code country_name confirmed deaths stringency_actu…
     #>    <date>     <chr>        <chr>            <int>  <int>            <dbl>
     #>  1 2020-06-01 ABW          Aruba              101      3             50  
@@ -151,7 +168,7 @@ alphabetically by country code:
     #>  8 2020-06-01 AUS          Australia         7195    102             62.0
     #>  9 2020-06-01 AUT          Austria          16642    668             53.7
     #> 10 2020-06-01 AZE          Azerbaijan        5494     63             77.8
-    #> # … with 30,667 more rows, and 3 more variables: stringency <dbl>,
+    #> # … with 30,673 more rows, and 3 more variables: stringency <dbl>,
     #> #   stringency_legacy <dbl>, stringency_legacy_disp <dbl>
 
 For more detailed examples of how to retrieve data via the
