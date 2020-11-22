@@ -30,10 +30,44 @@ facilitates access to the
 data for [R](https://cran.r-project.org) users via version 2 of its API.
 This package also includes functions to calculate the various
 [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
-indices in [R](https://cran.r-project.org). This package for
+indices in [R](https://cran.r-project.org). This package is aimed at
 [R](https://cran.r-project.org) users who use or plan to use the
 [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
-data for their research or for other purposes.
+data for their research or for other academic purposes or who develop or
+want to develop other metrics or indices that build on the
+[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
+approach.
+
+## What does `oxcgrt` do?
+
+The `oxcgrt` package has two main sets of functions that:
+
+1.  Retrieve
+    [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
+    data (`get_*` functions) via version 2 of its API; and,
+
+2.  Calculate various
+    [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
+    [indicators, sub-indices and
+    indices](https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/index_methodology.md)
+    (`calculate_*` functions).
+
+There are other [R](https://cran.r-project.org) packages that provide
+access to data from the
+[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker).
+The [`COVID19` package](https:/cran.r-project.org/package=covid19) and
+the [`oxcovid19` package](https://como-ph.github.io/oxcovid19) are just
+two examples of these. However, all these packages provide access to the
+[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
+data as *data dumps* and only for the time-series of the stringency
+index per country. To our knowledge, the `oxcgrt` package is the only
+[R](https://cran.r-project.org) package currently that provides an
+interface to the available API for querying and retrieving data. Also,
+the `oxcgrt` package provides functions to calculate the
+[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
+sub-indices and indices based on their methodology. None of the other
+[R](https://cran.r-project.org) packages that we have seen and reviewed
+have this functionality.
 
 ## Installation
 
@@ -60,15 +94,7 @@ remotes::install_github("como-ph/oxcgrt")
 
 ## Usage
 
-The `oxcgrt` package includes two types of functions. First are
-functions that retrieve data via
-[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)’s
-API, and second are functions that calculate
-[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)’s
-various
-[indices](https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/index_methodology.md).
-
-### Retrieve data
+### The `oxcgrt` data retrieval workflow via API
 
 The *retrieve data* functions are based on the
 [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)’s
@@ -78,422 +104,103 @@ stringency index by country over time; and, 2) endpoint for JSON
 providing data on policy actions and stringency index for a specific
 country on a specific day.
 
-#### Stringency index by country over time
-
-The first API endpoint provides JSON for all countries included in the
-[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
-over a specified period of time:
-
-<br/>
-
-`https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/date-range/{start-date}/{end-date}`
-
-<br/>
-
-where `start-date` and `end-date` are the starting date and ending date
-(both in `YYYY-MM-DD` format) respectively from which to retrieve data.
-
-The `oxcgrt` package provides a function named `get_json_time` to
-interface with the API and retrieve the specified JSON and a function
-named `get_data_time` to extract the data from the specified JSON into
-an [R](https://cran.r-project.org) `tibble` object. These two functions
-have been designed such that they can be piped from one to the other.
-Hence to retrieve stringency index data for all countries from 1 June
-2020 to current date, the following code can be used:
+For each of these endpoints, the data retrieval workflow is composed of
+two steps: first is the creation of the appropriate API URL query; and,
+second is the retrieval of the appropriate data as per query into a
+data.frame structure usable in [R](https://cran.r-project.org). This
+workflow is show in code below:
 
 ``` r
+## Load oxcgrt package
 library(oxcgrt)
-library(magrittr)
 
-get_json_time(from = "2020-06-01") %>% get_data_time()
+## Step 1: Create the appropriate API URL query for time series data from 
+## 1 June 2020 up to current day
+query <- get_json_time(from = "2020-06-01")
+
+## Step 2: Retrieve the data
+get_data_time(query)
 ```
 
-This produces the following output:
+This results in the following:
 
-    #> # A tibble: 28,652 x 9
+    #> # A tibble: 30,683 x 9
     #>    date_value country_code country_name confirmed deaths stringency_actu…
     #>    <date>     <chr>        <chr>            <int>  <int>            <dbl>
-    #>  1 2020-06-01 ABW          Aruba              101      3             38.9
+    #>  1 2020-06-01 ABW          Aruba              101      3             50  
     #>  2 2020-06-01 AFG          Afghanistan      15205    257             84.3
     #>  3 2020-06-01 AGO          Angola              86      4             77.8
-    #>  4 2020-06-01 ALB          Albania           1137     33             67.6
+    #>  4 2020-06-01 ALB          Albania           1137     33             71.3
     #>  5 2020-06-01 AND          Andorra            764     51             50  
     #>  6 2020-06-01 ARE          United Arab…     34557    264             72.2
     #>  7 2020-06-01 ARG          Argentina        16838    539             90.7
     #>  8 2020-06-01 AUS          Australia         7195    102             62.0
     #>  9 2020-06-01 AUT          Austria          16642    668             53.7
     #> 10 2020-06-01 AZE          Azerbaijan        5494     63             77.8
-    #> # … with 28,642 more rows, and 3 more variables: stringency <dbl>,
+    #> # … with 30,673 more rows, and 3 more variables: stringency <dbl>,
     #> #   stringency_legacy <dbl>, stringency_legacy_disp <dbl>
 
-Important to note that in `get_json_time`, only the starting date (using
-the `from` argument) is specified to the desired 1 June 2020 in
-`YYYY-MM-DD` format. This is because by default the `to` argument (for
-the ending date) is set to the current date using a call to the
-`Sys.Date()` function. By default, the `from` argument is set to 2
-January 2020 (2020-01-02) which is the earliest available data point for
-the stringency index. Therefore, to retrieve data on stringency index
-for all countries for all available time points up to current, the
-following commands can be issued:
+The `oxcgrt` functions are designed to work with pipe operators via the
+`magrittr` package. The steps shown above can be replicated using pipe
+operators as follows:
 
 ``` r
-get_json_time() %>% get_data_time()
+## Load magrittr package
+library(magrittr)
+
+get_json_time(from = "2020-06-01") %>%    ## Step 1: Creat API URL query
+  get_data_time()                         ## Step 2: Retrieve data
 ```
 
-which produces the following output:
+This results in the same output as the earlier workflow albeit sorted
+alphabetically by country code:
 
-    #> # A tibble: 56,587 x 9
+    #> # A tibble: 30,683 x 9
     #>    date_value country_code country_name confirmed deaths stringency_actu…
     #>    <date>     <chr>        <chr>            <int>  <int>            <dbl>
-    #>  1 2020-01-02 PHL          Philippines          0      0                0
-    #>  2 2020-01-02 PNG          Papua New G…        NA     NA                0
-    #>  3 2020-01-02 POL          Poland              NA     NA                0
-    #>  4 2020-01-02 PRI          Puerto Rico         NA     NA                0
-    #>  5 2020-01-02 PRT          Portugal            NA     NA                0
-    #>  6 2020-01-02 PRY          Paraguay            NA     NA                0
-    #>  7 2020-01-02 PSE          Palestinian…        NA     NA                0
-    #>  8 2020-01-02 QAT          Qatar                0      0                0
-    #>  9 2020-01-02 ROU          Romania              0      0                0
-    #> 10 2020-01-02 RUS          Russia               0      0                0
-    #> # … with 56,577 more rows, and 3 more variables: stringency <dbl>,
+    #>  1 2020-06-01 ABW          Aruba              101      3             50  
+    #>  2 2020-06-01 AFG          Afghanistan      15205    257             84.3
+    #>  3 2020-06-01 AGO          Angola              86      4             77.8
+    #>  4 2020-06-01 ALB          Albania           1137     33             71.3
+    #>  5 2020-06-01 AND          Andorra            764     51             50  
+    #>  6 2020-06-01 ARE          United Arab…     34557    264             72.2
+    #>  7 2020-06-01 ARG          Argentina        16838    539             90.7
+    #>  8 2020-06-01 AUS          Australia         7195    102             62.0
+    #>  9 2020-06-01 AUT          Austria          16642    668             53.7
+    #> 10 2020-06-01 AZE          Azerbaijan        5494     63             77.8
+    #> # … with 30,673 more rows, and 3 more variables: stringency <dbl>,
     #> #   stringency_legacy <dbl>, stringency_legacy_disp <dbl>
 
-#### Policy actions and stringency index for specific country on a specific day
-
-The second API endpoint provides JSON for a specific country included in
-the
+For more detailed examples of how to retrieve data via the
 [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
-for a specified day:
+API version 2, read [Retrieve data via OxCGRT
+API](https://como-ph.github.io/oxcgrt/articles/retrieve.html).
 
-<br/>
+### The `oxcgrt` calculate workflow
 
-`https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/{country-code}/{date}`
-
-<br/>
-
-where `country-code` is the ISO 3166-1 alpha-3 country code for the
-required country to get data for and `date` is the date (in `YYYY-MM-DD`
-format) on which to retrieve data.
-
-The `oxcgrt` package provides a function named `get_json_actions` to
-interface with the API and retrieve the specified JSON and a function
-named `get_data` to extract the data from the specified JSON into a
-named `list` [R](https://cran.r-project.org) object. These two functions
-have been designed such that they can be piped from one to the other.
-Hence to retrieve policy actions and stringency index data for
-Afghanistan for 1 June 2020, the following code can be used:
-
-``` r
-get_json_actions(ccode = "AFG", 
-                 from = NULL, 
-                 to = "2020-06-01") %>% 
-  get_data()
-```
-
-which produces the following output:
-
-    #> $policyActions
-    #> # A tibble: 18 x 9
-    #>    policy_type_code policy_type_dis… policyvalue policyvalue_act… flagged
-    #>    <chr>            <chr>                  <int>            <int> <lgl>  
-    #>  1 C1               School closing             3                3 TRUE   
-    #>  2 C2               Workplace closi…           3                3 FALSE  
-    #>  3 C3               Cancel public e…           2                2 TRUE   
-    #>  4 C4               Restrictions on…           4                4 TRUE   
-    #>  5 C5               Close public tr…           2                2 FALSE  
-    #>  6 C6               Stay at home re…           2                2 FALSE  
-    #>  7 C7               Restrictions on…           2                2 FALSE  
-    #>  8 C8               International t…           3                3 NA     
-    #>  9 E1               Income support             0                0 NA     
-    #> 10 E2               Debt/contract r…           0                0 NA     
-    #> 11 E3               Fiscal measures            0                0 NA     
-    #> 12 E4               International s…           0                0 NA     
-    #> 13 H1               Public informat…           2                2 TRUE   
-    #> 14 H2               Testing policy             1                1 NA     
-    #> 15 H3               Contact tracing            1                1 NA     
-    #> 16 H4               Emergency inves…           0                0 NA     
-    #> 17 H5               Investment in v…           0                0 NA     
-    #> 18 H6               Facial Coverings           1                1 TRUE   
-    #> # … with 4 more variables: is_general <lgl>, notes <chr>,
-    #> #   flag_value_display_field <chr>, policy_value_display_field <chr>
-    #> 
-    #> $stringencyData
-    #> # A tibble: 1 x 6
-    #>   date_value country_code confirmed deaths stringency_actual stringency
-    #>   <chr>      <chr>            <int>  <int>             <dbl>      <dbl>
-    #> 1 2020-06-01 AFG              15205    257              84.3       84.3
-
-Important to note that the output is a named `list` object containing a
-`tibble` of **policy actions** data and a `tibble` of **stringency
-index** data for the specified country and the specified date.
-
-#### Policy actions for specific country or countries on a specific day or days
-
-It is also possible to retrieve just policy actions data for a specific
-country or for multiple countries on a specific day or multiple days. To
-retrieve policy actions data for Afghanistan for 1 June 2020, the
-following code can be used:
-
-``` r
-get_json_actions(ccode = "AFG", 
-                 from = NULL, 
-                 to = "2020-06-01") %>% 
-  get_data_action()
-```
-
-This results in:
-
-    #> # A tibble: 18 x 12
-    #>    date_value country_code country_name policy_type_code policy_type_dis…
-    #>    <date>     <chr>        <chr>        <chr>            <chr>           
-    #>  1 2020-06-01 AFG          Afghanistan  C1               School closing  
-    #>  2 2020-06-01 AFG          Afghanistan  C2               Workplace closi…
-    #>  3 2020-06-01 AFG          Afghanistan  C3               Cancel public e…
-    #>  4 2020-06-01 AFG          Afghanistan  C4               Restrictions on…
-    #>  5 2020-06-01 AFG          Afghanistan  C5               Close public tr…
-    #>  6 2020-06-01 AFG          Afghanistan  C6               Stay at home re…
-    #>  7 2020-06-01 AFG          Afghanistan  C7               Restrictions on…
-    #>  8 2020-06-01 AFG          Afghanistan  C8               International t…
-    #>  9 2020-06-01 AFG          Afghanistan  E1               Income support  
-    #> 10 2020-06-01 AFG          Afghanistan  E2               Debt/contract r…
-    #> 11 2020-06-01 AFG          Afghanistan  E3               Fiscal measures 
-    #> 12 2020-06-01 AFG          Afghanistan  E4               International s…
-    #> 13 2020-06-01 AFG          Afghanistan  H1               Public informat…
-    #> 14 2020-06-01 AFG          Afghanistan  H2               Testing policy  
-    #> 15 2020-06-01 AFG          Afghanistan  H3               Contact tracing 
-    #> 16 2020-06-01 AFG          Afghanistan  H4               Emergency inves…
-    #> 17 2020-06-01 AFG          Afghanistan  H5               Investment in v…
-    #> 18 2020-06-01 AFG          Afghanistan  H6               Facial Coverings
-    #> # … with 7 more variables: policyvalue <int>, policyvalue_actual <int>,
-    #> #   flagged <lgl>, is_general <lgl>, notes <chr>,
-    #> #   flag_value_display_field <chr>, policy_value_display_field <chr>
-
-Important to note here that the output is a tibble of just the policy
-actions and three additional columns have been added to the dataset -
-`date_value`, `country_code`, and `country_name` - to identify the data
-as coming from a specific date and for a specific country.
-
-To retrieve policy actions data for multiple countries on multiple days,
-the `get_data_actions` functions can be used as shown below:
-
-``` r
-get_json_actions(ccode = c("AFG", "Philippines"), 
-                 from = "2020-10-25", 
-                 to = "2020-10-31") %>% 
-  get_data_actions()
-```
-
-This results in:
-
-    #> # A tibble: 167 x 12
-    #>    date_value country_code country_name policy_type_code policy_type_dis…
-    #>    <date>     <chr>        <chr>        <chr>            <chr>           
-    #>  1 2020-10-25 AFG          Afghanistan  C1               School closing  
-    #>  2 2020-10-25 AFG          Afghanistan  C2               Workplace closi…
-    #>  3 2020-10-25 AFG          Afghanistan  C3               Cancel public e…
-    #>  4 2020-10-25 AFG          Afghanistan  C4               Restrictions on…
-    #>  5 2020-10-25 AFG          Afghanistan  C5               Close public tr…
-    #>  6 2020-10-25 AFG          Afghanistan  C6               Stay at home re…
-    #>  7 2020-10-25 AFG          Afghanistan  C7               Restrictions on…
-    #>  8 2020-10-25 AFG          Afghanistan  C8               International t…
-    #>  9 2020-10-25 AFG          Afghanistan  E1               Income support  
-    #> 10 2020-10-25 AFG          Afghanistan  E2               Debt/contract r…
-    #> # … with 157 more rows, and 7 more variables: policyvalue <int>,
-    #> #   policyvalue_actual <int>, flagged <lgl>, is_general <lgl>, notes <chr>,
-    #> #   flag_value_display_field <chr>, policy_value_display_field <chr>
-
-Important to note here that the output is a tibble of just the policy
-actions and three additional columns have been added to the dataset -
-`date_value`, `country_code`, and `country_name` - to identify the data
-as coming from a specific date and for a specific country.
-
-### Calculate OxCGRT indices
-
-The *calculate* functions are based on the
+The `calculate_*` functions are based on the
 [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)’s
 methodology described
 [here](https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/index_methodology.md).
 There are two sets of calculate functions included in `oxcgrt`. The
 first calculates the
 [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
-**sub-indices** described in the table below:
-
-| ID | Name                                  | Description                                                                                                                                                                                                                    | Measurement           | Coding                                                                                                                                                                                                                                                                                                                                                                                                                           | Policy Group                     |
-| :- | :------------------------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------- |
-| C1 | School closing                        | Record closings of schools and universities                                                                                                                                                                                    | Ordinal scale         | 0 - no measures; 1 - recommend closing or all schools open with alterations resulting in significant differences compared to non-Covid-19 operations; 2 - require closing (only some levels or categories, eg just high school, or just public schools); 3 - require closing all levels; Blank - no data                                                                                                                         | Containment and closure policies |
-| C2 | Workplace closing                     | Record closings of workplaces                                                                                                                                                                                                  | Ordinal scale         | 0 - no measures; 1 - recommend closing (or recommend work from home); 2 - require closing (or work from home) for some sectors or categories of workers; 3 - require closing (or work from home) for all-but-essential workplaces (eg grocery stores, doctors); Blank - no data                                                                                                                                                  | Containment and closure policies |
-| C3 | Cancel public events                  | Record cancelling public events                                                                                                                                                                                                | Ordinal scale         | 0 - no measures; 1 - recommend cancelling; 2 - require cancelling; Blank - no data                                                                                                                                                                                                                                                                                                                                               | Containment and closure policies |
-| C4 | Restrictions on gatherings            | Record limits on private gatherings                                                                                                                                                                                            | Ordinal scale         | 0 - no restrictions; 1 - restrictions on very large gatherings (the limit is above; 1000 people); 2 - restrictions on gatherings between; 101-1000 people; 3 - restrictions on gatherings between; 11-100 people; 4 - restrictions on gatherings of; 10 people or less; Blank - no data                                                                                                                                          | Containment and closure policies |
-| C5 | Close public transport                | Record closing of public transport                                                                                                                                                                                             | Ordinal scale         | 0 - no measures; 1 - recommend closing (or significantly reduce volume/route/means of transport available); 2 - require closing (or prohibit most citizens from using it); Blank - no data                                                                                                                                                                                                                                       | Containment and closure policies |
-| C6 | Stay at home requirements             | Record orders to “shelter-in-place” and otherwise confine to the home                                                                                                                                                          | Ordinal scale         | 0 - no measures; 1 - recommend not leaving house; 2 - require not leaving house with exceptions for daily exercise, grocery shopping, and ‘essential’ trips; 3 - require not leaving house with minimal exceptions (eg allowed to leave once a week, or only one person can leave at a time, etc); Blank - no data                                                                                                               | Containment and closure policies |
-| C7 | Restrictions on internal movement     | Record restrictions on internal movement between cities/regions                                                                                                                                                                | Ordinal scale         | 0 - no measures; 1 - recommend not to travel between regions/cities; 2 - internal movement restrictions in place; Blank - no data                                                                                                                                                                                                                                                                                                | Containment and closure policies |
-| C8 | International travel controls         | Record restrictions on international travel Note: this records policy for foreign travellers, not citizens                                                                                                                     | Ordinal scale         | 0 - no restrictions; 1 - screening arrivals; 2 - quarantine arrivals from some or all regions; 3 - ban arrivals from some regions; 4 - ban on all regions or total border closure; Blank - no data                                                                                                                                                                                                                               | Containment and closure policies |
-| E1 | Income support (for households)       | Record if the government is providing direct cash payments to people who lose their jobs or cannot work. Note: only includes payments to firms if explicitly linked to payroll/salaries                                        | Ordinal scale         | 0 - no income support; 1 - government is replacing less than 50% of lost salary (or if a flat sum, it is less than 50% median salary); 2 - government is replacing 50% or more of lost salary (or if a flat sum, it is greater than 50% median salary); Blank - no data                                                                                                                                                          | Economic policies                |
-| E2 | Debt/contract relief (for households) | Record if the government is freezing financial obligations for households (eg stopping loan repayments, preventing services like water from stopping, or banning evictions)                                                    | Ordinal scale         | 0 - no debt/contract relief; 1 - narrow relief, specific to one kind of contract; 2 - broad debt/contract relief                                                                                                                                                                                                                                                                                                                 | Economic policies                |
-| E3 | Fiscal measures                       | Announced economic stimulus spending Note: only record amount additional to previously announced spending                                                                                                                      | USD                   | Record monetary value in USD of fiscal stimuli, includes any spending or tax cuts NOT included in E4, H4 or H5; 0 - no new spending that day; Blank - no data                                                                                                                                                                                                                                                                    | Economic policies                |
-| E4 | International support                 | Announced offers of Covid-19 related aid spending to other countries Note: only record amount additional to previously announced spending                                                                                      | USD                   | Record monetary value in USD; 0 - no new spending that day; Blank - no data                                                                                                                                                                                                                                                                                                                                                      | Economic policies                |
-| H1 | Public information campaigns          | Record presence of public info campaigns                                                                                                                                                                                       | Ordinal scale         | 0 - no Covid-19 public information campaign; 1 - public officials urging caution about Covid-19; 2- coordinated public information campaign (eg across traditional and social media); Blank - no data                                                                                                                                                                                                                            | Health system policies           |
-| H2 | Testing policy                        | Record government policy on who has access to testing Note: this records policies about testing for current infection (PCR tests) not testing for immunity (antibody test)                                                     | Ordinal scale         | 0 - no testing policy; 1 - only those who both (a) have symptoms AND (b) meet specific criteria (eg key workers, admitted to hospital, came into contact with a known case, returned from overseas); 2 - testing of anyone showing Covid-19 symptoms; 3 - open public testing (eg “drive through” testing available to asymptomatic people); Blank - no data                                                                     | Health system policies           |
-| H3 | Contact tracing                       | Record government policy on contact tracing after a positive diagnosis Note: we are looking for policies that would identify all people potentially exposed to Covid-19; voluntary bluetooth apps are unlikely to achieve this | Ordinal scale         | 0 - no contact tracing; 1 - limited contact tracing; not done for all cases; 2 - comprehensive contact tracing; done for all identified cases                                                                                                                                                                                                                                                                                    | Health system policies           |
-| H4 | Emergency investment in healthcare    | Announced short term spending on healthcare system, eg hospitals, masks, etc Note: only record amount additional to previously announced spending                                                                              | USD                   | Record monetary value in USD; 0 - no new spending that day; Blank - no data                                                                                                                                                                                                                                                                                                                                                      | Health system policies           |
-| H5 | Investment in vaccines                | Announced public spending on Covid-19 vaccine development Note: only record amount additional to previously announced spending                                                                                                 | USD                   | Record monetary value in USD; 0 - no new spending that day; Blank - no data                                                                                                                                                                                                                                                                                                                                                      | Health system policies           |
-| H6 | Facial Coverings                      | Record policies on the use of facial coverings outside the home                                                                                                                                                                | Ordinal scale         | 0 - No policy; 1 - Recommended; 2 - Required in some specified shared/public spaces outside the home with other people present, or some situations when social distancing not possible; 3 - Required in all shared/public spaces outside the home with other people present or all situations when social distancing not possible; 4 - Required outside the home at all times regardless of location or presence of other people | Health system policies           |
-| M1 | Wildcard                              | Record policy announcements that do not fit anywhere else                                                                                                                                                                      | Free text notes field | Note unusual or interesting interventions that are worth flagging                                                                                                                                                                                                                                                                                                                                                                | Miscellaneous policies           |
-
-The second calculates the four
+**sub-indices** and the second calculates the four
 [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
 **indices** which are composed of various combinations of the indicators
-described in the table above. These combinations are described in the
-table below:
-
-| ID | Name                                  | Government response index | Containment and health index | Stringency index | Economic support index |
-| :- | :------------------------------------ | :------------------------ | :--------------------------- | :--------------- | :--------------------- |
-| C1 | School closing                        | x                         | x                            | x                |                        |
-| C2 | Workplace closing                     | x                         | x                            | x                |                        |
-| C3 | Cancel public events                  | x                         | x                            | x                |                        |
-| C4 | Restrictions on gatherings            | x                         | x                            | x                |                        |
-| C5 | Close public transport                | x                         | x                            | x                |                        |
-| C6 | Stay at home requirements             | x                         | x                            | x                |                        |
-| C7 | Restrictions on internal movement     | x                         | x                            | x                |                        |
-| C8 | International travel controls         | x                         | x                            | x                |                        |
-| E1 | Income support (for households)       | x                         |                              |                  | x                      |
-| E2 | Debt/contract relief (for households) | x                         |                              |                  | x                      |
-| E3 | Fiscal measures                       | NA                        | NA                           | NA               | NA                     |
-| E4 | International support                 | NA                        | NA                           | NA               | NA                     |
-| H1 | Public information campaigns          | x                         | x                            | x                |                        |
-| H2 | Testing policy                        | x                         | x                            |                  |                        |
-| H3 | Contact tracing                       | x                         | x                            |                  |                        |
-| H4 | Emergency investment in healthcare    | NA                        | NA                           | NA               | NA                     |
-| H5 | Investment in vaccines                | NA                        | NA                           | NA               | NA                     |
-| H6 | Facial Coverings                      | x                         | x                            |                  |                        |
-| M1 | Wildcard                              | NA                        | NA                           | NA               | NA                     |
-
-#### Calculating OxCGRT sub-indices
-
-The
+used by
 [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
-subindices can be calculated using the `calculate_subindex` and
-`calculate_subindices` functions. To calculate a specific sub-index, the
-following code is used:
+sub-indices and indices.
 
-``` r
-## Given the C1 data in indicatorData, calculate C1 sub-index
-calculate_subindex(indicator_code = indicatorData[1, "indicator"], 
-                   value = indicatorData[1, "value"], 
-                   flag_value = indicatorData[1, "flag_value"])
-```
-
-This gives a C1 index value of:
-
-    #>      value
-    #> 1 66.66667
-
-To calculate all
+For more detailed examples of how to calculate the various
 [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
-subindices, the following code is used:
-
-``` r
-## Given the indicatorData dataset, calculate all sub-indices
-indicatorData %>%
-  calculate_subindices(indicator_code = "indicator", 
-                       value = "value", 
-                       flag_value = "flag_value",
-                       add = TRUE)
-```
-
-This results in the following output:
-
-    #> # A tibble: 14 x 7
-    #>    indicator value flag_value max_value  flag score score.1
-    #>    <chr>     <int>      <int>     <int> <int> <dbl>   <dbl>
-    #>  1 C1            2          1         3     1  66.7    66.7
-    #>  2 C2           NA         NA         3     1   0       0  
-    #>  3 C3            2          0         2     1  75      75  
-    #>  4 C4            2          0         4     1  37.5    37.5
-    #>  5 C5            0         NA         2     1   0       0  
-    #>  6 C6            1          0         3     1  16.7    16.7
-    #>  7 C7            1          1         2     1  50      50  
-    #>  8 C8            3         NA         4     0  75      75  
-    #>  9 E1            2          0         2     1  75      75  
-    #> 10 E2            2         NA         2     0 100     100  
-    #> 11 H1            2          0         2     1  75      75  
-    #> 12 H2            3         NA         3     0 100     100  
-    #> 13 H3            2         NA         2     0 100     100  
-    #> 14 H6            2          0         4     1  37.5    37.5
-
-It can be noted that the results of the calculations are added to the
-input data.frame under the column name `score.1`. Comparing this with
-the value in the column named `score` that is included in the
-`indicatorData` dataset, the results are the same.
-
-#### Calculating OxCGRT indices
-
-The
-[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
-indices can be calculated using the `calculate_index` and
-`calculate_indices` functions. To calculate a specific sub-index, the
-following code can be used:
-
-``` r
-indicatorData %>%
-  calculate_subindices(indicator_code = "indicator",
-                       value = "value",
-                       flag_value = "flag_value",
-                       add = FALSE) %>%
-  calculate_index(codes = c(paste("C", 1:8, sep = ""),
-                            paste("E", 1:2, sep = ""),
-                            paste("H", 1:3, sep = ""),
-                            "H6"), 
-                  tolerance = 1)
-```
-
-This code calculates the `government response index` which is:
-
-    #> [1] 57.7381
-
-The same result can be reached by using the specialised function
-`calculate_gov_response` as follows:
-
-``` r
-indicatorData %>% 
-  calculate_subindices(indicator_code = "indicator",
-                       value = "value",
-                       flag_value = "flag_value",
-                       add = FALSE) %>%
-  calculate_gov_response()
-```
-
-which results in the same value as the previous code:
-
-    #> [1] 57.7381
-
-To calculate all four
-[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
-indices, the following code can be implemented:
-
-``` r
-indicatorData %>% 
-  calculate_subindices(indicator_code = "indicator",
-                       value = "value",
-                       flag_value = "flag_value",
-                       add = FALSE) %>%
-  calculate_indices()
-```
-
-which outputs the following results:
-
-    #> # A tibble: 4 x 2
-    #>   index                        values
-    #>   <chr>                         <dbl>
-    #> 1 Government Response Index      57.7
-    #> 2 Containment and Health Index   52.8
-    #> 3 Stringency Index               44.0
-    #> 4 Economic Support Index         87.5
+sub-indices and indices, read [Calculate OxCGRT sub-indices and
+indices](https://como-ph.github.io/oxcgrt/articles/calculate.html).
 
 ### Datasets
 
-The `oxcgrt` package comes with helpful datasets guides to facilitate in
-usage and interpretation of the
+The `oxcgrt` package comes with helpful datasets which serve as guides
+to facilitate in usage and interpretation of the
 [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
 data.
 
@@ -574,12 +281,12 @@ shown below:
     #> 13 H3            2         NA         2     0 100  
     #> 14 H6            2          0         4     1  37.5
 
-This dataset is used by the `oxcgrt` package to test the `calculate_`
+This dataset is used by the `oxcgrt` package to test the `calculate_*`
 functions and for demonstrating how these functions work. This dataset
 can be useful for those trying to learn the
 [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)’s
 calculation methods and [R](https://cran.r-project.org) users who are
-learning how to use the `oxcgrt` package `calculate_` functions.
+learning how to use the `oxcgrt` package `calculate_*` functions.
 
 ## Limitations
 
@@ -670,3 +377,14 @@ citation("oxcgrt")
 #>     url = {https://como-ph.github.io/oxcgrt/},
 #>   }
 ```
+
+## Community guidelines
+
+Feedback, bug reports and feature requests are welcome; file issues or
+seek support [here](https://github.com/como-ph/oxcgrt/issues). If you
+would like to contribute to the package, please see our [contributing
+guidelines](https://como-ph.github.io/covidphdata/CONTRIBUTING.html).
+
+This project is released with a [Contributor Code of
+Conduct](https://como-ph.github.io/covidphdata/CODE_OF_CONDUCT.html). By
+participating in this project you agree to abide by its terms.

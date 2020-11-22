@@ -105,6 +105,21 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/calculate.html">Calculate OxCGRT sub-indices and indices</a>
+    </li>
+    <li>
+      <a href="../articles/retrieve.html">Retrieve data via OxCGRT API</a>
+    </li>
+  </ul>
+</li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -157,20 +172,20 @@
     <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_json_time.html'>get_json_time</a></span><span class='op'>(</span>from <span class='op'>=</span> <span class='st'>"2020-07-18"</span>, to <span class='op'>=</span> <span class='st'>"2020-07-20"</span><span class='op'>)</span>
 
 <span class='fu'>get_data_time</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 552 x 9</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 531 x 9</span><span>
 #&gt;    date_value country_code country_name confirmed deaths stringency_actu…
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 2020-07-18 ABW          Aruba              108      3             32.4
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 2020-07-18 ABW          Aruba              108      3             43.5
 #&gt; </span><span style='color: #BCBCBC;'> 2</span><span> 2020-07-18 AFG          Afghanistan      </span><span style='text-decoration: underline;'>35</span><span>289   </span><span style='text-decoration: underline;'>1</span><span>147             78.7
 #&gt; </span><span style='color: #BCBCBC;'> 3</span><span> 2020-07-18 AGO          Angola             638     29             76.4
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> 2020-07-18 ALB          Albania           </span><span style='text-decoration: underline;'>3</span><span>906    107             59.3
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> 2020-07-18 ALB          Albania           </span><span style='text-decoration: underline;'>3</span><span>906    107             63.0
 #&gt; </span><span style='color: #BCBCBC;'> 5</span><span> 2020-07-18 AND          Andorra            880     52             41.7
 #&gt; </span><span style='color: #BCBCBC;'> 6</span><span> 2020-07-18 ARE          United Arab…     </span><span style='text-decoration: underline;'>56</span><span>422    337             43.5
 #&gt; </span><span style='color: #BCBCBC;'> 7</span><span> 2020-07-18 ARG          Argentina       </span><span style='text-decoration: underline;'>114</span><span>770   </span><span style='text-decoration: underline;'>2</span><span>133             92.6
 #&gt; </span><span style='color: #BCBCBC;'> 8</span><span> 2020-07-18 AUS          Australia        </span><span style='text-decoration: underline;'>11</span><span>235    116             68.1
 #&gt; </span><span style='color: #BCBCBC;'> 9</span><span> 2020-07-18 AUT          Austria          </span><span style='text-decoration: underline;'>19</span><span>406    710             35.2
 #&gt; </span><span style='color: #BCBCBC;'>10</span><span> 2020-07-18 AZE          Azerbaijan       </span><span style='text-decoration: underline;'>26</span><span>636    341             96.3
-#&gt; </span><span style='color: #949494;'># … with 542 more rows, and 3 more variables: stringency </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'># … with 521 more rows, and 3 more variables: stringency </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   stringency_legacy </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, stringency_legacy_disp </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span></div><div class='input'>
 </div></span></pre>
   </div>
