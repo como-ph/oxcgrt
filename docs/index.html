@@ -118,6 +118,7 @@
 <li><p>Retrieve <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> data (<code>get_*</code> functions) via version 2 of its API; and,</p></li>
 <li><p>Calculate various <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> <a href="https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/index_methodology.md">indicators, sub-indices and indices</a> (<code>calculate_*</code> functions).</p></li>
 </ol>
+<p>There are other <a href="https://cran.r-project.org">R</a> packages that provide access to data from the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a>. The <a href="https:/cran.r-project.org/package=covid19"><code>COVID19</code> package</a> and the <a href="https://como-ph.github.io/oxcovid19"><code>oxcovid19</code> package</a> are just two examples of these. However, all these packages provide access to the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> data as <em>data dumps</em> and only for the time-series of the stringency index per country. To our knowledge, the <code>oxcgrt</code> package is the only <a href="https://cran.r-project.org">R</a> package currently that provides an interface to the available API for querying and retrieving data. Also, the <code>oxcgrt</code> package provides functions to calculate the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> sub-indices and indices based on their methodology. None of the other <a href="https://cran.r-project.org">R</a> packages that we have seen and reviewed have this functionality.</p>
 </div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
@@ -157,7 +158,7 @@ And the development version from [GitHub](https://github.com/) with:
 <span class="co">## Step 2: Retrieve the data</span>
 <span class="fu"><a href="reference/get_data_time.html">get_data_time</a></span><span class="op">(</span><span class="va">query</span><span class="op">)</span></code></pre></div>
 <p>This results in the following:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#&gt; # A tibble: 30,677 x 9</span></span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#&gt; # A tibble: 30,683 x 9</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="co">#&gt;    date_value country_code country_name confirmed deaths stringency_actu…</span></span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="co">#&gt;    &lt;date&gt;     &lt;chr&gt;        &lt;chr&gt;            &lt;int&gt;  &lt;int&gt;            &lt;dbl&gt;</span></span>
 <span id="cb3-4"><a href="#cb3-4"></a><span class="co">#&gt;  1 2020-06-01 ABW          Aruba              101      3             50  </span></span>
@@ -170,7 +171,7 @@ And the development version from [GitHub](https://github.com/) with:
 <span id="cb3-11"><a href="#cb3-11"></a><span class="co">#&gt;  8 2020-06-01 AUS          Australia         7195    102             62.0</span></span>
 <span id="cb3-12"><a href="#cb3-12"></a><span class="co">#&gt;  9 2020-06-01 AUT          Austria          16642    668             53.7</span></span>
 <span id="cb3-13"><a href="#cb3-13"></a><span class="co">#&gt; 10 2020-06-01 AZE          Azerbaijan        5494     63             77.8</span></span>
-<span id="cb3-14"><a href="#cb3-14"></a><span class="co">#&gt; # … with 30,667 more rows, and 3 more variables: stringency &lt;dbl&gt;,</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="co">#&gt; # … with 30,673 more rows, and 3 more variables: stringency &lt;dbl&gt;,</span></span>
 <span id="cb3-15"><a href="#cb3-15"></a><span class="co">#&gt; #   stringency_legacy &lt;dbl&gt;, stringency_legacy_disp &lt;dbl&gt;</span></span></code></pre></div>
 <p>The <code>oxcgrt</code> functions are designed to work with pipe operators via the <code>magrittr</code> package. The steps shown above can be replicated using pipe operators as follows:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
@@ -180,7 +181,7 @@ And the development version from [GitHub](https://github.com/) with:
 <span class="fu"><a href="reference/get_json_time.html">get_json_time</a></span><span class="op">(</span>from <span class="op">=</span> <span class="st">"2020-06-01"</span><span class="op">)</span> <span class="op">%&gt;%</span>    <span class="co">## Step 1: Creat API URL query</span>
   <span class="fu"><a href="reference/get_data_time.html">get_data_time</a></span><span class="op">(</span><span class="op">)</span>                         <span class="co">## Step 2: Retrieve data</span></code></pre></div>
 <p>This results in the same output as the earlier workflow albeit sorted alphabetically by country code:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">#&gt; # A tibble: 30,677 x 9</span></span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">#&gt; # A tibble: 30,683 x 9</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="co">#&gt;    date_value country_code country_name confirmed deaths stringency_actu…</span></span>
 <span id="cb5-3"><a href="#cb5-3"></a><span class="co">#&gt;    &lt;date&gt;     &lt;chr&gt;        &lt;chr&gt;            &lt;int&gt;  &lt;int&gt;            &lt;dbl&gt;</span></span>
 <span id="cb5-4"><a href="#cb5-4"></a><span class="co">#&gt;  1 2020-06-01 ABW          Aruba              101      3             50  </span></span>
@@ -193,7 +194,7 @@ And the development version from [GitHub](https://github.com/) with:
 <span id="cb5-11"><a href="#cb5-11"></a><span class="co">#&gt;  8 2020-06-01 AUS          Australia         7195    102             62.0</span></span>
 <span id="cb5-12"><a href="#cb5-12"></a><span class="co">#&gt;  9 2020-06-01 AUT          Austria          16642    668             53.7</span></span>
 <span id="cb5-13"><a href="#cb5-13"></a><span class="co">#&gt; 10 2020-06-01 AZE          Azerbaijan        5494     63             77.8</span></span>
-<span id="cb5-14"><a href="#cb5-14"></a><span class="co">#&gt; # … with 30,667 more rows, and 3 more variables: stringency &lt;dbl&gt;,</span></span>
+<span id="cb5-14"><a href="#cb5-14"></a><span class="co">#&gt; # … with 30,673 more rows, and 3 more variables: stringency &lt;dbl&gt;,</span></span>
 <span id="cb5-15"><a href="#cb5-15"></a><span class="co">#&gt; #   stringency_legacy &lt;dbl&gt;, stringency_legacy_disp &lt;dbl&gt;</span></span></code></pre></div>
 <p>For more detailed examples of how to retrieve data via the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> API version 2, read <a href="https://como-ph.github.io/oxcgrt/articles/retrieve.html">Retrieve data via OxCGRT API</a>.</p>
 </div>
