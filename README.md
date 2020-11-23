@@ -55,8 +55,8 @@ The `oxcgrt` package has two main sets of functions that:
 There are other [R](https://cran.r-project.org) packages that provide
 access to data from the
 [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker).
-The [`COVID19` package](https:/cran.r-project.org/package=covid19) and
-the [`oxcovid19` package](https://como-ph.github.io/oxcovid19) are just
+The [`COVID19` package](https://cran.r-project.org/package=COVID19) and
+the [`oxcovid19` package](https://como-ph.github.io/oxcovid19/) are just
 two examples of these. However, all these packages provide access to the
 [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
 data as *data dumps* and only for the time-series of the stringency
@@ -71,21 +71,14 @@ have this functionality.
 
 ## Installation
 
-<!---
-You can install the released version of oxcgrt from [CRAN](https://CRAN.R-project.org) with:
+You can install the released version of oxcgrt from
+[CRAN](https://CRAN.R-project.org) with:
 
-
-```r
+``` r
 install.packages("oxcgrt")
 ```
 
 And the development version from [GitHub](https://github.com/) with:
---->
-
-`oxcgrt` is not yet available on [CRAN](https://cran.r-project.org).
-
-The development version of `oxcgrt` can be installed via
-[GitHub](https://github.com/como-ph/oxcgrt):
 
 ``` r
 if(!require(remotes)) install.packages("remotes")
@@ -124,7 +117,7 @@ get_data_time(query)
 
 This results in the following:
 
-    #> # A tibble: 30,683 x 9
+    #> # A tibble: 30,638 x 9
     #>    date_value country_code country_name confirmed deaths stringency_actu…
     #>    <date>     <chr>        <chr>            <int>  <int>            <dbl>
     #>  1 2020-06-01 ABW          Aruba              101      3             50  
@@ -137,7 +130,7 @@ This results in the following:
     #>  8 2020-06-01 AUS          Australia         7195    102             62.0
     #>  9 2020-06-01 AUT          Austria          16642    668             53.7
     #> 10 2020-06-01 AZE          Azerbaijan        5494     63             77.8
-    #> # … with 30,673 more rows, and 3 more variables: stringency <dbl>,
+    #> # … with 30,628 more rows, and 3 more variables: stringency <dbl>,
     #> #   stringency_legacy <dbl>, stringency_legacy_disp <dbl>
 
 The `oxcgrt` functions are designed to work with pipe operators via the
@@ -155,7 +148,7 @@ get_json_time(from = "2020-06-01") %>%    ## Step 1: Creat API URL query
 This results in the same output as the earlier workflow albeit sorted
 alphabetically by country code:
 
-    #> # A tibble: 30,683 x 9
+    #> # A tibble: 30,638 x 9
     #>    date_value country_code country_name confirmed deaths stringency_actu…
     #>    <date>     <chr>        <chr>            <int>  <int>            <dbl>
     #>  1 2020-06-01 ABW          Aruba              101      3             50  
@@ -168,7 +161,7 @@ alphabetically by country code:
     #>  8 2020-06-01 AUS          Australia         7195    102             62.0
     #>  9 2020-06-01 AUT          Austria          16642    668             53.7
     #> 10 2020-06-01 AZE          Azerbaijan        5494     63             77.8
-    #> # … with 30,673 more rows, and 3 more variables: stringency <dbl>,
+    #> # … with 30,628 more rows, and 3 more variables: stringency <dbl>,
     #> #   stringency_legacy <dbl>, stringency_legacy_disp <dbl>
 
 For more detailed examples of how to retrieve data via the
@@ -365,7 +358,7 @@ citation("oxcgrt")
 #> 
 #>   Ernest Guevarra (2020). oxcgrt: An Interface to the Oxford COVID-19
 #>   Government Response Tracker API. R package version 0.1.0. URL
-#>   https://como-ph.github.io/oxcgrt/
+#>   https://como-ph.github.io/oxcgrt
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
@@ -374,7 +367,7 @@ citation("oxcgrt")
 #>     author = {Ernest Guevarra},
 #>     year = {2020},
 #>     note = {R package version 0.1.0},
-#>     url = {https://como-ph.github.io/oxcgrt/},
+#>     url = {https://como-ph.github.io/oxcgrt},
 #>   }
 ```
 
@@ -383,8 +376,8 @@ citation("oxcgrt")
 Feedback, bug reports and feature requests are welcome; file issues or
 seek support [here](https://github.com/como-ph/oxcgrt/issues). If you
 would like to contribute to the package, please see our [contributing
-guidelines](https://como-ph.github.io/covidphdata/CONTRIBUTING.html).
+guidelines](https://como-ph.github.io/oxcgrt/CONTRIBUTING.html).
 
 This project is released with a [Contributor Code of
-Conduct](https://como-ph.github.io/covidphdata/CODE_OF_CONDUCT.html). By
+Conduct](https://como-ph.github.io/oxcgrt/CODE_OF_CONDUCT.html). By
 participating in this project you agree to abide by its terms.
