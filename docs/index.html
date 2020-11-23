@@ -123,19 +123,11 @@
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<!---
-You can install the released version of oxcgrt from [CRAN](https://CRAN.R-project.org) with:
-
-
-```r
-install.packages("oxcgrt")
-```
-
-And the development version from [GitHub](https://github.com/) with:
---->
-<p><code>oxcgrt</code> is not yet available on <a href="https://cran.r-project.org">CRAN</a>.</p>
-<p>The development version of <code>oxcgrt</code> can be installed via <a href="https://github.com/como-ph/oxcgrt">GitHub</a>:</p>
+<p>You can install the released version of oxcgrt from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"oxcgrt"</span><span class="op">)</span></code></pre></div>
+<p>And the development version from <a href="https://github.com/">GitHub</a> with:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://remotes.r-lib.org">remotes</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span>
 <span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"como-ph/oxcgrt"</span><span class="op">)</span></code></pre></div>
 </div>
@@ -147,7 +139,7 @@ And the development version from [GitHub](https://github.com/) with:
 <a href="#the-oxcgrt-data-retrieval-workflow-via-api" class="anchor"></a>The <code>oxcgrt</code> data retrieval workflow via API</h3>
 <p>The <em>retrieve data</em> functions are based on the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a>’s JSON API described <a href="https://covidtrackerapi.bsg.ox.ac.uk">here</a>. Two API endpoints are provided: 1) endpoint for JSON providing data for stringency index by country over time; and, 2) endpoint for JSON providing data on policy actions and stringency index for a specific country on a specific day.</p>
 <p>For each of these endpoints, the data retrieval workflow is composed of two steps: first is the creation of the appropriate API URL query; and, second is the retrieval of the appropriate data as per query into a data.frame structure usable in <a href="https://cran.r-project.org">R</a>. This workflow is show in code below:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Load oxcgrt package</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://como-ph.github.io/oxcgrt/">oxcgrt</a></span><span class="op">)</span>
 
@@ -158,44 +150,44 @@ And the development version from [GitHub](https://github.com/) with:
 <span class="co">## Step 2: Retrieve the data</span>
 <span class="fu"><a href="reference/get_data_time.html">get_data_time</a></span><span class="op">(</span><span class="va">query</span><span class="op">)</span></code></pre></div>
 <p>This results in the following:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#&gt; # A tibble: 30,638 x 9</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="co">#&gt;    date_value country_code country_name confirmed deaths stringency_actu…</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="co">#&gt;    &lt;date&gt;     &lt;chr&gt;        &lt;chr&gt;            &lt;int&gt;  &lt;int&gt;            &lt;dbl&gt;</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="co">#&gt;  1 2020-06-01 ABW          Aruba              101      3             50  </span></span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="co">#&gt;  2 2020-06-01 AFG          Afghanistan      15205    257             84.3</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="co">#&gt;  3 2020-06-01 AGO          Angola              86      4             77.8</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a><span class="co">#&gt;  4 2020-06-01 ALB          Albania           1137     33             71.3</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a><span class="co">#&gt;  5 2020-06-01 AND          Andorra            764     51             50  </span></span>
-<span id="cb3-9"><a href="#cb3-9"></a><span class="co">#&gt;  6 2020-06-01 ARE          United Arab…     34557    264             72.2</span></span>
-<span id="cb3-10"><a href="#cb3-10"></a><span class="co">#&gt;  7 2020-06-01 ARG          Argentina        16838    539             90.7</span></span>
-<span id="cb3-11"><a href="#cb3-11"></a><span class="co">#&gt;  8 2020-06-01 AUS          Australia         7195    102             62.0</span></span>
-<span id="cb3-12"><a href="#cb3-12"></a><span class="co">#&gt;  9 2020-06-01 AUT          Austria          16642    668             53.7</span></span>
-<span id="cb3-13"><a href="#cb3-13"></a><span class="co">#&gt; 10 2020-06-01 AZE          Azerbaijan        5494     63             77.8</span></span>
-<span id="cb3-14"><a href="#cb3-14"></a><span class="co">#&gt; # … with 30,628 more rows, and 3 more variables: stringency &lt;dbl&gt;,</span></span>
-<span id="cb3-15"><a href="#cb3-15"></a><span class="co">#&gt; #   stringency_legacy &lt;dbl&gt;, stringency_legacy_disp &lt;dbl&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">#&gt; # A tibble: 30,638 x 9</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="co">#&gt;    date_value country_code country_name confirmed deaths stringency_actu…</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="co">#&gt;    &lt;date&gt;     &lt;chr&gt;        &lt;chr&gt;            &lt;int&gt;  &lt;int&gt;            &lt;dbl&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="co">#&gt;  1 2020-06-01 ABW          Aruba              101      3             50  </span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="co">#&gt;  2 2020-06-01 AFG          Afghanistan      15205    257             84.3</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="co">#&gt;  3 2020-06-01 AGO          Angola              86      4             77.8</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="co">#&gt;  4 2020-06-01 ALB          Albania           1137     33             71.3</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="co">#&gt;  5 2020-06-01 AND          Andorra            764     51             50  </span></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="co">#&gt;  6 2020-06-01 ARE          United Arab…     34557    264             72.2</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="co">#&gt;  7 2020-06-01 ARG          Argentina        16838    539             90.7</span></span>
+<span id="cb4-11"><a href="#cb4-11"></a><span class="co">#&gt;  8 2020-06-01 AUS          Australia         7195    102             62.0</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a><span class="co">#&gt;  9 2020-06-01 AUT          Austria          16642    668             53.7</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a><span class="co">#&gt; 10 2020-06-01 AZE          Azerbaijan        5494     63             77.8</span></span>
+<span id="cb4-14"><a href="#cb4-14"></a><span class="co">#&gt; # … with 30,628 more rows, and 3 more variables: stringency &lt;dbl&gt;,</span></span>
+<span id="cb4-15"><a href="#cb4-15"></a><span class="co">#&gt; #   stringency_legacy &lt;dbl&gt;, stringency_legacy_disp &lt;dbl&gt;</span></span></code></pre></div>
 <p>The <code>oxcgrt</code> functions are designed to work with pipe operators via the <code>magrittr</code> package. The steps shown above can be replicated using pipe operators as follows:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Load magrittr package</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org">magrittr</a></span><span class="op">)</span>
 
 <span class="fu"><a href="reference/get_json_time.html">get_json_time</a></span><span class="op">(</span>from <span class="op">=</span> <span class="st">"2020-06-01"</span><span class="op">)</span> <span class="op">%&gt;%</span>    <span class="co">## Step 1: Creat API URL query</span>
   <span class="fu"><a href="reference/get_data_time.html">get_data_time</a></span><span class="op">(</span><span class="op">)</span>                         <span class="co">## Step 2: Retrieve data</span></code></pre></div>
 <p>This results in the same output as the earlier workflow albeit sorted alphabetically by country code:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">#&gt; # A tibble: 30,638 x 9</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="co">#&gt;    date_value country_code country_name confirmed deaths stringency_actu…</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="co">#&gt;    &lt;date&gt;     &lt;chr&gt;        &lt;chr&gt;            &lt;int&gt;  &lt;int&gt;            &lt;dbl&gt;</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="co">#&gt;  1 2020-06-01 ABW          Aruba              101      3             50  </span></span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="co">#&gt;  2 2020-06-01 AFG          Afghanistan      15205    257             84.3</span></span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="co">#&gt;  3 2020-06-01 AGO          Angola              86      4             77.8</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a><span class="co">#&gt;  4 2020-06-01 ALB          Albania           1137     33             71.3</span></span>
-<span id="cb5-8"><a href="#cb5-8"></a><span class="co">#&gt;  5 2020-06-01 AND          Andorra            764     51             50  </span></span>
-<span id="cb5-9"><a href="#cb5-9"></a><span class="co">#&gt;  6 2020-06-01 ARE          United Arab…     34557    264             72.2</span></span>
-<span id="cb5-10"><a href="#cb5-10"></a><span class="co">#&gt;  7 2020-06-01 ARG          Argentina        16838    539             90.7</span></span>
-<span id="cb5-11"><a href="#cb5-11"></a><span class="co">#&gt;  8 2020-06-01 AUS          Australia         7195    102             62.0</span></span>
-<span id="cb5-12"><a href="#cb5-12"></a><span class="co">#&gt;  9 2020-06-01 AUT          Austria          16642    668             53.7</span></span>
-<span id="cb5-13"><a href="#cb5-13"></a><span class="co">#&gt; 10 2020-06-01 AZE          Azerbaijan        5494     63             77.8</span></span>
-<span id="cb5-14"><a href="#cb5-14"></a><span class="co">#&gt; # … with 30,628 more rows, and 3 more variables: stringency &lt;dbl&gt;,</span></span>
-<span id="cb5-15"><a href="#cb5-15"></a><span class="co">#&gt; #   stringency_legacy &lt;dbl&gt;, stringency_legacy_disp &lt;dbl&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co">#&gt; # A tibble: 30,638 x 9</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="co">#&gt;    date_value country_code country_name confirmed deaths stringency_actu…</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="co">#&gt;    &lt;date&gt;     &lt;chr&gt;        &lt;chr&gt;            &lt;int&gt;  &lt;int&gt;            &lt;dbl&gt;</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="co">#&gt;  1 2020-06-01 ABW          Aruba              101      3             50  </span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="co">#&gt;  2 2020-06-01 AFG          Afghanistan      15205    257             84.3</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="co">#&gt;  3 2020-06-01 AGO          Angola              86      4             77.8</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="co">#&gt;  4 2020-06-01 ALB          Albania           1137     33             71.3</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="co">#&gt;  5 2020-06-01 AND          Andorra            764     51             50  </span></span>
+<span id="cb6-9"><a href="#cb6-9"></a><span class="co">#&gt;  6 2020-06-01 ARE          United Arab…     34557    264             72.2</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="co">#&gt;  7 2020-06-01 ARG          Argentina        16838    539             90.7</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a><span class="co">#&gt;  8 2020-06-01 AUS          Australia         7195    102             62.0</span></span>
+<span id="cb6-12"><a href="#cb6-12"></a><span class="co">#&gt;  9 2020-06-01 AUT          Austria          16642    668             53.7</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a><span class="co">#&gt; 10 2020-06-01 AZE          Azerbaijan        5494     63             77.8</span></span>
+<span id="cb6-14"><a href="#cb6-14"></a><span class="co">#&gt; # … with 30,628 more rows, and 3 more variables: stringency &lt;dbl&gt;,</span></span>
+<span id="cb6-15"><a href="#cb6-15"></a><span class="co">#&gt; #   stringency_legacy &lt;dbl&gt;, stringency_legacy_disp &lt;dbl&gt;</span></span></code></pre></div>
 <p>For more detailed examples of how to retrieve data via the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> API version 2, read <a href="https://como-ph.github.io/oxcgrt/articles/retrieve.html">Retrieve data via OxCGRT API</a>.</p>
 </div>
 <div id="the-oxcgrt-calculate-workflow" class="section level3">
@@ -212,49 +204,49 @@ And the development version from [GitHub](https://github.com/) with:
 <h4 class="hasAnchor">
 <a href="#codebook" class="anchor"></a>Codebook</h4>
 <p>The <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> provides an authoritative codebook found <a href="https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/codebook.md">here</a>. The <code>oxcgrt</code> package has extracted the tables from this documentation into a single codebook that can serve as a handy and convenient reference for an <a href="https://cran.r-project.org">R</a> user when working with <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> data in <a href="https://cran.r-project.org">R</a>. The <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> codebook can be accessed as follows:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">codebook</span></code></pre></div>
 <p>which outputs the codebook as a singular table in <code>tbl</code> format as shown below:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co">#&gt; # A tibble: 29 x 6</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="co">#&gt;    ID    Name     Description      Measurement   Coding         `Policy Group`  </span></span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;         &lt;chr&gt;          &lt;chr&gt;           </span></span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="co">#&gt;  1 C1    C1_Scho… "Record closing… Ordinal scale 0 - no measur… Containment and…</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a><span class="co">#&gt;  2 C1    C1_Flag  ""               Binary flag … 0 - targeted;… Containment and…</span></span>
-<span id="cb7-6"><a href="#cb7-6"></a><span class="co">#&gt;  3 C2    C2_Work… "Record closing… Ordinal scale 0 - no measur… Containment and…</span></span>
-<span id="cb7-7"><a href="#cb7-7"></a><span class="co">#&gt;  4 C2    C2_Flag  ""               Binary flag … 0 - targeted;… Containment and…</span></span>
-<span id="cb7-8"><a href="#cb7-8"></a><span class="co">#&gt;  5 C3    C3_Canc… "Record cancell… Ordinal scale 0 - no measur… Containment and…</span></span>
-<span id="cb7-9"><a href="#cb7-9"></a><span class="co">#&gt;  6 C3    C3_Flag  ""               Binary flag … 0 - targeted;… Containment and…</span></span>
-<span id="cb7-10"><a href="#cb7-10"></a><span class="co">#&gt;  7 C4    C4_Rest… "Record limits … Ordinal scale 0 - no restri… Containment and…</span></span>
-<span id="cb7-11"><a href="#cb7-11"></a><span class="co">#&gt;  8 C4    C4_Flag  ""               Binary flag … 0 - targeted;… Containment and…</span></span>
-<span id="cb7-12"><a href="#cb7-12"></a><span class="co">#&gt;  9 C5    C5_Clos… "Record closing… Ordinal scale 0 - no measur… Containment and…</span></span>
-<span id="cb7-13"><a href="#cb7-13"></a><span class="co">#&gt; 10 C5    C5_Flag  ""               Binary flag … 0 - targeted;… Containment and…</span></span>
-<span id="cb7-14"><a href="#cb7-14"></a><span class="co">#&gt; # … with 19 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co">#&gt; # A tibble: 29 x 6</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="co">#&gt;    ID    Name     Description      Measurement   Coding         `Policy Group`  </span></span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;         &lt;chr&gt;          &lt;chr&gt;           </span></span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="co">#&gt;  1 C1    C1_Scho… "Record closing… Ordinal scale 0 - no measur… Containment and…</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="co">#&gt;  2 C1    C1_Flag  ""               Binary flag … 0 - targeted;… Containment and…</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="co">#&gt;  3 C2    C2_Work… "Record closing… Ordinal scale 0 - no measur… Containment and…</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a><span class="co">#&gt;  4 C2    C2_Flag  ""               Binary flag … 0 - targeted;… Containment and…</span></span>
+<span id="cb8-8"><a href="#cb8-8"></a><span class="co">#&gt;  5 C3    C3_Canc… "Record cancell… Ordinal scale 0 - no measur… Containment and…</span></span>
+<span id="cb8-9"><a href="#cb8-9"></a><span class="co">#&gt;  6 C3    C3_Flag  ""               Binary flag … 0 - targeted;… Containment and…</span></span>
+<span id="cb8-10"><a href="#cb8-10"></a><span class="co">#&gt;  7 C4    C4_Rest… "Record limits … Ordinal scale 0 - no restri… Containment and…</span></span>
+<span id="cb8-11"><a href="#cb8-11"></a><span class="co">#&gt;  8 C4    C4_Flag  ""               Binary flag … 0 - targeted;… Containment and…</span></span>
+<span id="cb8-12"><a href="#cb8-12"></a><span class="co">#&gt;  9 C5    C5_Clos… "Record closing… Ordinal scale 0 - no measur… Containment and…</span></span>
+<span id="cb8-13"><a href="#cb8-13"></a><span class="co">#&gt; 10 C5    C5_Flag  ""               Binary flag … 0 - targeted;… Containment and…</span></span>
+<span id="cb8-14"><a href="#cb8-14"></a><span class="co">#&gt; # … with 19 more rows</span></span></code></pre></div>
 <p>The current <code>oxcgrt</code> package version includes the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> <strong>codebook version 2.5</strong> released on 4 November 2020.</p>
 </div>
 <div id="example-oxcgrt-indicators-dataset" class="section level4">
 <h4 class="hasAnchor">
 <a href="#example-oxcgrt-indicators-dataset" class="anchor"></a>Example OxCGRT indicators dataset</h4>
 <p>In the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> methodology <a href="https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/index_methodology.md">document</a>, an example indicator dataset is used to demonstrate the calculation of per indicator sub-indices and the four main indices that <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> provides. This example dataset has been made available in table format in the <code>oxcgrt</code> package and can be accessed as follows:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">indicatorData</span></code></pre></div>
 <p>which outputs the example data as a singular table in <code>tbl</code> format as shown below:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co">#&gt; # A tibble: 14 x 6</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="co">#&gt;    indicator value flag_value max_value  flag score</span></span>
-<span id="cb9-3"><a href="#cb9-3"></a><span class="co">#&gt;    &lt;chr&gt;     &lt;int&gt;      &lt;int&gt;     &lt;int&gt; &lt;int&gt; &lt;dbl&gt;</span></span>
-<span id="cb9-4"><a href="#cb9-4"></a><span class="co">#&gt;  1 C1            2          1         3     1  66.7</span></span>
-<span id="cb9-5"><a href="#cb9-5"></a><span class="co">#&gt;  2 C2           NA         NA         3     1   0  </span></span>
-<span id="cb9-6"><a href="#cb9-6"></a><span class="co">#&gt;  3 C3            2          0         2     1  75  </span></span>
-<span id="cb9-7"><a href="#cb9-7"></a><span class="co">#&gt;  4 C4            2          0         4     1  37.5</span></span>
-<span id="cb9-8"><a href="#cb9-8"></a><span class="co">#&gt;  5 C5            0         NA         2     1   0  </span></span>
-<span id="cb9-9"><a href="#cb9-9"></a><span class="co">#&gt;  6 C6            1          0         3     1  16.7</span></span>
-<span id="cb9-10"><a href="#cb9-10"></a><span class="co">#&gt;  7 C7            1          1         2     1  50  </span></span>
-<span id="cb9-11"><a href="#cb9-11"></a><span class="co">#&gt;  8 C8            3         NA         4     0  75  </span></span>
-<span id="cb9-12"><a href="#cb9-12"></a><span class="co">#&gt;  9 E1            2          0         2     1  75  </span></span>
-<span id="cb9-13"><a href="#cb9-13"></a><span class="co">#&gt; 10 E2            2         NA         2     0 100  </span></span>
-<span id="cb9-14"><a href="#cb9-14"></a><span class="co">#&gt; 11 H1            2          0         2     1  75  </span></span>
-<span id="cb9-15"><a href="#cb9-15"></a><span class="co">#&gt; 12 H2            3         NA         3     0 100  </span></span>
-<span id="cb9-16"><a href="#cb9-16"></a><span class="co">#&gt; 13 H3            2         NA         2     0 100  </span></span>
-<span id="cb9-17"><a href="#cb9-17"></a><span class="co">#&gt; 14 H6            2          0         4     1  37.5</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co">#&gt; # A tibble: 14 x 6</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="co">#&gt;    indicator value flag_value max_value  flag score</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="co">#&gt;    &lt;chr&gt;     &lt;int&gt;      &lt;int&gt;     &lt;int&gt; &lt;int&gt; &lt;dbl&gt;</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="co">#&gt;  1 C1            2          1         3     1  66.7</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="co">#&gt;  2 C2           NA         NA         3     1   0  </span></span>
+<span id="cb10-6"><a href="#cb10-6"></a><span class="co">#&gt;  3 C3            2          0         2     1  75  </span></span>
+<span id="cb10-7"><a href="#cb10-7"></a><span class="co">#&gt;  4 C4            2          0         4     1  37.5</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a><span class="co">#&gt;  5 C5            0         NA         2     1   0  </span></span>
+<span id="cb10-9"><a href="#cb10-9"></a><span class="co">#&gt;  6 C6            1          0         3     1  16.7</span></span>
+<span id="cb10-10"><a href="#cb10-10"></a><span class="co">#&gt;  7 C7            1          1         2     1  50  </span></span>
+<span id="cb10-11"><a href="#cb10-11"></a><span class="co">#&gt;  8 C8            3         NA         4     0  75  </span></span>
+<span id="cb10-12"><a href="#cb10-12"></a><span class="co">#&gt;  9 E1            2          0         2     1  75  </span></span>
+<span id="cb10-13"><a href="#cb10-13"></a><span class="co">#&gt; 10 E2            2         NA         2     0 100  </span></span>
+<span id="cb10-14"><a href="#cb10-14"></a><span class="co">#&gt; 11 H1            2          0         2     1  75  </span></span>
+<span id="cb10-15"><a href="#cb10-15"></a><span class="co">#&gt; 12 H2            3         NA         3     0 100  </span></span>
+<span id="cb10-16"><a href="#cb10-16"></a><span class="co">#&gt; 13 H3            2         NA         2     0 100  </span></span>
+<span id="cb10-17"><a href="#cb10-17"></a><span class="co">#&gt; 14 H6            2          0         4     1  37.5</span></span></code></pre></div>
 <p>This dataset is used by the <code>oxcgrt</code> package to test the <code>calculate_*</code> functions and for demonstrating how these functions work. This dataset can be useful for those trying to learn the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a>’s calculation methods and <a href="https://cran.r-project.org">R</a> users who are learning how to use the <code>oxcgrt</code> package <code>calculate_*</code> functions.</p>
 </div>
 </div>
@@ -278,7 +270,7 @@ And the development version from [GitHub](https://github.com/) with:
 <p>For the source of the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> data, the following citation is recommended:</p>
 <p><em>Hale, Thomas, Noam Angrist, Emily Cameron-Blake, Laura Hallas, Beatriz Kira, Saptarshi Majumdar, Anna Petherick, Toby Phillips, Helen Tatlow, Samuel Webster (2020). Oxford COVID-19 Government Response Tracker, Blavatnik School of Government.</em></p>
 <p>For the <code>oxcgrt</code> package, the suggested citation can be obtained using a call to the <code>citation</code> function as follows:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/citation.html">citation</a></span><span class="op">(</span><span class="st">"oxcgrt"</span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; To cite oxcgrt in publications use:</span>
