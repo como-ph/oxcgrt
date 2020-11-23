@@ -71,21 +71,14 @@ have this functionality.
 
 ## Installation
 
-<!---
-You can install the released version of oxcgrt from [CRAN](https://CRAN.R-project.org) with:
+You can install the released version of oxcgrt from
+[CRAN](https://CRAN.R-project.org) with:
 
-
-```r
+``` r
 install.packages("oxcgrt")
 ```
 
 And the development version from [GitHub](https://github.com/) with:
---->
-
-`oxcgrt` is not yet available on [CRAN](https://cran.r-project.org).
-
-The development version of `oxcgrt` can be installed via
-[GitHub](https://github.com/como-ph/oxcgrt):
 
 ``` r
 if(!require(remotes)) install.packages("remotes")
