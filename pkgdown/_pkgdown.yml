@@ -18,6 +18,13 @@ home:
   - text: More about CoMo Philippines
     href: https://como-ph.github.io/
 
+articles:
+  - title:
+    navbar: ~
+    contents:
+    - retrieve
+    - calculate
+
 reference:
   - title: Description
     contents:

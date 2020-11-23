@@ -8,3 +8,4 @@
 ^data-raw$
 ^pkgdown$
 ^cran-comments\.md$
+^CRAN-RELEASE$

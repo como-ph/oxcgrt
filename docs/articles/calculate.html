@@ -67,10 +67,10 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/calculate.html">Calculate OxCGRT sub-indices and indices</a>
+      <a href="../articles/retrieve.html">Retrieve data via OxCGRT API</a>
     </li>
     <li>
-      <a href="../articles/retrieve.html">Retrieve data via OxCGRT API</a>
+      <a href="../articles/calculate.html">Calculate OxCGRT sub-indices and indices</a>
     </li>
   </ul>
 </li>
@@ -283,7 +283,6 @@
 </tbody>
 </table>
 <p>The second calculates the four <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> <strong>indices</strong> which are composed of various combinations of the indicators described in the table above. These combinations are described in the table below:</p>
-<pre><code>#&gt; Loading required package: xml2</code></pre>
 <table class="table">
 <colgroup>
 <col width="2%">
@@ -456,11 +455,11 @@
 </tr>
 </tbody>
 </table>
-<div id="calculating-oxcgrt-sub-indices" class="section level4">
-<h4 class="hasAnchor">
-<a href="#calculating-oxcgrt-sub-indices" class="anchor"></a>Calculating OxCGRT sub-indices</h4>
+<div id="calculating-oxcgrt-sub-indices" class="section level2">
+<h2 class="hasAnchor">
+<a href="#calculating-oxcgrt-sub-indices" class="anchor"></a>Calculating OxCGRT sub-indices</h2>
 <p>The <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> subindices can be calculated using the <code>calculate_subindex</code> and <code>calculate_subindices</code> functions. To calculate a specific sub-index, the following code is used:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Given the C1 data in indicatorData, calculate C1 sub-index</span>
 <span class="fu"><a href="../reference/calculate_subindex.html">calculate_subindex</a></span><span class="op">(</span>indicator_code <span class="op">=</span> <span class="va">indicatorData</span><span class="op">[</span><span class="fl">1</span>, <span class="st">"indicator"</span><span class="op">]</span>, 
                    value <span class="op">=</span> <span class="va">indicatorData</span><span class="op">[</span><span class="fl">1</span>, <span class="st">"value"</span><span class="op">]</span>, 
@@ -469,7 +468,7 @@
 <pre><code>#&gt;      value
 #&gt; 1 66.66667</code></pre>
 <p>To calculate all <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> subindices, the following code is used:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Given the indicatorData dataset, calculate all sub-indices</span>
 <span class="va">indicatorData</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/calculate_subindex.html">calculate_subindices</a></span><span class="op">(</span>indicator_code <span class="op">=</span> <span class="st">"indicator"</span>, 
@@ -495,12 +494,11 @@
 #&gt; 13 H3            2         NA         2     0 100     100  
 #&gt; 14 H6            2          0         4     1  37.5    37.5</code></pre>
 <p>It can be noted that the results of the calculations are added to the input data.frame under the column name <code>score.1</code>. Comparing this with the value in the column named <code>score</code> that is included in the <code>indicatorData</code> dataset, the results are the same.</p>
-</div>
 <div id="calculating-oxcgrt-indices" class="section level4">
 <h4 class="hasAnchor">
 <a href="#calculating-oxcgrt-indices" class="anchor"></a>Calculating OxCGRT indices</h4>
 <p>The <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> indices can be calculated using the <code>calculate_index</code> and <code>calculate_indices</code> functions. To calculate a specific sub-index, the following code can be used:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">indicatorData</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/calculate_subindex.html">calculate_subindices</a></span><span class="op">(</span>indicator_code <span class="op">=</span> <span class="st">"indicator"</span>,
                        value <span class="op">=</span> <span class="st">"value"</span>,
@@ -514,7 +512,7 @@
 <p>This code calculates the <code>government response index</code> which is:</p>
 <pre><code>#&gt; [1] 57.7381</code></pre>
 <p>The same result can be reached by using the specialised function <code>calculate_gov_response</code> as follows:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">indicatorData</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/calculate_subindex.html">calculate_subindices</a></span><span class="op">(</span>indicator_code <span class="op">=</span> <span class="st">"indicator"</span>,
                        value <span class="op">=</span> <span class="st">"value"</span>,
@@ -524,7 +522,7 @@
 <p>which results in the same value as the previous code:</p>
 <pre><code>#&gt; [1] 57.7381</code></pre>
 <p>To calculate all four <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> indices, the following code can be implemented:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">indicatorData</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/calculate_subindex.html">calculate_subindices</a></span><span class="op">(</span>indicator_code <span class="op">=</span> <span class="st">"indicator"</span>,
                        value <span class="op">=</span> <span class="st">"value"</span>,
@@ -540,11 +538,14 @@
 #&gt; 3 Stringency Index               44.0
 #&gt; 4 Economic Support Index         87.5</code></pre>
 </div>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-      </div>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
+</div>
 
 </div>
 
