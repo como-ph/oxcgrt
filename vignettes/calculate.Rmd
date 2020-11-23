@@ -39,12 +39,11 @@ x <- xml2::read_html("https://github.com/OxCGRT/covid-policy-tracker/blob/master
   rvest::html_table()
 
 x <- data.frame(t(x[[1]]))
-
-x <- data.frame(`Index name` = row.names(x), x)
-
-tab <- x[3:nrow(x), ]
-names(tab) <- x[1, ]
+tab <- x[3:nrow(x), 1:4]
+tab <- data.frame(row.names(tab), tab)
 row.names(tab) <- 1:nrow(tab)
+names(tab) <- c("ID", "Government response index", "Containment and health index",
+                "Stringency index", "Economic support index")
 
 tab <- tab %>%
   dplyr::mutate(`Government response index` = ifelse(`Government response index` == "'x'", "x", `Government response index`),
@@ -52,12 +51,12 @@ tab <- tab %>%
 
 tab <- codebook[!stringr::str_detect(string = codebook$Name, pattern = "_Flag"), c("ID", "Name")] %>%
   dplyr::mutate(Name = stringr::str_remove_all(string = Name, pattern = "[A-Z]{1}[0-9]{1}\\_")) %>%
-  merge(tab, by.x = "ID", by.y = "Index name")
+  merge(tab, by = "ID")
 
-knitr::kable(x = tab[ , 1:6])
+knitr::kable(x = tab)
 ```
 
-#### Calculating OxCGRT sub-indices
+## Calculating OxCGRT sub-indices
 
 The [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker) subindices can be calculated using the `calculate_subindex` and `calculate_subindices` functions. To calculate a specific sub-index, the following code is used:
 
