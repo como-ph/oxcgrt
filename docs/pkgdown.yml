@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   calculate: calculate.html
   retrieve: retrieve.html
-last_built: 2020-11-23T03:17Z
+last_built: 2020-11-24T19:11Z
 urls:
   reference: https://como-ph.github.io/oxcgrt//reference
   article: https://como-ph.github.io/oxcgrt//articles
