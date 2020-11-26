@@ -11,7 +11,7 @@ Description: The Oxford COVID-19 Government Response Tracker (OxCGRT) tracks and
     and consistently. OxCGRT makes available systematic information in a 
     consistent way, aiding those who require information have access to it
     efficiently for their purposes. This package facilitates access to the 
-    OxCGRT data via its API <https://covidtracker.bsg.ox.ac.uk/about-api/> and 
+    OxCGRT data via its API <https://covidtracker.bsg.ox.ac.uk/> and 
     includes functions to calculate the various OxCGRT indices in R.
 License: GPL-3
 Depends: 
