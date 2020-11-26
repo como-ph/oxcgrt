@@ -1,3 +1,10 @@
+## Resubmission
+This is a resubmission. In this version I have:
+
+* I have added a web reference for the API in the approporiate format within
+the description section of the DESCRIPTION file.
+
+
 ## Test environments
 * local R installation, R 4.0.3
 * ubuntu 20.04 (on GitHub Actions), R 4.0.3
@@ -18,4 +25,4 @@
   OxCGRT (10:63, 12:23, 15:5, 16:5)
   indices (16:12)
   
-  - These words are not mispelled
+  - These words are not mis-spelled
