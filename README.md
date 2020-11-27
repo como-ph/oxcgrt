@@ -10,12 +10,20 @@ state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/oxcgrt)](https://CRAN.R-project.org/package=oxcgrt)
+[![cran
+checks](https://cranchecks.info/badges/summary/oxcgrt)](https://cran.r-project.org/web/checks/check_results_oxcgrt.html)
+[![CRAN](https://img.shields.io/cran/l/oxcgrt.svg)](https://CRAN.R-project.org/package=oxcgrt)
+[![CRAN](http://cranlogs.r-pkg.org/badges/oxcgrt)](https://CRAN.R-project.org/package=oxcgrt)
+[![CRAN](http://cranlogs.r-pkg.org/badges/grand-total/oxcgrt)](https://CRAN.R-project.org/package=oxcgrt)
 [![R build
 status](https://github.com/como-ph/oxcgrt/workflows/R-CMD-check/badge.svg)](https://github.com/como-ph/oxcgrt/actions)
 ![test-coverage](https://github.com/como-ph/oxcgrt/workflows/test-coverage/badge.svg)
 [![Codecov test
 coverage](https://codecov.io/gh/como-ph/oxcgrt/branch/master/graph/badge.svg)](https://codecov.io/gh/como-ph/oxcgrt?branch=master)
 [![CodeFactor](https://www.codefactor.io/repository/github/como-ph/oxcgrt/badge)](https://www.codefactor.io/repository/github/como-ph/oxcgrt)
+
 <!-- badges: end -->
 
 The [Oxford COVID-19 Government Response Tracker
@@ -117,7 +125,7 @@ get_data_time(query)
 
 This results in the following:
 
-    #> # A tibble: 30,638 x 9
+    #> # A tibble: 31,618 x 9
     #>    date_value country_code country_name confirmed deaths stringency_actu…
     #>    <date>     <chr>        <chr>            <int>  <int>            <dbl>
     #>  1 2020-06-01 ABW          Aruba              101      3             50  
@@ -130,7 +138,7 @@ This results in the following:
     #>  8 2020-06-01 AUS          Australia         7195    102             62.0
     #>  9 2020-06-01 AUT          Austria          16642    668             53.7
     #> 10 2020-06-01 AZE          Azerbaijan        5494     63             77.8
-    #> # … with 30,628 more rows, and 3 more variables: stringency <dbl>,
+    #> # … with 31,608 more rows, and 3 more variables: stringency <dbl>,
     #> #   stringency_legacy <dbl>, stringency_legacy_disp <dbl>
 
 The `oxcgrt` functions are designed to work with pipe operators via the
@@ -148,7 +156,7 @@ get_json_time(from = "2020-06-01") %>%    ## Step 1: Creat API URL query
 This results in the same output as the earlier workflow albeit sorted
 alphabetically by country code:
 
-    #> # A tibble: 30,638 x 9
+    #> # A tibble: 31,618 x 9
     #>    date_value country_code country_name confirmed deaths stringency_actu…
     #>    <date>     <chr>        <chr>            <int>  <int>            <dbl>
     #>  1 2020-06-01 ABW          Aruba              101      3             50  
@@ -161,7 +169,7 @@ alphabetically by country code:
     #>  8 2020-06-01 AUS          Australia         7195    102             62.0
     #>  9 2020-06-01 AUT          Austria          16642    668             53.7
     #> 10 2020-06-01 AZE          Azerbaijan        5494     63             77.8
-    #> # … with 30,628 more rows, and 3 more variables: stringency <dbl>,
+    #> # … with 31,608 more rows, and 3 more variables: stringency <dbl>,
     #> #   stringency_legacy <dbl>, stringency_legacy_disp <dbl>
 
 For more detailed examples of how to retrieve data via the
@@ -358,7 +366,7 @@ citation("oxcgrt")
 #> 
 #>   Ernest Guevarra (2020). oxcgrt: An Interface to the Oxford COVID-19
 #>   Government Response Tracker API. R package version 0.1.0. URL
-#>   https://como-ph.github.io/oxcgrt
+#>   https://como-ph.github.io/oxcgrt/
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
@@ -367,7 +375,7 @@ citation("oxcgrt")
 #>     author = {Ernest Guevarra},
 #>     year = {2020},
 #>     note = {R package version 0.1.0},
-#>     url = {https://como-ph.github.io/oxcgrt},
+#>     url = {https://como-ph.github.io/oxcgrt/},
 #>   }
 ```
 
