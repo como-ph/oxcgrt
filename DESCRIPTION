@@ -1,7 +1,7 @@
 Package: oxcgrt
 Type: Package
 Title: An Interface to the Oxford COVID-19 Government Response Tracker API
-Version: 0.1.0
+Version: 0.1.0.9000
 Authors@R: person("Ernest", "Guevarra", 
                   comment = c(ORCID = "0000-0002-4887-4415"), 
                   email = "ernest@guevarra.io", 

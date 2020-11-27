@@ -23,7 +23,7 @@ status](https://github.com/como-ph/oxcgrt/workflows/R-CMD-check/badge.svg)](http
 [![Codecov test
 coverage](https://codecov.io/gh/como-ph/oxcgrt/branch/master/graph/badge.svg)](https://codecov.io/gh/como-ph/oxcgrt?branch=master)
 [![CodeFactor](https://www.codefactor.io/repository/github/como-ph/oxcgrt/badge)](https://www.codefactor.io/repository/github/como-ph/oxcgrt)
-
+[![DOI](https://zenodo.org/badge/276819663.svg)](https://zenodo.org/badge/latestdoi/276819663)
 <!-- badges: end -->
 
 The [Oxford COVID-19 Government Response Tracker
