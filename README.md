@@ -125,20 +125,20 @@ get_data_time(query)
 
 This results in the following:
 
-    #> # A tibble: 31,618 x 9
-    #>    date_value country_code country_name confirmed deaths stringency_actu…
-    #>    <date>     <chr>        <chr>            <int>  <int>            <dbl>
-    #>  1 2020-06-01 ABW          Aruba              101      3             50  
-    #>  2 2020-06-01 AFG          Afghanistan      15205    257             84.3
-    #>  3 2020-06-01 AGO          Angola              86      4             77.8
-    #>  4 2020-06-01 ALB          Albania           1137     33             71.3
-    #>  5 2020-06-01 AND          Andorra            764     51             50  
-    #>  6 2020-06-01 ARE          United Arab…     34557    264             72.2
-    #>  7 2020-06-01 ARG          Argentina        16838    539             90.7
-    #>  8 2020-06-01 AUS          Australia         7195    102             62.0
-    #>  9 2020-06-01 AUT          Austria          16642    668             53.7
-    #> 10 2020-06-01 AZE          Azerbaijan        5494     63             77.8
-    #> # … with 31,608 more rows, and 3 more variables: stringency <dbl>,
+    #> # A tibble: 118,714 × 9
+    #>    date_value country_code country_name confirmed deaths stringency_actual
+    #>    <date>     <chr>        <chr>            <int>  <int>             <dbl>
+    #>  1 2020-06-01 SEN          Senegal           3739     42              72.2
+    #>  2 2020-06-01 SAU          Saudi Arabia     87142    525              81.9
+    #>  3 2020-06-01 SMR          San Marino         687     42              57.4
+    #>  4 2020-06-01 RWA          Rwanda             377      1              73.2
+    #>  5 2020-06-01 RUS          Russia          414328   4849              74.5
+    #>  6 2020-06-01 ROU          Romania          19398   1276              57.4
+    #>  7 2020-06-01 QAT          Qatar            58433     40              83.3
+    #>  8 2020-06-01 PRT          Portugal         32700   1424              60.6
+    #>  9 2020-06-01 POL          Poland           24165   1074              64.8
+    #> 10 2020-06-01 PHL          Philippines      18638    960              77.8
+    #> # … with 118,704 more rows, and 3 more variables: stringency <dbl>,
     #> #   stringency_legacy <dbl>, stringency_legacy_disp <dbl>
 
 The `oxcgrt` functions are designed to work with pipe operators via the
@@ -156,20 +156,20 @@ get_json_time(from = "2020-06-01") %>%    ## Step 1: Creat API URL query
 This results in the same output as the earlier workflow albeit sorted
 alphabetically by country code:
 
-    #> # A tibble: 31,618 x 9
-    #>    date_value country_code country_name confirmed deaths stringency_actu…
-    #>    <date>     <chr>        <chr>            <int>  <int>            <dbl>
-    #>  1 2020-06-01 ABW          Aruba              101      3             50  
-    #>  2 2020-06-01 AFG          Afghanistan      15205    257             84.3
-    #>  3 2020-06-01 AGO          Angola              86      4             77.8
-    #>  4 2020-06-01 ALB          Albania           1137     33             71.3
-    #>  5 2020-06-01 AND          Andorra            764     51             50  
-    #>  6 2020-06-01 ARE          United Arab…     34557    264             72.2
-    #>  7 2020-06-01 ARG          Argentina        16838    539             90.7
-    #>  8 2020-06-01 AUS          Australia         7195    102             62.0
-    #>  9 2020-06-01 AUT          Austria          16642    668             53.7
-    #> 10 2020-06-01 AZE          Azerbaijan        5494     63             77.8
-    #> # … with 31,608 more rows, and 3 more variables: stringency <dbl>,
+    #> # A tibble: 118,714 × 9
+    #>    date_value country_code country_name confirmed deaths stringency_actual
+    #>    <date>     <chr>        <chr>            <int>  <int>             <dbl>
+    #>  1 2020-06-01 SEN          Senegal           3739     42              72.2
+    #>  2 2020-06-01 SAU          Saudi Arabia     87142    525              81.9
+    #>  3 2020-06-01 SMR          San Marino         687     42              57.4
+    #>  4 2020-06-01 RWA          Rwanda             377      1              73.2
+    #>  5 2020-06-01 RUS          Russia          414328   4849              74.5
+    #>  6 2020-06-01 ROU          Romania          19398   1276              57.4
+    #>  7 2020-06-01 QAT          Qatar            58433     40              83.3
+    #>  8 2020-06-01 PRT          Portugal         32700   1424              60.6
+    #>  9 2020-06-01 POL          Poland           24165   1074              64.8
+    #> 10 2020-06-01 PHL          Philippines      18638    960              77.8
+    #> # … with 118,704 more rows, and 3 more variables: stringency <dbl>,
     #> #   stringency_legacy <dbl>, stringency_legacy_disp <dbl>
 
 For more detailed examples of how to retrieve data via the
@@ -226,19 +226,19 @@ codebook
 which outputs the codebook as a singular table in `tbl` format as shown
 below:
 
-    #> # A tibble: 29 x 6
-    #>    ID    Name     Description      Measurement   Coding         `Policy Group`  
-    #>    <chr> <chr>    <chr>            <chr>         <chr>          <chr>           
-    #>  1 C1    C1_Scho… "Record closing… Ordinal scale 0 - no measur… Containment and…
-    #>  2 C1    C1_Flag  ""               Binary flag … 0 - targeted;… Containment and…
-    #>  3 C2    C2_Work… "Record closing… Ordinal scale 0 - no measur… Containment and…
-    #>  4 C2    C2_Flag  ""               Binary flag … 0 - targeted;… Containment and…
-    #>  5 C3    C3_Canc… "Record cancell… Ordinal scale 0 - no measur… Containment and…
-    #>  6 C3    C3_Flag  ""               Binary flag … 0 - targeted;… Containment and…
-    #>  7 C4    C4_Rest… "Record limits … Ordinal scale 0 - no restri… Containment and…
-    #>  8 C4    C4_Flag  ""               Binary flag … 0 - targeted;… Containment and…
-    #>  9 C5    C5_Clos… "Record closing… Ordinal scale 0 - no measur… Containment and…
-    #> 10 C5    C5_Flag  ""               Binary flag … 0 - targeted;… Containment and…
+    #> # A tibble: 29 × 6
+    #>    ID    Name                      Description Measurement Coding `Policy Group`
+    #>    <chr> <chr>                     <chr>       <chr>       <chr>  <chr>         
+    #>  1 C1    C1_School closing         "Record cl… Ordinal sc… 0 - n… Containment a…
+    #>  2 C1    C1_Flag                   ""          Binary fla… 0 - t… Containment a…
+    #>  3 C2    C2_Workplace closing      "Record cl… Ordinal sc… 0 - n… Containment a…
+    #>  4 C2    C2_Flag                   ""          Binary fla… 0 - t… Containment a…
+    #>  5 C3    C3_Cancel public events   "Record ca… Ordinal sc… 0 - n… Containment a…
+    #>  6 C3    C3_Flag                   ""          Binary fla… 0 - t… Containment a…
+    #>  7 C4    C4_Restrictions on gathe… "Record li… Ordinal sc… 0 - n… Containment a…
+    #>  8 C4    C4_Flag                   ""          Binary fla… 0 - t… Containment a…
+    #>  9 C5    C5_Close public transport "Record cl… Ordinal sc… 0 - n… Containment a…
+    #> 10 C5    C5_Flag                   ""          Binary fla… 0 - t… Containment a…
     #> # … with 19 more rows
 
 The current `oxcgrt` package version includes the
@@ -264,7 +264,7 @@ indicatorData
 which outputs the example data as a singular table in `tbl` format as
 shown below:
 
-    #> # A tibble: 14 x 6
+    #> # A tibble: 14 × 6
     #>    indicator value flag_value max_value  flag score
     #>    <chr>     <int>      <int>     <int> <int> <dbl>
     #>  1 C1            2          1         3     1  66.7

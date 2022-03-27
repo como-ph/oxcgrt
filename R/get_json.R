@@ -9,7 +9,7 @@
 #' @param from Start date for stringency index data to be collected. This can go
 #'   as far back as **2020-01-02** (Default). Format `YYYY-MM-DD`. Accepts
 #'   either character string or `date` class.
-#' @param to End data for stringency index data to be collected. This defaults
+#' @param to End date for stringency index data to be collected. This defaults
 #'   to current date. Format `YYYY-MM-DD`. Accepts either character string or
 #'   `date` class.
 #'
@@ -53,11 +53,21 @@ get_json_time <- function(from = "2020-01-02",
     to <- as.character(to)
   }
 
+  ## Check that from is valid
+  if (as.Date(from) < as.Date("2020-01-02")) {
+    stop("Date/s for stringency index data cannot be earlier than 2020-01-02.")
+  }
+
+  ## Check tht to is valid
+  if (as.Date(to) < as.Date(from)) {
+    stop("End date cannot be earlier than start date.")
+  }
+
   ## Construct API query to retrieve JSON
   x <- paste(base, from, to, sep = "/")
 
   ## Return JSON
-  return(x)
+  x
 }
 
 
@@ -89,6 +99,18 @@ get_json_actions <- function(ccode,
                                  warn = FALSE)
   country <- ifelse(is.na(c2), country, c2)
 
+  if (!is.null(from)) {
+    ## Check that from is valid
+    if (as.Date(from) < as.Date("2020-01-02")) {
+      stop("Date for stringency index data cannot be earlier than 2020-01-02.")
+    }
+
+    ## Check tht to is valid
+    if (as.Date(to) < as.Date(from)) {
+      stop("End date cannot be earlier than start date.")
+    }
+  }
+
   ## Determine dates
   if(is.null(from)) {
     on <- to
@@ -107,8 +129,5 @@ get_json_actions <- function(ccode,
   x <- paste(base, query, sep = "/")
 
   ## Return JSON
-  return(x)
+  x
 }
-
-
-

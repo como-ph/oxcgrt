@@ -14,7 +14,7 @@ get_json_actions(ccode, from = "2020-01-02", to = Sys.Date())
 as far back as \strong{2020-01-02} (Default). Format \code{YYYY-MM-DD}. Accepts
 either character string or \code{date} class.}
 
-\item{to}{End data for stringency index data to be collected. This defaults
+\item{to}{End date for stringency index data to be collected. This defaults
 to current date. Format \code{YYYY-MM-DD}. Accepts either character string or
 \code{date} class.}
 

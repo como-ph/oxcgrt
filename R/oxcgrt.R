@@ -20,6 +20,7 @@
 #' @importFrom tidyr crossing
 #' @importFrom countrycode countrycode countryname
 #' @importFrom stringr str_extract
+#' @importFrom httr http_error
 #'
 #
 ################################################################################

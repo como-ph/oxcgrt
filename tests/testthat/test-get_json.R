@@ -15,3 +15,13 @@ x <- get_json_actions(ccode = "PHL",
 test_that("json url is correct", {
   expect_true(length(x) == 7)
 })
+
+test_that("errors when date/s are too early", {
+  expect_error(
+    get_json_time(from = as.Date("2018-10-01"), to = as.Date("2018-10-07"))
+  )
+  expect_error(
+    get_json_actions(
+      ccode = "PHL", from = as.Date("2018-10-01"), to = as.Date("2018-10-07"))
+  )
+})
