@@ -32,6 +32,8 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -44,23 +46,17 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">oxcgrt</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -80,8 +76,8 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/como-ph/oxcgrt/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/como-ph/oxcgrt/" class="external-link">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -95,173 +91,210 @@
 
       
 
-      </header><script src="retrieve_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="retrieve_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
-<script src="retrieve_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Retrieve data via OxCGRT API</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/como-ph/oxcgrt/blob/master/vignettes/retrieve.Rmd"><code>vignettes/retrieve.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/como-ph/oxcgrt/blob/HEAD/vignettes/retrieve.Rmd" class="external-link"><code>vignettes/retrieve.Rmd</code></a></small>
       <div class="hidden name"><code>retrieve.Rmd</code></div>
 
     </div>
 
     
     
-<p>The <em>retrieve data</em> functions are based on the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a>’s JSON API described <a href="https://covidtrackerapi.bsg.ox.ac.uk">here</a>. Two API endpoints are provided: 1) endpoint for JSON providing data for stringency index by country over time; and, 2) endpoint for JSON providing data on policy actions and stringency index for a specific country on a specific day.</p>
-<div id="stringency-index-by-country-over-time" class="section level2">
-<h2 class="hasAnchor">
-<a href="#stringency-index-by-country-over-time" class="anchor"></a>Stringency index by country over time</h2>
-<p>The first API endpoint provides JSON for all countries included in the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> over a specified period of time:</p>
+<p>The <em>retrieve data</em> functions are based on the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>’s
+JSON API described <a href="https://covidtrackerapi.bsg.ox.ac.uk" class="external-link">here</a>. Two API endpoints
+are provided: 1) endpoint for JSON providing data for stringency index
+by country over time; and, 2) endpoint for JSON providing data on policy
+actions and stringency index for a specific country on a specific
+day.</p>
+<div class="section level2">
+<h2 id="stringency-index-by-country-over-time">Stringency index by country over time<a class="anchor" aria-label="anchor" href="#stringency-index-by-country-over-time"></a>
+</h2>
+<p>The first API endpoint provides JSON for all countries included in
+the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
+over a specified period of time:</p>
 <p><br></p>
 <p><code>https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/date-range/{start-date}/{end-date}</code></p>
 <p><br></p>
-<p>where <code>start-date</code> and <code>end-date</code> are the starting date and ending date (both in <code>YYYY-MM-DD</code> format) respectively from which to retrieve data.</p>
-<p>The <code>oxcgrt</code> package provides a function named <code>get_json_time</code> to interface with the API and retrieve the specified JSON and a function named <code>get_data_time</code> to extract the data from the specified JSON into an <a href="https://cran.r-project.org">R</a> <code>tibble</code> object. These two functions have been designed such that they can be piped from one to the other. Hence to retrieve stringency index data for all countries from 1 June 2020 to current date, the following code can be used:</p>
+<p>where <code>start-date</code> and <code>end-date</code> are the
+starting date and ending date (both in <code>YYYY-MM-DD</code> format)
+respectively from which to retrieve data.</p>
+<p>The <code>oxcgrt</code> package provides a function named
+<code>get_json_time</code> to interface with the API and retrieve the
+specified JSON and a function named <code>get_data_time</code> to
+extract the data from the specified JSON into an <a href="https://cran.r-project.org" class="external-link">R</a> <code>tibble</code> object.
+These two functions have been designed such that they can be piped from
+one to the other. Hence to retrieve stringency index data for all
+countries from 1 June 2020 to current date, the following code can be
+used:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/get_json_time.html">get_json_time</a></span><span class="op">(</span>from <span class="op">=</span> <span class="st">"2020-06-01"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/get_data_time.html">get_data_time</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="../reference/get_json.html">get_json_time</a></span><span class="op">(</span>from <span class="op">=</span> <span class="st">"2020-06-01"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/get_data_time.html">get_data_time</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>This produces the following output:</p>
-<pre><code>#&gt; # A tibble: 31,618 x 9
-#&gt;    date_value country_code country_name confirmed deaths stringency_actu…
-#&gt;    &lt;date&gt;     &lt;chr&gt;        &lt;chr&gt;            &lt;int&gt;  &lt;int&gt;            &lt;dbl&gt;
-#&gt;  1 2020-06-01 ABW          Aruba              101      3             50  
-#&gt;  2 2020-06-01 AFG          Afghanistan      15205    257             84.3
-#&gt;  3 2020-06-01 AGO          Angola              86      4             77.8
-#&gt;  4 2020-06-01 ALB          Albania           1137     33             71.3
-#&gt;  5 2020-06-01 AND          Andorra            764     51             50  
-#&gt;  6 2020-06-01 ARE          United Arab…     34557    264             72.2
-#&gt;  7 2020-06-01 ARG          Argentina        16838    539             90.7
-#&gt;  8 2020-06-01 AUS          Australia         7195    102             62.0
-#&gt;  9 2020-06-01 AUT          Austria          16642    668             53.7
-#&gt; 10 2020-06-01 AZE          Azerbaijan        5494     63             77.8
-#&gt; # … with 31,608 more rows, and 3 more variables: stringency &lt;dbl&gt;,
-#&gt; #   stringency_legacy &lt;dbl&gt;, stringency_legacy_disp &lt;dbl&gt;</code></pre>
-<p>Important to note that in <code>get_json_time</code>, only the starting date (using the <code>from</code> argument) is specified to the desired 1 June 2020 in <code>YYYY-MM-DD</code> format. This is because by default the <code>to</code> argument (for the ending date) is set to the current date using a call to the <code><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date()</a></code> function. By default, the <code>from</code> argument is set to 2 January 2020 (2020-01-02) which is the earliest available data point for the stringency index. Therefore, to retrieve data on stringency index for all countries for all available time points up to current, the following commands can be issued:</p>
+<pre><code><span class="co">#&gt; <span style="color: #949494;"># A tibble: 121,658 × 9</span></span>
+<span class="co">#&gt;    date_value country_code country_name        confirmed deaths stringency_actu…</span>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 2020-06-01 FIN          Finland                  <span style="text-decoration: underline;">6</span>986    305             44.4</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 2020-06-01 DNK          Denmark                 <span style="text-decoration: underline;">11</span>699    576             60.2</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 2020-06-01 LBN          Lebanon                  <span style="text-decoration: underline;">1</span>233     27             74.1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 2020-06-01 GUY          Guyana                    153     12             87.0</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 2020-06-01 PSE          Palestinian Territ…       449      3             80.6</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 2020-06-01 AFG          Afghanistan             <span style="text-decoration: underline;">15</span>836    269             84.3</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 2020-06-01 SVK          Slovakia                 <span style="text-decoration: underline;">1</span>522     28             67.6</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 2020-06-01 VEN          Venezuela                <span style="text-decoration: underline;">1</span>662     17             85.2</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 2020-06-01 HKG          Hong Kong SAR China      <span style="text-decoration: underline;">1</span>087      4             52.8</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 2020-06-01 VNM          Vietnam                   328      0             69.4</span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 121,648 more rows, and 3 more variables: stringency &lt;dbl&gt;,</span></span>
+<span class="co">#&gt; <span style="color: #949494;">#   stringency_legacy &lt;dbl&gt;, stringency_legacy_disp &lt;dbl&gt;</span></span></code></pre>
+<p>Important to note that in <code>get_json_time</code>, only the
+starting date (using the <code>from</code> argument) is specified to the
+desired 1 June 2020 in <code>YYYY-MM-DD</code> format. This is because
+by default the <code>to</code> argument (for the ending date) is set to
+the current date using a call to the <code><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date()</a></code> function.
+By default, the <code>from</code> argument is set to 2 January 2020
+(2020-01-02) which is the earliest available data point for the
+stringency index. Therefore, to retrieve data on stringency index for
+all countries for all available time points up to current, the following
+commands can be issued:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/get_json_time.html">get_json_time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/get_data_time.html">get_data_time</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="../reference/get_json.html">get_json_time</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/get_data_time.html">get_data_time</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>which produces the following output:</p>
-<pre><code>#&gt; # A tibble: 58,453 x 9
-#&gt;    date_value country_code country_name stringency_actu… stringency
-#&gt;    &lt;date&gt;     &lt;chr&gt;        &lt;chr&gt;                   &lt;dbl&gt;      &lt;dbl&gt;
-#&gt;  1 2020-01-02 ABW          Aruba                       0          0
-#&gt;  2 2020-01-02 AFG          Afghanistan                 0          0
-#&gt;  3 2020-01-02 AGO          Angola                      0          0
-#&gt;  4 2020-01-02 ALB          Albania                     0          0
-#&gt;  5 2020-01-02 AND          Andorra                     0          0
-#&gt;  6 2020-01-02 ARE          United Arab…                0          0
-#&gt;  7 2020-01-02 ARG          Argentina                   0          0
-#&gt;  8 2020-01-02 AUS          Australia                   0          0
-#&gt;  9 2020-01-02 AUT          Austria                     0          0
-#&gt; 10 2020-01-02 AZE          Azerbaijan                  0          0
-#&gt; # … with 58,443 more rows, and 4 more variables: stringency_legacy &lt;dbl&gt;,
-#&gt; #   stringency_legacy_disp &lt;dbl&gt;, confirmed &lt;int&gt;, deaths &lt;int&gt;</code></pre>
-<div id="policy-actions-and-stringency-index-for-specific-country-on-a-specific-day" class="section level4">
-<h4 class="hasAnchor">
-<a href="#policy-actions-and-stringency-index-for-specific-country-on-a-specific-day" class="anchor"></a>Policy actions and stringency index for specific country on a specific day</h4>
-<p>The second API endpoint provides JSON for a specific country included in the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> for a specified day:</p>
+<pre><code><span class="co">#&gt; <span style="color: #949494;"># A tibble: 149,593 × 9</span></span>
+<span class="co">#&gt;    date_value country_code country_name            stringency_actual stringency</span>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                               <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 2020-01-02 FIN          Finland                               0          0  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 2020-01-02 DNK          Denmark                               0          0  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 2020-01-02 LBN          Lebanon                               0          0  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 2020-01-02 GUY          Guyana                                0          0  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 2020-01-02 PSE          Palestinian Territories               0          0  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 2020-01-02 AFG          Afghanistan                           0          0  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 2020-01-02 SVK          Slovakia                              0          0  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 2020-01-02 VEN          Venezuela                             0          0  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 2020-01-02 HKG          Hong Kong SAR China                  13.9       13.9</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 2020-01-02 VNM          Vietnam                               0          0  </span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 149,583 more rows, and 4 more variables: stringency_legacy &lt;dbl&gt;,</span></span>
+<span class="co">#&gt; <span style="color: #949494;">#   stringency_legacy_disp &lt;dbl&gt;, confirmed &lt;int&gt;, deaths &lt;int&gt;</span></span></code></pre>
+<div class="section level4">
+<h4 id="policy-actions-and-stringency-index-for-specific-country-on-a-specific-day">Policy actions and stringency index for specific country on a
+specific day<a class="anchor" aria-label="anchor" href="#policy-actions-and-stringency-index-for-specific-country-on-a-specific-day"></a>
+</h4>
+<p>The second API endpoint provides JSON for a specific country included
+in the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
+for a specified day:</p>
 <p><br></p>
 <p><code>https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/{country-code}/{date}</code></p>
 <p><br></p>
-<p>where <code>country-code</code> is the ISO 3166-1 alpha-3 country code for the required country to get data for and <code>date</code> is the date (in <code>YYYY-MM-DD</code> format) on which to retrieve data.</p>
-<p>The <code>oxcgrt</code> package provides a function named <code>get_json_actions</code> to interface with the API and retrieve the specified JSON and a function named <code>get_data</code> to extract the data from the specified JSON into a named <code>list</code> <a href="https://cran.r-project.org">R</a> object. These two functions have been designed such that they can be piped from one to the other. Hence to retrieve policy actions and stringency index data for Afghanistan for 1 June 2020, the following code can be used:</p>
+<p>where <code>country-code</code> is the ISO 3166-1 alpha-3 country
+code for the required country to get data for and <code>date</code> is
+the date (in <code>YYYY-MM-DD</code> format) on which to retrieve
+data.</p>
+<p>The <code>oxcgrt</code> package provides a function named
+<code>get_json_actions</code> to interface with the API and retrieve the
+specified JSON and a function named <code>get_data</code> to extract the
+data from the specified JSON into a named <code>list</code> <a href="https://cran.r-project.org" class="external-link">R</a> object. These two functions have
+been designed such that they can be piped from one to the other. Hence
+to retrieve policy actions and stringency index data for Afghanistan for
+1 June 2020, the following code can be used:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/get_json_time.html">get_json_actions</a></span><span class="op">(</span>ccode <span class="op">=</span> <span class="st">"AFG"</span>, 
+<code class="sourceCode R"><span class="fu"><a href="../reference/get_json.html">get_json_actions</a></span><span class="op">(</span>ccode <span class="op">=</span> <span class="st">"AFG"</span>, 
                  from <span class="op">=</span> <span class="cn">NULL</span>, 
-                 to <span class="op">=</span> <span class="st">"2020-06-01"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+                 to <span class="op">=</span> <span class="st">"2020-06-01"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu"><a href="../reference/get_data.html">get_data</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>which produces the following output:</p>
-<pre><code>#&gt; $policyActions
-#&gt; # A tibble: 18 x 9
-#&gt;    policy_type_code policy_type_dis… policyvalue policyvalue_act… flagged
-#&gt;    &lt;chr&gt;            &lt;chr&gt;                  &lt;int&gt;            &lt;int&gt; &lt;lgl&gt;  
-#&gt;  1 C1               School closing             3                3 TRUE   
-#&gt;  2 C2               Workplace closi…           3                3 FALSE  
-#&gt;  3 C3               Cancel public e…           2                2 TRUE   
-#&gt;  4 C4               Restrictions on…           4                4 TRUE   
-#&gt;  5 C5               Close public tr…           2                2 FALSE  
-#&gt;  6 C6               Stay at home re…           2                2 FALSE  
-#&gt;  7 C7               Restrictions on…           2                2 FALSE  
-#&gt;  8 C8               International t…           3                3 NA     
-#&gt;  9 E1               Income support             0                0 NA     
-#&gt; 10 E2               Debt/contract r…           0                0 NA     
-#&gt; 11 E3               Fiscal measures            0                0 NA     
-#&gt; 12 E4               International s…           0                0 NA     
-#&gt; 13 H1               Public informat…           2                2 TRUE   
-#&gt; 14 H2               Testing policy             1                1 NA     
-#&gt; 15 H3               Contact tracing            1                1 NA     
-#&gt; 16 H4               Emergency inves…           0                0 NA     
-#&gt; 17 H5               Investment in v…           0                0 NA     
-#&gt; 18 H6               Facial Coverings           1                1 TRUE   
-#&gt; # … with 4 more variables: is_general &lt;lgl&gt;, notes &lt;chr&gt;,
-#&gt; #   flag_value_display_field &lt;chr&gt;, policy_value_display_field &lt;chr&gt;
-#&gt; 
-#&gt; $stringencyData
-#&gt; # A tibble: 1 x 6
-#&gt;   date_value country_code confirmed deaths stringency_actual stringency
-#&gt;   &lt;chr&gt;      &lt;chr&gt;            &lt;int&gt;  &lt;int&gt;             &lt;dbl&gt;      &lt;dbl&gt;
-#&gt; 1 2020-06-01 AFG              15205    257              84.3       84.3</code></pre>
-<p>Important to note that the output is a named <code>list</code> object containing a <code>tibble</code> of <strong>policy actions</strong> data and a <code>tibble</code> of <strong>stringency index</strong> data for the specified country and the specified date.</p>
+<pre><code><span class="co">#&gt; $policyActions</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 23 × 9</span></span>
+<span class="co">#&gt;    policy_type_code policy_type_display     policyvalue policyvalue_act… flagged</span>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> C1               School closing                    3                3 TRUE   </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> C2               Workplace closing                 3                3 FALSE  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> C3               Cancel public events              2                2 TRUE   </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> C4               Restrictions on gather…           4                4 TRUE   </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> C5               Close public transport            2                2 FALSE  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> C6               Stay at home requireme…           2                2 FALSE  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> C7               Restrictions on intern…           2                2 FALSE  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> C8               International travel c…           3                3 <span style="color: #BB0000;">NA</span>     </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> E1               Income support                    0                0 <span style="color: #BB0000;">NA</span>     </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> E2               Debt/contract relief              0                0 <span style="color: #BB0000;">NA</span>     </span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 13 more rows, and 4 more variables: is_general &lt;lgl&gt;, notes &lt;chr&gt;,</span></span>
+<span class="co">#&gt; <span style="color: #949494;">#   flag_value_display_field &lt;chr&gt;, policy_value_display_field &lt;chr&gt;</span></span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $stringencyData</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 6</span></span>
+<span class="co">#&gt;   date_value country_code confirmed deaths stringency_actual stringency</span>
+<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 2020-06-01 AFG              <span style="text-decoration: underline;">15</span>836    269              84.3       84.3</span></code></pre>
+<p>Important to note that the output is a named <code>list</code> object
+containing a <code>tibble</code> of <strong>policy actions</strong> data
+and a <code>tibble</code> of <strong>stringency index</strong> data for
+the specified country and the specified date.</p>
 </div>
-<div id="policy-actions-for-specific-country-or-countries-on-a-specific-day-or-days" class="section level4">
-<h4 class="hasAnchor">
-<a href="#policy-actions-for-specific-country-or-countries-on-a-specific-day-or-days" class="anchor"></a>Policy actions for specific country or countries on a specific day or days</h4>
-<p>It is also possible to retrieve just policy actions data for a specific country or for multiple countries on a specific day or multiple days. To retrieve policy actions data for Afghanistan for 1 June 2020, the following code can be used:</p>
+<div class="section level4">
+<h4 id="policy-actions-for-specific-country-or-countries-on-a-specific-day-or-days">Policy actions for specific country or countries on a specific day
+or days<a class="anchor" aria-label="anchor" href="#policy-actions-for-specific-country-or-countries-on-a-specific-day-or-days"></a>
+</h4>
+<p>It is also possible to retrieve just policy actions data for a
+specific country or for multiple countries on a specific day or multiple
+days. To retrieve policy actions data for Afghanistan for 1 June 2020,
+the following code can be used:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/get_json_time.html">get_json_actions</a></span><span class="op">(</span>ccode <span class="op">=</span> <span class="st">"AFG"</span>, 
+<code class="sourceCode R"><span class="fu"><a href="../reference/get_json.html">get_json_actions</a></span><span class="op">(</span>ccode <span class="op">=</span> <span class="st">"AFG"</span>, 
                  from <span class="op">=</span> <span class="cn">NULL</span>, 
-                 to <span class="op">=</span> <span class="st">"2020-06-01"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+                 to <span class="op">=</span> <span class="st">"2020-06-01"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu"><a href="../reference/get_data_action.html">get_data_action</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>This results in:</p>
-<pre><code>#&gt; # A tibble: 18 x 12
-#&gt;    date_value country_code country_name policy_type_code policy_type_dis…
-#&gt;    &lt;date&gt;     &lt;chr&gt;        &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;           
-#&gt;  1 2020-06-01 AFG          Afghanistan  C1               School closing  
-#&gt;  2 2020-06-01 AFG          Afghanistan  C2               Workplace closi…
-#&gt;  3 2020-06-01 AFG          Afghanistan  C3               Cancel public e…
-#&gt;  4 2020-06-01 AFG          Afghanistan  C4               Restrictions on…
-#&gt;  5 2020-06-01 AFG          Afghanistan  C5               Close public tr…
-#&gt;  6 2020-06-01 AFG          Afghanistan  C6               Stay at home re…
-#&gt;  7 2020-06-01 AFG          Afghanistan  C7               Restrictions on…
-#&gt;  8 2020-06-01 AFG          Afghanistan  C8               International t…
-#&gt;  9 2020-06-01 AFG          Afghanistan  E1               Income support  
-#&gt; 10 2020-06-01 AFG          Afghanistan  E2               Debt/contract r…
-#&gt; 11 2020-06-01 AFG          Afghanistan  E3               Fiscal measures 
-#&gt; 12 2020-06-01 AFG          Afghanistan  E4               International s…
-#&gt; 13 2020-06-01 AFG          Afghanistan  H1               Public informat…
-#&gt; 14 2020-06-01 AFG          Afghanistan  H2               Testing policy  
-#&gt; 15 2020-06-01 AFG          Afghanistan  H3               Contact tracing 
-#&gt; 16 2020-06-01 AFG          Afghanistan  H4               Emergency inves…
-#&gt; 17 2020-06-01 AFG          Afghanistan  H5               Investment in v…
-#&gt; 18 2020-06-01 AFG          Afghanistan  H6               Facial Coverings
-#&gt; # … with 7 more variables: policyvalue &lt;int&gt;, policyvalue_actual &lt;int&gt;,
-#&gt; #   flagged &lt;lgl&gt;, is_general &lt;lgl&gt;, notes &lt;chr&gt;,
-#&gt; #   flag_value_display_field &lt;chr&gt;, policy_value_display_field &lt;chr&gt;</code></pre>
-<p>Important to note here that the output is a tibble of just the policy actions and three additional columns have been added to the dataset - <code>date_value</code>, <code>country_code</code>, and <code>country_name</code> - to identify the data as coming from a specific date and for a specific country.</p>
-<p>To retrieve policy actions data for multiple countries on multiple days, the <code>get_data_actions</code> functions can be used as shown below:</p>
+<pre><code><span class="co">#&gt; <span style="color: #949494;"># A tibble: 23 × 12</span></span>
+<span class="co">#&gt;    date_value country_code country_name policy_type_code policy_type_display    </span>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 2020-06-01 AFG          Afghanistan  C1               School closing         </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 2020-06-01 AFG          Afghanistan  C2               Workplace closing      </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 2020-06-01 AFG          Afghanistan  C3               Cancel public events   </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 2020-06-01 AFG          Afghanistan  C4               Restrictions on gather…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 2020-06-01 AFG          Afghanistan  C5               Close public transport </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 2020-06-01 AFG          Afghanistan  C6               Stay at home requireme…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 2020-06-01 AFG          Afghanistan  C7               Restrictions on intern…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 2020-06-01 AFG          Afghanistan  C8               International travel c…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 2020-06-01 AFG          Afghanistan  E1               Income support         </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 2020-06-01 AFG          Afghanistan  E2               Debt/contract relief   </span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 13 more rows, and 7 more variables: policyvalue &lt;int&gt;,</span></span>
+<span class="co">#&gt; <span style="color: #949494;">#   policyvalue_actual &lt;int&gt;, flagged &lt;lgl&gt;, is_general &lt;lgl&gt;, notes &lt;chr&gt;,</span></span>
+<span class="co">#&gt; <span style="color: #949494;">#   flag_value_display_field &lt;chr&gt;, policy_value_display_field &lt;chr&gt;</span></span></code></pre>
+<p>Important to note here that the output is a tibble of just the policy
+actions and three additional columns have been added to the dataset -
+<code>date_value</code>, <code>country_code</code>, and
+<code>country_name</code> - to identify the data as coming from a
+specific date and for a specific country.</p>
+<p>To retrieve policy actions data for multiple countries on multiple
+days, the <code>get_data_actions</code> functions can be used as shown
+below:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/get_json_time.html">get_json_actions</a></span><span class="op">(</span>ccode <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"AFG"</span>, <span class="st">"Philippines"</span><span class="op">)</span>, 
+<code class="sourceCode R"><span class="fu"><a href="../reference/get_json.html">get_json_actions</a></span><span class="op">(</span>ccode <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"AFG"</span>, <span class="st">"Philippines"</span><span class="op">)</span>, 
                  from <span class="op">=</span> <span class="st">"2020-10-25"</span>, 
-                 to <span class="op">=</span> <span class="st">"2020-10-31"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+                 to <span class="op">=</span> <span class="st">"2020-10-31"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu"><a href="../reference/get_data_action.html">get_data_actions</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>This results in:</p>
-<pre><code>#&gt; # A tibble: 252 x 12
-#&gt;    date_value country_code country_name policy_type_code policy_type_dis…
-#&gt;    &lt;date&gt;     &lt;chr&gt;        &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;           
-#&gt;  1 2020-10-25 AFG          Afghanistan  C1               School closing  
-#&gt;  2 2020-10-25 AFG          Afghanistan  C2               Workplace closi…
-#&gt;  3 2020-10-25 AFG          Afghanistan  C3               Cancel public e…
-#&gt;  4 2020-10-25 AFG          Afghanistan  C4               Restrictions on…
-#&gt;  5 2020-10-25 AFG          Afghanistan  C5               Close public tr…
-#&gt;  6 2020-10-25 AFG          Afghanistan  C6               Stay at home re…
-#&gt;  7 2020-10-25 AFG          Afghanistan  C7               Restrictions on…
-#&gt;  8 2020-10-25 AFG          Afghanistan  C8               International t…
-#&gt;  9 2020-10-25 AFG          Afghanistan  E1               Income support  
-#&gt; 10 2020-10-25 AFG          Afghanistan  E2               Debt/contract r…
-#&gt; # … with 242 more rows, and 7 more variables: policyvalue &lt;int&gt;,
-#&gt; #   policyvalue_actual &lt;int&gt;, flagged &lt;lgl&gt;, is_general &lt;lgl&gt;, notes &lt;chr&gt;,
-#&gt; #   flag_value_display_field &lt;chr&gt;, policy_value_display_field &lt;chr&gt;</code></pre>
-<p>Important to note here that the output is a tibble of just the policy actions and three additional columns have been added to the dataset - <code>date_value</code>, <code>country_code</code>, and <code>country_name</code> - to identify the data as coming from a specific date and for a specific country.</p>
+<pre><code><span class="co">#&gt; <span style="color: #949494;"># A tibble: 322 × 12</span></span>
+<span class="co">#&gt;    date_value country_code country_name policy_type_code policy_type_display    </span>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 2020-10-25 AFG          Afghanistan  C1               School closing         </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 2020-10-25 AFG          Afghanistan  C2               Workplace closing      </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 2020-10-25 AFG          Afghanistan  C3               Cancel public events   </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 2020-10-25 AFG          Afghanistan  C4               Restrictions on gather…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 2020-10-25 AFG          Afghanistan  C5               Close public transport </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 2020-10-25 AFG          Afghanistan  C6               Stay at home requireme…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 2020-10-25 AFG          Afghanistan  C7               Restrictions on intern…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 2020-10-25 AFG          Afghanistan  C8               International travel c…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 2020-10-25 AFG          Afghanistan  E1               Income support         </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 2020-10-25 AFG          Afghanistan  E2               Debt/contract relief   </span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 312 more rows, and 7 more variables: policyvalue &lt;int&gt;,</span></span>
+<span class="co">#&gt; <span style="color: #949494;">#   policyvalue_actual &lt;int&gt;, flagged &lt;lgl&gt;, is_general &lt;lgl&gt;, notes &lt;chr&gt;,</span></span>
+<span class="co">#&gt; <span style="color: #949494;">#   flag_value_display_field &lt;chr&gt;, policy_value_display_field &lt;chr&gt;</span></span></code></pre>
+<p>Important to note here that the output is a tibble of just the policy
+actions and three additional columns have been added to the dataset -
+<code>date_value</code>, <code>country_code</code>, and
+<code>country_name</code> - to identify the data as coming from a
+specific date and for a specific country.</p>
 </div>
 </div>
   </div>
@@ -277,11 +310,14 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Ernest Guevarra.</p>
+  <p></p>
+<p>Developed by Ernest Guevarra.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
+2.0.2.</p>
 </div>
 
       </footer>
@@ -289,6 +325,8 @@
 
   
 
+
+  
 
   </body>
 </html>

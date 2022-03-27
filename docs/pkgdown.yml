@@ -1,11 +1,11 @@
-pandoc: 2.7.3
-pkgdown: 1.6.1
+pandoc: 2.17.1.1
+pkgdown: 2.0.2
 pkgdown_sha: ~
 articles:
   calculate: calculate.html
   retrieve: retrieve.html
-last_built: 2020-11-27T13:01Z
+last_built: 2022-03-27T15:36Z
 urls:
-  reference: https://como-ph.github.io/oxcgrt//reference
-  article: https://como-ph.github.io/oxcgrt//articles
+  reference: https://como-ph.github.io/oxcgrt/reference
+  article: https://como-ph.github.io/oxcgrt/articles
 

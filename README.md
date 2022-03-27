@@ -17,8 +17,7 @@ checks](https://cranchecks.info/badges/summary/oxcgrt)](https://cran.r-project.o
 [![CRAN](https://img.shields.io/cran/l/oxcgrt.svg)](https://CRAN.R-project.org/package=oxcgrt)
 [![CRAN](http://cranlogs.r-pkg.org/badges/oxcgrt)](https://CRAN.R-project.org/package=oxcgrt)
 [![CRAN](http://cranlogs.r-pkg.org/badges/grand-total/oxcgrt)](https://CRAN.R-project.org/package=oxcgrt)
-[![R build
-status](https://github.com/como-ph/oxcgrt/workflows/R-CMD-check/badge.svg)](https://github.com/como-ph/oxcgrt/actions)
+[![R-CMD-check](https://github.com/como-ph/oxcgrt/workflows/R-CMD-check/badge.svg)](https://github.com/como-ph/oxcgrt/actions)
 ![test-coverage](https://github.com/como-ph/oxcgrt/workflows/test-coverage/badge.svg)
 [![Codecov test
 coverage](https://codecov.io/gh/como-ph/oxcgrt/branch/master/graph/badge.svg)](https://codecov.io/gh/como-ph/oxcgrt?branch=master)
@@ -125,20 +124,20 @@ get_data_time(query)
 
 This results in the following:
 
-    #> # A tibble: 118,714 × 9
-    #>    date_value country_code country_name confirmed deaths stringency_actual
-    #>    <date>     <chr>        <chr>            <int>  <int>             <dbl>
-    #>  1 2020-06-01 SEN          Senegal           3739     42              72.2
-    #>  2 2020-06-01 SAU          Saudi Arabia     87142    525              81.9
-    #>  3 2020-06-01 SMR          San Marino         687     42              57.4
-    #>  4 2020-06-01 RWA          Rwanda             377      1              73.2
-    #>  5 2020-06-01 RUS          Russia          414328   4849              74.5
-    #>  6 2020-06-01 ROU          Romania          19398   1276              57.4
-    #>  7 2020-06-01 QAT          Qatar            58433     40              83.3
-    #>  8 2020-06-01 PRT          Portugal         32700   1424              60.6
-    #>  9 2020-06-01 POL          Poland           24165   1074              64.8
-    #> 10 2020-06-01 PHL          Philippines      18638    960              77.8
-    #> # … with 118,704 more rows, and 3 more variables: stringency <dbl>,
+    #> # A tibble: 121,658 × 9
+    #>    date_value country_code country_name        confirmed deaths stringency_actu…
+    #>    <date>     <chr>        <chr>                   <int>  <int>            <dbl>
+    #>  1 2020-06-01 FIN          Finland                  6986    305             44.4
+    #>  2 2020-06-01 DNK          Denmark                 11699    576             60.2
+    #>  3 2020-06-01 LBN          Lebanon                  1233     27             74.1
+    #>  4 2020-06-01 GUY          Guyana                    153     12             87.0
+    #>  5 2020-06-01 PSE          Palestinian Territ…       449      3             80.6
+    #>  6 2020-06-01 AFG          Afghanistan             15836    269             84.3
+    #>  7 2020-06-01 SVK          Slovakia                 1522     28             67.6
+    #>  8 2020-06-01 VEN          Venezuela                1662     17             85.2
+    #>  9 2020-06-01 HKG          Hong Kong SAR China      1087      4             52.8
+    #> 10 2020-06-01 VNM          Vietnam                   328      0             69.4
+    #> # … with 121,648 more rows, and 3 more variables: stringency <dbl>,
     #> #   stringency_legacy <dbl>, stringency_legacy_disp <dbl>
 
 The `oxcgrt` functions are designed to work with pipe operators via the
@@ -156,20 +155,20 @@ get_json_time(from = "2020-06-01") %>%    ## Step 1: Creat API URL query
 This results in the same output as the earlier workflow albeit sorted
 alphabetically by country code:
 
-    #> # A tibble: 118,714 × 9
-    #>    date_value country_code country_name confirmed deaths stringency_actual
-    #>    <date>     <chr>        <chr>            <int>  <int>             <dbl>
-    #>  1 2020-06-01 SEN          Senegal           3739     42              72.2
-    #>  2 2020-06-01 SAU          Saudi Arabia     87142    525              81.9
-    #>  3 2020-06-01 SMR          San Marino         687     42              57.4
-    #>  4 2020-06-01 RWA          Rwanda             377      1              73.2
-    #>  5 2020-06-01 RUS          Russia          414328   4849              74.5
-    #>  6 2020-06-01 ROU          Romania          19398   1276              57.4
-    #>  7 2020-06-01 QAT          Qatar            58433     40              83.3
-    #>  8 2020-06-01 PRT          Portugal         32700   1424              60.6
-    #>  9 2020-06-01 POL          Poland           24165   1074              64.8
-    #> 10 2020-06-01 PHL          Philippines      18638    960              77.8
-    #> # … with 118,704 more rows, and 3 more variables: stringency <dbl>,
+    #> # A tibble: 121,658 × 9
+    #>    date_value country_code country_name        confirmed deaths stringency_actu…
+    #>    <date>     <chr>        <chr>                   <int>  <int>            <dbl>
+    #>  1 2020-06-01 FIN          Finland                  6986    305             44.4
+    #>  2 2020-06-01 DNK          Denmark                 11699    576             60.2
+    #>  3 2020-06-01 LBN          Lebanon                  1233     27             74.1
+    #>  4 2020-06-01 GUY          Guyana                    153     12             87.0
+    #>  5 2020-06-01 PSE          Palestinian Territ…       449      3             80.6
+    #>  6 2020-06-01 AFG          Afghanistan             15836    269             84.3
+    #>  7 2020-06-01 SVK          Slovakia                 1522     28             67.6
+    #>  8 2020-06-01 VEN          Venezuela                1662     17             85.2
+    #>  9 2020-06-01 HKG          Hong Kong SAR China      1087      4             52.8
+    #> 10 2020-06-01 VNM          Vietnam                   328      0             69.4
+    #> # … with 121,648 more rows, and 3 more variables: stringency <dbl>,
     #> #   stringency_legacy <dbl>, stringency_legacy_disp <dbl>
 
 For more detailed examples of how to retrieve data via the

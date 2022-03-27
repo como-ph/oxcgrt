@@ -32,6 +32,8 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -44,23 +46,17 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">oxcgrt</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -80,8 +76,8 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/como-ph/oxcgrt/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/como-ph/oxcgrt/" class="external-link">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -95,21 +91,24 @@
 
       
 
-      </header><script src="calculate_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="calculate_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
-<script src="calculate_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Calculate OxCGRT sub-indices and indices</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/como-ph/oxcgrt/blob/master/vignettes/calculate.Rmd"><code>vignettes/calculate.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/como-ph/oxcgrt/blob/HEAD/vignettes/calculate.Rmd" class="external-link"><code>vignettes/calculate.Rmd</code></a></small>
       <div class="hidden name"><code>calculate.Rmd</code></div>
 
     </div>
 
     
     
-<p>The <code>calculate_*</code> functions are based on the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a>’s methodology described <a href="https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/index_methodology.md">here</a>. There are two sets of calculate functions included in <code>oxcgrt</code>. The first calculates the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> <strong>sub-indices</strong> described in the table below:</p>
+<p>The <code>calculate_*</code> functions are based on the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>’s
+methodology described <a href="https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/index_methodology.md" class="external-link">here</a>.
+There are two sets of calculate functions included in
+<code>oxcgrt</code>. The first calculates the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
+<strong>sub-indices</strong> described in the table below:</p>
 <table class="table">
 <colgroup>
 <col width="0%">
@@ -133,7 +132,11 @@
 <td align="left">School closing</td>
 <td align="left">Record closings of schools and universities</td>
 <td align="left">Ordinal scale</td>
-<td align="left">0 - no measures; 1 - recommend closing or all schools open with alterations resulting in significant differences compared to non-Covid-19 operations; 2 - require closing (only some levels or categories, eg just high school, or just public schools); 3 - require closing all levels; Blank - no data</td>
+<td align="left">0 - no measures; 1 - recommend closing or all schools
+open with alterations resulting in significant differences compared to
+non-Covid-19 operations; 2 - require closing (only some levels or
+categories, eg just high school, or just public schools); 3 - require
+closing all levels; Blank - no data</td>
 <td align="left">Containment and closure policies</td>
 </tr>
 <tr class="even">
@@ -141,7 +144,11 @@
 <td align="left">Workplace closing</td>
 <td align="left">Record closings of workplaces</td>
 <td align="left">Ordinal scale</td>
-<td align="left">0 - no measures; 1 - recommend closing (or recommend work from home); 2 - require closing (or work from home) for some sectors or categories of workers; 3 - require closing (or work from home) for all-but-essential workplaces (eg grocery stores, doctors); Blank - no data</td>
+<td align="left">0 - no measures; 1 - recommend closing (or recommend
+work from home); 2 - require closing (or work from home) for some
+sectors or categories of workers; 3 - require closing (or work from
+home) for all-but-essential workplaces (eg grocery stores, doctors);
+Blank - no data</td>
 <td align="left">Containment and closure policies</td>
 </tr>
 <tr class="odd">
@@ -149,7 +156,8 @@
 <td align="left">Cancel public events</td>
 <td align="left">Record cancelling public events</td>
 <td align="left">Ordinal scale</td>
-<td align="left">0 - no measures; 1 - recommend cancelling; 2 - require cancelling; Blank - no data</td>
+<td align="left">0 - no measures; 1 - recommend cancelling; 2 - require
+cancelling; Blank - no data</td>
 <td align="left">Containment and closure policies</td>
 </tr>
 <tr class="even">
@@ -157,7 +165,11 @@
 <td align="left">Restrictions on gatherings</td>
 <td align="left">Record limits on private gatherings</td>
 <td align="left">Ordinal scale</td>
-<td align="left">0 - no restrictions; 1 - restrictions on very large gatherings (the limit is above; 1000 people); 2 - restrictions on gatherings between; 101-1000 people; 3 - restrictions on gatherings between; 11-100 people; 4 - restrictions on gatherings of; 10 people or less; Blank - no data</td>
+<td align="left">0 - no restrictions; 1 - restrictions on very large
+gatherings (the limit is above; 1000 people); 2 - restrictions on
+gatherings between; 101-1000 people; 3 - restrictions on gatherings
+between; 11-100 people; 4 - restrictions on gatherings of; 10 people or
+less; Blank - no data</td>
 <td align="left">Containment and closure policies</td>
 </tr>
 <tr class="odd">
@@ -165,63 +177,92 @@
 <td align="left">Close public transport</td>
 <td align="left">Record closing of public transport</td>
 <td align="left">Ordinal scale</td>
-<td align="left">0 - no measures; 1 - recommend closing (or significantly reduce volume/route/means of transport available); 2 - require closing (or prohibit most citizens from using it); Blank - no data</td>
+<td align="left">0 - no measures; 1 - recommend closing (or
+significantly reduce volume/route/means of transport available); 2 -
+require closing (or prohibit most citizens from using it); Blank - no
+data</td>
 <td align="left">Containment and closure policies</td>
 </tr>
 <tr class="even">
 <td align="left">C6</td>
 <td align="left">Stay at home requirements</td>
-<td align="left">Record orders to “shelter-in-place” and otherwise confine to the home</td>
+<td align="left">Record orders to “shelter-in-place” and otherwise
+confine to the home</td>
 <td align="left">Ordinal scale</td>
-<td align="left">0 - no measures; 1 - recommend not leaving house; 2 - require not leaving house with exceptions for daily exercise, grocery shopping, and ‘essential’ trips; 3 - require not leaving house with minimal exceptions (eg allowed to leave once a week, or only one person can leave at a time, etc); Blank - no data</td>
+<td align="left">0 - no measures; 1 - recommend not leaving house; 2 -
+require not leaving house with exceptions for daily exercise, grocery
+shopping, and ‘essential’ trips; 3 - require not leaving house with
+minimal exceptions (eg allowed to leave once a week, or only one person
+can leave at a time, etc); Blank - no data</td>
 <td align="left">Containment and closure policies</td>
 </tr>
 <tr class="odd">
 <td align="left">C7</td>
 <td align="left">Restrictions on internal movement</td>
-<td align="left">Record restrictions on internal movement between cities/regions</td>
+<td align="left">Record restrictions on internal movement between
+cities/regions</td>
 <td align="left">Ordinal scale</td>
-<td align="left">0 - no measures; 1 - recommend not to travel between regions/cities; 2 - internal movement restrictions in place; Blank - no data</td>
+<td align="left">0 - no measures; 1 - recommend not to travel between
+regions/cities; 2 - internal movement restrictions in place; Blank - no
+data</td>
 <td align="left">Containment and closure policies</td>
 </tr>
 <tr class="even">
 <td align="left">C8</td>
 <td align="left">International travel controls</td>
-<td align="left">Record restrictions on international travel Note: this records policy for foreign travellers, not citizens</td>
+<td align="left">Record restrictions on international travel Note: this
+records policy for foreign travellers, not citizens</td>
 <td align="left">Ordinal scale</td>
-<td align="left">0 - no restrictions; 1 - screening arrivals; 2 - quarantine arrivals from some or all regions; 3 - ban arrivals from some regions; 4 - ban on all regions or total border closure; Blank - no data</td>
+<td align="left">0 - no restrictions; 1 - screening arrivals; 2 -
+quarantine arrivals from some or all regions; 3 - ban arrivals from some
+regions; 4 - ban on all regions or total border closure; Blank - no
+data</td>
 <td align="left">Containment and closure policies</td>
 </tr>
 <tr class="odd">
 <td align="left">E1</td>
 <td align="left">Income support (for households)</td>
-<td align="left">Record if the government is providing direct cash payments to people who lose their jobs or cannot work. Note: only includes payments to firms if explicitly linked to payroll/salaries</td>
+<td align="left">Record if the government is providing direct cash
+payments to people who lose their jobs or cannot work. Note: only
+includes payments to firms if explicitly linked to payroll/salaries</td>
 <td align="left">Ordinal scale</td>
-<td align="left">0 - no income support; 1 - government is replacing less than 50% of lost salary (or if a flat sum, it is less than 50% median salary); 2 - government is replacing 50% or more of lost salary (or if a flat sum, it is greater than 50% median salary); Blank - no data</td>
+<td align="left">0 - no income support; 1 - government is replacing less
+than 50% of lost salary (or if a flat sum, it is less than 50% median
+salary); 2 - government is replacing 50% or more of lost salary (or if a
+flat sum, it is greater than 50% median salary); Blank - no data</td>
 <td align="left">Economic policies</td>
 </tr>
 <tr class="even">
 <td align="left">E2</td>
 <td align="left">Debt/contract relief (for households)</td>
-<td align="left">Record if the government is freezing financial obligations for households (eg stopping loan repayments, preventing services like water from stopping, or banning evictions)</td>
+<td align="left">Record if the government is freezing financial
+obligations for households (eg stopping loan repayments, preventing
+services like water from stopping, or banning evictions)</td>
 <td align="left">Ordinal scale</td>
-<td align="left">0 - no debt/contract relief; 1 - narrow relief, specific to one kind of contract; 2 - broad debt/contract relief</td>
+<td align="left">0 - no debt/contract relief; 1 - narrow relief,
+specific to one kind of contract; 2 - broad debt/contract relief</td>
 <td align="left">Economic policies</td>
 </tr>
 <tr class="odd">
 <td align="left">E3</td>
 <td align="left">Fiscal measures</td>
-<td align="left">Announced economic stimulus spending Note: only record amount additional to previously announced spending</td>
+<td align="left">Announced economic stimulus spending Note: only record
+amount additional to previously announced spending</td>
 <td align="left">USD</td>
-<td align="left">Record monetary value in USD of fiscal stimuli, includes any spending or tax cuts NOT included in E4, H4 or H5; 0 - no new spending that day; Blank - no data</td>
+<td align="left">Record monetary value in USD of fiscal stimuli,
+includes any spending or tax cuts NOT included in E4, H4 or H5; 0 - no
+new spending that day; Blank - no data</td>
 <td align="left">Economic policies</td>
 </tr>
 <tr class="even">
 <td align="left">E4</td>
 <td align="left">International support</td>
-<td align="left">Announced offers of Covid-19 related aid spending to other countries Note: only record amount additional to previously announced spending</td>
+<td align="left">Announced offers of Covid-19 related aid spending to
+other countries Note: only record amount additional to previously
+announced spending</td>
 <td align="left">USD</td>
-<td align="left">Record monetary value in USD; 0 - no new spending that day; Blank - no data</td>
+<td align="left">Record monetary value in USD; 0 - no new spending that
+day; Blank - no data</td>
 <td align="left">Economic policies</td>
 </tr>
 <tr class="odd">
@@ -229,60 +270,93 @@
 <td align="left">Public information campaigns</td>
 <td align="left">Record presence of public info campaigns</td>
 <td align="left">Ordinal scale</td>
-<td align="left">0 - no Covid-19 public information campaign; 1 - public officials urging caution about Covid-19; 2- coordinated public information campaign (eg across traditional and social media); Blank - no data</td>
+<td align="left">0 - no Covid-19 public information campaign; 1 - public
+officials urging caution about Covid-19; 2- coordinated public
+information campaign (eg across traditional and social media); Blank -
+no data</td>
 <td align="left">Health system policies</td>
 </tr>
 <tr class="even">
 <td align="left">H2</td>
 <td align="left">Testing policy</td>
-<td align="left">Record government policy on who has access to testing Note: this records policies about testing for current infection (PCR tests) not testing for immunity (antibody test)</td>
+<td align="left">Record government policy on who has access to testing
+Note: this records policies about testing for current infection (PCR
+tests) not testing for immunity (antibody test)</td>
 <td align="left">Ordinal scale</td>
-<td align="left">0 - no testing policy; 1 - only those who both (a) have symptoms AND (b) meet specific criteria (eg key workers, admitted to hospital, came into contact with a known case, returned from overseas); 2 - testing of anyone showing Covid-19 symptoms; 3 - open public testing (eg “drive through” testing available to asymptomatic people); Blank - no data</td>
+<td align="left">0 - no testing policy; 1 - only those who both (a) have
+symptoms AND (b) meet specific criteria (eg key workers, admitted to
+hospital, came into contact with a known case, returned from overseas);
+2 - testing of anyone showing Covid-19 symptoms; 3 - open public testing
+(eg “drive through” testing available to asymptomatic people); Blank -
+no data</td>
 <td align="left">Health system policies</td>
 </tr>
 <tr class="odd">
 <td align="left">H3</td>
 <td align="left">Contact tracing</td>
-<td align="left">Record government policy on contact tracing after a positive diagnosis Note: we are looking for policies that would identify all people potentially exposed to Covid-19; voluntary bluetooth apps are unlikely to achieve this</td>
+<td align="left">Record government policy on contact tracing after a
+positive diagnosis Note: we are looking for policies that would identify
+all people potentially exposed to Covid-19; voluntary bluetooth apps are
+unlikely to achieve this</td>
 <td align="left">Ordinal scale</td>
-<td align="left">0 - no contact tracing; 1 - limited contact tracing; not done for all cases; 2 - comprehensive contact tracing; done for all identified cases</td>
+<td align="left">0 - no contact tracing; 1 - limited contact tracing;
+not done for all cases; 2 - comprehensive contact tracing; done for all
+identified cases</td>
 <td align="left">Health system policies</td>
 </tr>
 <tr class="even">
 <td align="left">H4</td>
 <td align="left">Emergency investment in healthcare</td>
-<td align="left">Announced short term spending on healthcare system, eg hospitals, masks, etc Note: only record amount additional to previously announced spending</td>
+<td align="left">Announced short term spending on healthcare system, eg
+hospitals, masks, etc Note: only record amount additional to previously
+announced spending</td>
 <td align="left">USD</td>
-<td align="left">Record monetary value in USD; 0 - no new spending that day; Blank - no data</td>
+<td align="left">Record monetary value in USD; 0 - no new spending that
+day; Blank - no data</td>
 <td align="left">Health system policies</td>
 </tr>
 <tr class="odd">
 <td align="left">H5</td>
 <td align="left">Investment in vaccines</td>
-<td align="left">Announced public spending on Covid-19 vaccine development Note: only record amount additional to previously announced spending</td>
+<td align="left">Announced public spending on Covid-19 vaccine
+development Note: only record amount additional to previously announced
+spending</td>
 <td align="left">USD</td>
-<td align="left">Record monetary value in USD; 0 - no new spending that day; Blank - no data</td>
+<td align="left">Record monetary value in USD; 0 - no new spending that
+day; Blank - no data</td>
 <td align="left">Health system policies</td>
 </tr>
 <tr class="even">
 <td align="left">H6</td>
 <td align="left">Facial Coverings</td>
-<td align="left">Record policies on the use of facial coverings outside the home</td>
+<td align="left">Record policies on the use of facial coverings outside
+the home</td>
 <td align="left">Ordinal scale</td>
-<td align="left">0 - No policy; 1 - Recommended; 2 - Required in some specified shared/public spaces outside the home with other people present, or some situations when social distancing not possible; 3 - Required in all shared/public spaces outside the home with other people present or all situations when social distancing not possible; 4 - Required outside the home at all times regardless of location or presence of other people</td>
+<td align="left">0 - No policy; 1 - Recommended; 2 - Required in some
+specified shared/public spaces outside the home with other people
+present, or some situations when social distancing not possible; 3 -
+Required in all shared/public spaces outside the home with other people
+present or all situations when social distancing not possible; 4 -
+Required outside the home at all times regardless of location or
+presence of other people</td>
 <td align="left">Health system policies</td>
 </tr>
 <tr class="odd">
 <td align="left">M1</td>
 <td align="left">Wildcard</td>
-<td align="left">Record policy announcements that do not fit anywhere else</td>
+<td align="left">Record policy announcements that do not fit anywhere
+else</td>
 <td align="left">Free text notes field</td>
-<td align="left">Note unusual or interesting interventions that are worth flagging</td>
+<td align="left">Note unusual or interesting interventions that are
+worth flagging</td>
 <td align="left">Miscellaneous policies</td>
 </tr>
 </tbody>
 </table>
-<p>The second calculates the four <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> <strong>indices</strong> which are composed of various combinations of the indicators described in the table above. These combinations are described in the table below:</p>
+<p>The second calculates the four <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
+<strong>indices</strong> which are composed of various combinations of
+the indicators described in the table above. These combinations are
+described in the table below:</p>
 <table class="table">
 <colgroup>
 <col width="2%">
@@ -455,88 +529,102 @@
 </tr>
 </tbody>
 </table>
-<div id="calculating-oxcgrt-sub-indices" class="section level2">
-<h2 class="hasAnchor">
-<a href="#calculating-oxcgrt-sub-indices" class="anchor"></a>Calculating OxCGRT sub-indices</h2>
-<p>The <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> subindices can be calculated using the <code>calculate_subindex</code> and <code>calculate_subindices</code> functions. To calculate a specific sub-index, the following code is used:</p>
+<div class="section level2">
+<h2 id="calculating-oxcgrt-sub-indices">Calculating OxCGRT sub-indices<a class="anchor" aria-label="anchor" href="#calculating-oxcgrt-sub-indices"></a>
+</h2>
+<p>The <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
+subindices can be calculated using the <code>calculate_subindex</code>
+and <code>calculate_subindices</code> functions. To calculate a specific
+sub-index, the following code is used:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Given the C1 data in indicatorData, calculate C1 sub-index</span>
 <span class="fu"><a href="../reference/calculate_subindex.html">calculate_subindex</a></span><span class="op">(</span>indicator_code <span class="op">=</span> <span class="va">indicatorData</span><span class="op">[</span><span class="fl">1</span>, <span class="st">"indicator"</span><span class="op">]</span>, 
                    value <span class="op">=</span> <span class="va">indicatorData</span><span class="op">[</span><span class="fl">1</span>, <span class="st">"value"</span><span class="op">]</span>, 
                    flag_value <span class="op">=</span> <span class="va">indicatorData</span><span class="op">[</span><span class="fl">1</span>, <span class="st">"flag_value"</span><span class="op">]</span><span class="op">)</span></code></pre></div>
 <p>This gives a C1 index value of:</p>
-<pre><code>#&gt;      value
-#&gt; 1 66.66667</code></pre>
-<p>To calculate all <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> subindices, the following code is used:</p>
+<pre><code><span class="co">#&gt;      value</span>
+<span class="co">#&gt; 1 66.66667</span></code></pre>
+<p>To calculate all <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
+subindices, the following code is used:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Given the indicatorData dataset, calculate all sub-indices</span>
-<span class="va">indicatorData</span> <span class="op">%&gt;%</span>
+<span class="va">indicatorData</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="../reference/calculate_subindex.html">calculate_subindices</a></span><span class="op">(</span>indicator_code <span class="op">=</span> <span class="st">"indicator"</span>, 
                        value <span class="op">=</span> <span class="st">"value"</span>, 
                        flag_value <span class="op">=</span> <span class="st">"flag_value"</span>,
                        add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p>This results in the following output:</p>
-<pre><code>#&gt; # A tibble: 14 x 7
-#&gt;    indicator value flag_value max_value  flag score score.1
-#&gt;    &lt;chr&gt;     &lt;int&gt;      &lt;int&gt;     &lt;int&gt; &lt;int&gt; &lt;dbl&gt;   &lt;dbl&gt;
-#&gt;  1 C1            2          1         3     1  66.7    66.7
-#&gt;  2 C2           NA         NA         3     1   0       0  
-#&gt;  3 C3            2          0         2     1  75      75  
-#&gt;  4 C4            2          0         4     1  37.5    37.5
-#&gt;  5 C5            0         NA         2     1   0       0  
-#&gt;  6 C6            1          0         3     1  16.7    16.7
-#&gt;  7 C7            1          1         2     1  50      50  
-#&gt;  8 C8            3         NA         4     0  75      75  
-#&gt;  9 E1            2          0         2     1  75      75  
-#&gt; 10 E2            2         NA         2     0 100     100  
-#&gt; 11 H1            2          0         2     1  75      75  
-#&gt; 12 H2            3         NA         3     0 100     100  
-#&gt; 13 H3            2         NA         2     0 100     100  
-#&gt; 14 H6            2          0         4     1  37.5    37.5</code></pre>
-<p>It can be noted that the results of the calculations are added to the input data.frame under the column name <code>score.1</code>. Comparing this with the value in the column named <code>score</code> that is included in the <code>indicatorData</code> dataset, the results are the same.</p>
-<div id="calculating-oxcgrt-indices" class="section level4">
-<h4 class="hasAnchor">
-<a href="#calculating-oxcgrt-indices" class="anchor"></a>Calculating OxCGRT indices</h4>
-<p>The <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> indices can be calculated using the <code>calculate_index</code> and <code>calculate_indices</code> functions. To calculate a specific sub-index, the following code can be used:</p>
+<pre><code><span class="co">#&gt; <span style="color: #949494;"># A tibble: 14 × 7</span></span>
+<span class="co">#&gt;    indicator value flag_value max_value  flag score score.1</span>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> C1            2          1         3     1  66.7    66.7</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> C2           <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>         3     1   0       0  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> C3            2          0         2     1  75      75  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> C4            2          0         4     1  37.5    37.5</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> C5            0         <span style="color: #BB0000;">NA</span>         2     1   0       0  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> C6            1          0         3     1  16.7    16.7</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> C7            1          1         2     1  50      50  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> C8            3         <span style="color: #BB0000;">NA</span>         4     0  75      75  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> E1            2          0         2     1  75      75  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> E2            2         <span style="color: #BB0000;">NA</span>         2     0 100     100  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">11</span> H1            2          0         2     1  75      75  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">12</span> H2            3         <span style="color: #BB0000;">NA</span>         3     0 100     100  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">13</span> H3            2         <span style="color: #BB0000;">NA</span>         2     0 100     100  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">14</span> H6            2          0         4     1  37.5    37.5</span></code></pre>
+<p>It can be noted that the results of the calculations are added to the
+input data.frame under the column name <code>score.1</code>. Comparing
+this with the value in the column named <code>score</code> that is
+included in the <code>indicatorData</code> dataset, the results are the
+same.</p>
+<div class="section level4">
+<h4 id="calculating-oxcgrt-indices">Calculating OxCGRT indices<a class="anchor" aria-label="anchor" href="#calculating-oxcgrt-indices"></a>
+</h4>
+<p>The <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
+indices can be calculated using the <code>calculate_index</code> and
+<code>calculate_indices</code> functions. To calculate a specific
+sub-index, the following code can be used:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">indicatorData</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">indicatorData</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="../reference/calculate_subindex.html">calculate_subindices</a></span><span class="op">(</span>indicator_code <span class="op">=</span> <span class="st">"indicator"</span>,
                        value <span class="op">=</span> <span class="st">"value"</span>,
                        flag_value <span class="op">=</span> <span class="st">"flag_value"</span>,
-                       add <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/calculate_index.html">calculate_index</a></span><span class="op">(</span>codes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"C"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">8</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span>,
-                            <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"E"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span>,
-                            <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"H"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span>,
+                       add <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/calculate_index.html">calculate_index</a></span><span class="op">(</span>codes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"C"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">8</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span>,
+                            <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"E"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span>,
+                            <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"H"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span>,
                             <span class="st">"H6"</span><span class="op">)</span>, 
                   tolerance <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
-<p>This code calculates the <code>government response index</code> which is:</p>
-<pre><code>#&gt; [1] 57.7381</code></pre>
-<p>The same result can be reached by using the specialised function <code>calculate_gov_response</code> as follows:</p>
+<p>This code calculates the <code>government response index</code> which
+is:</p>
+<pre><code><span class="co">#&gt; [1] 57.7381</span></code></pre>
+<p>The same result can be reached by using the specialised function
+<code>calculate_gov_response</code> as follows:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">indicatorData</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">indicatorData</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu"><a href="../reference/calculate_subindex.html">calculate_subindices</a></span><span class="op">(</span>indicator_code <span class="op">=</span> <span class="st">"indicator"</span>,
                        value <span class="op">=</span> <span class="st">"value"</span>,
                        flag_value <span class="op">=</span> <span class="st">"flag_value"</span>,
-                       add <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">%&gt;%</span>
+                       add <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="../reference/calculate_index.html">calculate_gov_response</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>which results in the same value as the previous code:</p>
-<pre><code>#&gt; [1] 57.7381</code></pre>
-<p>To calculate all four <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> indices, the following code can be implemented:</p>
+<pre><code><span class="co">#&gt; [1] 57.7381</span></code></pre>
+<p>To calculate all four <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
+indices, the following code can be implemented:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">indicatorData</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">indicatorData</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu"><a href="../reference/calculate_subindex.html">calculate_subindices</a></span><span class="op">(</span>indicator_code <span class="op">=</span> <span class="st">"indicator"</span>,
                        value <span class="op">=</span> <span class="st">"value"</span>,
                        flag_value <span class="op">=</span> <span class="st">"flag_value"</span>,
-                       add <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">%&gt;%</span>
+                       add <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="../reference/calculate_index.html">calculate_indices</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>which outputs the following results:</p>
-<pre><code>#&gt; # A tibble: 4 x 2
-#&gt;   index                        values
-#&gt;   &lt;chr&gt;                         &lt;dbl&gt;
-#&gt; 1 Government Response Index      57.7
-#&gt; 2 Containment and Health Index   52.8
-#&gt; 3 Stringency Index               44.0
-#&gt; 4 Economic Support Index         87.5</code></pre>
+<pre><code><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 2</span></span>
+<span class="co">#&gt;   index                        values</span>
+<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Government Response Index      57.7</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Containment and Health Index   52.8</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Stringency Index               44.0</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Economic Support Index         87.5</span></code></pre>
 </div>
 </div>
   </div>
@@ -552,11 +640,14 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Ernest Guevarra.</p>
+  <p></p>
+<p>Developed by Ernest Guevarra.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
+2.0.2.</p>
 </div>
 
       </footer>
@@ -564,6 +655,8 @@
 
   
 
+
+  
 
   </body>
 </html>
