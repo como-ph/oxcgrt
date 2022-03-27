@@ -31,7 +31,7 @@ get_data_action(x)
 ## October
 x <- get_json_actions(ccode = c("AFG", "PH"),
                       from = "2020-10-29",
-                      to = "2020-10-31")
+                      to = "2020-10-30")
 
 ## Get data on policy actions
 get_data_actions(x)

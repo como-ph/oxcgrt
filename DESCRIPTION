@@ -1,7 +1,7 @@
 Package: oxcgrt
 Type: Package
 Title: An Interface to the Oxford COVID-19 Government Response Tracker API
-Version: 0.1.0.9000
+Version: 0.2.0
 Authors@R: person("Ernest", "Guevarra", 
                   comment = c(ORCID = "0000-0002-4887-4415"), 
                   email = "ernest@guevarra.io", 
@@ -23,7 +23,8 @@ Imports:
     magrittr,
     tidyr,
     countrycode,
-    stringr
+    stringr,
+    httr
 Suggests: 
     curl,
     covr,
@@ -39,5 +40,5 @@ LazyData: true
 URL: https://como-ph.github.io/oxcgrt/, https://github.com/como-ph/oxcgrt
 BugReports: https://github.com/como-ph/oxcgrt/issues
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 VignetteBuilder: knitr
