@@ -38,6 +38,8 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -50,23 +52,17 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">oxcgrt</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -86,8 +82,8 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/como-ph/oxcgrt/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/como-ph/oxcgrt/" class="external-link">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -103,176 +99,295 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="oxcgrt-an-interface-to-the-oxford-covid-19-government-response-tracker-api-" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#oxcgrt-an-interface-to-the-oxford-covid-19-government-response-tracker-api-" class="anchor"></a>oxcgrt: An Interface to the Oxford COVID-19 Government Response Tracker API <img src="reference/figures/logo.png" width="200" align="right">
+<div class="section level1">
+<div class="page-header"><h1 id="oxcgrt-an-interface-to-the-oxford-covid-19-government-response-tracker-api-">oxcgrt: An Interface to the Oxford COVID-19 Government Response
+Tracker API
+<img src="reference/figures/logo.png" width="200" align="right"><a class="anchor" aria-label="anchor" href="#oxcgrt-an-interface-to-the-oxford-covid-19-government-response-tracker-api-"></a>
 </h1></div>
 <!-- badges: start -->
 
-<!-- badges: end -->
-<p>The <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">Oxford COVID-19 Government Response Tracker (OxCGRT)</a> tracks and compares worldwide government responses to the COVID-19 pandemic rigorously and consistently. <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> makes available systematic information in a consistent way, aiding those who require information have access to it efficiently. This package facilitates access to the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> data for <a href="https://cran.r-project.org">R</a> users via version 2 of its API. This package also includes functions to calculate the various <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> indices in <a href="https://cran.r-project.org">R</a>. This package is aimed at <a href="https://cran.r-project.org">R</a> users who use or plan to use the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> data for their research or for other academic purposes or who develop or want to develop other metrics or indices that build on the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> approach.</p>
-<div id="what-does-oxcgrt-do" class="section level2">
-<h2 class="hasAnchor">
-<a href="#what-does-oxcgrt-do" class="anchor"></a>What does <code>oxcgrt</code> do?</h2>
-<p>The <code>oxcgrt</code> package has two main sets of functions that:</p>
-<ol>
-<li><p>Retrieve <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> data (<code>get_*</code> functions) via version 2 of its API; and,</p></li>
-<li><p>Calculate various <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> <a href="https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/index_methodology.md">indicators, sub-indices and indices</a> (<code>calculate_*</code> functions).</p></li>
+<p>The <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">Oxford
+COVID-19 Government Response Tracker (OxCGRT)</a> tracks and compares
+worldwide government responses to the COVID-19 pandemic rigorously and
+consistently. <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
+makes available systematic information in a consistent way, aiding those
+who require information have access to it efficiently. This package
+facilitates access to the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
+data for <a href="https://cran.r-project.org" class="external-link">R</a> users via version 2
+of its API. This package also includes functions to calculate the
+various <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
+indices in <a href="https://cran.r-project.org" class="external-link">R</a>. This package is
+aimed at <a href="https://cran.r-project.org" class="external-link">R</a> users who use or
+plan to use the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
+data for their research or for other academic purposes or who develop or
+want to develop other metrics or indices that build on the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
+approach.</p>
+<div class="section level2">
+<h2 id="what-does-oxcgrt-do">What does <code>oxcgrt</code> do?<a class="anchor" aria-label="anchor" href="#what-does-oxcgrt-do"></a>
+</h2>
+<p>The <code>oxcgrt</code> package has two main sets of functions
+that:</p>
+<ol style="list-style-type: decimal">
+<li><p>Retrieve <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
+data (<code>get_*</code> functions) via version 2 of its API;
+and,</p></li>
+<li><p>Calculate various <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
+<a href="https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/index_methodology.md" class="external-link">indicators,
+sub-indices and indices</a> (<code>calculate_*</code>
+functions).</p></li>
 </ol>
-<p>There are other <a href="https://cran.r-project.org">R</a> packages that provide access to data from the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a>. The <a href="https://cran.r-project.org/package=COVID19"><code>COVID19</code> package</a> and the <a href="https://como-ph.github.io/oxcovid19/"><code>oxcovid19</code> package</a> are just two examples of these. However, all these packages provide access to the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> data as <em>data dumps</em> and only for the time-series of the stringency index per country. To our knowledge, the <code>oxcgrt</code> package is the only <a href="https://cran.r-project.org">R</a> package currently that provides an interface to the available API for querying and retrieving data. Also, the <code>oxcgrt</code> package provides functions to calculate the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> sub-indices and indices based on their methodology. None of the other <a href="https://cran.r-project.org">R</a> packages that we have seen and reviewed have this functionality.</p>
+<p>There are other <a href="https://cran.r-project.org" class="external-link">R</a> packages
+that provide access to data from the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>.
+The <a href="https://cran.r-project.org/package=COVID19" class="external-link"><code>COVID19</code>
+package</a> and the <a href="https://como-ph.github.io/oxcovid19/" class="external-link"><code>oxcovid19</code>
+package</a> are just two examples of these. However, all these packages
+provide access to the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
+data as <em>data dumps</em> and only for the time-series of the
+stringency index per country. To our knowledge, the <code>oxcgrt</code>
+package is the only <a href="https://cran.r-project.org" class="external-link">R</a> package
+currently that provides an interface to the available API for querying
+and retrieving data. Also, the <code>oxcgrt</code> package provides
+functions to calculate the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
+sub-indices and indices based on their methodology. None of the other <a href="https://cran.r-project.org" class="external-link">R</a> packages that we have seen and
+reviewed have this functionality.</p>
 </div>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the released version of oxcgrt from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>You can install the released version of oxcgrt from <a href="https://CRAN.R-project.org" class="external-link">CRAN</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"oxcgrt"</span><span class="op">)</span></code></pre></div>
-<p>And the development version from <a href="https://github.com/">GitHub</a> with:</p>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"oxcgrt"</span><span class="op">)</span></code></pre></div>
+<p>And the development version from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://remotes.r-lib.org">remotes</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"como-ph/oxcgrt"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="https://remotes.r-lib.org" class="external-link">remotes</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"como-ph/oxcgrt"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="usage" class="section level2">
-<h2 class="hasAnchor">
-<a href="#usage" class="anchor"></a>Usage</h2>
-<div id="the-oxcgrt-data-retrieval-workflow-via-api" class="section level3">
-<h3 class="hasAnchor">
-<a href="#the-oxcgrt-data-retrieval-workflow-via-api" class="anchor"></a>The <code>oxcgrt</code> data retrieval workflow via API</h3>
-<p>The <em>retrieve data</em> functions are based on the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a>’s JSON API described <a href="https://covidtrackerapi.bsg.ox.ac.uk">here</a>. Two API endpoints are provided: 1) endpoint for JSON providing data for stringency index by country over time; and, 2) endpoint for JSON providing data on policy actions and stringency index for a specific country on a specific day.</p>
-<p>For each of these endpoints, the data retrieval workflow is composed of two steps: first is the creation of the appropriate API URL query; and, second is the retrieval of the appropriate data as per query into a data.frame structure usable in <a href="https://cran.r-project.org">R</a>. This workflow is show in code below:</p>
+<div class="section level2">
+<h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
+</h2>
+<div class="section level3">
+<h3 id="the-oxcgrt-data-retrieval-workflow-via-api">The <code>oxcgrt</code> data retrieval workflow via API<a class="anchor" aria-label="anchor" href="#the-oxcgrt-data-retrieval-workflow-via-api"></a>
+</h3>
+<p>The <em>retrieve data</em> functions are based on the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>’s
+JSON API described <a href="https://covidtrackerapi.bsg.ox.ac.uk" class="external-link">here</a>. Two API endpoints
+are provided: 1) endpoint for JSON providing data for stringency index
+by country over time; and, 2) endpoint for JSON providing data on policy
+actions and stringency index for a specific country on a specific
+day.</p>
+<p>For each of these endpoints, the data retrieval workflow is composed
+of two steps: first is the creation of the appropriate API URL query;
+and, second is the retrieval of the appropriate data as per query into a
+data.frame structure usable in <a href="https://cran.r-project.org" class="external-link">R</a>. This workflow is show in code
+below:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Load oxcgrt package</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://como-ph.github.io/oxcgrt/">oxcgrt</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://como-ph.github.io/oxcgrt/">oxcgrt</a></span><span class="op">)</span>
 
 <span class="co">## Step 1: Create the appropriate API URL query for time series data from </span>
 <span class="co">## 1 June 2020 up to current day</span>
-<span class="va">query</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_json_time.html">get_json_time</a></span><span class="op">(</span>from <span class="op">=</span> <span class="st">"2020-06-01"</span><span class="op">)</span>
+<span class="va">query</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_json.html">get_json_time</a></span><span class="op">(</span>from <span class="op">=</span> <span class="st">"2020-06-01"</span><span class="op">)</span>
 
 <span class="co">## Step 2: Retrieve the data</span>
 <span class="fu"><a href="reference/get_data_time.html">get_data_time</a></span><span class="op">(</span><span class="va">query</span><span class="op">)</span></code></pre></div>
 <p>This results in the following:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">#&gt; # A tibble: 31,618 x 9</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="co">#&gt;    date_value country_code country_name confirmed deaths stringency_actu…</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="co">#&gt;    &lt;date&gt;     &lt;chr&gt;        &lt;chr&gt;            &lt;int&gt;  &lt;int&gt;            &lt;dbl&gt;</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="co">#&gt;  1 2020-06-01 ABW          Aruba              101      3             50  </span></span>
-<span id="cb4-5"><a href="#cb4-5"></a><span class="co">#&gt;  2 2020-06-01 AFG          Afghanistan      15205    257             84.3</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="co">#&gt;  3 2020-06-01 AGO          Angola              86      4             77.8</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a><span class="co">#&gt;  4 2020-06-01 ALB          Albania           1137     33             71.3</span></span>
-<span id="cb4-8"><a href="#cb4-8"></a><span class="co">#&gt;  5 2020-06-01 AND          Andorra            764     51             50  </span></span>
-<span id="cb4-9"><a href="#cb4-9"></a><span class="co">#&gt;  6 2020-06-01 ARE          United Arab…     34557    264             72.2</span></span>
-<span id="cb4-10"><a href="#cb4-10"></a><span class="co">#&gt;  7 2020-06-01 ARG          Argentina        16838    539             90.7</span></span>
-<span id="cb4-11"><a href="#cb4-11"></a><span class="co">#&gt;  8 2020-06-01 AUS          Australia         7195    102             62.0</span></span>
-<span id="cb4-12"><a href="#cb4-12"></a><span class="co">#&gt;  9 2020-06-01 AUT          Austria          16642    668             53.7</span></span>
-<span id="cb4-13"><a href="#cb4-13"></a><span class="co">#&gt; 10 2020-06-01 AZE          Azerbaijan        5494     63             77.8</span></span>
-<span id="cb4-14"><a href="#cb4-14"></a><span class="co">#&gt; # … with 31,608 more rows, and 3 more variables: stringency &lt;dbl&gt;,</span></span>
-<span id="cb4-15"><a href="#cb4-15"></a><span class="co">#&gt; #   stringency_legacy &lt;dbl&gt;, stringency_legacy_disp &lt;dbl&gt;</span></span></code></pre></div>
-<p>The <code>oxcgrt</code> functions are designed to work with pipe operators via the <code>magrittr</code> package. The steps shown above can be replicated using pipe operators as follows:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 121,658 × 9</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    date_value country_code country_name        confirmed deaths stringency_actu…</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;date&gt;     &lt;chr&gt;        &lt;chr&gt;                   &lt;int&gt;  &lt;int&gt;            &lt;dbl&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 2020-06-01 FIN          Finland                  6986    305             44.4</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 2020-06-01 DNK          Denmark                 11699    576             60.2</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 2020-06-01 LBN          Lebanon                  1233     27             74.1</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 2020-06-01 GUY          Guyana                    153     12             87.0</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 2020-06-01 PSE          Palestinian Territ…       449      3             80.6</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 2020-06-01 AFG          Afghanistan             15836    269             84.3</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 2020-06-01 SVK          Slovakia                 1522     28             67.6</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 2020-06-01 VEN          Venezuela                1662     17             85.2</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 2020-06-01 HKG          Hong Kong SAR China      1087      4             52.8</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 2020-06-01 VNM          Vietnam                   328      0             69.4</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 121,648 more rows, and 3 more variables: stringency &lt;dbl&gt;,</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   stringency_legacy &lt;dbl&gt;, stringency_legacy_disp &lt;dbl&gt;</span></span></code></pre></div>
+<p>The <code>oxcgrt</code> functions are designed to work with pipe
+operators via the <code>magrittr</code> package. The steps shown above
+can be replicated using pipe operators as follows:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Load magrittr package</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org">magrittr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org" class="external-link">magrittr</a></span><span class="op">)</span>
 
-<span class="fu"><a href="reference/get_json_time.html">get_json_time</a></span><span class="op">(</span>from <span class="op">=</span> <span class="st">"2020-06-01"</span><span class="op">)</span> <span class="op">%&gt;%</span>    <span class="co">## Step 1: Creat API URL query</span>
+<span class="fu"><a href="reference/get_json.html">get_json_time</a></span><span class="op">(</span>from <span class="op">=</span> <span class="st">"2020-06-01"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>    <span class="co">## Step 1: Creat API URL query</span>
   <span class="fu"><a href="reference/get_data_time.html">get_data_time</a></span><span class="op">(</span><span class="op">)</span>                         <span class="co">## Step 2: Retrieve data</span></code></pre></div>
-<p>This results in the same output as the earlier workflow albeit sorted alphabetically by country code:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co">#&gt; # A tibble: 31,618 x 9</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="co">#&gt;    date_value country_code country_name confirmed deaths stringency_actu…</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="co">#&gt;    &lt;date&gt;     &lt;chr&gt;        &lt;chr&gt;            &lt;int&gt;  &lt;int&gt;            &lt;dbl&gt;</span></span>
-<span id="cb6-4"><a href="#cb6-4"></a><span class="co">#&gt;  1 2020-06-01 ABW          Aruba              101      3             50  </span></span>
-<span id="cb6-5"><a href="#cb6-5"></a><span class="co">#&gt;  2 2020-06-01 AFG          Afghanistan      15205    257             84.3</span></span>
-<span id="cb6-6"><a href="#cb6-6"></a><span class="co">#&gt;  3 2020-06-01 AGO          Angola              86      4             77.8</span></span>
-<span id="cb6-7"><a href="#cb6-7"></a><span class="co">#&gt;  4 2020-06-01 ALB          Albania           1137     33             71.3</span></span>
-<span id="cb6-8"><a href="#cb6-8"></a><span class="co">#&gt;  5 2020-06-01 AND          Andorra            764     51             50  </span></span>
-<span id="cb6-9"><a href="#cb6-9"></a><span class="co">#&gt;  6 2020-06-01 ARE          United Arab…     34557    264             72.2</span></span>
-<span id="cb6-10"><a href="#cb6-10"></a><span class="co">#&gt;  7 2020-06-01 ARG          Argentina        16838    539             90.7</span></span>
-<span id="cb6-11"><a href="#cb6-11"></a><span class="co">#&gt;  8 2020-06-01 AUS          Australia         7195    102             62.0</span></span>
-<span id="cb6-12"><a href="#cb6-12"></a><span class="co">#&gt;  9 2020-06-01 AUT          Austria          16642    668             53.7</span></span>
-<span id="cb6-13"><a href="#cb6-13"></a><span class="co">#&gt; 10 2020-06-01 AZE          Azerbaijan        5494     63             77.8</span></span>
-<span id="cb6-14"><a href="#cb6-14"></a><span class="co">#&gt; # … with 31,608 more rows, and 3 more variables: stringency &lt;dbl&gt;,</span></span>
-<span id="cb6-15"><a href="#cb6-15"></a><span class="co">#&gt; #   stringency_legacy &lt;dbl&gt;, stringency_legacy_disp &lt;dbl&gt;</span></span></code></pre></div>
-<p>For more detailed examples of how to retrieve data via the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> API version 2, read <a href="https://como-ph.github.io/oxcgrt/articles/retrieve.html">Retrieve data via OxCGRT API</a>.</p>
+<p>This results in the same output as the earlier workflow albeit sorted
+alphabetically by country code:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 121,658 × 9</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    date_value country_code country_name        confirmed deaths stringency_actu…</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;date&gt;     &lt;chr&gt;        &lt;chr&gt;                   &lt;int&gt;  &lt;int&gt;            &lt;dbl&gt;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 2020-06-01 FIN          Finland                  6986    305             44.4</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 2020-06-01 DNK          Denmark                 11699    576             60.2</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 2020-06-01 LBN          Lebanon                  1233     27             74.1</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 2020-06-01 GUY          Guyana                    153     12             87.0</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 2020-06-01 PSE          Palestinian Territ…       449      3             80.6</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 2020-06-01 AFG          Afghanistan             15836    269             84.3</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 2020-06-01 SVK          Slovakia                 1522     28             67.6</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 2020-06-01 VEN          Venezuela                1662     17             85.2</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 2020-06-01 HKG          Hong Kong SAR China      1087      4             52.8</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 2020-06-01 VNM          Vietnam                   328      0             69.4</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 121,648 more rows, and 3 more variables: stringency &lt;dbl&gt;,</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   stringency_legacy &lt;dbl&gt;, stringency_legacy_disp &lt;dbl&gt;</span></span></code></pre></div>
+<p>For more detailed examples of how to retrieve data via the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
+API version 2, read <a href="https://como-ph.github.io/oxcgrt/articles/retrieve.html">Retrieve
+data via OxCGRT API</a>.</p>
 </div>
-<div id="the-oxcgrt-calculate-workflow" class="section level3">
-<h3 class="hasAnchor">
-<a href="#the-oxcgrt-calculate-workflow" class="anchor"></a>The <code>oxcgrt</code> calculate workflow</h3>
-<p>The <code>calculate_*</code> functions are based on the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a>’s methodology described <a href="https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/index_methodology.md">here</a>. There are two sets of calculate functions included in <code>oxcgrt</code>. The first calculates the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> <strong>sub-indices</strong> and the second calculates the four <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> <strong>indices</strong> which are composed of various combinations of the indicators used by <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> sub-indices and indices.</p>
-<p>For more detailed examples of how to calculate the various <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> sub-indices and indices, read <a href="https://como-ph.github.io/oxcgrt/articles/calculate.html">Calculate OxCGRT sub-indices and indices</a>.</p>
+<div class="section level3">
+<h3 id="the-oxcgrt-calculate-workflow">The <code>oxcgrt</code> calculate workflow<a class="anchor" aria-label="anchor" href="#the-oxcgrt-calculate-workflow"></a>
+</h3>
+<p>The <code>calculate_*</code> functions are based on the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>’s
+methodology described <a href="https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/index_methodology.md" class="external-link">here</a>.
+There are two sets of calculate functions included in
+<code>oxcgrt</code>. The first calculates the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
+<strong>sub-indices</strong> and the second calculates the four <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
+<strong>indices</strong> which are composed of various combinations of
+the indicators used by <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
+sub-indices and indices.</p>
+<p>For more detailed examples of how to calculate the various <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
+sub-indices and indices, read <a href="https://como-ph.github.io/oxcgrt/articles/calculate.html">Calculate
+OxCGRT sub-indices and indices</a>.</p>
 </div>
-<div id="datasets" class="section level3">
-<h3 class="hasAnchor">
-<a href="#datasets" class="anchor"></a>Datasets</h3>
-<p>The <code>oxcgrt</code> package comes with helpful datasets which serve as guides to facilitate in usage and interpretation of the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> data.</p>
-<div id="codebook" class="section level4">
-<h4 class="hasAnchor">
-<a href="#codebook" class="anchor"></a>Codebook</h4>
-<p>The <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> provides an authoritative codebook found <a href="https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/codebook.md">here</a>. The <code>oxcgrt</code> package has extracted the tables from this documentation into a single codebook that can serve as a handy and convenient reference for an <a href="https://cran.r-project.org">R</a> user when working with <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> data in <a href="https://cran.r-project.org">R</a>. The <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> codebook can be accessed as follows:</p>
+<div class="section level3">
+<h3 id="datasets">Datasets<a class="anchor" aria-label="anchor" href="#datasets"></a>
+</h3>
+<p>The <code>oxcgrt</code> package comes with helpful datasets which
+serve as guides to facilitate in usage and interpretation of the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
+data.</p>
+<div class="section level4">
+<h4 id="codebook">Codebook<a class="anchor" aria-label="anchor" href="#codebook"></a>
+</h4>
+<p>The <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
+provides an authoritative codebook found <a href="https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/codebook.md" class="external-link">here</a>.
+The <code>oxcgrt</code> package has extracted the tables from this
+documentation into a single codebook that can serve as a handy and
+convenient reference for an <a href="https://cran.r-project.org" class="external-link">R</a>
+user when working with <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
+data in <a href="https://cran.r-project.org" class="external-link">R</a>. The <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
+codebook can be accessed as follows:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">codebook</span></code></pre></div>
-<p>which outputs the codebook as a singular table in <code>tbl</code> format as shown below:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co">#&gt; # A tibble: 29 x 6</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="co">#&gt;    ID    Name     Description      Measurement   Coding         `Policy Group`  </span></span>
-<span id="cb8-3"><a href="#cb8-3"></a><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;         &lt;chr&gt;          &lt;chr&gt;           </span></span>
-<span id="cb8-4"><a href="#cb8-4"></a><span class="co">#&gt;  1 C1    C1_Scho… "Record closing… Ordinal scale 0 - no measur… Containment and…</span></span>
-<span id="cb8-5"><a href="#cb8-5"></a><span class="co">#&gt;  2 C1    C1_Flag  ""               Binary flag … 0 - targeted;… Containment and…</span></span>
-<span id="cb8-6"><a href="#cb8-6"></a><span class="co">#&gt;  3 C2    C2_Work… "Record closing… Ordinal scale 0 - no measur… Containment and…</span></span>
-<span id="cb8-7"><a href="#cb8-7"></a><span class="co">#&gt;  4 C2    C2_Flag  ""               Binary flag … 0 - targeted;… Containment and…</span></span>
-<span id="cb8-8"><a href="#cb8-8"></a><span class="co">#&gt;  5 C3    C3_Canc… "Record cancell… Ordinal scale 0 - no measur… Containment and…</span></span>
-<span id="cb8-9"><a href="#cb8-9"></a><span class="co">#&gt;  6 C3    C3_Flag  ""               Binary flag … 0 - targeted;… Containment and…</span></span>
-<span id="cb8-10"><a href="#cb8-10"></a><span class="co">#&gt;  7 C4    C4_Rest… "Record limits … Ordinal scale 0 - no restri… Containment and…</span></span>
-<span id="cb8-11"><a href="#cb8-11"></a><span class="co">#&gt;  8 C4    C4_Flag  ""               Binary flag … 0 - targeted;… Containment and…</span></span>
-<span id="cb8-12"><a href="#cb8-12"></a><span class="co">#&gt;  9 C5    C5_Clos… "Record closing… Ordinal scale 0 - no measur… Containment and…</span></span>
-<span id="cb8-13"><a href="#cb8-13"></a><span class="co">#&gt; 10 C5    C5_Flag  ""               Binary flag … 0 - targeted;… Containment and…</span></span>
-<span id="cb8-14"><a href="#cb8-14"></a><span class="co">#&gt; # … with 19 more rows</span></span></code></pre></div>
-<p>The current <code>oxcgrt</code> package version includes the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> <strong>codebook version 2.5</strong> released on 4 November 2020.</p>
+<p>which outputs the codebook as a singular table in <code>tbl</code>
+format as shown below:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 29 × 6</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    ID    Name                      Description Measurement Coding `Policy Group`</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;                     &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;  &lt;chr&gt;         </span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 C1    C1_School closing         "Record cl… Ordinal sc… 0 - n… Containment a…</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 C1    C1_Flag                   ""          Binary fla… 0 - t… Containment a…</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 C2    C2_Workplace closing      "Record cl… Ordinal sc… 0 - n… Containment a…</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 C2    C2_Flag                   ""          Binary fla… 0 - t… Containment a…</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 C3    C3_Cancel public events   "Record ca… Ordinal sc… 0 - n… Containment a…</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 C3    C3_Flag                   ""          Binary fla… 0 - t… Containment a…</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 C4    C4_Restrictions on gathe… "Record li… Ordinal sc… 0 - n… Containment a…</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 C4    C4_Flag                   ""          Binary fla… 0 - t… Containment a…</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 C5    C5_Close public transport "Record cl… Ordinal sc… 0 - n… Containment a…</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 C5    C5_Flag                   ""          Binary fla… 0 - t… Containment a…</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 19 more rows</span></span></code></pre></div>
+<p>The current <code>oxcgrt</code> package version includes the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
+<strong>codebook version 2.5</strong> released on 4 November 2020.</p>
 </div>
-<div id="example-oxcgrt-indicators-dataset" class="section level4">
-<h4 class="hasAnchor">
-<a href="#example-oxcgrt-indicators-dataset" class="anchor"></a>Example OxCGRT indicators dataset</h4>
-<p>In the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> methodology <a href="https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/index_methodology.md">document</a>, an example indicator dataset is used to demonstrate the calculation of per indicator sub-indices and the four main indices that <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> provides. This example dataset has been made available in table format in the <code>oxcgrt</code> package and can be accessed as follows:</p>
+<div class="section level4">
+<h4 id="example-oxcgrt-indicators-dataset">Example OxCGRT indicators dataset<a class="anchor" aria-label="anchor" href="#example-oxcgrt-indicators-dataset"></a>
+</h4>
+<p>In the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
+methodology <a href="https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/index_methodology.md" class="external-link">document</a>,
+an example indicator dataset is used to demonstrate the calculation of
+per indicator sub-indices and the four main indices that <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
+provides. This example dataset has been made available in table format
+in the <code>oxcgrt</code> package and can be accessed as follows:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">indicatorData</span></code></pre></div>
-<p>which outputs the example data as a singular table in <code>tbl</code> format as shown below:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co">#&gt; # A tibble: 14 x 6</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="co">#&gt;    indicator value flag_value max_value  flag score</span></span>
-<span id="cb10-3"><a href="#cb10-3"></a><span class="co">#&gt;    &lt;chr&gt;     &lt;int&gt;      &lt;int&gt;     &lt;int&gt; &lt;int&gt; &lt;dbl&gt;</span></span>
-<span id="cb10-4"><a href="#cb10-4"></a><span class="co">#&gt;  1 C1            2          1         3     1  66.7</span></span>
-<span id="cb10-5"><a href="#cb10-5"></a><span class="co">#&gt;  2 C2           NA         NA         3     1   0  </span></span>
-<span id="cb10-6"><a href="#cb10-6"></a><span class="co">#&gt;  3 C3            2          0         2     1  75  </span></span>
-<span id="cb10-7"><a href="#cb10-7"></a><span class="co">#&gt;  4 C4            2          0         4     1  37.5</span></span>
-<span id="cb10-8"><a href="#cb10-8"></a><span class="co">#&gt;  5 C5            0         NA         2     1   0  </span></span>
-<span id="cb10-9"><a href="#cb10-9"></a><span class="co">#&gt;  6 C6            1          0         3     1  16.7</span></span>
-<span id="cb10-10"><a href="#cb10-10"></a><span class="co">#&gt;  7 C7            1          1         2     1  50  </span></span>
-<span id="cb10-11"><a href="#cb10-11"></a><span class="co">#&gt;  8 C8            3         NA         4     0  75  </span></span>
-<span id="cb10-12"><a href="#cb10-12"></a><span class="co">#&gt;  9 E1            2          0         2     1  75  </span></span>
-<span id="cb10-13"><a href="#cb10-13"></a><span class="co">#&gt; 10 E2            2         NA         2     0 100  </span></span>
-<span id="cb10-14"><a href="#cb10-14"></a><span class="co">#&gt; 11 H1            2          0         2     1  75  </span></span>
-<span id="cb10-15"><a href="#cb10-15"></a><span class="co">#&gt; 12 H2            3         NA         3     0 100  </span></span>
-<span id="cb10-16"><a href="#cb10-16"></a><span class="co">#&gt; 13 H3            2         NA         2     0 100  </span></span>
-<span id="cb10-17"><a href="#cb10-17"></a><span class="co">#&gt; 14 H6            2          0         4     1  37.5</span></span></code></pre></div>
-<p>This dataset is used by the <code>oxcgrt</code> package to test the <code>calculate_*</code> functions and for demonstrating how these functions work. This dataset can be useful for those trying to learn the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a>’s calculation methods and <a href="https://cran.r-project.org">R</a> users who are learning how to use the <code>oxcgrt</code> package <code>calculate_*</code> functions.</p>
+<p>which outputs the example data as a singular table in
+<code>tbl</code> format as shown below:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 14 × 6</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    indicator value flag_value max_value  flag score</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;     &lt;int&gt;      &lt;int&gt;     &lt;int&gt; &lt;int&gt; &lt;dbl&gt;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 C1            2          1         3     1  66.7</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 C2           NA         NA         3     1   0  </span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 C3            2          0         2     1  75  </span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 C4            2          0         4     1  37.5</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 C5            0         NA         2     1   0  </span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 C6            1          0         3     1  16.7</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 C7            1          1         2     1  50  </span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 C8            3         NA         4     0  75  </span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 E1            2          0         2     1  75  </span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 E2            2         NA         2     0 100  </span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 H1            2          0         2     1  75  </span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12 H2            3         NA         3     0 100  </span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13 H3            2         NA         2     0 100  </span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14 H6            2          0         4     1  37.5</span></span></code></pre></div>
+<p>This dataset is used by the <code>oxcgrt</code> package to test the
+<code>calculate_*</code> functions and for demonstrating how these
+functions work. This dataset can be useful for those trying to learn the
+<a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>’s
+calculation methods and <a href="https://cran.r-project.org" class="external-link">R</a> users
+who are learning how to use the <code>oxcgrt</code> package
+<code>calculate_*</code> functions.</p>
 </div>
 </div>
 </div>
-<div id="limitations" class="section level2">
-<h2 class="hasAnchor">
-<a href="#limitations" class="anchor"></a>Limitations</h2>
-<p>The current version of <code>oxcgrt</code> package is <em>experimental</em> in that its stability and future development would depend on the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a>‘s current and future development. The <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> is in continuous evolution given that the COVID-19 pandemic is still on-going and various governments’ responses to it are continuously changed and/or updated. The <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> has also been developing other indices that capture other aspects of governments’ responses not yet covered by current indices.</p>
-<p>The <code>oxcgrt</code> package author and maintainer commit to ensuring that current functions are maintained and/or updated in a manner that ensures backwards compatibility should changes to the data structure and/or to the indices calculation are implemented by the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> team. This would include maintaining the arguments used by the current functions, maintaining the functionality of the current functions, and maintaining the type of outputs of the current functions. Should changes implemented by the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> team to the data structure and/or to the indices calculation require the breaking of the syntax, functionality and/or outputs of the current functions, a formal and proper deprecation process will be implemented that include proper and detailed documentation of the changes and the potential impact on current users.</p>
+<div class="section level2">
+<h2 id="limitations">Limitations<a class="anchor" aria-label="anchor" href="#limitations"></a>
+</h2>
+<p>The current version of <code>oxcgrt</code> package is
+<em>experimental</em> in that its stability and future development would
+depend on the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>‘s
+current and future development. The <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
+is in continuous evolution given that the COVID-19 pandemic is still
+on-going and various governments’ responses to it are continuously
+changed and/or updated. The <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
+has also been developing other indices that capture other aspects of
+governments’ responses not yet covered by current indices.</p>
+<p>The <code>oxcgrt</code> package author and maintainer commit to
+ensuring that current functions are maintained and/or updated in a
+manner that ensures backwards compatibility should changes to the data
+structure and/or to the indices calculation are implemented by the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
+team. This would include maintaining the arguments used by the current
+functions, maintaining the functionality of the current functions, and
+maintaining the type of outputs of the current functions. Should changes
+implemented by the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
+team to the data structure and/or to the indices calculation require the
+breaking of the syntax, functionality and/or outputs of the current
+functions, a formal and proper deprecation process will be implemented
+that include proper and detailed documentation of the changes and the
+potential impact on current users.</p>
 </div>
-<div id="disclaimer" class="section level2">
-<h2 class="hasAnchor">
-<a href="#disclaimer" class="anchor"></a>Disclaimer</h2>
-<p>The <code>oxcgrt</code> package is an independent development and is separate from and not recognised and approved by the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> team. The author and maintainer of the package is not affiliated with <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> but is committed to ensure fidelity to the methods and usage specified by <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> and accuracy of outputs described and required by <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a>.</p>
-<p>Any mistakes, problems and issues with the functionality and outputs of the <code>oxcgrt</code> including mistakes in interpretation of the calculation of the sub-indices and indices noted (if any) are that of the author and maintainer and not of the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a>. Hence any problems and issues to the usage, functionality and outputs of the <code>oxcgrt</code> package should be addressed directly to the author and maintainer <a href="https://github.com/como-ph/oxcgrt/issues">here</a>.</p>
+<div class="section level2">
+<h2 id="disclaimer">Disclaimer<a class="anchor" aria-label="anchor" href="#disclaimer"></a>
+</h2>
+<p>The <code>oxcgrt</code> package is an independent development and is
+separate from and not recognised and approved by the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
+team. The author and maintainer of the package is not affiliated with <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
+but is committed to ensure fidelity to the methods and usage specified
+by <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
+and accuracy of outputs described and required by <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>.</p>
+<p>Any mistakes, problems and issues with the functionality and outputs
+of the <code>oxcgrt</code> including mistakes in interpretation of the
+calculation of the sub-indices and indices noted (if any) are that of
+the author and maintainer and not of the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>.
+Hence any problems and issues to the usage, functionality and outputs of
+the <code>oxcgrt</code> package should be addressed directly to the
+author and maintainer <a href="https://github.com/como-ph/oxcgrt/issues" class="external-link">here</a>.</p>
 </div>
-<div id="citation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#citation" class="anchor"></a>Citation</h2>
-<p>When using the <code>oxcgrt</code> package, please cite both the source of the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> data and <code>oxcgrt</code> package itself.</p>
-<p>For the source of the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">OxCGRT</a> data, the following citation is recommended:</p>
-<p><em>Hale, Thomas, Noam Angrist, Emily Cameron-Blake, Laura Hallas, Beatriz Kira, Saptarshi Majumdar, Anna Petherick, Toby Phillips, Helen Tatlow, Samuel Webster (2020). Oxford COVID-19 Government Response Tracker, Blavatnik School of Government.</em></p>
-<p>For the <code>oxcgrt</code> package, the suggested citation can be obtained using a call to the <code>citation</code> function as follows:</p>
+<div class="section level2">
+<h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
+</h2>
+<p>When using the <code>oxcgrt</code> package, please cite both the
+source of the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
+data and <code>oxcgrt</code> package itself.</p>
+<p>For the source of the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
+data, the following citation is recommended:</p>
+<p><em>Hale, Thomas, Noam Angrist, Emily Cameron-Blake, Laura Hallas,
+Beatriz Kira, Saptarshi Majumdar, Anna Petherick, Toby Phillips, Helen
+Tatlow, Samuel Webster (2020). Oxford COVID-19 Government Response
+Tracker, Blavatnik School of Government.</em></p>
+<p>For the <code>oxcgrt</code> package, the suggested citation can be
+obtained using a call to the <code>citation</code> function as
+follows:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/citation.html">citation</a></span><span class="op">(</span><span class="st">"oxcgrt"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"oxcgrt"</span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; To cite oxcgrt in publications use:</span>
 <span class="co">#&gt; </span>
@@ -290,83 +405,92 @@
 <span class="co">#&gt;     url = {https://como-ph.github.io/oxcgrt/},</span>
 <span class="co">#&gt;   }</span></code></pre></div>
 </div>
-<div id="community-guidelines" class="section level2">
-<h2 class="hasAnchor">
-<a href="#community-guidelines" class="anchor"></a>Community guidelines</h2>
-<p>Feedback, bug reports and feature requests are welcome; file issues or seek support <a href="https://github.com/como-ph/oxcgrt/issues">here</a>. If you would like to contribute to the package, please see our <a href="https://como-ph.github.io/oxcgrt/CONTRIBUTING.html">contributing guidelines</a>.</p>
-<p>This project is released with a <a href="https://como-ph.github.io/oxcgrt/CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
+<div class="section level2">
+<h2 id="community-guidelines">Community guidelines<a class="anchor" aria-label="anchor" href="#community-guidelines"></a>
+</h2>
+<p>Feedback, bug reports and feature requests are welcome; file issues
+or seek support <a href="https://github.com/como-ph/oxcgrt/issues" class="external-link">here</a>. If you would
+like to contribute to the package, please see our <a href="https://como-ph.github.io/oxcgrt/CONTRIBUTING.html">contributing
+guidelines</a>.</p>
+<p>This project is released with a <a href="https://como-ph.github.io/oxcgrt/CODE_OF_CONDUCT.html">Contributor
+Code of Conduct</a>. By participating in this project you agree to abide
+by its terms.</p>
 </div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=oxcgrt">https://​cloud.r-project.org/​package=oxcgrt</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/como-ph/oxcgrt/">https://​github.com/​como-ph/​oxcgrt/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/como-ph/oxcgrt/issues">https://​github.com/​como-ph/​oxcgrt/​issues</a>
-</li>
-<li>Read about the Oxford COVID-19 Government Response Tracker at <br><a href="https://www.bsg.ox.ac.uk/covidtracker">https://​www.bsg.ox.ac.uk/​covidtracker</a>
-</li>
-<li>More about CoMo Philippines at <br><a href="https://como-ph.github.io/">https://​como-ph.github.io/​</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=oxcgrt" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/como-ph/oxcgrt/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/como-ph/oxcgrt/issues" class="external-link">Report a bug</a></li>
+<li><a href="https://www.bsg.ox.ac.uk/covidtracker" class="external-link">Read about the Oxford COVID-19 Government Response Tracker</a></li>
+<li><a href="https://como-ph.github.io/" class="external-link">More about CoMo Philippines</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></small></li>
+<li><small><a href="https://www.r-project.org/Licenses/GPL-3" class="external-link">GPL-3</a></small></li>
 </ul>
 </div>
+
 <div class="community">
-<h2>Community</h2>
+<h2 data-toc-skip>Community</h2>
 <ul class="list-unstyled">
 <li><a href="CONTRIBUTING.html">Contributing guide</a></li>
 <li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
 </ul>
 </div>
+
 <div class="citation">
-<h2>Citation</h2>
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li><a href="authors.html">Citing oxcgrt</a></li>
-</ul>
-</div>
-<div class="developers">
-<h2>Developers</h2>
-<ul class="list-unstyled">
-<li>Ernest Guevarra <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-4887-4415" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="authors.html#citation">Citing oxcgrt</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li><a href="https://www.repostatus.org/#active"><img src="https://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active – The project has reached a stable, usable state and is being actively developed."></a></li>
-<li><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
-<li><a href="https://CRAN.R-project.org/package=oxcgrt"><img src="https://www.r-pkg.org/badges/version/oxcgrt" alt="CRAN status"></a></li>
-<li><a href="https://cran.r-project.org/web/checks/check_results_oxcgrt.html"><img src="https://cranchecks.info/badges/summary/oxcgrt" alt="cran checks"></a></li>
-<li><a href="https://CRAN.R-project.org/package=oxcgrt"><img src="https://img.shields.io/cran/l/oxcgrt.svg" alt="CRAN"></a></li>
-<li><a href="https://CRAN.R-project.org/package=oxcgrt"><img src="http://cranlogs.r-pkg.org/badges/oxcgrt" alt="CRAN"></a></li>
-<li><a href="https://CRAN.R-project.org/package=oxcgrt"><img src="http://cranlogs.r-pkg.org/badges/grand-total/oxcgrt" alt="CRAN"></a></li>
-<li><a href="https://github.com/como-ph/oxcgrt/actions"><img src="https://github.com/como-ph/oxcgrt/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
-<li><a href="https://codecov.io/gh/como-ph/oxcgrt?branch=master"><img src="https://codecov.io/gh/como-ph/oxcgrt/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
-<li><a href="https://www.codefactor.io/repository/github/como-ph/oxcgrt"><img src="https://www.codefactor.io/repository/github/como-ph/oxcgrt/badge" alt="CodeFactor"></a></li>
+<li>Ernest Guevarra <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-4887-4415" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 </ul>
 </div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://www.repostatus.org/#active" class="external-link"><img src="https://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active – The project has reached a stable, usable state and is being actively developed."></a></li>
+<li><a href="https://www.tidyverse.org/lifecycle/#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
+<li><a href="https://CRAN.R-project.org/package=oxcgrt" class="external-link"><img src="https://www.r-pkg.org/badges/version/oxcgrt" alt="CRAN status"></a></li>
+<li><a href="https://cran.r-project.org/web/checks/check_results_oxcgrt.html" class="external-link"><img src="https://cranchecks.info/badges/summary/oxcgrt" alt="cran checks"></a></li>
+<li><a href="https://CRAN.R-project.org/package=oxcgrt" class="external-link"><img src="https://img.shields.io/cran/l/oxcgrt.svg" alt="CRAN"></a></li>
+<li><a href="https://CRAN.R-project.org/package=oxcgrt" class="external-link"><img src="http://cranlogs.r-pkg.org/badges/oxcgrt" alt="CRAN"></a></li>
+<li><a href="https://CRAN.R-project.org/package=oxcgrt" class="external-link"><img src="http://cranlogs.r-pkg.org/badges/grand-total/oxcgrt" alt="CRAN"></a></li>
+<li><a href="https://github.com/como-ph/oxcgrt/actions" class="external-link"><img src="https://github.com/como-ph/oxcgrt/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://codecov.io/gh/como-ph/oxcgrt?branch=master" class="external-link"><img src="https://codecov.io/gh/como-ph/oxcgrt/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://www.codefactor.io/repository/github/como-ph/oxcgrt" class="external-link"><img src="https://www.codefactor.io/repository/github/como-ph/oxcgrt/badge" alt="CodeFactor"></a></li>
+<li><a href="https://zenodo.org/badge/latestdoi/276819663" class="external-link"><img src="https://zenodo.org/badge/276819663.svg" alt="DOI"></a></li>
+</ul>
 </div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Ernest Guevarra.</p>
+  <p></p>
+<p>Developed by Ernest Guevarra.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
+2.0.2.</p>
 </div>
 
       </footer>
@@ -374,6 +498,8 @@
 
   
 
+
+  
 
   </body>
 </html>
