@@ -33,8 +33,11 @@ calculate_subindex <- function(indicator_code,
                                value,
                                flag_value) {
   ## Re-code max_value
-  max_value <- ifelse(indicator_code %in% c("C1", "C2", "C6", "H2"), 3,
-                 ifelse(indicator_code %in% c("C4", "C8", "H6"), 4, 2))
+  max_value <- ifelse(indicator_code %in% c("C1", "C2", "C6", "H2", "H8"), 3,
+    ifelse(indicator_code %in% c("C4", "C8", "H6"), 4,
+      ifelse(indicator_code == "H7", 5, 2)
+    )
+  )
 
   ## Re-code flag
   flag <- ifelse(indicator_code %in% c("C8", "E2", "H2", "H3"), 0, 1)
@@ -56,7 +59,7 @@ calculate_subindex <- function(indicator_code,
   }
 
   ## Return subindex
-  return(subindex)
+  subindex
 }
 
 
@@ -90,7 +93,11 @@ calculate_subindex <- function(indicator_code,
 #'   the flag values named `flag_value` and the fourth column named `score` for
 #'   the calculated sub-indices.
 #'
-#' @author Ernest Guevarra
+#' @author **Ernest Guevarra** based on calculation methods by *Hale, Thomas,*
+#'   *Noam Angrist, Emily Cameron-Blake, Laura Hallas, Beatriz Kira,*
+#'   *Saptarshi Majumdar, Anna Petherick, Toby Phillips, Helen Tatlow,*
+#'   *Samuel Webster (2020). Oxford COVID-19 Government Response Tracker,*
+#'   *Blavatnik School of Government.*
 #'
 #' @examples
 #' x <- get_data(json = get_json_actions(ccode = "AFG",
@@ -139,7 +146,7 @@ calculate_subindices <- function(df,
   scoreDF <- tibble(scoreDF)
 
   ## Return scoreDF
-  return(scoreDF)
+  scoreDF
 }
 
 
@@ -156,7 +163,11 @@ calculate_subindices <- function(df,
 #' @return A numeric value for mean subindex scores of specified policy types.
 #'   For [calculate_indices()], a tibble calculated OxCGRT indices
 #'
-#' @author Ernest Guevarra
+#' @author **Ernest Guevarra** based on calculation methods by *Hale, Thomas,*
+#'   *Noam Angrist, Emily Cameron-Blake, Laura Hallas, Beatriz Kira,*
+#'   *Saptarshi Majumdar, Anna Petherick, Toby Phillips, Helen Tatlow,*
+#'   *Samuel Webster (2020). Oxford COVID-19 Government Response Tracker,*
+#'   *Blavatnik School of Government.*
 #'
 #' @examples
 #' ## Get policy actions data for Afghanistan on 1 September 2020
@@ -204,7 +215,7 @@ calculate_index <- function(df, codes, tolerance) {
             na.rm = sum(is.na(df[["policy_value"]])) > tolerance)
 
   ## Return mean
-  return(z)
+  z
 }
 
 
@@ -218,13 +229,13 @@ calculate_index <- function(df, codes, tolerance) {
 calculate_gov_response <- function(df) {
   ## Create vector of codes for government response indicators
   codes <- c(paste("C", 1:8, sep = ""), paste("E", 1:2, sep = ""),
-             paste("H", 1:3, sep = ""), "H6")
+             paste("H", 1:3, sep = ""), paste("H", 6:8, sep = ""))
 
   ## Calculate index
   z <- calculate_index(df = df, codes = codes, tolerance = 1)
 
   ## Return mean
-  return(z)
+  z
 }
 
 
@@ -237,13 +248,17 @@ calculate_gov_response <- function(df) {
 
 calculate_containment_health <- function(df) {
   ## Create vector of codes for containment and health indicators
-  codes <- c(paste("C", 1:8, sep = ""), paste("H", 1:3, sep = ""), "H6")
+  codes <- c(
+    paste("C", 1:8, sep = ""),
+    paste("H", 1:3, sep = ""),
+    paste("H", 6:8, sep = "")
+  )
 
   ## Calculate index
   z <- calculate_index(df = df, codes = codes, tolerance = 1)
 
   ## Return mean
-  return(z)
+  z
 }
 
 
@@ -262,7 +277,7 @@ calculate_stringency <- function(df) {
   z <- calculate_index(df = df, codes = codes, tolerance = 1)
 
   ## Return mean
-  return(z)
+  z
 }
 
 
@@ -281,7 +296,7 @@ calculate_economic_support <- function(df) {
   z <- calculate_index(df = df, codes = codes, tolerance = 2)
 
   ## Return mean
-  return(z)
+  z
 }
 
 
@@ -312,6 +327,6 @@ calculate_indices <- function(df) {
   indexDF <- tibble(indexDF)
 
   ##
-  return(indexDF)
+  indexDF
 }
 

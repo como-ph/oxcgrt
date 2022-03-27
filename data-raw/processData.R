@@ -12,7 +12,8 @@ codebook <- xml2::read_html("https://github.com/OxCGRT/covid-policy-tracker/blob
   dplyr::bind_rows() %>%
   dplyr::mutate(`Policy Group` = c(rep("Containment and closure policies", 15),
                                    rep("Economic policies", 5),
-                                   rep("Health system policies", 8),
+                                   rep("Health system policies", 12),
+                                   rep("Vaccination policies", 14),
                                    "Miscellaneous policies"),
                 ID = stringr::str_split(string = Name, pattern = "_", simplify = TRUE)[ , 1],
                 Coding = stringr::str_replace_all(string = Coding, pattern = " 0", replacement = "; 0" ),
@@ -27,10 +28,10 @@ usethis::use_data(codebook, overwrite = TRUE, compress = "xz")
 
 ## Example data
 x <- xml2::read_html("https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/index_methodology.md") %>%
-  rvest::xml_nodes(css = ".markdown-body table") %>%
+  rvest::html_elements(css = ".markdown-body table") %>%
   rvest::html_table()
 
-indicatorData <- x[[3]][1:14, ]
+indicatorData <- x[[3]][1:16, ]
 names(indicatorData) <- c("indicator", "value", "flag_value", "", "max_value", "flag", "", "score")
 
 indicatorData <- indicatorData %>%

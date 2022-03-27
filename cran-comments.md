@@ -1,39 +1,31 @@
-## Resubmission No. 2
-This is a resubmission. In this version I have:
+## Release summary
 
-* I have added edited the web reference for the API that I provided in the first
-resubmission. When clicking on the link I provided before, it does get to the
-appropriate page. But I think CRAN is using a proper URL validator. To get
-around this, I chose a more robust link that talks about the specific API of
-interest. I tested this link on a URL validator and I did not get any errors.
-Hopefully this does the trick. Thank you for your patience.
+This is the second CRAN release of `oxcgrt`. In this release:
 
+* Addressed CRAN errors resulting when internet not available by checking
+internet availability when accessing JSON endpoint
 
-## Resubmission
-This is a resubmission. In this version I have:
+* Updated index calculations to include vaccination information
 
-* I have added a web reference for the API in the approporiate format within
-the description section of the DESCRIPTION file.
+* Updated codebook and sample indicator data to include vaccination information
+
+* Updated README to reflect inclusion of vaccination information
 
 
 ## Test environments
-* local R installation, R 4.0.3
-* ubuntu 20.04 (on GitHub Actions), R 4.0.3
-* ubuntu 20.04 (on GitHub Actions), R devel
-* windows latest (on GitHub Actions), R 4.0.3
-* macOS latest (on GitHub Actions), R 4.0.3
+* local R installation, R 4.1.3
+* ubuntu latest (on GitHub Actions), R 4.1.3
+* ubuntu latest (on GitHub Actions), R devel
+* ubuntu latest (on GitHub Actions), R old release
+* windows latest (on GitHub Actions), R 4.1.3
+* macOS latest (on GitHub Actions), R 4.1.3
 * win-builder (devel, release, old-release)
 * rhub (windows-devel, fedora-devel, ubuntu-release)
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
+0 errors | 0 warnings | 0 note
 
-* This is a new release.
+## Reverse dependencies
 
-* Possibly mis-spelled words in DESCRIPTION:
-  COVID (3:35, 10:25, 11:52)
-  OxCGRT (10:63, 12:23, 15:5, 16:5)
-  indices (16:12)
-  
-  - These words are not mis-spelled
+`oxcgrt` doesn't have any downstream/reverse dependencies.

@@ -124,21 +124,21 @@ get_data_time(query)
 
 This results in the following:
 
-    #> # A tibble: 121,658 × 9
-    #>    date_value country_code country_name        confirmed deaths stringency_actu…
-    #>    <date>     <chr>        <chr>                   <int>  <int>            <dbl>
-    #>  1 2020-06-01 FIN          Finland                  6986    305             44.4
-    #>  2 2020-06-01 DNK          Denmark                 11699    576             60.2
-    #>  3 2020-06-01 LBN          Lebanon                  1233     27             74.1
-    #>  4 2020-06-01 GUY          Guyana                    153     12             87.0
-    #>  5 2020-06-01 PSE          Palestinian Territ…       449      3             80.6
-    #>  6 2020-06-01 AFG          Afghanistan             15836    269             84.3
-    #>  7 2020-06-01 SVK          Slovakia                 1522     28             67.6
-    #>  8 2020-06-01 VEN          Venezuela                1662     17             85.2
-    #>  9 2020-06-01 HKG          Hong Kong SAR China      1087      4             52.8
-    #> 10 2020-06-01 VNM          Vietnam                   328      0             69.4
-    #> # … with 121,648 more rows, and 3 more variables: stringency <dbl>,
-    #> #   stringency_legacy <dbl>, stringency_legacy_disp <dbl>
+    #> # A tibble: 121,674 × 9
+    #>    date_value country_code country_name stringency_actual stringency
+    #>    <date>     <chr>        <chr>                    <dbl>      <dbl>
+    #>  1 2020-06-01 TKM          Turkmenistan              31.5       31.5
+    #>  2 2020-06-01 ROU          Romania                   57.4       57.4
+    #>  3 2020-06-01 BRB          Barbados                  78.7       78.7
+    #>  4 2020-06-01 BGR          Bulgaria                  44.4       44.4
+    #>  5 2020-06-01 LAO          Laos                      43.5       43.5
+    #>  6 2020-06-01 PRI          Puerto Rico               89.8       89.8
+    #>  7 2020-06-01 BHR          Bahrain                   75         75  
+    #>  8 2020-06-01 LUX          Luxembourg                47.2       47.2
+    #>  9 2020-06-01 PAK          Pakistan                  82.4       82.4
+    #> 10 2020-06-01 EGY          Egypt                     84.3       84.3
+    #> # … with 121,664 more rows, and 4 more variables: stringency_legacy <dbl>,
+    #> #   stringency_legacy_disp <dbl>, confirmed <int>, deaths <int>
 
 The `oxcgrt` functions are designed to work with pipe operators via the
 `magrittr` package. The steps shown above can be replicated using pipe
@@ -155,21 +155,21 @@ get_json_time(from = "2020-06-01") %>%    ## Step 1: Creat API URL query
 This results in the same output as the earlier workflow albeit sorted
 alphabetically by country code:
 
-    #> # A tibble: 121,658 × 9
-    #>    date_value country_code country_name        confirmed deaths stringency_actu…
-    #>    <date>     <chr>        <chr>                   <int>  <int>            <dbl>
-    #>  1 2020-06-01 FIN          Finland                  6986    305             44.4
-    #>  2 2020-06-01 DNK          Denmark                 11699    576             60.2
-    #>  3 2020-06-01 LBN          Lebanon                  1233     27             74.1
-    #>  4 2020-06-01 GUY          Guyana                    153     12             87.0
-    #>  5 2020-06-01 PSE          Palestinian Territ…       449      3             80.6
-    #>  6 2020-06-01 AFG          Afghanistan             15836    269             84.3
-    #>  7 2020-06-01 SVK          Slovakia                 1522     28             67.6
-    #>  8 2020-06-01 VEN          Venezuela                1662     17             85.2
-    #>  9 2020-06-01 HKG          Hong Kong SAR China      1087      4             52.8
-    #> 10 2020-06-01 VNM          Vietnam                   328      0             69.4
-    #> # … with 121,648 more rows, and 3 more variables: stringency <dbl>,
-    #> #   stringency_legacy <dbl>, stringency_legacy_disp <dbl>
+    #> # A tibble: 121,674 × 9
+    #>    date_value country_code country_name stringency_actual stringency
+    #>    <date>     <chr>        <chr>                    <dbl>      <dbl>
+    #>  1 2020-06-01 TKM          Turkmenistan              31.5       31.5
+    #>  2 2020-06-01 ROU          Romania                   57.4       57.4
+    #>  3 2020-06-01 BRB          Barbados                  78.7       78.7
+    #>  4 2020-06-01 BGR          Bulgaria                  44.4       44.4
+    #>  5 2020-06-01 LAO          Laos                      43.5       43.5
+    #>  6 2020-06-01 PRI          Puerto Rico               89.8       89.8
+    #>  7 2020-06-01 BHR          Bahrain                   75         75  
+    #>  8 2020-06-01 LUX          Luxembourg                47.2       47.2
+    #>  9 2020-06-01 PAK          Pakistan                  82.4       82.4
+    #> 10 2020-06-01 EGY          Egypt                     84.3       84.3
+    #> # … with 121,664 more rows, and 4 more variables: stringency_legacy <dbl>,
+    #> #   stringency_legacy_disp <dbl>, confirmed <int>, deaths <int>
 
 For more detailed examples of how to retrieve data via the
 [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
@@ -242,7 +242,7 @@ below:
 
 The current `oxcgrt` package version includes the
 [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
-**codebook version 2.5** released on 4 November 2020.
+**codebook version 3.7** released on 11 March 2022.
 
 #### Example OxCGRT indicators dataset
 

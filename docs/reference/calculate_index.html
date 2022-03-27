@@ -102,7 +102,11 @@ For <code>calculate_indices()</code>, a tibble calculated OxCGRT indices</p>
     </div>
     <div id="author">
     <h2>Author</h2>
-    <p>Ernest Guevarra</p>
+    <p><strong>Ernest Guevarra</strong> based on calculation methods by <em>Hale, Thomas,</em>
+<em>Noam Angrist, Emily Cameron-Blake, Laura Hallas, Beatriz Kira,</em>
+<em>Saptarshi Majumdar, Anna Petherick, Toby Phillips, Helen Tatlow,</em>
+<em>Samuel Webster (2020). Oxford COVID-19 Government Response Tracker,</em>
+<em>Blavatnik School of Government.</em></p>
     </div>
 
     <div id="ref-examples">
@@ -125,11 +129,11 @@ For <code>calculate_indices()</code>, a tibble calculated OxCGRT indices</p>
 <span class="r-in"></span>
 <span class="r-in"><span class="co">## Calculate OxCGRT government response index</span></span>
 <span class="r-in"><span class="fu">calculate_gov_response</span><span class="op">(</span>df <span class="op">=</span> <span class="va">y</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 33.33333</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 35.41667</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co">## Calculate OxCGRT containment and health index</span></span>
 <span class="r-in"><span class="fu">calculate_containment_health</span><span class="op">(</span>df <span class="op">=</span> <span class="va">y</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 38.88889</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 40.47619</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co">## Calculate OxCGRT stringency index</span></span>
 <span class="r-in"><span class="fu">calculate_stringency</span><span class="op">(</span>df <span class="op">=</span> <span class="va">y</span><span class="op">)</span></span>
@@ -144,8 +148,8 @@ For <code>calculate_indices()</code>, a tibble calculated OxCGRT indices</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 4 × 2</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   index                        values</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Government Response Index      33.3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Containment and Health Index   38.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Government Response Index      35.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Containment and Health Index   40.5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Stringency Index               21.3</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Economic Support Index          0  </span>
 <span class="r-in"></span>

@@ -5,7 +5,7 @@
 \alias{indicatorData}
 \title{Example indicator data for sub-index calculations}
 \format{
-A tibble with 14 rows and 6 columns\tabular{ll}{
+A tibble with 16 rows and 6 columns\tabular{ll}{
    \strong{Variable} \tab \strong{Description} \cr
    \code{indicator} \tab Policy indicator code \cr
    \code{value} \tab Policy indicator value \cr
