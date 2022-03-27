@@ -3,7 +3,7 @@
 #'
 #' Codebook for the Oxford COVID-19 Government Response Tracker
 #'
-#' @format A tibble with 28 rows and 6 columns:
+#' @format A tibble with 47 rows and 6 columns:
 #'
 #' | **Variable** | **Description** |
 #' | :--- | :--- |
@@ -26,7 +26,7 @@
 #'
 #' Example indicator data for sub-index calculations
 #'
-#' @format A tibble with 14 rows and 6 columns
+#' @format A tibble with 16 rows and 6 columns
 #'
 #' | **Variable** | **Description** |
 #' | :--- | :--- |

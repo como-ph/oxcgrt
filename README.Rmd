@@ -140,7 +140,7 @@ which outputs the codebook as a singular table in `tbl` format as shown below:
 codebook
 ```
 
-The current `oxcgrt` package version includes the [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker) **codebook version 2.5** released on 4 November 2020.
+The current `oxcgrt` package version includes the [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker) **codebook version 3.7** released on 11 March 2022.
 
 #### Example OxCGRT indicators dataset
 

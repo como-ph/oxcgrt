@@ -133,7 +133,7 @@ used:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/get_json.html">get_json_time</a></span><span class="op">(</span>from <span class="op">=</span> <span class="st">"2020-06-01"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/get_data_time.html">get_data_time</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>This produces the following output:</p>
-<pre><code><span class="co">#&gt; <span style="color: #949494;"># A tibble: 121,658 × 9</span></span>
+<pre><code><span class="co">#&gt; <span style="color: #949494;"># A tibble: 121,713 × 9</span></span>
 <span class="co">#&gt;    date_value country_code country_name        confirmed deaths stringency_actu…</span>
 <span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 2020-06-01 FIN          Finland                  <span style="text-decoration: underline;">6</span>986    305             44.4</span>
@@ -146,7 +146,7 @@ used:</p>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 2020-06-01 VEN          Venezuela                <span style="text-decoration: underline;">1</span>662     17             85.2</span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 2020-06-01 HKG          Hong Kong SAR China      <span style="text-decoration: underline;">1</span>087      4             52.8</span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 2020-06-01 VNM          Vietnam                   328      0             69.4</span>
-<span class="co">#&gt; <span style="color: #949494;"># … with 121,648 more rows, and 3 more variables: stringency &lt;dbl&gt;,</span></span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 121,703 more rows, and 3 more variables: stringency &lt;dbl&gt;,</span></span>
 <span class="co">#&gt; <span style="color: #949494;">#   stringency_legacy &lt;dbl&gt;, stringency_legacy_disp &lt;dbl&gt;</span></span></code></pre>
 <p>Important to note that in <code>get_json_time</code>, only the
 starting date (using the <code>from</code> argument) is specified to the
@@ -161,7 +161,7 @@ commands can be issued:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/get_json.html">get_json_time</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/get_data_time.html">get_data_time</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>which produces the following output:</p>
-<pre><code><span class="co">#&gt; <span style="color: #949494;"># A tibble: 149,593 × 9</span></span>
+<pre><code><span class="co">#&gt; <span style="color: #949494;"># A tibble: 149,648 × 9</span></span>
 <span class="co">#&gt;    date_value country_code country_name            stringency_actual stringency</span>
 <span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                               <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 2020-01-02 FIN          Finland                               0          0  </span>
@@ -174,7 +174,7 @@ commands can be issued:</p>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 2020-01-02 VEN          Venezuela                             0          0  </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 2020-01-02 HKG          Hong Kong SAR China                  13.9       13.9</span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 2020-01-02 VNM          Vietnam                               0          0  </span>
-<span class="co">#&gt; <span style="color: #949494;"># … with 149,583 more rows, and 4 more variables: stringency_legacy &lt;dbl&gt;,</span></span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 149,638 more rows, and 4 more variables: stringency_legacy &lt;dbl&gt;,</span></span>
 <span class="co">#&gt; <span style="color: #949494;">#   stringency_legacy_disp &lt;dbl&gt;, confirmed &lt;int&gt;, deaths &lt;int&gt;</span></span></code></pre>
 <div class="section level4">
 <h4 id="policy-actions-and-stringency-index-for-specific-country-on-a-specific-day">Policy actions and stringency index for specific country on a

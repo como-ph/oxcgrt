@@ -71,5 +71,9 @@ calculate_subindices(df = x$policyActions)
 \emph{Samuel Webster (2020). Oxford COVID-19 Government Response Tracker,}
 \emph{Blavatnik School of Government.}
 
-Ernest Guevarra
+\strong{Ernest Guevarra} based on calculation methods by \emph{Hale, Thomas,}
+\emph{Noam Angrist, Emily Cameron-Blake, Laura Hallas, Beatriz Kira,}
+\emph{Saptarshi Majumdar, Anna Petherick, Toby Phillips, Helen Tatlow,}
+\emph{Samuel Webster (2020). Oxford COVID-19 Government Response Tracker,}
+\emph{Blavatnik School of Government.}
 }

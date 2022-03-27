@@ -5,7 +5,7 @@
 \alias{codebook}
 \title{Codebook for the Oxford COVID-19 Government Response Tracker}
 \format{
-A tibble with 28 rows and 6 columns:\tabular{ll}{
+A tibble with 47 rows and 6 columns:\tabular{ll}{
    \strong{Variable} \tab \strong{Description} \cr
    \code{ID} \tab Policy indicator identifier \cr
    \code{Name} \tab Name of policy indicator \cr

@@ -190,21 +190,21 @@ below:</p>
 <span class="co">## Step 2: Retrieve the data</span>
 <span class="fu"><a href="reference/get_data_time.html">get_data_time</a></span><span class="op">(</span><span class="va">query</span><span class="op">)</span></code></pre></div>
 <p>This results in the following:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 121,658 × 9</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    date_value country_code country_name        confirmed deaths stringency_actu…</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;date&gt;     &lt;chr&gt;        &lt;chr&gt;                   &lt;int&gt;  &lt;int&gt;            &lt;dbl&gt;</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 2020-06-01 FIN          Finland                  6986    305             44.4</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 2020-06-01 DNK          Denmark                 11699    576             60.2</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 2020-06-01 LBN          Lebanon                  1233     27             74.1</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 2020-06-01 GUY          Guyana                    153     12             87.0</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 2020-06-01 PSE          Palestinian Territ…       449      3             80.6</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 2020-06-01 AFG          Afghanistan             15836    269             84.3</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 2020-06-01 SVK          Slovakia                 1522     28             67.6</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 2020-06-01 VEN          Venezuela                1662     17             85.2</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 2020-06-01 HKG          Hong Kong SAR China      1087      4             52.8</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 2020-06-01 VNM          Vietnam                   328      0             69.4</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 121,648 more rows, and 3 more variables: stringency &lt;dbl&gt;,</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   stringency_legacy &lt;dbl&gt;, stringency_legacy_disp &lt;dbl&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 121,674 × 9</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    date_value country_code country_name stringency_actual stringency</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;date&gt;     &lt;chr&gt;        &lt;chr&gt;                    &lt;dbl&gt;      &lt;dbl&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 2020-06-01 TKM          Turkmenistan              31.5       31.5</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 2020-06-01 ROU          Romania                   57.4       57.4</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 2020-06-01 BRB          Barbados                  78.7       78.7</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 2020-06-01 BGR          Bulgaria                  44.4       44.4</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 2020-06-01 LAO          Laos                      43.5       43.5</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 2020-06-01 PRI          Puerto Rico               89.8       89.8</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 2020-06-01 BHR          Bahrain                   75         75  </span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 2020-06-01 LUX          Luxembourg                47.2       47.2</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 2020-06-01 PAK          Pakistan                  82.4       82.4</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 2020-06-01 EGY          Egypt                     84.3       84.3</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 121,664 more rows, and 4 more variables: stringency_legacy &lt;dbl&gt;,</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   stringency_legacy_disp &lt;dbl&gt;, confirmed &lt;int&gt;, deaths &lt;int&gt;</span></span></code></pre></div>
 <p>The <code>oxcgrt</code> functions are designed to work with pipe
 operators via the <code>magrittr</code> package. The steps shown above
 can be replicated using pipe operators as follows:</p>
@@ -216,21 +216,21 @@ can be replicated using pipe operators as follows:</p>
   <span class="fu"><a href="reference/get_data_time.html">get_data_time</a></span><span class="op">(</span><span class="op">)</span>                         <span class="co">## Step 2: Retrieve data</span></code></pre></div>
 <p>This results in the same output as the earlier workflow albeit sorted
 alphabetically by country code:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 121,658 × 9</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    date_value country_code country_name        confirmed deaths stringency_actu…</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;date&gt;     &lt;chr&gt;        &lt;chr&gt;                   &lt;int&gt;  &lt;int&gt;            &lt;dbl&gt;</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 2020-06-01 FIN          Finland                  6986    305             44.4</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 2020-06-01 DNK          Denmark                 11699    576             60.2</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 2020-06-01 LBN          Lebanon                  1233     27             74.1</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 2020-06-01 GUY          Guyana                    153     12             87.0</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 2020-06-01 PSE          Palestinian Territ…       449      3             80.6</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 2020-06-01 AFG          Afghanistan             15836    269             84.3</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 2020-06-01 SVK          Slovakia                 1522     28             67.6</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 2020-06-01 VEN          Venezuela                1662     17             85.2</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 2020-06-01 HKG          Hong Kong SAR China      1087      4             52.8</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 2020-06-01 VNM          Vietnam                   328      0             69.4</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 121,648 more rows, and 3 more variables: stringency &lt;dbl&gt;,</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   stringency_legacy &lt;dbl&gt;, stringency_legacy_disp &lt;dbl&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 121,674 × 9</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    date_value country_code country_name stringency_actual stringency</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;date&gt;     &lt;chr&gt;        &lt;chr&gt;                    &lt;dbl&gt;      &lt;dbl&gt;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 2020-06-01 TKM          Turkmenistan              31.5       31.5</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 2020-06-01 ROU          Romania                   57.4       57.4</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 2020-06-01 BRB          Barbados                  78.7       78.7</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 2020-06-01 BGR          Bulgaria                  44.4       44.4</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 2020-06-01 LAO          Laos                      43.5       43.5</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 2020-06-01 PRI          Puerto Rico               89.8       89.8</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 2020-06-01 BHR          Bahrain                   75         75  </span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 2020-06-01 LUX          Luxembourg                47.2       47.2</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 2020-06-01 PAK          Pakistan                  82.4       82.4</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 2020-06-01 EGY          Egypt                     84.3       84.3</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 121,664 more rows, and 4 more variables: stringency_legacy &lt;dbl&gt;,</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   stringency_legacy_disp &lt;dbl&gt;, confirmed &lt;int&gt;, deaths &lt;int&gt;</span></span></code></pre></div>
 <p>For more detailed examples of how to retrieve data via the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
 API version 2, read <a href="https://como-ph.github.io/oxcgrt/articles/retrieve.html">Retrieve
 data via OxCGRT API</a>.</p>
@@ -286,7 +286,7 @@ format as shown below:</p>
 <span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 C5    C5_Flag                   ""          Binary fla… 0 - t… Containment a…</span></span>
 <span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 19 more rows</span></span></code></pre></div>
 <p>The current <code>oxcgrt</code> package version includes the <a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker" class="external-link">OxCGRT</a>
-<strong>codebook version 2.5</strong> released on 4 November 2020.</p>
+<strong>codebook version 3.7</strong> released on 11 March 2022.</p>
 </div>
 <div class="section level4">
 <h4 id="example-oxcgrt-indicators-dataset">Example OxCGRT indicators dataset<a class="anchor" aria-label="anchor" href="#example-oxcgrt-indicators-dataset"></a>

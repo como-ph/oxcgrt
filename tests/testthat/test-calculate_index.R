@@ -41,7 +41,8 @@ test_that("output tibble has the appropriate rows", {
 y <- calculate_index(df = x,
                      codes = c(paste("C", 1:8, sep = ""),
                                paste("E", 1:2, sep = ""),
-                               paste("H", 1:3, sep = ""), "H6"),
+                               paste("H", 1:3, sep = ""),
+                               paste("H", 6:8, sep = "")),
                      tolerance = 1)
 
 test_that("output is numeric", {

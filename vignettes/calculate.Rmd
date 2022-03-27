@@ -38,7 +38,7 @@ library(rvest)
 library(xml2)
 
 x <- xml2::read_html("https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/index_methodology.md") %>%
-  rvest::xml_nodes(css = ".markdown-body table") %>%
+  rvest::html_elements(css = ".markdown-body table") %>%
   rvest::html_table()
 
 x <- data.frame(t(x[[1]]))
@@ -116,7 +116,7 @@ indicatorData %>%
   calculate_index(codes = c(paste("C", 1:8, sep = ""),
                             paste("E", 1:2, sep = ""),
                             paste("H", 1:3, sep = ""),
-                            "H6"), 
+                            paste("H", 6:8, sep = "")), 
                   tolerance = 1)
 ```
 
@@ -131,7 +131,7 @@ indicatorData %>%
   calculate_index(codes = c(paste("C", 1:8, sep = ""),
                             paste("E", 1:2, sep = ""),
                             paste("H", 1:3, sep = ""),
-                            "H6"), 
+                            paste("H", 6:8, sep = "")), 
                   tolerance = 1)
 ```
 
