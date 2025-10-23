@@ -1,6 +1,8 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+# :bangbang: This repository has been transferred to <https://github.com/OxfordIHTM/oxcgrt> where updates and new functions based on current data availability are being developed. This repository has now been archived and is now read-only :bangbang:
+
 # oxcgrt: An Interface to the Oxford COVID-19 Government Response Tracker API <img src="man/figures/logo.png" width="200" align="right" />
 
 <!-- badges: start -->
@@ -124,22 +126,6 @@ get_data_time(query)
 
 This results in the following:
 
-    #> # A tibble: 121,658 × 9
-    #>    date_value country_code country_name        confirmed deaths stringency_actu…
-    #>    <date>     <chr>        <chr>                   <int>  <int>            <dbl>
-    #>  1 2020-06-01 FIN          Finland                  6986    305             44.4
-    #>  2 2020-06-01 DNK          Denmark                 11699    576             60.2
-    #>  3 2020-06-01 LBN          Lebanon                  1233     27             74.1
-    #>  4 2020-06-01 GUY          Guyana                    153     12             87.0
-    #>  5 2020-06-01 PSE          Palestinian Territ…       449      3             80.6
-    #>  6 2020-06-01 AFG          Afghanistan             15836    269             84.3
-    #>  7 2020-06-01 SVK          Slovakia                 1522     28             67.6
-    #>  8 2020-06-01 VEN          Venezuela                1662     17             85.2
-    #>  9 2020-06-01 HKG          Hong Kong SAR China      1087      4             52.8
-    #> 10 2020-06-01 VNM          Vietnam                   328      0             69.4
-    #> # … with 121,648 more rows, and 3 more variables: stringency <dbl>,
-    #> #   stringency_legacy <dbl>, stringency_legacy_disp <dbl>
-
 The `oxcgrt` functions are designed to work with pipe operators via the
 `magrittr` package. The steps shown above can be replicated using pipe
 operators as follows:
@@ -154,22 +140,6 @@ get_json_time(from = "2020-06-01") %>%    ## Step 1: Creat API URL query
 
 This results in the same output as the earlier workflow albeit sorted
 alphabetically by country code:
-
-    #> # A tibble: 121,658 × 9
-    #>    date_value country_code country_name        confirmed deaths stringency_actu…
-    #>    <date>     <chr>        <chr>                   <int>  <int>            <dbl>
-    #>  1 2020-06-01 FIN          Finland                  6986    305             44.4
-    #>  2 2020-06-01 DNK          Denmark                 11699    576             60.2
-    #>  3 2020-06-01 LBN          Lebanon                  1233     27             74.1
-    #>  4 2020-06-01 GUY          Guyana                    153     12             87.0
-    #>  5 2020-06-01 PSE          Palestinian Territ…       449      3             80.6
-    #>  6 2020-06-01 AFG          Afghanistan             15836    269             84.3
-    #>  7 2020-06-01 SVK          Slovakia                 1522     28             67.6
-    #>  8 2020-06-01 VEN          Venezuela                1662     17             85.2
-    #>  9 2020-06-01 HKG          Hong Kong SAR China      1087      4             52.8
-    #> 10 2020-06-01 VNM          Vietnam                   328      0             69.4
-    #> # … with 121,648 more rows, and 3 more variables: stringency <dbl>,
-    #> #   stringency_legacy <dbl>, stringency_legacy_disp <dbl>
 
 For more detailed examples of how to retrieve data via the
 [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
@@ -225,21 +195,6 @@ codebook
 which outputs the codebook as a singular table in `tbl` format as shown
 below:
 
-    #> # A tibble: 29 × 6
-    #>    ID    Name                      Description Measurement Coding `Policy Group`
-    #>    <chr> <chr>                     <chr>       <chr>       <chr>  <chr>         
-    #>  1 C1    C1_School closing         "Record cl… Ordinal sc… 0 - n… Containment a…
-    #>  2 C1    C1_Flag                   ""          Binary fla… 0 - t… Containment a…
-    #>  3 C2    C2_Workplace closing      "Record cl… Ordinal sc… 0 - n… Containment a…
-    #>  4 C2    C2_Flag                   ""          Binary fla… 0 - t… Containment a…
-    #>  5 C3    C3_Cancel public events   "Record ca… Ordinal sc… 0 - n… Containment a…
-    #>  6 C3    C3_Flag                   ""          Binary fla… 0 - t… Containment a…
-    #>  7 C4    C4_Restrictions on gathe… "Record li… Ordinal sc… 0 - n… Containment a…
-    #>  8 C4    C4_Flag                   ""          Binary fla… 0 - t… Containment a…
-    #>  9 C5    C5_Close public transport "Record cl… Ordinal sc… 0 - n… Containment a…
-    #> 10 C5    C5_Flag                   ""          Binary fla… 0 - t… Containment a…
-    #> # … with 19 more rows
-
 The current `oxcgrt` package version includes the
 [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
 **codebook version 2.5** released on 4 November 2020.
@@ -262,24 +217,6 @@ indicatorData
 
 which outputs the example data as a singular table in `tbl` format as
 shown below:
-
-    #> # A tibble: 14 × 6
-    #>    indicator value flag_value max_value  flag score
-    #>    <chr>     <int>      <int>     <int> <int> <dbl>
-    #>  1 C1            2          1         3     1  66.7
-    #>  2 C2           NA         NA         3     1   0  
-    #>  3 C3            2          0         2     1  75  
-    #>  4 C4            2          0         4     1  37.5
-    #>  5 C5            0         NA         2     1   0  
-    #>  6 C6            1          0         3     1  16.7
-    #>  7 C7            1          1         2     1  50  
-    #>  8 C8            3         NA         4     0  75  
-    #>  9 E1            2          0         2     1  75  
-    #> 10 E2            2         NA         2     0 100  
-    #> 11 H1            2          0         2     1  75  
-    #> 12 H2            3         NA         3     0 100  
-    #> 13 H3            2         NA         2     0 100  
-    #> 14 H6            2          0         4     1  37.5
 
 This dataset is used by the `oxcgrt` package to test the `calculate_*`
 functions and for demonstrating how these functions work. This dataset
@@ -360,7 +297,6 @@ call to the `citation` function as follows:
 
 ``` r
 citation("oxcgrt")
-#> 
 #> To cite oxcgrt in publications use:
 #> 
 #>   Ernest Guevarra (2020). oxcgrt: An Interface to the Oxford COVID-19
